@@ -13,6 +13,7 @@
 :root {
   --muted: #777;
   --faint: #eee;
+  --main-margin: 4em;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -32,14 +33,16 @@
   }
 }
 
-body {
-  margin: 4em;
+@media (width < 30em) {
+  :root {
+    --main-margin: 1em;
+  }
 }
 
-@media (width < 30em) {
-  body {
-    margin: 1em;
-  }
+body {
+  margin-inline: 0;
+  margin-block: var(--main-margin);
+  line-height: 1.5;
 }
 
 a {
@@ -49,16 +52,17 @@ a {
 a:hover {
   text-decoration: underline;
   text-underline-offset: 0.4em;
-
 }
 
 footer {
+  margin-inline: var(--main-margin);
   margin-block: 3em;
   border-block-start: 1px dotted var(--faint);
   padding-block: 1em;
 }
 
 article.a {
+  margin-inline: var(--main-margin);
   time {
     font-size: smaller;
     font-style: italic;
@@ -78,7 +82,7 @@ article.a {
 </article>
 
 <footer>
-<p><a href="https://github.com/mnvr">github.com/mnvr</a></p>
+<p><a href="https://github.com/mnvr">github</a></p>
 </footer>
 
 </body>
