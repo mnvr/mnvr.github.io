@@ -10,12 +10,64 @@
 <meta name="description" content="Manav's website">
 
 <style>
+:root {
+  --muted: #777;
+  --faint: #eee;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #333;
+    color: #eee;
+  }
+}
+
+body {
+  margin: 4em;
+}
+
+@media (width < 30em) {
+  body {
+    margin: 1em;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.4em;
+
+}
+footer {
+  margin-block: 3em;
+  border-block-start: 1px dotted var(--faint);
+  padding-block: 1em;
+}
+
+article.a {
+  time {
+    font-size: smaller;
+    font-style: italic;
+    color: var(--muted);
+  }
+}
+
 </style>
 
 </head>
 
 <body>
 
+<article class="a">
+<time>Feb 2025</time>
 <p>Hello, world!</p>
+</article>
+
+<footer>
+<p><a href="https://github.com/mnvr">github/mnvr</a></p>
+</footer>
+
 </body>
 </html>
