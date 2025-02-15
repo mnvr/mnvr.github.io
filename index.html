@@ -65,8 +65,16 @@ footer {
   margin-block: 3em;
   border-block-start: 1px dotted var(--faint);
   padding-block: 1em;
-  font-style: italic;
+  a {
+    font-style: italic;
+  }
+  .footer-sep {
+    font-family: sans-serif;
+    color: var(--muted);
+    margin-inline: 0.5ex;
+  }
 }
+
 
 article.a {
   margin-inline: var(--main-margin);
@@ -89,7 +97,11 @@ article.a {
 </article>
 
 <footer>
-<p><a href="https://github.com/mnvr">github</a></p>
+<p>
+<a href="https://github.com/mnvr">github</a>
+<span class="footer-sep"> • </span>
+<a rel="me" href="https://mastodon.social/@mnvr">mastodon</a>
+</p>
 </footer>
 
 </body>
