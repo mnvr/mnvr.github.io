@@ -11,25 +11,24 @@
 
 <style>
 :root {
+  --main-margin: 4em;
+
   --muted: #777;
   --faint: #eee;
-  --main-margin: 4em;
+  --a: #0000ee;
+  --a-visited: #551a8b;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --muted: #888;
     --faint: #444;
+    --a: #8197fd;
+    --a-visited: #b578f2;
   }
   body {
     background-color: #333;
     color: #eee;
-  }
-  a {
-    color: rgb(129, 151, 253);
-  }
-  a:visited {
-    color: rgb(181, 120, 242);
   }
 }
 
@@ -46,12 +45,19 @@ body {
 }
 
 a {
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 0.4em;
+  text-decoration-thickness: 0.1em;
+  color: inherit;
+  text-decoration-color: var(--a);
 }
 
 a:hover {
-  text-decoration: underline;
-  text-underline-offset: 0.4em;
+  text-decoration-thickness: 0.2em;
+}
+
+a:visited {
+  text-decoration-color: var(--a-visited);
 }
 
 footer {
