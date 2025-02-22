@@ -85,7 +85,8 @@ article.paper {
 
 article.mind {
   canvas {
-
+     margin-block: 1em 0.5em;
+     border: 1px solid red;
   }
 }
 
@@ -117,15 +118,14 @@ article.roses {
 <script type="module">
 const canvas = document.querySelector("article.mind canvas");
 const dpr = Math.floor(Math.min(devicePixelRatio, 2));
-canvas.width = 300 * dpr;
-canvas.height = 200 * dpr;
-canvas.style.width = '300px';
-canvas.style.height = '200px';
+canvas.width = 210 * dpr;
+canvas.height = 210 * dpr;
+canvas.style.width = '210px';
+canvas.style.height = '210px';
 
 const ctx = canvas.getContext("2d");
 ctx.scale(dpr, dpr);
-ctx.translate(-48, 0)
-ctx.lineWidth = 1.2;
+ctx.lineWidth = 1;
 ctx.lineJoin = "bevel";
 
 requestAnimationFrame(() => {
@@ -133,16 +133,14 @@ requestAnimationFrame(() => {
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.beginPath();
-  ctx.moveTo(50, 200);
-  ctx.lineTo(50, 10);
-  ctx.lineTo(240, 10);
-  ctx.lineTo(240, 150);
-  ctx.lineTo(70, 150);
-  ctx.lineTo(70, 30);
-  ctx.lineTo(220, 30);
-  ctx.lineTo(220, 130);
-  ctx.lineTo(90, 130);
-  ctx.lineTo(90, 50);
+  ctx.moveTo(5, 210);
+  for (let i = 0; i < 4; i++) {
+    ctx.lineTo(5 + (i * 20), 5 + (i * 20));
+    ctx.lineTo(210 - 5 - (i * 20), 5 + (i * 20));
+    ctx.lineTo(210 - 5 - (i * 20), 150 - (i * 20));
+    ctx.lineTo(25 + (i * 20), 150 - (i * 20));
+  }
+
   ctx.stroke();
 });
 
