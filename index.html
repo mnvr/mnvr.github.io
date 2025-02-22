@@ -138,12 +138,24 @@ ctx.scale(dpr, dpr);
 ctx.lineWidth = 1;
 ctx.lineJoin = "bevel";
 
+let strokeStyle = "black";
+const query = window.matchMedia("(prefers-color-scheme: dark)")
+const updateStrokeStyle = () => {
+  strokeStyle = query?.matches ? "blue" : "black";
+}
+query.addEventListener("change", updateStrokeStyle);
+updateStrokeStyle();
+
 let prev;
 function draw(timestamp) {
   if (!prev || (timestamp - prev > 100)) {
     prev = timestamp;
 
-    if (Math.random() < 0.01) {
+    // This doesn't work currently (2025)
+    // ctx.strokeStyle = "currentColor";
+    ctx.strokeStyle = strokeStyle;
+
+    if (Math.random() < 0.005) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
 
