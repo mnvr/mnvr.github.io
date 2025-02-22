@@ -83,6 +83,12 @@ article.paper {
   }
 }
 
+article.mind {
+  canvas {
+    outline: 1px solid tomato;
+  }
+}
+
 article.hello {
   margin-inline: var(--main-margin);
   margin-block: 3em;
@@ -108,11 +114,40 @@ article.roses {
 }
 </style>
 
+<script type="module">
+const canvas = document.querySelector("article.mind canvas");
+const dpr = Math.floor(Math.min(devicePixelRatio, 2));
+canvas.width = 300 * dpr;
+canvas.height = 200 * dpr;
+canvas.style.width = '300px';
+canvas.style.height = '200px';
+
+const ctx = canvas.getContext("2d");
+ctx.scale(dpr, dpr);
+ctx.translate(0.5, 0.5);
+ctx.lineWidth = 1;
+
+requestAnimationFrame(() => {
+// ctx.strokeStyle = "blue";
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.beginPath();
+  ctx.moveTo(50, 200);
+  ctx.lineTo(50, 10);
+  ctx.lineTo(240, 10);
+  ctx.lineTo(240, 150);
+  ctx.lineTo(70, 150);
+  ctx.lineTo(70, 30);
+  ctx.stroke();
+});
+
+</script>
+
 </head>
 
 <body>
 
-<article class="paper">
+<article class="paper mind">
 <p>
 Is my mind in this world,<br>
 or is the world in my mind?
@@ -129,9 +164,13 @@ enough, <em>you</em> of then is still the same as the <em>you</em>
 that is watching the world unfold right now.
 </p>
 <p>
-Think of the last dream you remember. The <em>you</em> in the dream was the same
-as the <em>you</em> of now.
+Think of the last dream you remember. The <em>you</em> in the dream was, is, the
+same as the <em>you</em> now.
 </p>
+<div>
+<canvas>
+</canvas>
+</div>
 <p>
 <em>
 Is your mind in this world,<br>
