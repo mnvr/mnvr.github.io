@@ -86,7 +86,7 @@ article.paper {
 article.mind {
   canvas {
      margin-block: 1em 0.5em;
-     border: 1px solid red;
+     /* border: 1px solid red; */
   }
 }
 
@@ -118,31 +118,62 @@ article.roses {
 <script type="module">
 const canvas = document.querySelector("article.mind canvas");
 const dpr = Math.floor(Math.min(devicePixelRatio, 2));
-canvas.width = 210 * dpr;
-canvas.height = 210 * dpr;
-canvas.style.width = '210px';
-canvas.style.height = '210px';
+canvas.width = 250 * dpr;
+canvas.height = 250 * dpr;
+canvas.style.width = '250px';
+canvas.style.height = '250px';
 
 const ctx = canvas.getContext("2d");
 ctx.scale(dpr, dpr);
-ctx.lineWidth = 1;
 ctx.lineJoin = "bevel";
 
-requestAnimationFrame(() => {
+let prev;
+let prev2;
+let prev2lw = 0;
+function draw(timestamp) {
+  let skip = true;
+  if (!prev) {
+    skip = false;
+    prev2 = timestamp;
+  } else if (timestamp - prev > 100) {
+    skip = false;
+  }
+
+  if (skip) {
+     requestAnimationFrame(draw);
+     return;
+  }
+
+  prev = timestamp;
 // ctx.strokeStyle = "rgba(0 0 0 / 90%)";
 
+if ((timestamp - prev2 > 1000)) {
+prev2 = timestamp;
+prev2lw = 0.2 * Math.random();
+console.log("r", prev2lw);
+
+}
+
+ctx.lineWidth = 1 + prev2lw;
+
+  const w = 13 - Math.sin(timestamp / 10000);
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.beginPath();
-  ctx.moveTo(5, 210);
-  for (let i = 0; i < 4; i++) {
-    ctx.lineTo(5 + (i * 20), 5 + (i * 20));
-    ctx.lineTo(210 - 5 - (i * 20), 5 + (i * 20));
-    ctx.lineTo(210 - 5 - (i * 20), 150 - (i * 20));
-    ctx.lineTo(25 + (i * 20), 150 - (i * 20));
+ ctx.moveTo(5, 220 - 30 * Math.sin(timestamp / 1000));
+  for (let i = 0; i < 6; i++) {
+    ctx.lineTo(5 + (i * w), 5 + (i * w));
+    ctx.lineTo(210 - 5 - (i * w), 5 + (i * w));
+    ctx.lineTo(210 - 5 - (i * w), 150 - (i * w));
+    ctx.lineTo(5 + w + (i * w), 150 - (i * w));
   }
 
   ctx.stroke();
-});
+
+   requestAnimationFrame(draw);
+}
+
+draw();
+
 
 </script>
 
