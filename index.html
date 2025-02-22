@@ -6,7 +6,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>M</title>
+<title>MNVR</title>
 <meta name="description" content="Manav's website">
 
 <style>
@@ -75,28 +75,55 @@ footer {
   }
 }
 
-article.tm {
+article.hello {
   margin-inline: var(--main-margin);
   time {
     font-size: smaller;
     font-style: italic;
     color: var(--muted);
   }
-}
-
-article.mono {
   p {
     font-family: monospace;
   }
 }
 
+article.roses {
+  padding-inline: var(--main-margin);
+  margin-block: 3em;
+  background-color: #FA0C10;
+  color: white;
+
+  font-style: italic;
+  display: flex;
+  gap: 2rem;
+}
 </style>
 
 </head>
 
 <body>
 
-<article class="tm mono">
+<article class="roses">
+<p>
+  ring-a ring-a roses<br>
+  a pocket full of poses
+</p>
+<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 100 100">
+  <rect width="100" height="100" fill="#FA0C10"/>
+  <rect width="8.7" height="38.8" x="21.6" y="30.6" fill="#fff"/>
+  <rect width="8.7" height="38.8" x="56.4" fill="#fff"/>
+  <rect width="8.7" height="38.8" x="56.4" y="30.6" fill="#fff"/>
+  <rect width="8.7" height="38.8" x="21.6" y="66.8" fill="#fff"/>
+  <rect width="8.7" height="38.8" x="91.3" fill="#fff"/>
+  <rect width="8.7" height="28.3" x="39" y="30.6" fill="#fff"/>
+  <rect width="8.7" height="28.3" x="4.1" y="66.8" fill="#fff"/>
+  <rect width="8.7" height="28.3" x="73.9" fill="#fff"/>
+</svg>
+</pre>
+
+</article>
+
+<article class="hello">
 <time>Feb 2025</time>
 <p>Hello, world!</p>
 </article>
