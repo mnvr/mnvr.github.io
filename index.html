@@ -11,7 +11,7 @@
 
 <style>
 :root {
-  --main-margin: 4em;
+  --main-margin: 4rem;
 
   --muted: #777;
   --faint: #eee;
@@ -34,7 +34,7 @@
 
 @media (width < 30em) {
   :root {
-    --main-margin: 1em;
+    --main-margin: 1rem;
   }
 }
 
@@ -103,13 +103,11 @@ article.mind {
 article.hello {
   margin-inline: var(--main-margin);
   margin-block: 3em;
+  font-family: monospace;
   time {
     font-size: smaller;
     font-style: italic;
     color: var(--muted);
-  }
-  p {
-    font-family: monospace;
   }
 }
 
@@ -153,32 +151,21 @@ function draw(timestamp) {
     // ctx.strokeStyle = "currentColor";
     ctx.strokeStyle = dark ? "blue" : "black";
 
-    if (Math.random() < 0.001) {
+    if (Math.random() < 0.005) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
 
-    let highlight = false;
-    if (Math.random() < 0.3) {
-      ctx.strokeStyle =  (Math.random() < 0.5) ? `rgb(${255 * Math.random()} 255 255)` : "white";
-      highlight = true;
-    }
-
-    if (Math.random() < 0.1) {
-      // ctx.clearRect(0, 0, canvas.width, canvas.height);
-          ctx.strokeStyle = "white";
-    }
-
     const offset = 0.5 * Math.sin(timestamp / 7000);
-    const w = 13 - (highlight ? 0 : offset);
+    const w = 13 - offset;
 
     ctx.beginPath();
     ctx.moveTo(20, 200);
     ctx.lineTo(5, 200);
     for (let i = 0; i < 8 ; i++) {
       const d = (i * w);
-      ctx.lineTo(5 + d, 5 + d + (highlight ? 0 : Math.random()));
+      ctx.lineTo(5 + d, 5 + d + Math.random());
       ctx.lineTo(300 - 5 - d, 5 + d);
-      ctx.lineTo(300 - 5 - d + (highlight ? 0 : Math.random()), 200 - d);
+      ctx.lineTo(300 - 5 - d + Math.random(), 200 - d);
       ctx.lineTo(5 + w + d , 200 - d);
     }
     ctx.stroke();
