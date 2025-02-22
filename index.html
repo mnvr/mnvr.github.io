@@ -38,6 +38,24 @@
   }
 }
 
+@view-transition {
+  navigation: auto;
+}
+
+@keyframes shrink {
+  to {
+    scale: 0;
+  }
+}
+
+::view-transition-old(root) {
+animation: shrink 1s;
+}
+
+::view-transition-new(root) {
+animation: shrink 1s reverse;
+}
+
 body {
   margin-inline: 0;
   margin-block: var(--main-margin);
@@ -103,6 +121,7 @@ article.roses {
 
 <body>
 
+<a href="template.html">test</a>
 <article class="roses">
 <p>
   ring-a ring-a roses<br>
