@@ -138,13 +138,11 @@ ctx.scale(dpr, dpr);
 ctx.lineWidth = 1;
 ctx.lineJoin = "bevel";
 
-let strokeStyle = "black";
-const query = window.matchMedia("(prefers-color-scheme: dark)")
-const updateStrokeStyle = () => {
-  strokeStyle = query?.matches ? "blue" : "black";
-}
-query.addEventListener("change", updateStrokeStyle);
-updateStrokeStyle();
+let dark = false;
+const query = window.matchMedia("(prefers-color-scheme: dark)");
+const updateColorScheme = () => dark = !!query?.matches;
+query.addEventListener("change", updateColorScheme);
+updateColorScheme();
 
 let prev;
 function draw(timestamp) {
@@ -153,23 +151,34 @@ function draw(timestamp) {
 
     // This doesn't work currently (2025)
     // ctx.strokeStyle = "currentColor";
-    ctx.strokeStyle = strokeStyle;
+    ctx.strokeStyle = dark ? "blue" : "black";
 
-    if (Math.random() < 0.005) {
+    if (Math.random() < 0.001) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
 
+    let highlight = false;
+    if (Math.random() < 0.3) {
+      ctx.strokeStyle =  (Math.random() < 0.5) ? `rgb(${255 * Math.random()} 255 255)` : "white";
+      highlight = true;
+    }
+
+    if (Math.random() < 0.1) {
+      // ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.strokeStyle = "white";
+    }
+
     const offset = 0.5 * Math.sin(timestamp / 7000);
-    const w = 13 - offset;
+    const w = 13 - (highlight ? 0 : offset);
 
     ctx.beginPath();
     ctx.moveTo(20, 200);
     ctx.lineTo(5, 200);
     for (let i = 0; i < 8 ; i++) {
       const d = (i * w);
-      ctx.lineTo(5 + d, 5 + d + Math.random());
+      ctx.lineTo(5 + d, 5 + d + (highlight ? 0 : Math.random()));
       ctx.lineTo(300 - 5 - d, 5 + d);
-      ctx.lineTo(300 - 5 - d + Math.random(), 200 - d);
+      ctx.lineTo(300 - 5 - d + (highlight ? 0 : Math.random()), 200 - d);
       ctx.lineTo(5 + w + d , 200 - d);
     }
     ctx.stroke();
