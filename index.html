@@ -76,26 +76,23 @@ footer {
 }
 
 article.mind {
-  margin-inline: var(--main-margin);
   margin-block: 3em;
   p {
-    width: min(23em, calc(98vw - 2 * var(--main-margin)));
+    max-width: 23em;
+    margin-inline: var(--main-margin);
   }
   h5 {
+   margin-inline: var(--main-margin);
    margin-block-end: 1.4rem;
    font-family: sans-serif;
   }
   .flex {
-    p {
-      margin-inline-end: 2em;
-      margin-block: 1em;
-    }
     display: flex;
-    gap: 1em;
     align-items: flex-end;
     flex-wrap: wrap;
   }
   canvas {
+     margin-inline: var(--main-margin);
      margin-block-end: 0.5em;
   }
 }
