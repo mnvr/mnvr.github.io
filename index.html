@@ -79,11 +79,16 @@ article.mind {
   margin-inline: var(--main-margin);
   margin-block: 3em;
   p {
-    width: 23em;
+    width: min(23em, calc(98vw - 2 * var(--main-margin)));
+  }
+  h5 {
+   margin-block-end: 1.4rem;
+   font-family: sans-serif;
   }
   .flex {
     p {
       margin-inline-end: 2em;
+      margin-block: 1em;
     }
     display: flex;
     gap: 1em;
@@ -138,9 +143,11 @@ function draw(timestamp) {
   if (!prev || (timestamp - prev > 100)) {
     prev = timestamp;
 
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (Math.random() < 0.01) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
 
-    const offset = 0.3 * Math.sin(timestamp / 7000);
+    const offset = 0.5 * Math.sin(timestamp / 7000);
     const w = 13 - offset;
 
     ctx.beginPath();
@@ -148,10 +155,10 @@ function draw(timestamp) {
     ctx.lineTo(5, 200);
     for (let i = 0; i < 8 ; i++) {
       const d = (i * w);
-      ctx.lineTo(5 + d, 5 + d);
+      ctx.lineTo(5 + d, 5 + d + Math.random());
       ctx.lineTo(300 - 5 - d, 5 + d);
-      ctx.lineTo(300 - 5 - d, 200 - d);
-      ctx.lineTo(5 + w + d, 200 - d);
+      ctx.lineTo(300 - 5 - d + Math.random(), 200 - d);
+      ctx.lineTo(5 + w + d , 200 - d);
     }
     ctx.stroke();
   }
@@ -166,6 +173,10 @@ draw();
 <body>
 
 <article class="mind">
+<h5>
+Is my mind in this world,<br>
+or is the world in my mind?
+</h5>
 <div class="flex">
 <div>
 <p>
@@ -187,8 +198,12 @@ is, the same as the <em>you</em> now.
 <canvas width="300" height="210"></canvas>
 </div>
 <p>
-Is your <b>mind</b> in this <em>world</em>,<br>
-or is the <em>world</em> in your <b>mind</b>?<br>
+<em>
+Is your mind in this world,<br>
+or is the world in your mind?<br>
+Which where way this knot is tied,<br>
+You are not your mind.
+</em>
 </p>
 </article>
 
