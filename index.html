@@ -77,23 +77,11 @@ footer {
 
 article.mind {
   margin-block: 3em;
+  margin-inline: var(--main-margin);
   p {
-    max-width: 23em;
-    margin-inline: var(--main-margin);
-  }
-  h5 {
-   margin-inline: var(--main-margin);
-   margin-block-end: 1.4rem;
-   font-family: sans-serif;
-  }
-  .flex {
-    display: flex;
-    align-items: flex-end;
-    flex-wrap: wrap;
-  }
-  canvas {
-     margin-inline: var(--main-margin);
-     margin-block-end: 0.5em;
+    margin-block: 1.5em;
+    padding-inline: 1px;
+    font-style: italic;
   }
 }
 
@@ -123,10 +111,12 @@ article.roses {
 <script type="module">
 const canvas = document.querySelector("article.mind canvas");
 const dpr = Math.floor(Math.min(devicePixelRatio, 2));
-canvas.width = canvas.width * dpr;
-canvas.height = canvas.height * dpr;
-canvas.style.width = '300px';
-canvas.style.height = '210px';
+const width = canvas.width;
+const height = canvas.height;
+canvas.width = width * dpr;
+canvas.height = height * dpr;
+canvas.style.width = `${width}px`;
+canvas.style.height = `${height}px`;
 
 const ctx = canvas.getContext("2d");
 ctx.scale(dpr, dpr);
@@ -152,18 +142,17 @@ function draw(timestamp) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
 
-    const offset = 0.5 * Math.sin(timestamp / 7000);
-    const w = 13 - offset;
+    const offset = 0.3 * Math.sin(timestamp / 7000);
+    const gap = 11 - offset;
 
     ctx.beginPath();
-    ctx.moveTo(20, 200);
-    ctx.lineTo(5, 200);
+    ctx.moveTo(1, height);
     for (let i = 0; i < 8 ; i++) {
-      const d = (i * w);
-      ctx.lineTo(5 + d, 5 + d + Math.random());
-      ctx.lineTo(300 - 5 - d, 5 + d);
-      ctx.lineTo(300 - 5 - d + Math.random(), 200 - d);
-      ctx.lineTo(5 + w + d , 200 - d);
+      const d = (i * gap);
+      ctx.lineTo(1 + d, 2 + d + Math.random());
+      ctx.lineTo(width - 1 - d, 2 + d);
+      ctx.lineTo(width - 1 - d + Math.random(), height - d - 2);
+      ctx.lineTo(1 + gap + d , height - d - 2);
     }
     ctx.stroke();
   }
@@ -178,47 +167,20 @@ draw();
 <body>
 
 <article class="mind">
-<h5>
+<p>
 Is my mind in this world,<br>
 or is the world in my mind?
-</h5>
-<div class="flex">
-<div>
-<p>
-Think of the earliest memory from childhood you have. You were a different
-person, a child, with way different thoughts than float around in your head
-right now. Yet <em>you</em> were still there.
 </p>
-<p>
-Think about when you were a teen, a different person, with a different way you
-liked your coffee, or a different favorite book. Yet, somehow, and weirdly
-enough, <em>you</em> of then is still the same as the <em>you</em>
-that is watching the world unfold right now.
-</p>
-<p>
-Think of the last dream you remember. The you who witnessed the dream was,
-is, the same as the <em>you</em> now.
-</p>
-</div>
-<canvas width="300" height="210"></canvas>
-</div>
-<p>
-<em>
-Is your mind in this world,<br>
-or is the world in your mind?<br>
-Which where way this knot is tied,<br>
-You are not your mind.
-</em>
-</p>
+<canvas width="270" height="168"></canvas>
 </article>
 
 <article class="roses">
 <p>
-  ring-a ring-a roses<br>
-  a pocket full of poses<br>
-  <br>
-  aye-sha hye-sha<br>
-  they all fell down<br>
+ring-a ring-a roses<br>
+a pocket full of poses<br>
+<br>
+hye-sha hye-sha<br>
+they all fell down<br>
 </p>
 <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 100 100">
   <rect width="100" height="100" fill="#FA0C10"/>
