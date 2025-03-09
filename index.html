@@ -124,20 +124,25 @@ article.entropy {
   padding-inline: var(--main-margin);
   padding-block: 2em 2.5em;
   margin-block: 3em;
-  background-color: #c2baaf;
+  background-color: #5e7c9f;
   color: white;
   font-family: sans-serif;
   letter-spacing: 0.06em;
   font-variant: small-caps;
 
-  @media (prefers-color-scheme: dark) {
-    background-color: #4b877a;
-  }
-
-  p {
+  p, div.entropy-bq {
     max-width: 46em;
   }
-  div {
+
+  div.entropy-bq {
+    background-color: #6d8caf;
+    margin-block: 2em 1em;
+    margin-inline: calc(-1 * var(--main-margin));
+    padding: 1em var(--main-margin);
+  }
+
+
+  div.entropy-svg {
     display: flex;
     flex-direction: row;
     gap: 37px;
@@ -150,7 +155,6 @@ article.entropy {
   svg {
     width: 150px;
   }
-
 }
 </style>
 
@@ -610,7 +614,7 @@ Chess. It is beautiful, until I can't find the exit door.
 4 lights. Each pattern a microstate.
 </p>
 
-<div>
+<div class="entropy-svg">
 <svg viewBox="0 0 150 300" fill="none" xmlns="http://www.w3.org/2000/svg">
 <circle cx="10" cy="20" r="9" stroke="snow"/>
 <circle cx="47" cy="20" r="9" stroke="snow"/>
@@ -698,7 +702,8 @@ Chess. It is beautiful, until I can't find the exit door.
 </div>
 
 <p>
-Entropy is the count of states similar to the one whose entropy we seek. This is low entropy, since there are only 2 like this (all on, or all off).
+Entropy is the count of states similar to the one whose entropy we seek. This is
+low entropy, since there are only 2 like this (all on, or all off).
 </p>
 
 <svg viewBox="0 0 150 37" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -724,6 +729,19 @@ The log converts the count into the number of questions we need to ask the
 universe to determine which <b>exact</b> microstate a system is in, when we know
 its macrostate.
 </p>
+
+<div class="entropy-bq">
+<p>
+Viewed this way, the second law is a statement of mathematics.
+</p>
+<p>
+If a light flips, the 2 low entropy microstates are more likely to transition
+into one of the other higher entropy ones, than vice versa.
+</p>
+<p>
+The assumption is equi-transition, which is where physics comes in.
+</p>
+</div>
 
 </article>
 
