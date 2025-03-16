@@ -200,9 +200,33 @@ article#entropy {
 article#mind {
   margin-block: 3.25em;
   margin-inline: var(--main-margin);
+
+  --mind-highlight: rgb(13, 86, 244);
+  @media (prefers-color-scheme: dark) {
+    --mind-highlight: rgb(13, 86, 244);
+  }
+
+  .hl {
+    color: var(--mind-highlight);
+  }
+
+  h4 {
+    max-width: 34em;
+    padding-block-end: 1em;
+    border-block-end: 2px solid var(--mind-highlight);
+    color: var(--mind-highlight);
+  }
+
   p {
     margin-block: 1.5em;
     padding-inline: 1px;
+    max-width: 60em;
+  }
+
+  .signoff {
+    margin-block: 2em 2.5em;
+    color: var(--muted);
+    letter-spacing: 0.025ex;
   }
 }
 
@@ -258,7 +282,7 @@ function draw(timestamp) {
 
     // This doesn't work currently (2025)
     // ctx.strokeStyle = "currentColor";
-    ctx.strokeStyle = dark ? "blue" : "rgb(12, 44, 141)";
+    ctx.strokeStyle = dark ? "rgb(13, 86, 244)" : "rgb(12, 44, 141)";
 
     if (Math.random() < 0.005) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -305,6 +329,7 @@ future isn't evenly distributed.
 <p>
 There are free lunches. If there weren't, evolution wouldn't work.
 </p>
+
 <p class="signoff">
 <small>Manav Rathi</small><br>
 <small>March, 2025</small>
@@ -866,15 +891,49 @@ Equity of transitions is where physics comes in.
 </article>
 
 <article id="mind">
-<p>
-The first memories from childhood,<br>
-The last dream I had.
-</p>
-<canvas width="270" height="168"></canvas>
-<p>
-Is my mind in this world,<br>
+
+<h4>
+Is my mind in this world,
 or is the world in my mind?
+</h4>
+
+<p>
+The first memories from childhood, the last dream I had. I have been there in
+all of them.
 </p>
+
+<canvas width="270" height="168"></canvas>
+
+<p>
+My favorite books have changed, so has the way I look, or the way I like my
+coffee. I know there is a brain that underlies this activity, and there are
+these thoughts that float above it, and both of these are constantly changing.
+When I look close, I can see my mind as distinct from both of these.
+</p>
+
+<p>
+<span class="hl">Something hasn't changed</span>, or so it seems. There has been something that has
+been always there, witnessing.
+</p>
+<p>
+Is that me? Or is that my mind? Am I my mind?
+</p>
+<p>
+And then there is that other question.
+</p>
+<p>
+<em>
+And is my mind in this world,<br>
+or is the world in my mind?
+</em>
+
+<p class="signoff">
+<small>Manav Rathi<br>Feb 2025</small><br>
+<small></small>
+</p>
+
+</p>
+
 </article>
 
 <article id="roses">
