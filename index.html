@@ -75,7 +75,16 @@ footer {
   }
 }
 
-article.chess {
+article#spam {
+  margin-block: 3.25em;
+  margin-inline: var(--main-margin);
+  max-width: 40em;
+
+  font-family: sans-serif;
+  border-bottom: 1px solid black;
+}
+
+article#chess {
   margin-block: 3.25em;
   margin-inline: var(--main-margin);
 
@@ -89,38 +98,7 @@ article.chess {
   }
 }
 
-article.mind {
-  margin-block: 3.25em;
-  margin-inline: var(--main-margin);
-  p {
-    margin-block: 1.5em;
-    padding-inline: 1px;
-  }
-}
-
-article.hello {
-  margin-inline: var(--main-margin);
-  margin-block: 3em;
-  font-family: monospace;
-  time {
-    font-size: smaller;
-    font-style: italic;
-    color: var(--muted);
-  }
-}
-
-article.roses {
-  padding-inline: var(--main-margin);
-  margin-block: 3.25em;
-  background-color: #FA0C10;
-  color: white;
-
-  font-style: italic;
-  display: flex;
-  gap: 2rem;
-}
-
-article.entropy {
+article#entropy {
   padding-inline: var(--main-margin);
   padding-block: 2em 2.5em;
   margin-block: 3em;
@@ -141,7 +119,6 @@ article.entropy {
     padding: 1em var(--main-margin);
   }
 
-
   div.entropy-svg {
     display: flex;
     flex-direction: row;
@@ -156,10 +133,42 @@ article.entropy {
     width: 150px;
   }
 }
+
+article#mind {
+  margin-block: 3.25em;
+  margin-inline: var(--main-margin);
+  p {
+    margin-block: 1.5em;
+    padding-inline: 1px;
+  }
+}
+
+article#roses {
+  margin-block: 3.25em;
+  padding-inline: var(--main-margin);
+  background-color: #FA0C10;
+  color: white;
+
+  font-style: italic;
+  display: flex;
+  gap: 2rem;
+}
+
+article#hello {
+  margin-block: 3em;
+  margin-inline: var(--main-margin);
+  font-family: monospace;
+  time {
+    font-size: smaller;
+    font-style: italic;
+    color: var(--muted);
+  }
+}
+
 </style>
 
 <script type="module">
-const canvas = document.querySelector("article.mind canvas");
+const canvas = document.querySelector("article#mind canvas");
 const dpr = Math.floor(Math.min(devicePixelRatio, 2));
 const width = canvas.width;
 const height = canvas.height;
@@ -216,7 +225,25 @@ draw();
 
 <body>
 
-<article class="chess">
+<article id="spam">
+<p>
+a universe, just like this, except where the emails which were falsely
+positivized as spam do make it to their intended recipients. will it be better,
+or worse, than this one?
+</p>
+<p>
+The connections that were never made, the bridges that were never burnt. Or will
+it all even out?
+</p>
+<p>
+Email was the canary. The ruthlessness of machine filtering, applied to
+interactions, all.
+</p>
+<p>Can you hear me?</p>
+
+</article>
+
+<article id="chess">
 
 <p>
 I open a door, then they open one. Some lead to rooms, small ones, ones I've
@@ -608,7 +635,7 @@ Chess. It is beautiful, until I can't find the exit door.
 
 </article>
 
-<article class="entropy">
+<article id="entropy">
 
 <p>
 4 lights. Each pattern a microstate.
@@ -745,7 +772,7 @@ The assumption is equi-transition, which is where physics comes in.
 
 </article>
 
-<article class="mind">
+<article id="mind">
 <p>
 The first memories from childhood,<br>
 The last dream I had.
@@ -757,7 +784,7 @@ or is the world in my mind?
 </p>
 </article>
 
-<article class="roses">
+<article id="roses">
 <p>
 ring-a ring-a roses<br>
 a pocket full of poses<br>
@@ -782,7 +809,7 @@ they all fell down<br>
 
 </article>
 
-<article class="hello">
+<article id="hello">
 <time>Feb 2025</time>
 <p>Hello, world!</p>
 </article>
