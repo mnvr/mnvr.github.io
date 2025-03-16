@@ -201,13 +201,9 @@ article#mind {
   margin-block: 3.25em;
   margin-inline: var(--main-margin);
 
-  --mind-highlight: rgb(13, 86, 244);
+  --mind-highlight: rgb(100, 100, 220);
   @media (prefers-color-scheme: dark) {
-    --mind-highlight: rgb(13, 86, 244);
-  }
-
-  .hl {
-    color: var(--mind-highlight);
+    --mind-highlight: rgb(0, 117, 247);
   }
 
   h4 {
@@ -215,6 +211,11 @@ article#mind {
     padding-block-end: 1em;
     border-block-end: 2px solid var(--mind-highlight);
     color: var(--mind-highlight);
+  }
+
+  .hl {
+    color: var(--mind-highlight);
+    font-weight: bold;
   }
 
   p {
@@ -282,7 +283,10 @@ function draw(timestamp) {
 
     // This doesn't work currently (2025)
     // ctx.strokeStyle = "currentColor";
-    ctx.strokeStyle = dark ? "rgb(13, 86, 244)" : "rgb(12, 44, 141)";
+    ctx.strokeStyle = dark ? "rgb(13, 86, 244)" : "rgb(100, 100, 200)";
+    if (Math.random() < 0.01) {
+        ctx.strokeStyle = dark ? "black" : "white";
+    }
 
     if (Math.random() < 0.005) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
