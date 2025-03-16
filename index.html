@@ -75,26 +75,49 @@ footer {
   }
 }
 
-article#spam {
-  margin-block: 3.25em;
-  margin-inline: var(--main-margin);
-  max-width: 40em;
-
-  font-family: sans-serif;
-  border-bottom: 1px solid black;
+hr.sep {
+  border: 0;
+  border-bottom: 1px solid var(--faint);
 }
 
 article#chess {
-  margin-block: 3.25em;
-  margin-inline: var(--main-margin);
+  background-color: #c70aba;
+  color: snow;
+  font-family: monospace;
+  padding-block: 3.25em;
+  padding-inline: var(--main-margin);
 
   p {
+  line-height: 1.7;
+    margin-block-end: 2em;
     width: min(512px, 100%);
   }
 
   svg {
     width: min(512px, 100%);
     aspect-ratio: 1;
+  }
+}
+
+
+article#spam {
+  margin-block: 3.25em;
+  margin-inline: var(--main-margin);
+  max-width: 40em;
+
+  font-family: sans-serif;
+
+  .title {
+    border-top: 1px solid var(--muted);
+    margin-block: 0;
+    padding-block: 0.6em 1.2em;
+    font-size: 0.86rem;
+  }
+
+  .signoff {
+    margin-block: 0;
+    color: var(--muted);
+    line-height: 1.5em;
   }
 }
 
@@ -225,25 +248,9 @@ draw();
 
 <body>
 
-<article id="spam">
-<p>
-a universe, just like this, except where the emails which were falsely
-positivized as spam do make it to their intended recipients. will it be better,
-or worse, than this one?
-</p>
-<p>
-The connections that were never made, the bridges that were never burnt. Or will
-it all even out?
-</p>
-<p>
-Email was the canary. The ruthlessness of machine filtering, applied to
-interactions, all.
-</p>
-<p>Can you hear me?</p>
-
-</article>
-
 <article id="chess">
+
+<h3>Visualizing chess</h3>
 
 <p>
 I open a door, then they open one. Some lead to rooms, small ones, ones I've
@@ -629,8 +636,27 @@ seen before. Some to huge solar systems no one before us explored.
 <rect x="448" y="448" width="64" height="64" fill="white" fill-opacity="0.15"/>
 </svg>
 
+</article>
+
+<article id="spam">
+
 <p>
-Chess. It is beautiful, until I can't find the exit door.
+a universe, just like ours, except where the emails which were falsely
+positivized as spam do make it to their intended recipients. will it be better,
+or worse, than this one?
+</p>
+
+<p>
+In the ruthlessness of machine filtering, applied to interactions, all.
+</p>
+
+<p class="title">
+<b>Can you hear me?</b>
+</p>
+
+<p class="signoff">
+<small>Manav</small><br>
+<small>March, 2025</small>
 </p>
 
 </article>
