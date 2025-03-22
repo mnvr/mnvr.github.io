@@ -91,6 +91,24 @@ hr.sep {
   line-height: 1.35;
 }
 
+article#flower {
+  min-height: 80svh;
+  font-family: sans-serif;
+  margin-inline-start: calc(var(--main-margin) * 2);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .flower-heading > * {
+    font-weight: normal;
+    margin: 0;
+  }
+
+  cite {
+    font-style: normal;
+  }
+}
+
 article#free-lunch {
   margin-inline: var(--main-margin);
   margin-block-end: 3em;
@@ -319,14 +337,29 @@ new IntersectionObserver((entries, observer) => {
 
 <body>
 
+<article id="flower">
+<div>
+<div class="flower-heading">
+<h4>the flower that blooms late in my yard</h4>
+<p>Li Bai</p>
+</div>
+<p>
+the queen mother of the west I planted in my garden<br>
+took sixty springs to bloom<br>
+all this for one flower? people snide,<br>
+as I climb to pick it up, I sigh
+</p>
+</div>
+</article>
+
 <article id="free-lunch">
 <h4>
 There are free lunches
 </h4>
 <p>
-I see people rake millions out of thin air, even though the books tell me the
-markets are efficient. I see 10xers in front of my eyes, while others foam at
-their mention (while celebrating olympic medals of exceptional achievement).
+Some people rake millions out of thin air, even though the books tell me the
+markets are efficient. I see 10xers in front of my eyes, while others deny their
+existence (while celebrating olympic medals of exceptional achievement).
 </p>
 <p>
 There are free lunches. The margins might be thin, but arbitrage works; even the
