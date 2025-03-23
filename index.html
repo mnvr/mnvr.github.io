@@ -106,11 +106,13 @@ article#shiva {
 
 article#flower {
   min-height: 80svh;
+  max-width: 40em;
+  margin-inline-start: 1em;
 
-  margin-inline-start: calc(var(--main-margin) * 2);
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: flex-end;
 
   .flower-heading > * {
     font-weight: normal;
@@ -369,7 +371,10 @@ new IntersectionObserver((entries, observer) => {
 <article id="shiva">
 <h4>Shiva</h4>
 <p>
-"Repetition is the shadow of structure", I read somewhere. This is true in code, philosophy, life. That escalated fast, as is common in most lines of thought I follow along for a while; all roads lead to Rome indeed, and not only that, when I get down low enough the dependencies become circular.
+&#8220;Repetition is the shadow of structure&#8221;, I read somewhere. This is
+true in code, philosophy, life. That escalated fast, as is common in most lines
+of thought I follow along for a while; all roads lead to Rome indeed, and not
+only that, when I get down low enough the dependencies become circular.
 </p>
 <p>
 It is true, but incomplete, for each repetition is different. This is where I
