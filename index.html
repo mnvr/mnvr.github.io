@@ -147,14 +147,14 @@ article#chess {
     aspect-ratio: 1;
   }
 
-  .chess-footnote {
+  .chess-fn {
     font-size: smaller;
     margin-block: 4.5rem 0.5rem;
   }
+}
 
-  .cf-author {
-    opacity: 0.8;
-  }
+.fn-author {
+  opacity: 0.8;
 }
 
 article#spam {
@@ -177,7 +177,7 @@ article#spam {
 
 article#entropy {
   padding-inline: var(--main-margin);
-  padding-block: 2em 2.5em;
+  padding-block: 2em 2.8em;
   background-color: #5e7c9f;
   color: white;
 
@@ -186,33 +186,45 @@ article#entropy {
   }
 
   h3 {
-    margin-block-end: 1.5em;
-  }
-
-  div.entropy-bq {
-    background-color: #6d8caf;
-    margin-block: 2em 1em;
-    margin-inline: calc(-1 * var(--main-margin));
-    padding: 1em var(--main-margin);
+    margin-block-end: 2em;
   }
 
   div.entropy-svg {
     display: flex;
     flex-direction: row;
     gap: 37px;
+    margin-block: 2em;
 
     svg {
       display: block;
     }
   }
 
+  svg.entropy-svg-sm {
+    margin-block: 0.8em;
+  }
+
   svg {
     width: 150px;
+  }
+
+  div.entropy-bq {
+    background-color: #6d8caf;
+    margin-block: 2.4em 2em;
+    margin-inline: calc(-1 * var(--main-margin));
+    padding: 1.4em var(--main-margin);
   }
 
   blockquote.entropy-quot {
     font-style: italic;
     text-align: right;
+  }
+
+  .entropy-fn {
+    margin-block-start: 4em;
+    opacity: 0.7;
+    font-family: monospace;
+    font-size: smaller;
   }
 }
 
@@ -767,10 +779,10 @@ seen before. Some to huge solar systems no one before us has explored.
 <rect x="448" y="448" width="64" height="64" fill="white" fill-opacity="0.15"/>
 </svg>
 
-<p class="chess-footnote">
+<p class="chess-fn">
 A chess board with the influence of each piece overlaid, à la go. An interative version of
 this would be fun to play. The illustration is of a famous Anand game.
-<span class="cf-author">Manav, March 2025.</span>
+<span class="fn-author">Manav, March 2025.</span>
 </p>
 
 </article>
@@ -809,112 +821,113 @@ Consider 4 lights. Each pattern they form is a microstate.
 
 <div class="entropy-svg">
 <svg viewBox="0 0 150 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-<circle cx="10" cy="20" r="9" stroke="snow"/>
-<circle cx="47" cy="20" r="9" stroke="snow"/>
-<circle cx="84" cy="20" r="9" stroke="snow"/>
-<circle cx="122" cy="20" r="9" stroke="snow"/>
+<circle cx="10" cy="20" r="7" stroke="snow"/>
+<circle cx="47" cy="20" r="7" stroke="snow"/>
+<circle cx="84" cy="20" r="7" stroke="snow"/>
+<circle cx="122" cy="20" r="7" stroke="snow"/>
 
-<circle cx="10" cy="57" r="9" stroke="snow"/>
-<circle cx="47" cy="57" r="9" stroke="snow"/>
-<circle cx="84" cy="57" r="9" stroke="snow"/>
-<circle cx="122" cy="57" r="9" fill="snow" stroke="snow"/>
+<circle cx="10" cy="57" r="7" stroke="snow"/>
+<circle cx="47" cy="57" r="7" stroke="snow"/>
+<circle cx="84" cy="57" r="7" stroke="snow"/>
+<circle cx="122" cy="57" r="7" fill="snow" stroke="snow"/>
 
-<circle cx="10" cy="94" r="9" stroke="snow"/>
-<circle cx="47" cy="94" r="9" stroke="snow"/>
-<circle cx="84" cy="94" r="9" fill="snow" stroke="snow"/>
-<circle cx="122" cy="94" r="9" stroke="snow"/>
+<circle cx="10" cy="94" r="7" stroke="snow"/>
+<circle cx="47" cy="94" r="7" stroke="snow"/>
+<circle cx="84" cy="94" r="7" fill="snow" stroke="snow"/>
+<circle cx="122" cy="94" r="7" stroke="snow"/>
 
-<circle cx="10" cy="131" r="9" stroke="snow"/>
-<circle cx="47" cy="131" r="9" stroke="snow"/>
-<circle cx="84" cy="131" r="9" fill="snow" stroke="snow"/>
-<circle cx="122" cy="131" r="9" fill="snow" stroke="snow"/>
+<circle cx="10" cy="131" r="7" stroke="snow"/>
+<circle cx="47" cy="131" r="7" stroke="snow"/>
+<circle cx="84" cy="131" r="7" fill="snow" stroke="snow"/>
+<circle cx="122" cy="131" r="7" fill="snow" stroke="snow"/>
 
-<circle cx="10" cy="168" r="9" stroke="snow"/>
-<circle cx="47" cy="168" r="9" fill="snow" stroke="snow"/>
-<circle cx="84" cy="168" r="9" stroke="snow"/>
-<circle cx="122" cy="168" r="9" stroke="snow"/>
+<circle cx="10" cy="168" r="7" stroke="snow"/>
+<circle cx="47" cy="168" r="7" fill="snow" stroke="snow"/>
+<circle cx="84" cy="168" r="7" stroke="snow"/>
+<circle cx="122" cy="168" r="7" stroke="snow"/>
 
-<circle cx="10" cy="205" r="9" stroke="snow"/>
-<circle cx="47" cy="205" r="9" fill="snow" stroke="snow"/>
-<circle cx="84" cy="205" r="9" stroke="snow"/>
-<circle cx="122" cy="205" r="9" fill="snow" stroke="snow"/>
+<circle cx="10" cy="205" r="7" stroke="snow"/>
+<circle cx="47" cy="205" r="7" fill="snow" stroke="snow"/>
+<circle cx="84" cy="205" r="7" stroke="snow"/>
+<circle cx="122" cy="205" r="7" fill="snow" stroke="snow"/>
 
-<circle cx="10" cy="242" r="9" stroke="snow"/>
-<circle cx="47" cy="242" r="9" fill="snow" stroke="snow"/>
-<circle cx="84" cy="242" r="9" fill="snow" stroke="snow"/>
-<circle cx="122" cy="242" r="9" stroke="snow"/>
+<circle cx="10" cy="242" r="7" stroke="snow"/>
+<circle cx="47" cy="242" r="7" fill="snow" stroke="snow"/>
+<circle cx="84" cy="242" r="7" fill="snow" stroke="snow"/>
+<circle cx="122" cy="242" r="7" stroke="snow"/>
 
-<circle cx="10" cy="279" r="9" stroke="snow"/>
-<circle cx="47" cy="279" r="9" fill="snow" stroke="snow"/>
-<circle cx="84" cy="279" r="9" fill="snow" stroke="snow"/>
-<circle cx="122" cy="279" r="9" fill="snow" stroke="snow"/>
+<circle cx="10" cy="279" r="7" stroke="snow"/>
+<circle cx="47" cy="279" r="7" fill="snow" stroke="snow"/>
+<circle cx="84" cy="279" r="7" fill="snow" stroke="snow"/>
+<circle cx="122" cy="279" r="7" fill="snow" stroke="snow"/>
 </svg>
 
 <svg viewBox="0 300 150 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-<circle cx="10" cy="316" r="9" fill="snow" stroke="snow"/>
-<circle cx="47" cy="316" r="9" stroke="snow"/>
-<circle cx="84" cy="316" r="9" stroke="snow"/>
-<circle cx="122" cy="316" r="9" stroke="snow"/>
+<circle cx="10" cy="316" r="7" fill="snow" stroke="snow"/>
+<circle cx="47" cy="316" r="7" stroke="snow"/>
+<circle cx="84" cy="316" r="7" stroke="snow"/>
+<circle cx="122" cy="316" r="7" stroke="snow"/>
 
-<circle cx="10" cy="353" r="9" fill="snow" stroke="snow"/>
-<circle cx="47" cy="353" r="9" stroke="snow"/>
-<circle cx="84" cy="353" r="9" stroke="snow"/>
-<circle cx="122" cy="353" r="9" fill="snow" stroke="snow"/>
+<circle cx="10" cy="353" r="7" fill="snow" stroke="snow"/>
+<circle cx="47" cy="353" r="7" stroke="snow"/>
+<circle cx="84" cy="353" r="7" stroke="snow"/>
+<circle cx="122" cy="353" r="7" fill="snow" stroke="snow"/>
 
-<circle cx="10" cy="390" r="9" fill="snow" stroke="snow"/>
-<circle cx="47" cy="390" r="9" stroke="snow"/>
-<circle cx="84" cy="390" r="9" fill="snow" stroke="snow"/>
-<circle cx="122" cy="390" r="9" stroke="snow"/>
+<circle cx="10" cy="390" r="7" fill="snow" stroke="snow"/>
+<circle cx="47" cy="390" r="7" stroke="snow"/>
+<circle cx="84" cy="390" r="7" fill="snow" stroke="snow"/>
+<circle cx="122" cy="390" r="7" stroke="snow"/>
 
-<circle cx="10" cy="427" r="9" fill="snow" stroke="snow"/>
-<circle cx="47" cy="427" r="9" stroke="snow"/>
-<circle cx="84" cy="427" r="9" fill="snow" stroke="snow"/>
-<circle cx="122" cy="427" r="9" fill="snow" stroke="snow"/>
+<circle cx="10" cy="427" r="7" fill="snow" stroke="snow"/>
+<circle cx="47" cy="427" r="7" stroke="snow"/>
+<circle cx="84" cy="427" r="7" fill="snow" stroke="snow"/>
+<circle cx="122" cy="427" r="7" fill="snow" stroke="snow"/>
 
-<circle cx="10" cy="464" r="9" fill="snow" stroke="snow"/>
-<circle cx="47" cy="464" r="9" fill="snow" stroke="snow"/>
-<circle cx="84" cy="464" r="9" stroke="snow"/>
-<circle cx="122" cy="464" r="9" stroke="snow"/>
+<circle cx="10" cy="464" r="7" fill="snow" stroke="snow"/>
+<circle cx="47" cy="464" r="7" fill="snow" stroke="snow"/>
+<circle cx="84" cy="464" r="7" stroke="snow"/>
+<circle cx="122" cy="464" r="7" stroke="snow"/>
 
-<circle cx="10" cy="501" r="9" fill="snow" stroke="snow"/>
-<circle cx="47" cy="501" r="9" fill="snow" stroke="snow"/>
-<circle cx="84" cy="501" r="9" stroke="snow"/>
-<circle cx="122" cy="501" r="9" fill="snow" stroke="snow"/>
+<circle cx="10" cy="501" r="7" fill="snow" stroke="snow"/>
+<circle cx="47" cy="501" r="7" fill="snow" stroke="snow"/>
+<circle cx="84" cy="501" r="7" stroke="snow"/>
+<circle cx="122" cy="501" r="7" fill="snow" stroke="snow"/>
 
-<circle cx="10" cy="538" r="9" fill="snow" stroke="snow"/>
-<circle cx="47" cy="538" r="9" fill="snow" stroke="snow"/>
-<circle cx="84" cy="538" r="9" fill="snow" stroke="snow"/>
-<circle cx="122" cy="538" r="9" stroke="snow"/>
+<circle cx="10" cy="538" r="7" fill="snow" stroke="snow"/>
+<circle cx="47" cy="538" r="7" fill="snow" stroke="snow"/>
+<circle cx="84" cy="538" r="7" fill="snow" stroke="snow"/>
+<circle cx="122" cy="538" r="7" stroke="snow"/>
 
-<circle cx="10" cy="575" r="9" fill="snow" stroke="snow"/>
-<circle cx="47" cy="575" r="9" fill="snow" stroke="snow"/>
-<circle cx="84" cy="575" r="9" fill="snow" stroke="snow"/>
-<circle cx="122" cy="575" r="9" fill="snow" stroke="snow"/>
+<circle cx="10" cy="575" r="7" fill="snow" stroke="snow"/>
+<circle cx="47" cy="575" r="7" fill="snow" stroke="snow"/>
+<circle cx="84" cy="575" r="7" fill="snow" stroke="snow"/>
+<circle cx="122" cy="575" r="7" fill="snow" stroke="snow"/>
 </svg>
 
 </div>
 
 <p>
-<b>Entropy</b> is the count of states similar to the one whose entropy we seek. This is
-low entropy, since there are only 2 like this (all on, or all off).
+<b>Entropy</b> is the count of microstates similar to the one whose entropy we
+seek. This is low entropy, since there are only 2 like this (all on, or all
+off).
 </p>
 
-<svg viewBox="0 0 150 37" fill="none" xmlns="http://www.w3.org/2000/svg">
-<circle cx="10" cy="20" r="9" stroke="snow"/>
-<circle cx="47" cy="20" r="9" stroke="snow"/>
-<circle cx="84" cy="20" r="9" stroke="snow"/>
-<circle cx="122" cy="20" r="9" stroke="snow"/>
+<svg class="entropy-svg-sm" viewBox="0 0 150 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="10" cy="20" r="7" stroke="snow"/>
+<circle cx="47" cy="20" r="7" stroke="snow"/>
+<circle cx="84" cy="20" r="7" stroke="snow"/>
+<circle cx="122" cy="20" r="7" stroke="snow"/>
 </svg>
 
 <p>
 This is high entropy, since there are 8 like this (only 1 on or 1 off).
 </p>
 
-<svg viewBox="0 0 150 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-<circle cx="10" cy="20" r="9" stroke="snow"/>
-<circle cx="47" cy="20" r="9" stroke="snow"/>
-<circle cx="84" cy="20" r="9" stroke="snow"/>
-<circle cx="122" cy="20" r="9" fill="snow" stroke="snow"/>
+<svg class="entropy-svg-sm" viewBox="0 0 150 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="10" cy="20" r="7" stroke="snow"/>
+<circle cx="47" cy="20" r="7" stroke="snow"/>
+<circle cx="84" cy="20" r="7" stroke="snow"/>
+<circle cx="122" cy="20" r="7" fill="snow" stroke="snow"/>
 </svg>
 
 <p>
@@ -939,6 +952,11 @@ Equity of transitions is where physics comes in.
 &mdash; Max Born
 </blockquote>
 </div>
+
+<p class="entropy-fn">
+Simplified variant of an explanation in Antonio Padilla's Fantastic Numbers.
+<span class="fn-author">Manav, Feb 2025.</span>
+</p>
 
 </article>
 
