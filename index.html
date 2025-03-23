@@ -87,7 +87,7 @@ hr.sep {
 
 .signoff {
   color: var(--muted);
-  letter-spacing: 0.025ex;
+  letter-spacing: 0.02ex;
   line-height: 1.35;
 }
 
@@ -131,9 +131,9 @@ article#free-lunch {
 
 article#chess {
   background-color: #ef00ef;
-  color: #071d14;
+  color: rgb(254, 250, 240);
   font-family: monospace;
-  padding-block: 3em 6em;
+  padding-block: 4rem 5rem;
   padding-inline: var(--main-margin);
 
   h3, p {
@@ -142,17 +142,27 @@ article#chess {
   }
 
   h3 {
-    padding-block-end: 1em;
+    color: #071d14;
+    padding-block-end: 1.2em;
     border-block-end: 1px solid currentColor;
   }
 
   p {
-    margin-block: 2em 3em;
+    margin-block: 2em 6em;
   }
 
   svg {
     width: min(512px, 100%);
     aspect-ratio: 1;
+  }
+
+  .chess-footnote {
+    font-size: smaller;
+    margin-block: 4.5rem 0.5rem;
+  }
+
+  .cf-author {
+    opacity: 0.8;
   }
 }
 
@@ -764,6 +774,12 @@ seen before. Some to huge solar systems no one before us has explored.
 <rect x="448" y="448" width="64" height="64" fill="#ef00ef"/>
 <rect x="448" y="448" width="64" height="64" fill="white" fill-opacity="0.15"/>
 </svg>
+
+<p class="chess-footnote">
+A chess board with the influence of each piece overlaid, à la go. An interative version of
+this would be fun to play. The illustration is of a famous Anand game.
+<span class="cf-author">Manav, March 2025.</span>
+</p>
 
 </article>
 
