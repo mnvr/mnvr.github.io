@@ -1,7 +1,7 @@
 :root {
   --main-margin: 4rem;
 
-  --accent-default: blue;
+  --accent: #ff7722;
   --muted: #808080;
   --a: #0000ee;
   --a-visited: #551a8b;
@@ -9,7 +9,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --accent-default: pink;
+    --accent: pink;
     --muted: #888;
     --a: #8197fd;
     --a-visited: #b578f2;
@@ -28,7 +28,7 @@
 }
 
 body {
-  margin-block: 4rem;
+  margin-block: 4rem 3rem;
   line-height: 1.75;
 }
 
@@ -55,8 +55,9 @@ h3, h4, p, footer {
 
 h3, h4 {
   padding-block-end: 1em;
-  border-block-end: 1px solid var(--accent, var(--accent-default));
+  border-block-end: 2px solid var(--accent);
   margin-block-end: 2.5rem;
+
 }
 
 p {
@@ -64,7 +65,7 @@ p {
 }
 
 footer {
-  margin-block: 4rem;
+  margin-block-start: 4rem;
 
   padding-block-start: 1rem;
   color: var(--muted);
@@ -75,7 +76,7 @@ footer {
   }
 
   time + div {
-    margin-block-start: 4rem;
+    margin-block-start: 5rem;
     display: block;
     font-family: sans-serif;
     text-align: right;
