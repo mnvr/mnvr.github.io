@@ -6,6 +6,13 @@
   <link>https://mnvr.in</link>
   <language>en</language>
   <item>
+    <title>What is a bug anyway?</title>
+    <description>A bug is something that was working earlier but now isn't. Everything else is a feature.</description>
+    <link>https://mnvr.in/bugs</link>
+    <guid>https://mnvr.in/bugs</guid>
+    <pubDate>Sat, 29 Mar 2025 00:00:00 GMT</pubDate>
+  </item>
+  <item>
     <title>Shiva</title>
     <description>God does not play dice, Einstein, he is dice.</description>
     <link>https://mnvr.in/shiva</link>
