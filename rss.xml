@@ -40,5 +40,12 @@
     <guid>https://mnvr.in/algorithm</guid>
     <pubDate>Sat, 8 Mar 2025 00:00:00 GMT</pubDate>
   </item>
+  <item>
+    <title>Entropy counts</title>
+    <description>(and why the second law is obvious)</description>
+    <link>https://mnvr.in/entropy</link>
+    <guid>https://mnvr.in/entropy</guid>
+    <pubDate>Sat, 8 Mar 2025 00:00:00 GMT</pubDate>
+  </item>
 </channel>
 </rss>
