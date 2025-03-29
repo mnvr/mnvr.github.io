@@ -91,82 +91,8 @@ footer {
   line-height: 1.35;
 }
 
-
-article#free-lunch {
-  margin-inline: var(--main-margin);
-  margin-block-end: 3em;
-  padding-block-start: 1em;
-  line-height: 1.7;
-
-  h4 {
-    padding-block-end: 1em;
-    border-block-end: 1px solid var(--faint);
-  }
-
-  h4, p {
-    max-width: 34em;
-  }
-
-  .signoff {
-    margin-block: 2em;
-  }
-}
-
-
-.fn-author {
-  opacity: 0.8;
-}
-
 p.transition {
   margin-inline: var(--main-margin);
-}
-
-article#spam {
-  padding-block: 3.25em;
-  margin-inline: var(--main-margin);
-  max-width: 40em;
-  line-height: 1.7;
-
-  .title {
-    border-top: 1px solid var(--muted);
-    margin-block: 0;
-    padding-block: 0.6em 1.4em;
-    font-size: 0.94em;
-  }
-
-  .signoff {
-    margin-block: 0;
-  }
-}
-
-article#mind {
-  margin-block: 1.75em;
-  padding-block-start: 1em;
-  margin-inline: var(--main-margin);
-
-  --mind-highlight: rgb(14, 19, 118);
-  @media (prefers-color-scheme: dark) {
-    --mind-highlight: rgb(0, 117, 247);
-  }
-
-  h4 {
-    color: var(--mind-highlight);
-  }
-
-  .hl {
-    color: var(--mind-highlight);
-    font-weight: bold;
-  }
-
-  p {
-    margin-block: 1.5em;
-    padding-inline: 1px;
-    max-width: 60em;
-  }
-
-  .signoff {
-    margin-block: 2em 2.25em;
-  }
 }
 
 article#roses {
@@ -193,67 +119,6 @@ article#hello {
 
 </style>
 
-<script type="module">
-const canvas = document.querySelector("article#mind canvas");
-const dpr = Math.floor(Math.min(devicePixelRatio, 2));
-const width = canvas.width;
-const height = canvas.height;
-canvas.width = width * dpr;
-canvas.height = height * dpr;
-canvas.style.width = `${width}px`;
-canvas.style.height = `${height}px`;
-
-const ctx = canvas.getContext("2d");
-ctx.scale(dpr, dpr);
-ctx.lineWidth = 1;
-ctx.lineJoin = "bevel";
-
-let dark = false;
-const query = window.matchMedia("(prefers-color-scheme: dark)");
-const updateColorScheme = () => dark = !!query?.matches;
-query.addEventListener("change", updateColorScheme);
-updateColorScheme();
-
-let prev;
-function draw(timestamp) {
-  if (!prev || (timestamp - prev > 100)) {
-    prev = timestamp;
-
-    // This doesn't work currently (2025)
-    // ctx.strokeStyle = "currentColor";
-    ctx.strokeStyle = dark ? "rgb(13, 86, 244)" : "rgb(14, 19, 118)";
-    if (Math.random() < 0.01) {
-        ctx.strokeStyle = dark ? "black" : "white";
-    }
-
-    if (Math.random() < 0.005) {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-    }
-
-    const offset = 0.3 * Math.sin(timestamp / 7000);
-    const gap = 11 - offset;
-
-    ctx.beginPath();
-    ctx.moveTo(1, height);
-    for (let i = 0; i < 8 ; i++) {
-      const d = (i * gap);
-      ctx.lineTo(1 + d, 2 + d + Math.random());
-      ctx.lineTo(width - 1 - d, 2 + d);
-      ctx.lineTo(width - 1 - d + Math.random(), height - d - 2);
-      ctx.lineTo(1 + gap + d , height - d - 2);
-    }
-    ctx.stroke();
-  }
-  requestAnimationFrame(draw);
-}
-
-new IntersectionObserver((entries, observer) => {
-  if (entries[0]?.isIntersecting) {
-    observer.disconnect(canvas);
-    draw();
-  }
-}).observe(canvas);
-</script>
 
 </head>
 
@@ -323,54 +188,9 @@ I exist &mdash;
 (and why the second law is obvious)
 </p>
 
-<article id="mind">
-
-<h4>
-Mind
-</h4>
-
-<p>
-The first memories from childhood, the last dream I had. I have been there in
-all of them.
+<p class="transition">
+Is my mind in this world, or is the world in my <a href="mind">mind?</a>
 </p>
-
-<canvas width="270" height="168"></canvas>
-
-<p>
-My favorite books have changed, so has the way I look, or the way I like my
-coffee. I know there is a brain that underlies this activity, and there are
-these thoughts that float above it, and both of these are constantly changing.
-When I look close, I can see my mind as distinct from both of these.
-</p>
-
-<p>
-<span class="hl">Something hasn't changed</span>, or so it seems. There has been something that has
-been always there, witnessing.
-</p>
-<p>
-Is that me? Or is that my mind? Am I my mind?
-</p>
-<p>
-The mind is a series of changes, the ocean on which the waves wave, but the
-consciousness does not change. The thoughts are the waves, that much is clear,
-but is the mind the ocean, or consciounsess; are they different, or are they the same?
-</p>
-<p>
-And then there is that other question.
-<em>
-Is my mind in this world,<br>
-or is the world in my mind?
-</em>
-</p>
-
-<p class="signoff">
-<small>Manav Rathi<br>Feb 2025</small><br>
-<small></small>
-</p>
-
-</p>
-
-</article>
 
 <article id="roses">
 <p>

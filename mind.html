@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+<title>Mind | mnvr.in</title>
+<meta name="description" content="Is my mind in this world, or is the world in my mind?">
+<link href="paper.css" rel="stylesheet">
+
+<style>
+:root {
+  --accent: blue;
+}
+
+canvas {
+  margin-inline: calc(2 * var(--main-margin));
+}
+
+mark {
+  padding: 0.5ex;
+  border-radius: 1px;
+}
+</style>
+
+<script type="module">
+const canvas = document.querySelector("canvas");
+const dpr = Math.floor(Math.min(devicePixelRatio, 2));
+const width = canvas.width;
+const height = canvas.height;
+canvas.width = width * dpr;
+canvas.height = height * dpr;
+canvas.style.width = `${width}px`;
+canvas.style.height = `${height}px`;
+
+const ctx = canvas.getContext("2d");
+ctx.scale(dpr, dpr);
+ctx.lineWidth = 1;
+ctx.lineJoin = "bevel";
+
+let prev;
+function draw(timestamp) {
+  if (!prev || (timestamp - prev > 100)) {
+    prev = timestamp;
+
+    ctx.strokeStyle = "blue";
+
+    if (Math.random() < 0.005) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    const offset = 0.3 * Math.sin(timestamp / 7000);
+    const gap = 11 - offset;
+
+    ctx.beginPath();
+    ctx.moveTo(1, height);
+    for (let i = 0; i < 8 ; i++) {
+      const d = (i * gap);
+      ctx.lineTo(1 + d, 2 + d + Math.random());
+      ctx.lineTo(width - 1 - d, 2 + d);
+      ctx.lineTo(width - 1 - d + Math.random(), height - d - 2);
+      ctx.lineTo(1 + gap + d , height - d - 2);
+    }
+    ctx.stroke();
+  }
+  requestAnimationFrame(draw);
+}
+
+draw();
+</script>
+
+</head>
+
+<body>
+
+<h3>Mind</h3>
+
+<p>
+The first memories from childhood, the last dream I had. I have been there in
+all of them.
+</p>
+
+<canvas width="270" height="168"></canvas>
+
+<p>
+My favorite books have changed, so has the way I look, or the way I like my
+coffee. I know there is a brain that underlies this activity, and there are
+these thoughts that float above it, and both of these are constantly changing.
+When I look close, I can see my mind as distinct from both of these.
+</p>
+
+<p>
+<mark>Something hasn't changed</mark>, or so it seems. There has been something
+that has been always there, witnessing.
+</p>
+<p>
+Is that me? Or is that my mind? Am I my mind?
+</p>
+<p>
+The mind is a series of changes, the ocean on which the waves wave, but the
+consciousness does not change. The thoughts are the waves, that much is clear,
+but is the mind the ocean, or consciounsess; are they different, or are they the
+same?
+</p>
+<p>
+And then there is that other question.
+</p>
+<p>
+<em>
+Is my mind in this world,<br>
+or is the world in my mind?
+</em>
+</p>
+
+<footer>
+Manav Rathi
+<time>Feb 2025</time>
+<div><a href="/">mnvr.in</a></div>
+</footer>
+
+</body>
+</html>
