@@ -1,8 +1,7 @@
 :root {
   --main-margin: 4rem;
 
-  --muted: #777;
-  --faint: #eee;
+  --muted: #808080;
   --a: #0000ee;
   --a-visited: #551a8b;
 }
@@ -10,8 +9,6 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --muted: #888;
-    --faint: oklch(0.414 0.021 285.75);
-    --faint: oklch(0.414 0.021 285.75);
     --a: #8197fd;
     --a-visited: #b578f2;
   }
@@ -49,38 +46,39 @@ a:visited {
   text-decoration-color: var(--a-visited);
 }
 
-h3, h4, p {
+h3, h4, p, footer {
   margin-inline: var(--main-margin);
+  max-width: 34rem;
 }
 
-
-  h3, h4 {
-    padding-block-end: 1em;
-    border-block-end: 1px solid pink;
-    margin-block-end: 2.5rem;
-  }
-
-  h3, h4, p {
-    max-width: 34em;
-  }
+h3, h4 {
+  padding-block-end: 1em;
+  border-block-end: 1px solid var(--accent, var(--muted));
+  margin-block-end: 2.5rem;
+}
 
 p {
-    margin-block: 1.75rem;
-
+  margin-block: 1.75rem;
 }
-footer {
-  margin-block: 4em;
-  margin-inline: var(--main-margin);
 
-  padding-block-start: 1em;
+footer {
+  margin-block: 4rem;
+
+  padding-block-start: 1rem;
   color: var(--muted);
 
-
-  a {
-    font-style: italic;
-  }
-}
-
-footer time {
+  time {
     display: block;
+  }
+
+  time + div {
+    margin-block-start: 4rem;
+    display: block;
+    font-family: sans-serif;
+    font-size: 90%;
+    text-align: right;
+    a {
+      text-decoration: none;
+    }
+  }
 }
