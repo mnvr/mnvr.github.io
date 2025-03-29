@@ -1,2 +1,2 @@
 .vite
-.vscode/tasks.json
+.vscode/*.json
