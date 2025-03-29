@@ -1,7 +1,7 @@
 :root {
   --main-margin: 4rem;
 
-  --accent: #ff7722;
+  --accent: red;
   --muted: #808080;
   --a: #0000ee;
   --a-visited: #551a8b;
@@ -84,7 +84,7 @@ footer {
     font-family: sans-serif;
     text-align: right;
     a {
-      font-size: 0.95em;
+      font-size: 0.9em;
       opacity: 0.9;
       text-decoration: none;
     }
