@@ -1,23 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
 <channel>
-   <title>mnvr.in</title>
-   <description>Manav's website</description>
-   <link>https://mnvr.in</link>
-   <language>en</language>
-   <item>
-      <title>Shiva</title>
-      <description>God does not play dice, Einstein, he is dice.</description>
-      <link>https://mnvr.in/shiva</link>
-      <guid>https://mnvr.in/shiva</guid>
-      <pubDate>Sun, 23 Mar 2025 00:00:00 GMT</pubDate>
-   </item>
-   <item>
-      <title>the flower that blooms late in my yard</title>
-      <description>A Chinese poem by Li Bai, imperfectly translated and adapted</description>
-      <link>https://mnvr.in/flower-zh</link>
-      <guid>https://mnvr.in/flower-zh</guid>
-      <pubDate>Sat, 22 Mar 2025 00:00:00 GMT</pubDate>
-   </item>
+  <title>mnvr.in</title>
+  <description>Manav's website</description>
+  <link>https://mnvr.in</link>
+  <language>en</language>
+  <item>
+    <title>Shiva</title>
+    <description>God does not play dice, Einstein, he is dice.</description>
+    <link>https://mnvr.in/shiva</link>
+    <guid>https://mnvr.in/shiva</guid>
+    <pubDate>Sun, 23 Mar 2025 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>the flower that blooms late in my yard</title>
+    <description>A Chinese poem by Li Bai, imperfectly translated and adapted</description>
+    <link>https://mnvr.in/flower-zh</link>
+    <guid>https://mnvr.in/flower-zh</guid>
+    <pubDate>Sat, 22 Mar 2025 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>Free lunches</title>
+    <description>Exist</description>
+    <link>https://mnvr.in/free-lunch</link>
+    <guid>https://mnvr.in/free-lunch</guid>
+    <pubDate>Sun, 16 Mar 2025 00:00:00 GMT</pubDate>
+  </item>
+
 </channel>
 </rss>
