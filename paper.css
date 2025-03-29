@@ -53,7 +53,7 @@ a:visited {
   text-decoration-color: var(--a-visited);
 }
 
-h3, h4, p, ul, footer {
+h3, h4, p, ul, ol, footer {
   margin-inline: var(--main-margin);
   max-width: 34rem;
 }
@@ -64,16 +64,16 @@ h3, h4 {
   margin-block-end: 2.5rem;
 }
 
-p, ul {
+p, ul, ol {
   margin-block: 1.75rem;
 }
 
-ul {
+ul, ol {
   padding-inline: 2rem;
 }
 
 @media (width < 37rem) {
-  ul {
+  ul, ol {
     padding-inline: 1rem;
   }
 }
