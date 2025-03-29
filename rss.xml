@@ -14,18 +14,24 @@
   </item>
   <item>
     <title>the flower that blooms late in my yard</title>
-    <description>A Chinese poem by Li Bai, imperfectly translated and adapted</description>
+    <description>A Chinese poem by Li Bai, imperfectly translated and adapted.</description>
     <link>https://mnvr.in/flower-zh</link>
     <guid>https://mnvr.in/flower-zh</guid>
     <pubDate>Sat, 22 Mar 2025 00:00:00 GMT</pubDate>
   </item>
   <item>
     <title>Free lunches</title>
-    <description>Exist</description>
+    <description>Exist.</description>
     <link>https://mnvr.in/free-lunch</link>
     <guid>https://mnvr.in/free-lunch</guid>
     <pubDate>Sun, 16 Mar 2025 00:00:00 GMT</pubDate>
   </item>
-
+  <item>
+    <title>Visualizing chess</title>
+    <description>Imagining a chess board showing piece / pawn influence.</description>
+    <link>https://mnvr.in/chess</link>
+    <guid>https://mnvr.in/chess</guid>
+    <pubDate>Sat, 8 Mar 2025 00:00:00 GMT</pubDate>
+  </item>
 </channel>
 </rss>
