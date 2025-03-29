@@ -8,14 +8,13 @@
 
 <title>mnvr.in</title>
 <meta name="description" content="Manav's website">
-<link rel="alternate" type="application/rss+xml" href="/rss.xml">
+<link rel="alternate" type="application/rss+xml" href="rss.xml">
 
 <style>
 :root {
   --main-margin: 4rem;
 
   --muted: #777;
-  --faint: #eee;
   --a: #0000ee;
   --a-visited: #551a8b;
 }
@@ -23,7 +22,6 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --muted: #888;
-    --faint: #223;
     --a: #8197fd;
     --a-visited: #b578f2;
   }
@@ -65,76 +63,27 @@ a:visited {
   text-decoration-color: var(--a-visited);
 }
 
-footer {
-  margin-block: 4em 0;
-  border-block-start: 1px dotted var(--faint);
-  padding-block-start: 1em;
-
-  p {
-    margin-inline: var(--main-margin);
-  }
-
-  a {
-    font-style: italic;
-  }
-
-  .footer-sep {
-    font-family: sans-serif;
-    color: var(--muted);
-    margin-inline: 0.5ex;
-  }
-}
-
-.signoff {
-  color: var(--muted);
-  letter-spacing: 0.02ex;
-  line-height: 1.35;
-}
-
-p.transition {
+p.item {
   margin-inline: var(--main-margin);
+  max-width: 40em;
 }
-
-article#roses {
-  margin-block: 3.25em;
-  padding-inline: var(--main-margin);
-  background-color: #FA0C10;
-  color: white;
-
-  font-style: italic;
-  display: flex;
-  gap: 2rem;
-}
-
-article#hello {
-  margin-block: 3em 0em;
-  margin-inline: var(--main-margin);
-  font-family: monospace;
-  time {
-    font-size: smaller;
-    font-style: italic;
-    color: var(--muted);
-  }
-}
-
 </style>
-
 
 </head>
 
 <body>
 
-<p class="transition">
+<p class="item">
 <a href="shiva">God does not play dice, Einstein, he <em>is</em> dice</a>
-&mdash; an essay on Randomness, or as I know him, <b>Shiva</b>.
+&mdash; an essay on Randomness, or as I know him, Shiva.
 </p>
 
-<p class="transition">
+<p class="item">
 <a href="flower-zh">the flower that blooms late</a>
 &mdash; a poem from another language, imperfectly translated.
 </p>
 
-<p class="transition">
+<p class="item">
 <a href="free-lunch">Free lunches</a>
 &mdash; exist.
 </p>
@@ -142,6 +91,7 @@ article#hello {
 <style>
 .chess {
   margin-inline: var(--main-margin);
+  max-width: 40em;
   display: flex;
   align-items: center;
   svg {
@@ -178,21 +128,35 @@ influence.
 </svg>
 </div>
 
-<p class="transition">
+<p class="item">
 I exist &mdash;
 <a href="algorithm">but can you hear me?</a>
 </p>
 
-<p class="transition">
+<p class="item">
 <a href="entropy">Entropy counts</a>
 (and why the second law is obvious)
 </p>
 
-<p class="transition">
+<p class="item">
 Is my mind in this world, or is the world in my <a href="mind">mind?</a>
 </p>
 
-<article id="roses">
+<style>
+div#roses {
+  margin-block: 2em;
+  padding-inline: var(--main-margin);
+  background-color: #FA0C10;
+  color: white;
+
+  font-style: italic;
+  display: flex;
+  gap: 2rem;
+}
+</style>
+
+<div id="roses">
+
 <p>
 ring-a ring-a roses<br>
 a pocket full of poses<br>
@@ -200,33 +164,47 @@ a pocket full of poses<br>
 hye-sha hye-sha<br>
 they all fell down<br>
 </p>
+
 <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 100 100">
-  <rect width="100" height="100" fill="#FA0C10"/>
-  <g fill="currentColor">
-    <rect width="8.7" height="38.8" x="21.6" y="30.6" />
-    <rect width="8.7" height="38.8" x="56.4" />
-    <rect width="8.7" height="38.8" x="56.4" y="30.6" />
-    <rect width="8.7" height="38.8" x="21.6" y="66.8" />
-    <rect width="8.7" height="38.8" x="91.3" />
-    <rect width="8.7" height="28.3" x="39" y="30.6" />
-    <rect width="8.7" height="28.3" x="4.1" y="66.8" />
-    <rect width="8.7" height="28.3" x="73.9" />
-  </g>
+<rect width="100" height="100" fill="#FA0C10"/>
+<g fill="currentColor">
+  <rect width="8.7" height="38.8" x="21.6" y="30.6" />
+  <rect width="8.7" height="38.8" x="56.4" />
+  <rect width="8.7" height="38.8" x="56.4" y="30.6" />
+  <rect width="8.7" height="38.8" x="21.6" y="66.8" />
+  <rect width="8.7" height="38.8" x="91.3" />
+  <rect width="8.7" height="28.3" x="39" y="30.6" />
+  <rect width="8.7" height="28.3" x="4.1" y="66.8" />
+  <rect width="8.7" height="28.3" x="73.9" />
+</g>
 </svg>
 </pre>
 
-</article>
+</div>
 
-<article id="hello">
-<time>Feb 2025</time>
-<p>Hello, world!</p>
-</article>
+<style>
+footer {
+  margin-inline: var(--main-margin);
+
+  a {
+    font-style: italic;
+  }
+
+  .fsep {
+    font-family: sans-serif;
+    color: var(--muted);
+    margin-inline: 0.5ex;
+  }
+}
+</style>
 
 <footer>
 <p>
 <a href="https://github.com/mnvr">github</a>
-<span class="footer-sep"> • </span>
+<span class="fsep"> • </span>
 <a rel="me" href="https://mastodon.social/@mnvr">mastodon</a>
+<span class="fsep"> • </span>
+<a rel="me" href="rss.xml">rss</a>
 </p>
 </footer>
 
