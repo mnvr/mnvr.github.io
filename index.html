@@ -324,11 +324,44 @@ new IntersectionObserver((entries, observer) => {
 &mdash; exist.
 </p>
 
-<p class="transition">
+<style>
+.chess {
+  margin-inline: var(--main-margin);
+  display: flex;
+  align-items: center;
+  svg {
+    flex-shrink: 0;
+    margin-inline: 1em
+  }
+}
+</style>
+
+<div class="chess">
+<p>
 <a href="chess">chess / piece / pawn / influence</a>
 &mdash; Imagining a chess board where each piece and pawn casts a shadow of
 influence.
 </p>
+<svg width="64px" height="64px" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="0" y="0" width="64" height="64" fill="#ef00ef"/>
+<rect x="17" y="17" width="6" height="6" fill="white"/>
+<rect x="29" y="17" width="6" height="6" fill="white"/>
+<rect x="41" y="17" width="6" height="6" fill="white"/>
+<rect x="23" y="23" width="6" height="6" fill="white"/>
+<rect x="29" y="23" width="6" height="6" fill="white"/>
+<rect x="35" y="23" width="6" height="6" fill="white"/>
+<rect x="17" y="29" width="6" height="6" fill="white"/>
+<rect x="23" y="29" width="6" height="6" fill="white"/>
+<rect x="35" y="29" width="6" height="6" fill="white"/>
+<rect x="41" y="29" width="6" height="6" fill="white"/>
+<rect x="23" y="35" width="6" height="6" fill="white"/>
+<rect x="29" y="35" width="6" height="6" fill="white"/>
+<rect x="35" y="35" width="6" height="6" fill="white"/>
+<rect x="17" y="41" width="6" height="6" fill="white"/>
+<rect x="29" y="41" width="6" height="6" fill="white"/>
+<rect x="41" y="41" width="6" height="6" fill="white"/>
+</svg>
+</div>
 
 
 
