@@ -10,7 +10,8 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --muted: #888;
-    --faint: #223;
+    --faint: oklch(0.414 0.021 285.75);
+    --faint: oklch(0.414 0.021 285.75);
     --a: #8197fd;
     --a-visited: #b578f2;
   }
@@ -28,16 +29,14 @@
 }
 
 body {
-  margin: var(--main-margin);
-  line-height: 1.618;
-
+  margin-block: 4rem;
+  line-height: 1.75;
 }
 
 a {
   text-decoration: underline;
   text-underline-offset: 3px;
   text-decoration-thickness: 1.5px;
-  color: var(--a);
   color: inherit;
   text-decoration-color: var(--a);
 }
@@ -47,28 +46,41 @@ a:hover {
 }
 
 a:visited {
-  color: var(--a-visited);
-  color: inherit;
   text-decoration-color: var(--a-visited);
 }
 
+h3, h4, p {
+  margin-inline: var(--main-margin);
+}
+
+
+  h3, h4 {
+    padding-block-end: 1em;
+    border-block-end: 1px solid pink;
+    margin-block-end: 2.5rem;
+  }
+
+  h3, h4, p {
+    max-width: 34em;
+  }
+
+p {
+    margin-block: 1.75rem;
+
+}
 footer {
-  margin-block: 4em 0;
-  border-block-start: 1px dotted var(--faint);
+  margin-block: 4em;
+  margin-inline: var(--main-margin);
+
   padding-block-start: 1em;
   color: var(--muted);
 
-  p {
-    margin-inline: var(--main-margin);
-  }
 
   a {
     font-style: italic;
   }
-
-  time {
-    display: block;
-  }
 }
 
-
+footer time {
+    display: block;
+}
