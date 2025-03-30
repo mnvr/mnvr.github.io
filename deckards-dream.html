@@ -16,10 +16,16 @@
   initial-value: 15%;
 }
 
+@property --pos {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+
 body {
   min-height: 100vh;
   margin-block: 0;
-  background: radial-gradient(circle at 100%, red, var(--stop), blue);
+  background: radial-gradient(circle at var(--pos), red, var(--stop), blue);
   background-color: blue;
 
   color: whitesmoke;
@@ -29,13 +35,23 @@ body {
   display: flex;
   align-items: center;
 
-  animation: move 17s cubic-bezier(0.64, 0, 0.78, 0) infinite alternate;
+  animation:
+    stop 17s cubic-bezier(0.64, 0, 0.78, 0) infinite alternate,
+    pos 43s linear infinite alternate;
 }
 
-@keyframes move {
-from { --stop: 15%; }
+@keyframes stop {
+from { --stop: 5%; }
 to { --stop: 95%; }
 }
+
+@keyframes pos {
+from { --pos: 100%; }
+10% { --pos: 100%; }
+30% { --pos: 125%; }
+to { --pos: 15%; }
+}
+
 </style>
 </head>
 
