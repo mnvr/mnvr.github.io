@@ -112,6 +112,19 @@ hr {
   margin-block: 3rem;
 }
 
+code {
+  border: 1px solid var(--accent);
+  padding: 0.5ex;
+}
+
+blockquote {
+  border-inline-start: 1px solid var(--accent);
+  margin-inline: var(--main-margin);
+  p {
+    margin-inline: 1em;
+  }
+}
+
 footer {
   margin-block-start: 4rem;
 
