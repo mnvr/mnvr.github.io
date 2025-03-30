@@ -10,14 +10,16 @@
 <meta name="description" content="">
 
 <style>
-@property --color {
+@property --stop {
   syntax: "<percentage>";
   inherits: false;
-  initialValue: "10%";
+  initial-value: 15%;
 }
+
 body {
   min-height: 100vh;
-  background: radial-gradient(circle at 100%, red, 15%, blue);
+  margin-block: 0;
+  background: radial-gradient(circle at 100%, red, var(--stop), blue);
   background-color: blue;
 
   color: whitesmoke;
@@ -26,6 +28,13 @@ body {
   font-variant: all-small-caps;
   display: flex;
   align-items: center;
+
+  animation: move 17s cubic-bezier(0.64, 0, 0.78, 0) infinite alternate;
+}
+
+@keyframes move {
+from { --stop: 15%; }
+to { --stop: 95%; }
 }
 </style>
 </head>
