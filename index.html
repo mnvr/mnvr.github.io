@@ -73,42 +73,27 @@ p.item {
 
 <body>
 
-<style>
-@property --r{
-  syntax: '<color>';
-  inherits: false;
-  initial-value: blue;
-}
-#brahma {
-  width: 100%;
-  height: 10em;
-
-  background: radial-gradient(circle at center in hsl longer hue, var(--r), transparent);
-  background: radial-gradient(circle at center, #3f87a6, var(--r), var(--r), #ebf8e1, transparent, transparent);
-
-
-  animation: brahma-anim 3s cubic-bezier(0.39, 0.575, 0.565, 1) infinite alternate-reverse;
-}
-@keyframes brahma-anim {
-  from {
-  /* background: radial-gradient(blue, green); */
-  --r: rgb(126 182 148);
-  }
-  to {
-  --r: rgb(194 188 61);
-  }
-}
-</style>
-<div id="brahma">
-<p>
-The world is sound
-</p>
-</div>
-
 <p class="item">
 A bug is something that was working earlier but now isn't. <a
 href="bugs">Everything else is a feature</a>.
 </p>
+
+<style>
+.artwork-container {
+  display: flex;
+  margin-inline: var(--main-margin);
+}
+
+.deckards-dream {
+  height: 16vh;
+  aspect-ratio: 1;
+  background: radial-gradient(circle at 100%, red, 15%, blue);
+}
+</style>
+
+<div class="artwork-container">
+<a href="deckards-dream"><div class="deckards-dream"></div></a>
+</div>
 
 <p class="item">
 <a href="shiva">God does not play dice, Einstein, he <em>is</em> dice</a>
@@ -144,6 +129,7 @@ href="bugs">Everything else is a feature</a>.
 &mdash; Imagining a chess board where each piece and pawn casts a shadow of
 influence.
 </p>
+<a href="chess">
 <svg width="64px" height="64px" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect x="0" y="0" width="64" height="64" fill="#ef00ef"/>
 <rect x="17" y="17" width="6" height="6" fill="white"/>
@@ -163,6 +149,7 @@ influence.
 <rect x="29" y="41" width="6" height="6" fill="white"/>
 <rect x="41" y="41" width="6" height="6" fill="white"/>
 </svg>
+</a>
 </div>
 
 <p class="item">
