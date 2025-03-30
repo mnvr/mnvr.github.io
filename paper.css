@@ -23,7 +23,7 @@
 
 @media (width < 37rem) {
   :root {
-    --main-margin: 1.25rem;
+    --main-margin: 1rem;
   }
 }
 
