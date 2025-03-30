@@ -6,8 +6,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 
-<title>Stylesheets in head are render blocking | mnvr.in</title>
-<meta name="description" content="">
+<title>Stylesheets are render blocking | mnvr.in</title>
+<meta name="description" content="CSS added by both <style> and <link> blocks the rendering of the page. This is good for avoiding FOUC, but delays the first render.">
 <link href="paper.css" rel="stylesheet">
 
 <style>
@@ -20,7 +20,7 @@
 
 <body>
 
-<h4>Stylesheets in <code>&lt;head&gt;</code> are render blocking</h4>
+<h4>Stylesheets are render blocking</h4>
 
 <p>
 If I link to a stylesheet using <code>&lt;link href="my.css"
@@ -29,7 +29,7 @@ before the initial render of my document?
 </p>
 
 <p>
-<b>Yes</b>. Stylesheets in head (both <code>&lt;style&gt;</code> and
+<b>Yes</b>. Stylesheets in (both <code>&lt;style&gt;</code> and
 <code>&lt;link&gt;</code>) are render blocking.
 </p>
 
@@ -56,8 +56,8 @@ evaluated (or a UA-defined timeout is reached)</q>
 </blockquote>
 
 <p>
-What about stylesheets added via <code>&lt;link rel="stylesheet"&gt;</code>? We
-need to head over to the <a
+Does this cover stylesheets added via <code>&lt;link
+rel="stylesheet"&gt;</code>? We need to head over to the <a
 href="https://html.spec.whatwg.org/multipage/links.html#link-type-stylesheet"
 target="_blank">WHATWG HTML standard</a>:
 </p>
@@ -88,7 +88,7 @@ request.</li>
 </ol>
 <p>
 To avoid the second problem while having the first cake, bundlers bundle all the
-CSS into <code>style</code> tag(s) in the head.
+CSS into <code>style</code> tag(s).
 </p>
 
 
