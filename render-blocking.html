@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+<title>Stylesheets in head are render blocking | mnvr.in</title>
+<meta name="description" content="">
+<link href="paper.css" rel="stylesheet">
+
+<style>
+:root {
+  --accent: limegreen;
+}
+
+blockquote {
+  border-inline-start: 1px solid var(--accent);
+  margin-inline: var(--main-margin);
+  p {
+    max-width: 34rem;
+    margin-inline: 1em;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<h4>Stylesheets in <code>&lt;head&gt;</code> are render blocking</h4>
+
+<p>
+If I link to a stylesheet using <code>&lt;link href="my.css"
+rel="stylesheet"&gt;</code>, is it guaranteed that the browser will use this CSS
+before the initial render of my document?
+</p>
+
+<p>
+<b>Yes</b>. Stylesheets in head (both <code>&lt;style&gt;</code> and
+<code>&lt;link&gt;</code>) are render blocking.
+</p>
+
+<p>
+<em>De facto</em> it is <a
+href="https://web.dev/articles/critical-rendering-path/render-blocking-css"
+target="_blank"><q>common knowledge</q></a>, and we can also observe it using,
+e.g. the performance pane of Chrome Dev Tools.
+</p>
+
+<p>
+<em>De jure</em> needed a dig. From the proposal to introduce the <a
+href="https://github.com/whatwg/html/issues/7131" target="_blank">
+<code>blocking="render"</code> attribute on <code>&lt;link&gt;</code></a>:
+</p>
+
+<blockquote>
+<p>
+<q>All current browsers already have a render-blocking mechanism: after
+navigation, the user agent will not render any pixel to the screen before all
+stylesheets and synchronous scripts in <code>&lt;head&gt;</code> are loaded and
+evaluated (or a UA-defined timeout is reached)</q>
+</p>
+</blockquote>
+
+<p>
+What about stylesheets added via <code>&lt;link rel="stylesheet"&gt;</code>? We
+need to head over to the <a
+href="https://html.spec.whatwg.org/multipage/links.html#link-type-stylesheet"
+target="_blank">WHATWG HTML standard</a>:
+</p>
+
+<blockquote>
+<p>
+<q>The <code>stylesheet</code> keyword may be used with <code>link</code>
+elements &hellip;&nbsp;A <code>link</code> element of this type is implicitly potentially
+render-blocking if the element was created by its node document's parser</q>
+</p>
+</blockquote>
+
+<p>
+The <q>potentially</q> in there is, I assume, hinting at the "UA-defined
+timeout" and other wiggliness.
+</p>
+
+<hr>
+
+<p>
+What this means is that:
+</p>
+<ol>
+<li>There won't be a <span>FOUC</span> (we can rely on these stylesheets being
+applied for the first render).</li>
+<li>The page will take longer to load since there is an extra network
+request.</li>
+</ol>
+<p>
+To avoid the second problem while having the first cake, bundlers bundle all the
+CSS into <code>style</code> tag(s) in the head.
+</p>
+
+
+<footer>
+Manav Rathi
+<time>March 2025</time>
+<div><a href="/">mnvr.in</a></div>
+</footer>
+
+</body>
+</html>
