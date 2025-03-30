@@ -56,7 +56,8 @@ with power deliberately made the choice.
 <ul>
 <li>For Linux it was Linus with the forceful <em>&#8220;Never break
 userspace&#8221;.</em></li>
-<li>For Windows it was Microsoft, with a literal business decision.</li>
+<li>For Windows it was Microsoft, with a, well, literal business decision (they
+make more money this way).</li>
 <li>For the Web I don't actually know who were the individuals who insisted on
 it in the early days, when the tone was set and the seed was sown, but I'm
 thankful to them!</li>
@@ -69,9 +70,9 @@ I haven't yet mentioned what &#8220;satisfy it&#8221; means. Well, it means
 
 <p>
 That sounds like a good thing to do, why doesn't everyone do it? Unless you're
-among the perennially outraged, you understand how everything is a trolley
-problem (as the philosopher in me is saying), or how <em>&#8220;it's a
-tradeoff&#8221;</em> (as the engineer chimes in).
+among the perennially outraged, you'd understand how it is a trolley problem (as
+the philosopher in me is saying), or how <em>&#8220;it's a tradeoff&#8221;</em>
+(as the engineer chimes in).
 </p>
 
 <p>
@@ -84,20 +85,21 @@ difficulty in finding real world examples illustrates).
 
 <p>
 The advantage though is that it sets the direction of evolution. <mark>The
-software then cannot get worse.</mark> It can remain bad, with new crap being
-continuously added (e.g. Windows), or it can go into a dull stupor (as happened
-with the Web for a while before it somehow woke up again in the last decade), or
-it can slowly but steadily rise and rise (Linux); but it can't get worse.
+software then cannot get worse.</mark> It can remain bad, with new garbage being
+continuously added (as I'm told happens with Windows), or it can go into a dull
+stupor (as happened with the Web for a while before it somehow woke up again in
+the last decade), or it can slowly but steadily rise and rise (Linux); but it
+can't get worse.
 </p>
 
 <p>
-This is a ridiculously good thing, but people are not happy with it. They want
-more.
+This is a ridiculously good thing, but people (as is our wont) are not happy
+with it. We want more.
 </p>
 <ul>
 <li><em>The app crashes whenever I try to run the new segalyzer</em></li>
 <li><em>I'm clicking the share button, but nothing is happening</em></li>
-<li><em>The program is not able to scan files produced by GeeWhiz 7</em></li>
+<li><em>The command is not able to scan files produced by GeeWhiz 7</em></li>
 </ul>
 <p>
 All of these get classified as bugs (by the reporter, not necessarily the
@@ -122,30 +124,30 @@ produce bugs from time to time no matter how meticulous I am.
 <p>
 There are things I can try to help reduce the chances (of the various medicines
 floating around, only static types and end-to-end tests seem to help), and I
-adopt them whenever circumstances permit. Still, unless I drastically slow down
-and/or involve multiple people (for parts which need extra care), in the day to
-day scheme of things, the chances are still there.
+adopt them whenever circumstances permit. Still, unless I go full NASA (say by
+drastically slowing down and/or involving multiple people for parts which need
+extra care), in the day to day scheme of things, the chances are still there.
 </p>
 
 <p>
 In such as the universe, I'm extremely grateful to QA people or users who let me
-know of a recent regression I introduced.
+know of a recent regression I introduced. Really, thank you.
 </p>
 
 <p>
-The context is fresh in my mind and I can easily make the connection between
-what I did incorrectly and the manifestation (making that connection otherwise
-gets harder as time goes). A bug once reproducible is dead (unlike their organic
-brethren), so I can quickly fix it too and restore my balance with this universe
-of not doing more harm than good.
+The context is fresh in my mind and I can make the connection between what I did
+incorrectly and its manifestation easily (making that connection otherwise gets
+harder as time goes). A bug once reproducible has no defenses (unlike their
+organic brethren), so I can quickly fix it too and restore my balance with this
+universe of not doing more harm than good.
 </p>
 
 <hr>
 
 <p>
-What puts a spanner in the works in the constant noise of feature requests (or
-perhaps I should just call them <em>non-bugs</em> to avoid triggering the easily
-triggered) that make it hard to spot the regressions.
+What makes it harder to quickly fix them is when these regressions get mixed in
+among feature requests masquerading as bugs (or perhaps I should just call them
+<em>non-bugs</em> to avoid triggering the easily triggered).
 </p>
 
 <p>
@@ -156,15 +158,15 @@ than to bugs.
 </p>
 
 <p>
-So it's a lose lose for everyone when someone spams bug reports for things which
-were not already working.
+So it's a lose lose for everyone when someone classifies it as a bug a thing
+which was not already working.
 </p>
 
 <hr>
 
 <p>
 I'm <em>far</em> from the first to recognize all this, though I may have been
-the first to <strike>waste</strike> spend a Saturday evening writing a blog post
+the first to <strike>waste</strike> spend a Saturday evening writing a rant
 about it.
 </p>
 
@@ -174,7 +176,7 @@ well run projects that have long term horizons, paying extra attention to
 regressions is very common. Some will even speak in similar terms. For example,
 Electron will often not consider your report as a bug unless you fill in the
 <em>last working version</em> and provide a reproducible example, but if you do
-both, a fix might land quickly.
+both, a fix would land quickly.
 </p>
 
 <p>
@@ -193,20 +195,23 @@ feature, but sometimes of code too for similar reasons).</li>
 
 <p>
 The second one is called breaking backward compatibility, and e.g. the three
-"rare" projects I mentioned initially don't do it (almost) <a
-href="https://whatwg.org/faq#removing-bad-ideas" target="_blank">like<sup><small>†</small></sup></a> <a
+"rare" projects I mentioned initially don't do it almost <a
+href="https://whatwg.org/faq#removing-bad-ideas"
+target="_blank">like<sup><small>†</small></sup></a> <a
 href="https://github.com/PowerShell/PowerShell/pull/1901"
 target="_blank">ever<sup><small>†</small></sup></a></a>, but that is <a
 href="https://xkcd.com/1172/"
-target="_blank">sometimes<sup><small>†</small></sup></a> too high a bar and most
-other projects take a more pragmatic stance, weighing the tradeoffs.
+target="_blank">sometimes<sup><small>†</small></sup></a> too high a bar.
 </p>
 
 <p>
-It is not my flag to defend or burn, the second one. Here I'm only talking about
-wanting to fix the first category regressions that I cause, and having them not
-drown out in the noise would help me find and fix them faster. That's the value
-of a more precise definition of bugs.
+But it is not my flag to defend or burn, the second one. Here I'm only talking
+about the first category, and having them stand out would help me with the
+(personal) <em>no regression</em> rule I try to follow.
+</p>
+
+<p>
+That for me is the value of a more precise definition of bugs.
 </p>
 
 <footer>
