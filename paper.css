@@ -101,7 +101,6 @@ mark {
   border-radius: 1px;
   background-color: color(from var(--accent) srgb r g b / 0.05);
   border: 1px solid color(from currentColor srgb r g b / 0.3);
-
 }
 
 hr {
@@ -125,25 +124,18 @@ blockquote {
 }
 
 footer {
-  margin-block-start: 4rem;
+  margin-block: 5rem;
 
-  padding-block-start: 1rem;
   color: var(--muted);
-  font-size: 0.95em;
+  font-size: 0.92em;
 
   time {
     display: block;
+    margin-block-end: 1em;
   }
 
-  time + div {
-    margin-block-start: 5rem;
-    display: block;
-    font-family: sans-serif;
-    text-align: right;
-    a {
-      font-size: 0.95em;
-      opacity: 0.9;
-      text-decoration: none;
-    }
+  a {
+    opacity: 0.8;
+    font-style: italic;
   }
 }
