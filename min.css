@@ -1,0 +1,53 @@
+:root {
+   color-scheme: light dark;
+
+  --main-margin: 4.5rem;
+
+  --muted: #777;
+  --a: #0000ee;
+  --a-visited: #551a8b;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --muted: #888;
+    --a: #8197fd;
+    --a-visited: #b578f2;
+  }
+  body {
+    background-color: oklch(0.314 0.021 285.75);
+    color: oklch(0.96 0 0);
+  }
+}
+
+@media (width < 37rem) {
+  :root {
+    --main-margin: 1.2rem;
+  }
+}
+
+@view-transition {
+  navigation: auto;
+}
+
+body {
+  margin-inline: 0;
+  margin-block: 3rem;
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: underline;
+  text-underline-offset: 0.4em;
+  text-decoration-thickness: 0.1em;
+  color: inherit;
+  text-decoration-color: var(--a);
+}
+
+a:hover {
+  text-decoration-thickness: 0.2em;
+}
+
+a:visited {
+  text-decoration-color: var(--a-visited);
+}
