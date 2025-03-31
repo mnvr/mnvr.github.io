@@ -99,6 +99,7 @@ mark {
   border-radius: 1px;
   background-color: color(from var(--accent) srgb r g b / 0.05);
   border: 1px solid color(from currentColor srgb r g b / 0.3);
+  color: currentColor;
 }
 
 hr {
