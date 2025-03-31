@@ -36,8 +36,8 @@ before the initial render of my document?
 <p>
 <em>De facto</em> it is <a
 href="https://web.dev/articles/critical-rendering-path/render-blocking-css"
-target="_blank"><q>common knowledge</q></a>, and we can also observe it using,
-e.g. the performance pane of Chrome Dev Tools.
+target="_blank">&ldquo;common knowledge&rdquo;</a>, and we can also observe it
+using, e.g. the performance pane of Chrome Dev Tools.
 </p>
 
 <p>
@@ -48,10 +48,10 @@ href="https://github.com/whatwg/html/issues/7131" target="_blank">
 
 <blockquote>
 <p>
-<q>All current browsers already have a render-blocking mechanism: after
+&ldquo;All current browsers already have a render-blocking mechanism: after
 navigation, the user agent will not render any pixel to the screen before all
 stylesheets and synchronous scripts in <code>&lt;head&gt;</code> are loaded and
-evaluated (or a UA-defined timeout is reached)</q>
+evaluated (or a UA-defined timeout is reached)&rdquo;
 </p>
 </blockquote>
 
@@ -64,14 +64,15 @@ target="_blank">WHATWG HTML standard</a>:
 
 <blockquote>
 <p>
-<q>The <code>stylesheet</code> keyword may be used with <code>link</code>
-elements &hellip;&nbsp;A <code>link</code> element of this type is implicitly potentially
-render-blocking if the element was created by its node document's parser</q>
+&ldquo;The <code>stylesheet</code> keyword may be used with <code>link</code>
+elements &hellip;&nbsp;A <code>link</code> element of this type is implicitly
+potentially render-blocking if the element was created by its node document's
+parser&rdquo;
 </p>
 </blockquote>
 
 <p>
-The <q>potentially</q> in there is, I assume, hinting at the "UA-defined
+The &ldquo;potentially&rdquo; in there is, I assume, hinting at the "UA-defined
 timeout" and other wiggliness.
 </p>
 
