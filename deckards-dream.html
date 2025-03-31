@@ -34,6 +34,7 @@ body {
   font-variant: all-small-caps;
   display: flex;
   align-items: center;
+  view-transition-name: deckards-dream;
 
   animation:
     stop 17s cubic-bezier(0.64, 0, 0.78, 0) infinite alternate,
@@ -41,18 +42,22 @@ body {
 }
 
 @keyframes stop {
-from { --stop: 5%; }
-to { --stop: 95%; }
+  from { --stop: 5%; }
+  to { --stop: 95%; }
 }
 
 @keyframes pos {
-from { --pos: 100%; }
-10% { --pos: 100%; }
-30% { --pos: 125%; }
-to { --pos: 15%; }
+  from { --pos: 100%; }
+  10% { --pos: 100%; }
+  30% { --pos: 125%; }
+  to { --pos: 15%; }
 }
 
+@view-transition {
+  navigation: auto;
+}
 </style>
+
 </head>
 
 <body>
