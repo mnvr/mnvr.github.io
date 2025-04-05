@@ -132,9 +132,9 @@ footer {
     display: block;
     margin-block-end: 1em;
   }
+}
 
-  a {
-    opacity: 0.8;
-    font-style: italic;
-  }
+footer a[href="/"] {
+  opacity: 0.8;
+  font-style: italic;
 }
