@@ -64,6 +64,7 @@ a:visited {
 p.item {
   margin-inline: var(--main-margin);
   max-width: 40em;
+  outline-offset: 0.5em;
 }
 
 span.tags {
@@ -71,6 +72,85 @@ span.tags {
   font-family: monospace;
   font-size: smaller;
 }
+
+.tag::before {
+  content: "#" attr(data-tag);
+}
+
+.tag:hover {
+  font-weight: bold;
+}
+
+.tag[data-tag="rant"]:hover {
+  color: hotpink;
+}
+
+body:has(.tag[data-tag="rant"]:hover) {
+  p.item:has(.tag[data-tag="rant"]) {
+    outline: 1px solid hotpink;
+  }
+}
+
+.tag[data-tag="programming"]:hover {
+  color: blue;
+}
+
+body:has(.tag[data-tag="programming"]:hover) {
+  p.item:has(.tag[data-tag="programming"]) {
+    outline: 1px solid blue;
+  }
+}
+
+.tag[data-tag="rules"]:hover {
+  color: mediumslateblue;
+}
+
+body:has(.tag[data-tag="rules"]:hover) {
+  p.item:has(.tag[data-tag="rules"]) {
+    outline: 1px solid mediumslateblue;
+  }
+}
+
+.tag[data-tag="quote"]:hover {
+  color: gainsboro;
+}
+
+body:has(.tag[data-tag="quote"]:hover) {
+  p.item:has(.tag[data-tag="quote"]) {
+    outline: 1px solid gainsboro;
+  }
+}
+
+.tag[data-tag="kvetch"]:hover {
+  color: orangered;
+}
+
+body:has(.tag[data-tag="kvetch"]:hover) {
+  p.item:has(.tag[data-tag="kvetch"]) {
+    outline: 1px solid orangered;
+  }
+}
+
+.tag[data-tag="philosophy"]:hover {
+  color: forestgreen;
+}
+
+body:has(.tag[data-tag="philosophy"]:hover) {
+  p.item:has(.tag[data-tag="philosophy"]) {
+    outline: 1px solid forestgreen;
+  }
+}
+
+.tag[data-tag="recursion"]:hover {
+  color: moccasin;
+}
+
+body:has(.tag[data-tag="recursion"]:hover) {
+  p.item:has(.tag[data-tag="recursion"]) {
+    outline: 1px solid moccasin;
+  }
+}
+
 </style>
 
 </head>
@@ -80,24 +160,34 @@ span.tags {
 <p class="item">
 <a href="levels">Levels of truth</a> &mdash; I have learnt only one thing in
 life that I'm sure of so far: That I'm always wrong.
-<span class="tags">&num;philosophy &num;rant</span>
+<span class="tags">
+<span class="tag" data-tag="philosophy"></span>
+<span class="tag" data-tag="rant"></span>
+</span>
 </p>
 
 <p class="item">
 <a href="math-insurance">A Mathematician's insurance</a> &mdash; Win-win!
-<span class="tags">&num;quote</span>
+<span class="tags">
+<span class="tag" data-tag="quote"></span>
+</span>
 </p>
 
 <p class="item">
 <a href="starships">The starships don't come here anymore</a> &mdash; a short
 sci-fi short story
-<span class="tags">&num;quote</span>
+<span class="tags">
+<span class="tag" data-tag="quote"></span>
+</span>
 </p>
 
 <p class="item">
 A bug is something that was working earlier but now isn't. <a
 href="bugs">Everything else is a feature</a>.
-<span class="tags">&num;programming &num;rant</span>
+<span class="tags">
+<span class="tag" data-tag="programming"></span>
+<span class="tag" data-tag="rant"></span>
+</span>
 </p>
 
 <style>
@@ -121,19 +211,26 @@ href="bugs">Everything else is a feature</a>.
 <p class="item">
 <a href="shiva">God does not play dice, Einstein, he <em>is</em> dice</a>
 &mdash; Randomness, or as I know him, Shiva.
-<span class="tags">&num;rules &num;rant</span>
+<span class="tags">
+<span class="tag" data-tag="rules"></span>
+<span class="tag" data-tag="rant"></span>
+</span>
 </p>
 
 <p class="item">
 <a href="one-flower">the flower that blooms late</a>
 &mdash; a poem from another language, imperfectly translated.
-<span class="tags">&num;quote</span>
+<span class="tags">
+<span class="tag" data-tag="quote"></span>
+</span>
 </p>
 
 <p class="item">
 <a href="free-lunch">Free lunches</a>
 &mdash; exist.
-<span class="tags">&num;kvetch</span>
+<span class="tags">
+<span class="tag" data-tag="kvetch"></span>
+</span>
 </p>
 
 <style>
@@ -181,18 +278,24 @@ influence.
 <p class="item">
 I exist &mdash;
 <a href="algorithm">but can you hear me?</a>
-<span class="tags">&num;kvetch</span>
+<span class="tags">
+<span class="tag" data-tag="kvetch"></span>
+</span>
 </p>
 
 <p class="item">
 <a href="entropy">Entropy counts</a>
 (and why the second law is obvious)
-<span class="tags">&num;rules</span>
+<span class="tags">
+<span class="tag" data-tag="rules"></span>
+</span>
 </p>
 
 <p class="item">
 Is my mind in this world, or is the world in my <a href="mind">mind?</a>
-<span class="tags">&num;recursion</span>
+<span class="tags">
+<span class="tag" data-tag="recursion"></span>
+</span>
 </p>
 
 <style>
