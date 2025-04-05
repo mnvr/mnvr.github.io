@@ -66,7 +66,7 @@ a:visited {
 p.item {
   margin-inline: var(--main-margin);
   max-width: 40em;
-  outline-offset: 0.5em;
+  outline-offset: 7px;
 }
 
 span.tags {
@@ -89,7 +89,7 @@ span.tags {
 
 body:has(.tag[data-tag="rant"]:hover) {
   p.item:has(.tag[data-tag="rant"]) {
-    outline: 1px solid hotpink;
+    outline: 2px solid hotpink;
   }
   .tag[data-tag="rant"] {
     color: hotpink;
@@ -99,17 +99,17 @@ body:has(.tag[data-tag="rant"]:hover) {
 
 body:has(.tag[data-tag="programming"]:hover) {
   p.item:has(.tag[data-tag="programming"]) {
-    outline: 1px solid light-dark(blue, cyan);
+    outline: 2px solid light-dark(blue, royalblue);
   }
   .tag[data-tag="programming"] {
-    color: light-dark(blue, cyan);
+    color: light-dark(blue, royalblue);
     font-weight: bold;
   }
 }
 
 body:has(.tag[data-tag="science"]:hover) {
   p.item:has(.tag[data-tag="science"]) {
-    outline: 1px solid mediumslateblue;
+    outline: 2px solid mediumslateblue;
   }
   .tag[data-tag="science"] {
     color: mediumslateblue;
@@ -119,17 +119,17 @@ body:has(.tag[data-tag="science"]:hover) {
 
 body:has(.tag[data-tag="quote"]:hover) {
   p.item:has(.tag[data-tag="quote"]) {
-    outline: 1px solid olivedrab;
+    outline: 2px solid plum;
   }
   .tag[data-tag="quote"] {
-    color: olivedrab;
+    color: plum;
     font-weight: bold;
   }
 }
 
 body:has(.tag[data-tag="kvetching"]:hover) {
   p.item:has(.tag[data-tag="kvetching"]) {
-    outline: 1px solid orangered;
+    outline: 2px solid orangered;
   }
   .tag[data-tag="kvetching"] {
     color: orangered;
@@ -139,7 +139,7 @@ body:has(.tag[data-tag="kvetching"]:hover) {
 
 body:has(.tag[data-tag="philosophy"]:hover) {
   p.item:has(.tag[data-tag="philosophy"]) {
-    outline: 1px solid darkkhaki;
+    outline: 2px solid darkkhaki;
   }
   .tag[data-tag="philosophy"] {
     color: darkkhaki;
