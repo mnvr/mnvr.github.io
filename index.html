@@ -12,6 +12,8 @@
 
 <style>
 :root {
+  color-scheme: light dark;
+
   --main-margin: 4.5rem;
 
   --muted: #777;
@@ -97,10 +99,10 @@ body:has(.tag[data-tag="rant"]:hover) {
 
 body:has(.tag[data-tag="programming"]:hover) {
   p.item:has(.tag[data-tag="programming"]) {
-    outline: 1px solid blue;
+    outline: 1px solid light-dark(blue, cyan);
   }
   .tag[data-tag="programming"] {
-    color: blue;
+    color: light-dark(blue, cyan);
     font-weight: bold;
   }
 }
@@ -117,10 +119,10 @@ body:has(.tag[data-tag="science"]:hover) {
 
 body:has(.tag[data-tag="quote"]:hover) {
   p.item:has(.tag[data-tag="quote"]) {
-    outline: 1px solid gainsboro;
+    outline: 1px solid olivedrab;
   }
   .tag[data-tag="quote"] {
-    color: gainsboro;
+    color: olivedrab;
     font-weight: bold;
   }
 }
@@ -137,20 +139,10 @@ body:has(.tag[data-tag="kvetching"]:hover) {
 
 body:has(.tag[data-tag="philosophy"]:hover) {
   p.item:has(.tag[data-tag="philosophy"]) {
-    outline: 1px solid forestgreen;
+    outline: 1px solid darkkhaki;
   }
   .tag[data-tag="philosophy"] {
-    color: forestgreen;
-    font-weight: bold;
-  }
-}
-
-body:has(.tag[data-tag="meta"]:hover) {
-  p.item:has(.tag[data-tag="meta"]) {
-    outline: 1px solid moccasin;
-  }
-  .tag[data-tag="meta"] {
-    color: moccasin;
+    color: darkkhaki;
     font-weight: bold;
   }
 }
