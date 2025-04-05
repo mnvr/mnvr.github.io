@@ -77,80 +77,83 @@ span.tags {
   content: "#" attr(data-tag);
 }
 
-.tag:hover {
-  font-weight: bold;
+.tag {
+  cursor: context-menu;
 }
 
-.tag[data-tag="rant"]:hover {
-  color: hotpink;
+.tag:hover {
+  font-weight: bold;
 }
 
 body:has(.tag[data-tag="rant"]:hover) {
   p.item:has(.tag[data-tag="rant"]) {
     outline: 1px solid hotpink;
   }
-}
-
-.tag[data-tag="programming"]:hover {
-  color: blue;
+  .tag[data-tag="rant"] {
+    color: hotpink;
+    font-weight: bold;
+  }
 }
 
 body:has(.tag[data-tag="programming"]:hover) {
   p.item:has(.tag[data-tag="programming"]) {
     outline: 1px solid blue;
   }
-}
-
-.tag[data-tag="rules"]:hover {
-  color: mediumslateblue;
-}
-
-body:has(.tag[data-tag="rules"]:hover) {
-  p.item:has(.tag[data-tag="rules"]) {
-    outline: 1px solid mediumslateblue;
+  .tag[data-tag="programming"] {
+    color: blue;
+    font-weight: bold;
   }
 }
 
-.tag[data-tag="quote"]:hover {
-  color: gainsboro;
+body:has(.tag[data-tag="science"]:hover) {
+  p.item:has(.tag[data-tag="science"]) {
+    outline: 1px solid mediumslateblue;
+  }
+  .tag[data-tag="science"] {
+    color: mediumslateblue;
+    font-weight: bold;
+  }
 }
 
 body:has(.tag[data-tag="quote"]:hover) {
   p.item:has(.tag[data-tag="quote"]) {
     outline: 1px solid gainsboro;
   }
-}
-
-.tag[data-tag="kvetch"]:hover {
-  color: orangered;
-}
-
-body:has(.tag[data-tag="kvetch"]:hover) {
-  p.item:has(.tag[data-tag="kvetch"]) {
-    outline: 1px solid orangered;
+  .tag[data-tag="quote"] {
+    color: gainsboro;
+    font-weight: bold;
   }
 }
 
-.tag[data-tag="philosophy"]:hover {
-  color: forestgreen;
+body:has(.tag[data-tag="kvetching"]:hover) {
+  p.item:has(.tag[data-tag="kvetching"]) {
+    outline: 1px solid orangered;
+  }
+  .tag[data-tag="kvetching"] {
+    color: orangered;
+    font-weight: bold;
+  }
 }
 
 body:has(.tag[data-tag="philosophy"]:hover) {
   p.item:has(.tag[data-tag="philosophy"]) {
     outline: 1px solid forestgreen;
   }
-}
-
-.tag[data-tag="recursion"]:hover {
-  color: moccasin;
-}
-
-body:has(.tag[data-tag="recursion"]:hover) {
-  p.item:has(.tag[data-tag="recursion"]) {
-    outline: 1px solid moccasin;
+  .tag[data-tag="philosophy"] {
+    color: forestgreen;
+    font-weight: bold;
   }
 }
 
+body:has(.tag[data-tag="meta"]:hover) {
+  p.item:has(.tag[data-tag="meta"]) {
+    outline: 1px solid moccasin;
+  }
+  .tag[data-tag="meta"] {
+    color: moccasin;
+    font-weight: bold;
+  }
+}
 </style>
 
 </head>
@@ -212,8 +215,7 @@ href="bugs">Everything else is a feature</a>.
 <a href="shiva">God does not play dice, Einstein, he <em>is</em> dice</a>
 &mdash; Randomness, or as I know him, Shiva.
 <span class="tags">
-<span class="tag" data-tag="rules"></span>
-<span class="tag" data-tag="rant"></span>
+<span class="tag" data-tag="science"></span>
 </span>
 </p>
 
@@ -229,7 +231,7 @@ href="bugs">Everything else is a feature</a>.
 <a href="free-lunch">Free lunches</a>
 &mdash; exist.
 <span class="tags">
-<span class="tag" data-tag="kvetch"></span>
+<span class="tag" data-tag="kvetching"></span>
 </span>
 </p>
 
@@ -279,7 +281,7 @@ influence.
 I exist &mdash;
 <a href="algorithm">but can you hear me?</a>
 <span class="tags">
-<span class="tag" data-tag="kvetch"></span>
+<span class="tag" data-tag="kvetching"></span>
 </span>
 </p>
 
@@ -287,14 +289,14 @@ I exist &mdash;
 <a href="entropy">Entropy counts</a>
 (and why the second law is obvious)
 <span class="tags">
-<span class="tag" data-tag="rules"></span>
+<span class="tag" data-tag="science"></span>
 </span>
 </p>
 
 <p class="item">
 Is my mind in this world, or is the world in my <a href="mind">mind?</a>
 <span class="tags">
-<span class="tag" data-tag="recursion"></span>
+<span class="tag" data-tag="science"></span>
 </span>
 </p>
 
