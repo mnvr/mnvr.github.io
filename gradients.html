@@ -9,26 +9,42 @@
 <title>Gradients | mnvr.in</title>
 <meta name="description" content="">
 
-</head>
-
-<body>
-
 <style>
 body {
-  display: flex;
+  display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  flex-wrap: wrap;
+  box-sizing: border-box;
 }
 
 div {
-  flex-grow: 1;
-  flex-shrink: 0;
-  flex-basis: 100px;
-  max-width: 200px;
   border: 1px solid limegreen;
   aspect-ratio: 1.8;
 }
+
+div:nth-child(1) {
+  background-image: radial-gradient(circle, blue, transparent);
+}
+
+div:nth-child(2) {
+  background-image: radial-gradient(circle at center in hsl shorter hue, blue, green);
+}
+
+div:nth-child(3) {
+  background-image: radial-gradient(circle at center in hsl longer hue, blue, green);
+}
+
+div:nth-child(4) {
+  background-image:
+    radial-gradient(circle at center in hsl longer hue,
+       hsl(240, 100%, 50%), hsl(290, 100%, 50%));
+
+}
+
 </style>
+
+</head>
+
+<body>
 
 <div></div>
 <div></div>
