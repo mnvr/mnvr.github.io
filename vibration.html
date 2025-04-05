@@ -6,28 +6,76 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 
-<title>The world is sound | mnvr.in</title>
+<title>Vibration | mnvr.in</title>
 <meta name="description" content="The nature of the universe is vibration">
 
 <style>
 :root { color-scheme: light dark; }
 @view-transition { navigation: auto; }
 
+@property --hue {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 290;
+}
+
+@property --stop {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 90px;
+}
+
+body {
+  background-image:
+    repeating-radial-gradient(circle at center in hsl shorter hue,
+       hsl(240, 100%, 50%) 10px,
+       hsl(var(--hue), 100%, 50%) var(--stop),
+       hsl(240, 100%, 50%) 100px);
+  animation:
+    anim 3s linear infinite alternate,
+    anim2 7s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes anim {
+  50% { --stop: 87px; }
+  to {  --stop: 84px; }
+}
+
+@keyframes anim2 {
+  from { --hue: 290; }
+  50% { --hue: 360; }
+  to { --hue: 200; }
+}
+
 body {
   min-height: 100svh;
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
+  align-items: flex-end;
+  text-align: center;
   line-height: 1.5em;
-}
-
-p {
   margin: 0;
+  padding: 0;
+  color: white;
 }
 
 div {
-  margin: 2em;
-  opacity: 0.8;
+  width: 100%;
+  padding: 1em;
+  backdrop-filter: saturate(1.8) brightness(0.15) blur(18px);
+  font-size: large;
+}
+
+p {
+  margin: 0.5em 0;
+}
+
+p:first-child {
+  font-size: larger;
+  margin-block-end: 1.25em;
+}
+
+p:not(:first-child) {
+  opacity: 0.4;
 }
 </style>
 
@@ -35,10 +83,10 @@ div {
 
 <body>
 
-<div>
+<div class="top">
 <p>the nature of the universe is vibration</p>
-<div>&mdash; नादब्रह्म, 3000 BC</div>
-<div>&mdash; string theory, 2000 AD</div>
+<p>&mdash; नादब्रह्म, 3000 BC</p>
+<p>&mdash; string theory, 2000 AD</p>
 </div>
 
 </body>
