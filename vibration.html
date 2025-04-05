@@ -13,6 +13,10 @@
 :root { color-scheme: light dark; }
 @view-transition { navigation: auto; }
 
+::view-transition-group(vibration-text) {
+  animation-timing-function: ease-out;
+}
+
 @property --hue {
   syntax: "<number>";
   inherits: false;
@@ -70,6 +74,7 @@ p {
 }
 
 p:first-child {
+  view-transition-name: vibration-text;
   font-size: larger;
   margin-block-end: 1.25em;
 }
