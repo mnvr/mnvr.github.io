@@ -78,34 +78,19 @@ Mandlebrot set, and we plot it. That's it.
 
 @media (width < 700px) {
   .container {
-    margin-inline: 0;
+    margin-inline: auto;
   }
 }
 
 @media (width < 600px) {
   .container {
-    margin-inline: auto;
     --cw: 1px;
   }
 }
-
 </style>
 
 <script type="module">
-const mb = ([cx, cy], iter = 100) => {
-  let x = 0, y = 0;
-  for (let i = 0; i < iter; i++) {
-    let nx = x * x - y * y + cx
-    let ny = 2 * x * y + cy
-    x = nx;
-    y = ny;
-    if (Math.abs(x) > 2 || Math.abs(y) > 2) return false;
-  }
-  return true;
-}
-
-// Rescale x from [a, b] to [c, d]
-const rescale = (x, [a, b], [c, d]) => ((x - a) / (b - a)) * (d - c) + c
+import { mbExit, rescale } from "./mbrot.js";
 
 const div = document.querySelector(".container");
 for (let y = 0; y < 200; y++) {
@@ -114,7 +99,7 @@ for (let y = 0; y < 200; y++) {
     const child = document.createElement("div");
     const cx = rescale(x, [0, 200], [-2, 1]);
     const cy = rescale(y, [0, 200], [-2, 1]);
-    if (mb([cx, cy])) {
+    if (mbExit([cx, cy])) {
       child.className = "on";
     }
     div.appendChild(child);
