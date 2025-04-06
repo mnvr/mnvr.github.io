@@ -14,7 +14,82 @@
 :root {
   --accent: fuchsia;
 }
+canvas {
+  width: 100%;
+  aspect-ratio: 2;
+  display: block;
+}
 </style>
+
+<script type="module">
+import { mbExit, rescale } from "./mandelbrot.js";
+
+let pi = 0;
+const plot = (canvas, xrange, yrange, iter = 100) => {
+  console.time(pi);
+  const dpr = Math.max(Math.floor(devicePixelRatio), 2);
+  const width = canvas.width = canvas.clientWidth * dpr;
+  const height = canvas.height = canvas.clientHeight * dpr;
+
+  const ctx = canvas.getContext("2d");
+  const imageData = ctx.getImageData(0, 0, width, height);
+  const data = imageData.data;
+
+  for (let y = 0; y < height; y++) {
+    for (let x = 0; x < width; x++) {
+      const i = (y * width + x) * 4; /* RGBA */
+      const c = [
+        rescale(x, [0, width], xrange), rescale(y, [0, height], yrange)
+      ]
+
+      data[i + 0] = 255;
+      data[i + 1] = 0;
+
+      const z = mbExit(c, iter);
+      if (z === 0) {
+        data[i + 2] = 255;
+        data[i + 3] = 255;
+      } else {
+      if (iter > 200 && z > 100) {
+        data[i + 2] = 255;
+        if (z > 280) {
+          data[i + 3] = (255 - z) / 2;
+        } else if (z > 180) {
+          data[i + 3] = 255 - z;
+        } else if (z > 120) {
+          data[i + 3] = z / 2;
+        } else {
+          data[i + 3] = z / 8;
+        }
+      }
+      }
+    }
+  }
+
+  ctx.putImageData(imageData, 0, 0);
+  console.timeEnd(pi++);
+}
+
+plot(document.querySelector("#c1"), [-2.5, 1.5], [-1, 1])
+plot(document.querySelector("#c2"),
+ [((-1.5-0.9)/8)-0.6, ((0.5-0.9)/8)-0.6], [(-0.75/8)+0.2, (0.35/8)+0.2])
+
+const s = 38;
+const xo = 0.6975;
+plot(document.querySelector("#c3"),
+[((-1.5-0.9)/s)-xo, ((0.5-0.9)/s)-xo], [(-0.75/s)+0.2, (0.35/s)+0.2],
+200)
+
+if (true) {
+const s = 11718;
+const xo = 0.73569;
+plot(document.querySelector("#c4"),
+  [((-1.5-0.9)/s)-xo, ((0.5-0.9)/s)-xo], [(-0.75/s)+0.19674, (0.35/s)+0.19674],
+  510
+)
+}
+
+</script>
 
 </head>
 
@@ -26,6 +101,8 @@
 I have learnt only one thing in life that I'm sure of so far: That I'm always
 wrong.
 </p>
+
+<p><canvas id="c1"></canvas></p>
 
 <p>
 This isn't a self deprecating jest, but rather a clear headed observation. No
@@ -69,6 +146,8 @@ paralysis that renders one perpetually indecisive</em>).
 I'm in a new phase now. I call it the levels of truth phase. There are levels of
 truth.
 </p>
+
+<p><canvas id="c2"></canvas></p>
 
 <p>
 An example is called for.
@@ -124,8 +203,8 @@ They then defend it with the might of reasoning.
 <p>
 They're missing three things - the game theory of what they're saying doesn't
 hold; it doesn't acknowledge the human psychology of majority of the population;
-and they don't see how the oasis of effective action cannot be reached by the
-horse of reason.
+and they don't see how the oasis of effective action cannot always be reached by
+the horse of reason.
 </p>
 
 <p>
@@ -134,6 +213,8 @@ societies, like bodies with immune systems, have activated an immune response,
 and now the body is fighting its own immune system. And immune systems are
 nothing if not nasty.
 </p>
+
+<p><canvas id="c3"></canvas></p>
 
 <p>
 Both sides are correct (or wrong), but at different levels. An appropriate
@@ -160,6 +241,8 @@ with changing needs.&rdquo; &mdash; <cite>Docs for AWS S3</cite>
 Time is another axis: what might've been true 5 years ago might not hold now.
 This is why being ahead of one's time is not necessarily an enriching attribute.
 </p>
+
+<p><canvas id="c4"></canvas></p>
 
 <p>
 Will my current belief be wrong too? Of course. Why bother writing it then?
