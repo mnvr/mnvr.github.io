@@ -46,9 +46,9 @@ const step = ([x, y], [cx, cy]) => [x * x - y * y + cx, 2 * x * y + cy]
 //
 // - 100 is an arbitrary threshold of iterations that seem to work.
 // - Math tells us that if z exceeds 2, it'll diverge (early return).
-const mb = (c) => {
+const mb = (c, iter) => {
   let z = [0, 0]
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < (iter ?? 100); i++) {
     z = step(z, c);
     if (z.some(x => Math.abs(x) > 2)) return false;
   }
@@ -59,7 +59,7 @@ const mb = (c) => {
 // Rescale x from [a, b] to [c, d]
 const rescale = (x, [a, b], [c, d]) => ((x - a) / (b - a)) * (d - c) + c
 
-const plot = (canvas, output, xrange, yrange) => {
+const plot = (canvas, output, xrange, yrange, iter = 100) => {
   const dpr = Math.max(Math.floor(devicePixelRatio), 2);
   const width = canvas.width = canvas.clientWidth * dpr;
   const height = canvas.height = canvas.clientHeight * dpr;
@@ -76,7 +76,7 @@ const plot = (canvas, output, xrange, yrange) => {
         rescale(x, [0, width], xrange), rescale(y, [0, height], yrange)
       ]
 
-      if (mb(c)) {
+      if (mb(c, iter)) {
         data[i + 2] = 255;
         data[i + 3] = 255;
       }
@@ -94,19 +94,27 @@ const plot = (canvas, output, xrange, yrange) => {
 // Plot [(-2.5, 1.5), (-1, 1)]
 // - Maintains aspect ratio.
 // - Region of interest is towards the negative real axis.
-// plot(
-//   document.querySelector("#a canvas"), document.querySelector("#a output"),
-//   [-2.5, 1.5], [-1, 1]
-// )
+plot(
+  document.querySelector("#a canvas"), document.querySelector("#a output"),
+  [-2.5, 1.5], [-1, 1]
+)
 
-// plot(
-//   document.querySelector("#b canvas"), document.querySelector("#b output"),
-//   [-1.5, 0.5], [-0.5, 0.5]
-// )
+plot(
+  document.querySelector("#b canvas"), document.querySelector("#b output"),
+  [-1.5, 0.5], [-0.5, 0.5]
+)
 
 plot(
   document.querySelector("#c canvas"), document.querySelector("#c output"),
   [((-1.5-0.9)/8)-0.6, ((0.5-0.9)/8)-0.6], [(-0.75/8)+0.2, (0.35/8)+0.2]
+)
+
+const s = 38;
+const xo = 0.6975;
+plot(
+  document.querySelector("#d canvas"), document.querySelector("#d output"),
+  [((-1.5-0.9)/s)-xo, ((0.5-0.9)/s)-xo], [(-0.75/s)+0.2, (0.35/s)+0.2],
+  200
 )
 </script>
 
@@ -125,6 +133,11 @@ plot(
 </p>
 
 <p id="c">
+<canvas></canvas>
+<output></output>
+</p>
+
+<p id="d">
 <canvas></canvas>
 <output></output>
 </p>
