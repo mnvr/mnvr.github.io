@@ -40,21 +40,21 @@ right?
 </p>
 
 <p>
-Okay, so for each pixel <code>x, y</code> we start a loop with <code>i, j</code>
-as <code>0, 0</code> and keep applying the following function
+Okay, so we start a loop with <code>u, v</code> set to <code>0, 0</code> for
+each pixel <code>x, y</code> and keep applying the following function:
 </p>
 
 <pre><code>
-function step([i, j], [x, y]) {
-  return [i * i - j * j + x, 2 * i * j + y]
+function step([u, v], [x, y]) {
+  return [u * u - v * v + x, 2 * u * v + y]
 }
 </code>
 </pre>
 
 <p>
-At each step, we'll get a new <code>i, j</code>. If these <code>i, j</code>
-don't grow beyond <code>2, 2</code>, then <code>x, y</code> is part of the
-Mandlebrot set, and we plot it. That's it.
+At each step, we'll get a new <code>u, v</code>. If these don't grow beyond
+<code>2, 2</code> after a few hundred iterations, then <code>x, y</code> is part
+of the Mandlebrot set, and we plot it. That's it.
 </p>
 
 <style>
@@ -108,6 +108,135 @@ for (let y = 0; y < 200; y++) {
 </script>
 
 <div class="container"></div>
+
+<p>
+If you're curious, here is how we derive the programmatic statement from the
+mathematical one (<em>you don't need to understand this to draw mandelbrot
+sets!</em>)
+</p>
+<p>
+To recap, the Mandelbrot set contains <math><mi>c</mi></math> to find which
+<ul>
+<li>Iterate, for each <math><mi>c</mi></math>,</li>
+<li><math><mi>z</mi><mo>&rarr;</mo><msup><mi>z</mi><mn>2</mn></msup><mo>+</mo><mi>c</mi></math></li>
+<li>Start <math><mi>z</mi><mo>=</mo><mn>0</mn></math>.</li>
+</ul>
+<p>
+The only complex operations we need are addition and multiplication. We don't
+need a complex number library, we can just express <math><mi>z</mi></math>
+as a two component array <code>[u, v]</code>. Then the complex multiplication
+(squaring) <math><msup><mi>z</mi><mn>2</mn></msup></math> becomes:
+</p>
+
+<style>
+.deriv {
+  math {
+    border: 0;
+  }
+}
+mtd {
+  text-align: left;
+}
+</style>
+
+<p class="deriv">
+<math>
+<mtable>
+
+<mtr><mtd>
+<mo stretchy="false">(</mo><mi>a</mi><mo>+</mo><mi>i</mi><mi>b</mi><mo stretchy="false">)</mo>
+<mo>.</mo>
+<mo stretchy="false">(</mo><mi>c</mi><mo>+</mo><mi>i</mi><mi>d</mi><mo stretchy="false">)</mo>
+</mtd></mtr>
+
+<mtr><mtd>
+<mo stretchy="false">(</mo><mi>a</mi><mo>.</mo><mi>c</mi><mo stretchy="false">)</mo>
+<mo>+</mo>
+<mo stretchy="false">(</mo><mi>i</mi><mi>b</mi><mo>.</mo><mi>c</mi><mo stretchy="false">)</mo>
+<mo>+</mo>
+<mo stretchy="false">(</mo><mi>a</mi><mo>.</mo><mi>i</mi><mi>d</mi><mo stretchy="false">)</mo>
+<mo>+</mo>
+<mo stretchy="false">(</mo><mi>i</mi><mi>b</mi><mo>.</mo><mi>i</mi><mi>d</mi><mo stretchy="false">)</mo>
+</mtd></mtr>
+
+<mtr><mtd>
+<mo stretchy="false">(</mo><mi>a</mi><mo>.</mo><mi>c</mi><mo stretchy="false">)</mo>
+<mo>+</mo>
+<mo stretchy="false">(</mo><mi>i</mi><mi>b</mi><mo>.</mo><mi>c</mi><mo stretchy="false">)</mo>
+<mo>+</mo>
+<mo stretchy="false">(</mo><mi>a</mi><mo>.</mo><mi>i</mi><mi>d</mi><mo stretchy="false">)</mo>
+<mo>-</mo>
+<mo stretchy="false">(</mo><mi>b</mi><mo>.</mo><mi>d</mi><mo stretchy="false">)</mo>
+</mtd></mtr>
+
+<mtr><mtd>
+<mo stretchy="false">(</mo><mi>a</mi><mo>.</mo><mi>c</mi><mo>-</mo><mi>b</mi><mo>.</mo><mi>d</mi><mo stretchy="false">)</mo>
+<mo>+</mo>
+<mi>i</mi>
+<mo stretchy="false">(</mo><mi>b</mi><mo>.</mo><mi>c</mi><mo>+</mo><mi>a</mi><mo>.</mo><mi>d</mi><mo stretchy="false">)</mo>
+</mtd></mtr>
+
+<mtr><mtd>
+<mo stretchy="false">(</mo><mi>u</mi><mo>.</mo><mi>u</mi><mo>-</mo><mi>v</mi><mo>.</mo><mi>v</mi><mo stretchy="false">)</mo>
+<mo>+</mo>
+<mi>i</mi>
+<mo stretchy="false">(</mo><mn>2</mn><mo>.</mo><mi>u</mi><mo>.</mo><mi>v</mi><mo stretchy="false">)</mo>
+</mtd></mtr>
+
+</mtable>
+</math>
+</p>
+
+<p>
+Giving us <code>[u * u - v * v, 2 * u * v]</code>. To this we add
+<math><mi>c</mi></math>, similarly expressed as a two component array <code>[x,
+y]</code> to give us the <code>step</code> function above.
+</p>
+
+<p>
+That's really it. There is more to it of course, but that usually has to do with
+the medium in which you are rendering the Mandelbrot set (scaling the
+coordinates appropriately, zooming into an region of interest, implementing it
+efficiently etc).
+</p>
+
+<p>
+As a concrete example, here is the JavaScript function I'm using to draw the
+Mandelbrot sets here.
+</p>
+
+<pre><code>const mbExit = ([x, y]) =&gt; {
+  let u = 0, v = 0
+  for (let i = 1; i &lt;= 100; i++) {
+    const nu = u * u - v * v + x
+    const nv = 2 * u * v + y
+    u = nu
+    v = nv
+    if (Math.abs(u) &gt; 2 || Math.abs(v) &gt; 2)
+      return i
+  }
+  return 0
+}
+</code></pre>
+
+<p>
+The step function has been inlined for efficiently, and an arbitrary iteration
+count has been picked. I'm not sure if the exit conditions are mathematically
+correct, but for the level of precision that I needed, they seem to work.
+</p>
+
+<p>
+This <code>mbExit</code> function returns the iteration count at which a given
+<math><mi>c</mi></math> diverges, or <code>0</code> if it is part of the
+Mandelbrot set.
+</p>
+
+<p>
+Armed with this function, I can draw Mandelbrot sets anywhere.  The above
+example uses 80 x 24 HTML divs, but the same function also works for the much
+higher resolution HTML canvas <a href="levels">illustrations that I'd made to
+show the fractal nature of truth</a>.
+</p>
 
 <footer>
 Manav Rathi

@@ -70,7 +70,9 @@ const plot = (canvas, xrange, yrange, iter = 100) => {
   console.timeEnd(pi++);
 }
 
-plot(document.querySelector("#c1"), [-2.5, 1.5], [-1, 1])
+plot(document.querySelector("#c1"), [-2.5, 1.5], [-1, 1], 30)
+// Delay the below the fold ones.
+setTimeout(() => {
 plot(document.querySelector("#c2"),
  [((-1.5-0.9)/8)-0.6, ((0.5-0.9)/8)-0.6], [(-0.75/8)+0.2, (0.35/8)+0.2])
 
@@ -88,6 +90,7 @@ plot(document.querySelector("#c4"),
   510
 )
 }
+}, 100);
 
 </script>
 
@@ -242,14 +245,22 @@ Time is another axis: what might've been true 5 years ago might not hold now.
 This is why being ahead of one's time is not necessarily an enriching attribute.
 </p>
 
+<p>
+Truth then is fractal in nature. Two wrongs can make a right.
+</p>
+
 <p><canvas id="c4"></canvas></p>
 
 <p>
-Will my current belief be wrong too? Of course. Why bother writing it then?
-Well, there is a joy I get from constructing linear arrays of symbols that might
-map to a new tingling point in an abstract multi-dimensional space within a mind
-that is not me (or my own after I read afresh something I'd forgetten I'd myself
-written).
+Is my current belief going to be wrong too? Of course! That's what I started
+with: that I've always found myself to be incorrect eventually.
+</p>
+<p>
+So then, why bother writing this nonsense down? Well, there is the insect
+tangent I went to in the beginning. But that's not all, there is also a joy I
+get from constructing linear arrays of symbols that might map to a new tingling
+point in an abstract multi-dimensional space within a mind that is not me (or my
+own after I read afresh something I'd forgetten I'd myself written).
 </p>
 
 <p>
