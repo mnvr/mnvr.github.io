@@ -49,8 +49,12 @@ const mb = (c) => {
     z = step(z, c);
     if (z.some(x => Math.abs(x) > 2)) return false;
   }
-  return true;
+  return true; // should we?
+  // return z.every(x => Math.abs(x) < 1);
 }
+
+// Rescale x from [a, b] to [c, d]
+const rescale = (x, [a, b], [c, d]) => ((x - a) / (b - a)) * (d - c) + c
 
 const canvas = document.querySelector("canvas");
 const output = document.querySelector("output");
@@ -89,11 +93,12 @@ for (let y = 0; y < height; y++) {
     } else {
       k2++;
     }
+
     // Plot [(-2.5, 1.5), (-1, 1)]
     // - Maintain aspect ratio.
     // - Region of interest is towards the negative real axis.
+    const c = [rescale(x, [0, width], [-2.5, 1.5]), rescale(y, [0, height], [-1, 1])]
 
-    const c = [4 * x/ width - 2 - 0.5, 2 * y / height - 1];
     // console.log(c);
     if (mb(c)) {
 
