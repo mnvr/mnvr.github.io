@@ -94,14 +94,19 @@ const plot = (canvas, output, xrange, yrange) => {
 // Plot [(-2.5, 1.5), (-1, 1)]
 // - Maintains aspect ratio.
 // - Region of interest is towards the negative real axis.
-plot(
-  document.querySelector("#a canvas"), document.querySelector("#a output"),
-  [-2.5, 1.5], [-1, 1]
-)
+// plot(
+//   document.querySelector("#a canvas"), document.querySelector("#a output"),
+//   [-2.5, 1.5], [-1, 1]
+// )
+
+// plot(
+//   document.querySelector("#b canvas"), document.querySelector("#b output"),
+//   [-1.5, 0.5], [-0.5, 0.5]
+// )
 
 plot(
-  document.querySelector("#b canvas"), document.querySelector("#b output"),
-  [-2.5, 1.5], [-1, 1]
+  document.querySelector("#c canvas"), document.querySelector("#c output"),
+  [((-1.5-0.9)/8)-0.6, ((0.5-0.9)/8)-0.6], [(-0.75/8)+0.2, (0.35/8)+0.2]
 )
 </script>
 
@@ -115,6 +120,11 @@ plot(
 </p>
 
 <p id="b">
+<canvas></canvas>
+<output></output>
+</p>
+
+<p id="c">
 <canvas></canvas>
 <output></output>
 </p>
