@@ -109,9 +109,21 @@ hr {
   margin-block: 3rem;
 }
 
-code {
+:not(pre) > code {
   border: 1px solid var(--accent);
   padding: 0.5ex;
+}
+
+math {
+  border: 1px solid var(--accent);
+  padding: 0.8ex;
+}
+
+pre {
+  background-color: color(from var(--accent) srgb r g b / 0.025);
+  padding-inline: var(--main-margin);
+  padding-block: 1rem;
+  overflow-x: scroll;
 }
 
 blockquote {

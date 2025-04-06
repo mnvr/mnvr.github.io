@@ -6,65 +6,93 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 
-<title>Mandelbrot sets | mnvr.in</title>
-<meta name="description" content="">
+<title>Mandlebrot sets without the math | mnvr.in</title>
+<meta name="description" content="My (obligatory) take on these mystical marvels">
+<link href="paper.css" rel="stylesheet">
 
 <style>
 :root {
-  color-scheme: light dark;
+  --accent: tomato;
 }
-body {
-  max-width: 37rem;
+</style>
+
+</head>
+
+<body>
+
+<h3>Mandelbrot sets without the math</h3>
+
+<p>
+Mandelbrot sets are complex numbers <math><mi>c</mi></math> which don't diverge
+when iterated as
+<math><mi>z</mi><mo>&rarr;</mo><msup><mi>z</mi><mn>2</mn></msup><mo>+</mo><mi>c</mi></math>
+starting from <math><mi>z</mi><mo>=</mo><mn>0</mn></math>.
+</p>
+
+<p>
+<em>Wait, you said no math?</em>
+</p>
+
+<p>
+That's all, and you don't need to understand it. Forget I said the above. Take a
+2D plane, each point has an <code>x</code> and <code>y</code> coordinate,
+right?
+</p>
+
+<p>
+Okay, so for each pixel <code>x, y</code> we start a loop with <code>i, j</code>
+as <code>0, 0</code> and keep applying the following function
+</p>
+
+<pre><code>
+function step([i, j], [x, y]) {
+  return [i * i - j * j + x, 2 * i * j + y]
 }
-canvas {
-  border: 1px solid tomato;
-  width: 100%;
-  aspect-ratio: 2;
-  display: block;
+</code>
+</pre>
+
+<p>
+At each step, we'll get a new <code>i, j</code>. If these <code>i, j</code>
+don't grow beyond <code>2, 2</code>, then <code>x, y</code> is part of the
+Mandlebrot set, and we plot it. That's it.
+</p>
+
+<style>
+.container {
+  margin-block: 3em;
+  margin-inline: var(--main-margin);
+  display: flex;
+  gap: 1px;
+  flex-wrap: wrap;
+  --cw: 1px;
+  width: calc((200 * (var(--cw) + 1px)) - 1px);
+  div {
+    flex: 0 0 var(--cw);
+    aspect-ratio: 1;
+    background-color: color(from var(--accent) srgb r g b / 0.07);
+  }
+  div.on {
+    background-color: var(--accent);
+  }
+}
+
+@media (width < 450px) {
+  .container {
+    margin-inline: 1em;
+    --cw: 3px;
+  }
 }
 </style>
 
 <script type="module">
-
-// Mandelbrot set
-//
-// - Iterate, for each c,
-// - z = z^2 + c
-// - start z = 0
-//
-// Complex multiplication / squaring  [x, y]:
-//
-//     (a + ib) * (c + id)
-//     (a * c) + (ib * c) + (a * id) + (ib * id)
-//     (a * c) + (ib * c) + (a * id) - (b * d)
-//     (a * c - b * d) + i(b * c + a * d)
-//     (x * x - y * y) + i (2 * x * y)
-//
-const step = ([x, y], [cx, cy]) => [x * x - y * y + cx, 2 * x * y + cy]
-
-// c is part of set if iteration does not diverge.
-//
-// - 100 is an arbitrary threshold of iterations that seem to work.
-// - Math tells us that if z exceeds 2, it'll diverge (early return).
-const mb = (c, iter) => {
-  let z = [0, 0]
-  for (let i = 0; i < (iter ?? 100); i++) {
-    z = step(z, c);
-    if (z.some(x => Math.abs(x) > 2)) return i;
-  }
-  return true; // should we?
-  // return z.every(x => Math.abs(x) < 1);
-}
-
-// 10x faster!
-const mbInline = ([cx, cy], iter) => {
+const mb = ([cx, cy]) => {
   let x = 0, y = 0;
-  for (let i = 0; i < iter; i++) {
+  for (let i = 0; i < 100; i++) {
     let nx = x * x - y * y + cx
     let ny = 2 * x * y + cy
     x = nx;
     y = ny;
-    if (Math.abs(x) > 2 || Math.abs(y) > 2) return i;
+    if (Math.abs(x) > 2 || Math.abs(y) > 2) return false;
   }
   return true;
 }
@@ -72,133 +100,28 @@ const mbInline = ([cx, cy], iter) => {
 // Rescale x from [a, b] to [c, d]
 const rescale = (x, [a, b], [c, d]) => ((x - a) / (b - a)) * (d - c) + c
 
-let pi = 0;
-const plot = (canvas, output, xrange, yrange, iter = 100) => {
-  console.time(pi);
-  const dpr = Math.max(Math.floor(devicePixelRatio), 2);
-  const width = canvas.width = canvas.clientWidth * dpr;
-  const height = canvas.height = canvas.clientHeight * dpr;
-  output.innerText = JSON.stringify([...xrange, ...yrange]);
-
-  const ctx = canvas.getContext("2d");
-  const imageData = ctx.getImageData(0, 0, width, height);
-  const data = imageData.data;
-
-  for (let y = 0; y < height; y++) {
-    for (let x = 0; x < width; x++) {
-      const i = (y * width + x) * 4; /* RGBA */
-      const c = [
-        rescale(x, [0, width], xrange), rescale(y, [0, height], yrange)
-      ]
-
-      data[i + 0] = 0;
-      data[i + 1] = 0;
-
-      const z = mbInline(c, iter);
-      if (z === true) {
-        data[i + 2] = 255;
-        data[i + 3] = 255;
-      } else {
-      if (iter > 200 && z > 100) {
-        data[i + 2] = 255;
-        if (z > 280) {
-          data[i + 3] = (255 - z) / 2;
-        } else if (z > 180) {
-          data[i + 3] = 255 - z;
-        } else if (z > 120) {
-          data[i + 3] = z / 2;
-        } else {
-          data[i + 3] = z / 8;
-        }
-      }
-      }
-
-      if (Math.floor(c[0]) === c[0] || Math.floor(c[1]) === c[1]) {
-        data[i + 2] = 255;
-        data[i + 3] = 255;
-      }
+const div = document.querySelector(".container");
+for (let y = 0; y < 200; y++) {
+  for (let x = 0; x < 200; x++) {
+    const child = document.createElement("div");
+    const cx = rescale(x, [0, 200], [-2, 1]);
+    const cy = rescale(y, [0, 200], [-2, 1]);
+    console.log(cx, cy)
+    if (mb([cx, cy])) {
+      child.className = "on";
     }
+    div.appendChild(child);
   }
-
-  ctx.putImageData(imageData, 0, 0);
-  console.timeEnd(pi++);
 }
-
-// Plot [(-2.5, 1.5), (-1, 1)]
-// - Maintains aspect ratio.
-// - Region of interest is towards the negative real axis.
-// plot(
-//   document.querySelector("#a canvas"), document.querySelector("#a output"),
-//   [-2.5, 1.5], [-1, 1]
-// )
-
-// plot(
-//   document.querySelector("#b canvas"), document.querySelector("#b output"),
-//   [-1.5, 0.5], [-0.5, 0.5]
-// )
-
-// plot(
-//   document.querySelector("#c canvas"), document.querySelector("#c output"),
-//   [((-1.5-0.9)/8)-0.6, ((0.5-0.9)/8)-0.6], [(-0.75/8)+0.2, (0.35/8)+0.2]
-// )
-
-// const s = 38;
-// const xo = 0.6975;
-// plot(
-//   document.querySelector("#d canvas"), document.querySelector("#d output"),
-//   [((-1.5-0.9)/s)-xo, ((0.5-0.9)/s)-xo], [(-0.75/s)+0.2, (0.35/s)+0.2],
-//   200
-// )
-
-(() => {
-const s = 128;
-const xo = 0.7175;
-plot(
-  document.querySelector("#d canvas"), document.querySelector("#d output"),
-  [((-1.5-0.9)/s)-xo, ((0.5-0.9)/s)-xo], [(-0.75/s)+0.2, (0.35/s)+0.2],
-  200
-)
-})();
-
-(() => {
-const s = 11718;
-const xo = 0.73569;
-plot(
-  document.querySelector("#e canvas"), document.querySelector("#e output"),
-  [((-1.5-0.9)/s)-xo, ((0.5-0.9)/s)-xo], [(-0.75/s)+0.19674, (0.35/s)+0.19674],
-  510
-)
-})();
 </script>
 
-</head>
+<div class="container"></div>
 
-<body>
-
-<p id="a">
-<canvas></canvas>
-<output></output>
-</p>
-
-<p id="b">
-<canvas></canvas>
-<output></output>
-</p>
-
-<p id="c">
-<canvas></canvas>
-<output></output>
-</p>
-
-<p id="d">
-<canvas></canvas>
-<output></output>
-</p>
-
-<p id="e">
-<canvas></canvas>
-<output></output>
-</p>
+<footer>
+Manav Rathi
+<time>April 2025</time>
+<div><a href="/">mnvr.in</a></div>
+</footer>
 
 </body>
 </html>
