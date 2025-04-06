@@ -56,66 +56,52 @@ const mb = (c) => {
 // Rescale x from [a, b] to [c, d]
 const rescale = (x, [a, b], [c, d]) => ((x - a) / (b - a)) * (d - c) + c
 
-const canvas = document.querySelector("canvas");
-const output = document.querySelector("output");
-const dpr = Math.max(Math.floor(devicePixelRatio), 2);
-const width = canvas.width = canvas.clientWidth * dpr;
-const height = canvas.height = canvas.clientHeight * dpr;
-output.innerText = JSON.stringify([width, height]);
+const plot = (canvas, output, xrange, yrange) => {
+  const dpr = Math.max(Math.floor(devicePixelRatio), 2);
+  const width = canvas.width = canvas.clientWidth * dpr;
+  const height = canvas.height = canvas.clientHeight * dpr;
+  output.innerText = JSON.stringify([width, height]);
 
-const ctx = canvas.getContext("2d");
-ctx.strokeStyle = "tomato";
-ctx.beginPath();
-ctx.moveTo(0, 0);
-ctx.lineTo(width, height);
-ctx.closePath();
-ctx.stroke();
+  const ctx = canvas.getContext("2d");
+  ctx.strokeStyle = "tomato";
+  ctx.beginPath();
+  ctx.moveTo(0, 0);
+  ctx.lineTo(width, height);
+  ctx.closePath();
+  ctx.stroke();
 
-const imageData = ctx.getImageData(0, 0, width, height);
-const data = imageData.data;
-let c1 = 0; let c2 = 0;
-for (let i = 0; i < data.length; i += 4) {
-  // console.log("c", i, data[i], data[i + 1], data[i + 2], data[i + 3])
-  if ((data[i]+ data[i + 1]+ data[i + 2]+ data[i + 3]) == 0) {
-    c1++;
-  } else {
-    c2++;
-  }
-}
-console.log({c1, c2});
+  const imageData = ctx.getImageData(0, 0, width, height);
+  const data = imageData.data;
 
-let k1 = 0; let k2 = 0;
-for (let y = 0; y < height; y++) {
-  for (let x = 0; x < width; x++) {
-    const i = (y * width + x) * 4;
-    if ((data[i]+ data[i + 1]+ data[i + 2]+ data[i + 3]) == 0) {
-      k1++;
-    } else {
-      k2++;
-    }
+  for (let y = 0; y < height; y++) {
+    for (let x = 0; x < width; x++) {
+      const i = (y * width + x) * 4; /* RGBA */
+      const c = [
+        rescale(x, [0, width], xrange), rescale(y, [0, height], yrange)
+      ]
 
-    // Plot [(-2.5, 1.5), (-1, 1)]
-    // - Maintain aspect ratio.
-    // - Region of interest is towards the negative real axis.
-    const c = [rescale(x, [0, width], [-2.5, 1.5]), rescale(y, [0, height], [-1, 1])]
+      if (mb(c)) {
+        data[i + 2] = 255;
+        data[i + 3] = 255;
+      }
 
-    // console.log(c);
-    if (mb(c)) {
-
-      data[i + 2] = 255;
-      data[i + 3] = 255;
-    }
-    if (Math.floor(c[0]) === c[0] || Math.floor(c[1]) === c[1]) {
-      data[i + 2] = 255;
-      data[i + 3] = 255;
+      if (Math.floor(c[0]) === c[0] || Math.floor(c[1]) === c[1]) {
+        data[i + 2] = 255;
+        data[i + 3] = 255;
+      }
     }
   }
+
+  ctx.putImageData(imageData, 0, 0);
 }
-console.log({k1, k2});
-console.log([imageData.width, imageData.height])
 
-ctx.putImageData(imageData, 0, 0);
-
+// Plot [(-2.5, 1.5), (-1, 1)]
+// - Maintains aspect ratio.
+// - Region of interest is towards the negative real axis.
+plot(
+  document.querySelector("canvas"), document.querySelector("output"),
+  [-2.5, 1.5], [-1, 1]
+)
 </script>
 
 </head>
