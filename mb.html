@@ -22,6 +22,33 @@ canvas {
 </style>
 
 <script type="module">
+/**
+  Mandelbrot set
+
+  Iterate, for each c,
+  z = z^2 + c
+  start z = 0
+
+  [x, y]
+
+  Complex multiplication / squaring:
+
+  (a + ib) * (c + id)
+  (a * c) + (ib * c) + (a * id) + (ib * id)
+  (a * c) + (ib * c) + (a * id) - (b * d)
+  (a * c - b * d) + i(b * c + a * d)
+  (x * x - y * y) + i (2 * x * y)
+*/
+const step = ([x, y], [cx, cy]) => [x * x - y * y + cx, 2 * x * y + cy]
+/** c is part of set if iteration converges  */
+const mb = (c) => {
+  let z = [0, 0]
+  for (let i = 0; i < 100; i++) {
+    z = step(z, c);
+  }
+  return z.every(x => x < 1)
+}
+
 const canvas = document.querySelector("canvas");
 const output = document.querySelector("output");
 const dpr = Math.max(Math.floor(devicePixelRatio), 2);
@@ -36,6 +63,7 @@ ctx.moveTo(0, 0);
 ctx.lineTo(width - 20, height - 20);
 ctx.closePath();
 ctx.stroke();
+
 </script>
 
 </head>
