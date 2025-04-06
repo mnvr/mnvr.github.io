@@ -64,30 +64,37 @@ Mandlebrot set, and we plot it. That's it.
   display: flex;
   gap: 1px;
   flex-wrap: wrap;
-  --cw: 1px;
+  --cw: 2px;
   width: calc((200 * (var(--cw) + 1px)) - 1px);
   div {
     flex: 0 0 var(--cw);
     aspect-ratio: 1;
-    background-color: color(from var(--accent) srgb r g b / 0.07);
+    background-color: color(from var(--accent) srgb r g b / 0.2);
   }
   div.on {
     background-color: var(--accent);
   }
 }
 
-@media (width < 450px) {
+@media (width < 700px) {
   .container {
-    margin-inline: 1em;
-    --cw: 3px;
+    margin-inline: 0;
   }
 }
+
+@media (width < 600px) {
+  .container {
+    margin-inline: auto;
+    --cw: 1px;
+  }
+}
+
 </style>
 
 <script type="module">
-const mb = ([cx, cy]) => {
+const mb = ([cx, cy], iter = 100) => {
   let x = 0, y = 0;
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < iter; i++) {
     let nx = x * x - y * y + cx
     let ny = 2 * x * y + cy
     x = nx;
@@ -102,11 +109,11 @@ const rescale = (x, [a, b], [c, d]) => ((x - a) / (b - a)) * (d - c) + c
 
 const div = document.querySelector(".container");
 for (let y = 0; y < 200; y++) {
+  if (y < 68) continue;
   for (let x = 0; x < 200; x++) {
     const child = document.createElement("div");
     const cx = rescale(x, [0, 200], [-2, 1]);
     const cy = rescale(y, [0, 200], [-2, 1]);
-    console.log(cx, cy)
     if (mb([cx, cy])) {
       child.className = "on";
     }
