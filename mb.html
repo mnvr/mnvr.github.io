@@ -22,31 +22,34 @@ canvas {
 </style>
 
 <script type="module">
-/**
-  Mandelbrot set
 
-  Iterate, for each c,
-  z = z^2 + c
-  start z = 0
-
-  [x, y]
-
-  Complex multiplication / squaring:
-
-  (a + ib) * (c + id)
-  (a * c) + (ib * c) + (a * id) + (ib * id)
-  (a * c) + (ib * c) + (a * id) - (b * d)
-  (a * c - b * d) + i(b * c + a * d)
-  (x * x - y * y) + i (2 * x * y)
-*/
+// Mandelbrot set
+//
+// - Iterate, for each c,
+// - z = z^2 + c
+// - start z = 0
+//
+// Complex multiplication / squaring  [x, y]:
+//
+//     (a + ib) * (c + id)
+//     (a * c) + (ib * c) + (a * id) + (ib * id)
+//     (a * c) + (ib * c) + (a * id) - (b * d)
+//     (a * c - b * d) + i(b * c + a * d)
+//     (x * x - y * y) + i (2 * x * y)
+//
 const step = ([x, y], [cx, cy]) => [x * x - y * y + cx, 2 * x * y + cy]
-/** c is part of set if iteration converges  */
+
+// c is part of set if iteration does not diverge.
+//
+// - 100 is an arbitrary threshold of iterations that seem to work.
+// - Math tells us that if z exceeds 2, it'll diverge (early return).
 const mb = (c) => {
   let z = [0, 0]
   for (let i = 0; i < 100; i++) {
     z = step(z, c);
+    if (z.some(x => Math.abs(x) > 2)) return false;
   }
-  return z.every(x => x < 1)
+  return true;
 }
 
 const canvas = document.querySelector("canvas");
@@ -86,7 +89,11 @@ for (let y = 0; y < height; y++) {
     } else {
       k2++;
     }
-    const c = [4 * x/ width - 2, 2 * y / height - 1];
+    // Plot [(-2.5, 1.5), (-1, 1)]
+    // - Maintain aspect ratio.
+    // - Region of interest is towards the negative real axis.
+
+    const c = [4 * x/ width - 2 - 0.5, 2 * y / height - 1];
     // console.log(c);
     if (mb(c)) {
 
