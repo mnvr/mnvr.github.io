@@ -81,16 +81,24 @@ let k1 = 0; let k2 = 0;
 for (let y = 0; y < height; y++) {
   for (let x = 0; x < width; x++) {
     const i = (y * width + x) * 4;
-    // console.log("k", i, data[i], data[i + 1], data[i + 2], data[i + 3])
     if ((data[i]+ data[i + 1]+ data[i + 2]+ data[i + 3]) == 0) {
       k1++;
     } else {
       k2++;
     }
+    const c = [4 * x/ width - 2, 4 * y / height - 2];
+    // console.log(c);
+    if (mb(c)) {
+
+      data[i + 2] = 255;
+      data[i + 3] = 255;
+    }
   }
 }
 console.log({k1, k2});
 console.log([imageData.width, imageData.height])
+
+ctx.putImageData(imageData, 0, 0);
 
 </script>
 
