@@ -6,18 +6,21 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 
-<title>Template | mnvr.in</title>
+<title>Mandelbrot sets | mnvr.in</title>
 <meta name="description" content="">
-<link href="paper.css" rel="stylesheet">
 
 <style>
 :root {
-  --accent: pink;
+  color-scheme: light dark;
+}
+body {
+  max-width: 37rem;
 }
 canvas {
   border: 1px solid tomato;
   width: 100%;
   aspect-ratio: 2;
+  display: block;
 }
 </style>
 
@@ -60,16 +63,9 @@ const plot = (canvas, output, xrange, yrange) => {
   const dpr = Math.max(Math.floor(devicePixelRatio), 2);
   const width = canvas.width = canvas.clientWidth * dpr;
   const height = canvas.height = canvas.clientHeight * dpr;
-  output.innerText = JSON.stringify([width, height]);
+  output.innerText = JSON.stringify([...xrange, ...yrange]);
 
   const ctx = canvas.getContext("2d");
-  ctx.strokeStyle = "tomato";
-  ctx.beginPath();
-  ctx.moveTo(0, 0);
-  ctx.lineTo(width, height);
-  ctx.closePath();
-  ctx.stroke();
-
   const imageData = ctx.getImageData(0, 0, width, height);
   const data = imageData.data;
 
@@ -99,7 +95,12 @@ const plot = (canvas, output, xrange, yrange) => {
 // - Maintains aspect ratio.
 // - Region of interest is towards the negative real axis.
 plot(
-  document.querySelector("canvas"), document.querySelector("output"),
+  document.querySelector("#a canvas"), document.querySelector("#a output"),
+  [-2.5, 1.5], [-1, 1]
+)
+
+plot(
+  document.querySelector("#b canvas"), document.querySelector("#b output"),
   [-2.5, 1.5], [-1, 1]
 )
 </script>
@@ -108,10 +109,13 @@ plot(
 
 <body>
 
-<p>
+<p id="a">
 <canvas></canvas>
+<output></output>
 </p>
-<p>
+
+<p id="b">
+<canvas></canvas>
 <output></output>
 </p>
 
