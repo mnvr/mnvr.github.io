@@ -86,13 +86,13 @@ for (let y = 0; y < height; y++) {
     } else {
       k2++;
     }
-    const c = [4 * x/ width - 2, 4 * y / height - 2];
+    const c = [4 * x/ width - 2, 2 * y / height - 1];
     // console.log(c);
-    // if (mb(c)) {
+    if (mb(c)) {
 
-    //   data[i + 2] = 255;
-    //   data[i + 3] = 255;
-    // }
+      data[i + 2] = 255;
+      data[i + 3] = 255;
+    }
     if (Math.floor(c[0]) === c[0] || Math.floor(c[1]) === c[1]) {
       data[i + 2] = 255;
       data[i + 3] = 255;
