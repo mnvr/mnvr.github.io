@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+<title>Template | mnvr.in</title>
+<meta name="description" content="">
+<link href="paper.css" rel="stylesheet">
+
+<style>
+:root {
+  --accent: pink;
+}
+canvas {
+  border: 1px solid tomato;
+  width: 100%;
+  aspect-ratio: 2;
+}
+</style>
+
+<script type="module">
+const canvas = document.querySelector("canvas");
+const output = document.querySelector("output");
+const dpr = Math.max(Math.floor(devicePixelRatio), 2);
+const width = canvas.width = canvas.clientWidth * dpr;
+const height = canvas.height = canvas.clientHeight * dpr;
+output.innerText = JSON.stringify([canvas.clientWidth, canvas.clientHeight, canvas.width, canvas.clientWidth]);
+
+const ctx = canvas.getContext("2d");
+ctx.strokeStyle = "tomato";
+ctx.beginPath();
+ctx.moveTo(0, 0);
+ctx.lineTo(width - 20, height - 20);
+ctx.closePath();
+ctx.stroke();
+</script>
+
+</head>
+
+<body>
+
+<p>
+<canvas></canvas>
+</p>
+<p>
+<output></output>
+</p>
+
+</body>
+</html>
