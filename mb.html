@@ -50,7 +50,7 @@ const mb = (c, iter) => {
   let z = [0, 0]
   for (let i = 0; i < (iter ?? 100); i++) {
     z = step(z, c);
-    if (z.some(x => Math.abs(x) > 2)) return false;
+    if (z.some(x => Math.abs(x) > 2)) return i;
   }
   return true; // should we?
   // return z.every(x => Math.abs(x) < 1);
@@ -76,9 +76,26 @@ const plot = (canvas, output, xrange, yrange, iter = 100) => {
         rescale(x, [0, width], xrange), rescale(y, [0, height], yrange)
       ]
 
-      if (mb(c, iter)) {
+      data[i + 0] = 0;
+      data[i + 1] = 0;
+
+      const z = mb(c, iter);
+      if (z === true) {
         data[i + 2] = 255;
         data[i + 3] = 255;
+      } else {
+      if (iter > 200 && z > 100) {
+        data[i + 2] = 255;
+        if (z > 280) {
+          data[i + 3] = (255 - z) / 2;
+        } else if (z > 180) {
+          data[i + 3] = 255 - z;
+        } else if (z > 120) {
+          data[i + 3] = z / 2;
+        } else {
+          data[i + 3] = z / 8;
+        }
+      }
       }
 
       if (Math.floor(c[0]) === c[0] || Math.floor(c[1]) === c[1]) {
@@ -94,28 +111,48 @@ const plot = (canvas, output, xrange, yrange, iter = 100) => {
 // Plot [(-2.5, 1.5), (-1, 1)]
 // - Maintains aspect ratio.
 // - Region of interest is towards the negative real axis.
-plot(
-  document.querySelector("#a canvas"), document.querySelector("#a output"),
-  [-2.5, 1.5], [-1, 1]
-)
+// plot(
+//   document.querySelector("#a canvas"), document.querySelector("#a output"),
+//   [-2.5, 1.5], [-1, 1]
+// )
 
-plot(
-  document.querySelector("#b canvas"), document.querySelector("#b output"),
-  [-1.5, 0.5], [-0.5, 0.5]
-)
+// plot(
+//   document.querySelector("#b canvas"), document.querySelector("#b output"),
+//   [-1.5, 0.5], [-0.5, 0.5]
+// )
 
-plot(
-  document.querySelector("#c canvas"), document.querySelector("#c output"),
-  [((-1.5-0.9)/8)-0.6, ((0.5-0.9)/8)-0.6], [(-0.75/8)+0.2, (0.35/8)+0.2]
-)
+// plot(
+//   document.querySelector("#c canvas"), document.querySelector("#c output"),
+//   [((-1.5-0.9)/8)-0.6, ((0.5-0.9)/8)-0.6], [(-0.75/8)+0.2, (0.35/8)+0.2]
+// )
 
-const s = 38;
-const xo = 0.6975;
+// const s = 38;
+// const xo = 0.6975;
+// plot(
+//   document.querySelector("#d canvas"), document.querySelector("#d output"),
+//   [((-1.5-0.9)/s)-xo, ((0.5-0.9)/s)-xo], [(-0.75/s)+0.2, (0.35/s)+0.2],
+//   200
+// )
+
+(() => {
+const s = 128;
+const xo = 0.7175;
 plot(
   document.querySelector("#d canvas"), document.querySelector("#d output"),
   [((-1.5-0.9)/s)-xo, ((0.5-0.9)/s)-xo], [(-0.75/s)+0.2, (0.35/s)+0.2],
   200
 )
+})();
+
+(() => {
+const s = 11718;
+const xo = 0.73569;
+plot(
+  document.querySelector("#e canvas"), document.querySelector("#e output"),
+  [((-1.5-0.9)/s)-xo, ((0.5-0.9)/s)-xo], [(-0.75/s)+0.19674, (0.35/s)+0.19674],
+  510
+)
+})();
 </script>
 
 </head>
@@ -138,6 +175,11 @@ plot(
 </p>
 
 <p id="d">
+<canvas></canvas>
+<output></output>
+</p>
+
+<p id="e">
 <canvas></canvas>
 <output></output>
 </p>
