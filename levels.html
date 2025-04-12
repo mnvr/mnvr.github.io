@@ -24,9 +24,7 @@ canvas {
 <script type="module">
 import { mbExit, rescale } from "./mandelbrot.js";
 
-let pi = 0;
 const plot = (canvas, xrange, yrange, iter = 100) => {
-  console.time(pi);
   const dpr = Math.max(Math.floor(devicePixelRatio), 2);
   const width = canvas.width = canvas.clientWidth * dpr;
   const height = canvas.height = canvas.clientHeight * dpr;
@@ -50,46 +48,41 @@ const plot = (canvas, xrange, yrange, iter = 100) => {
         data[i + 2] = 255;
         data[i + 3] = 255;
       } else {
-      if (iter > 200 && z > 100) {
-        data[i + 2] = 255;
-        if (z > 280) {
-          data[i + 3] = (255 - z) / 2;
-        } else if (z > 180) {
-          data[i + 3] = 255 - z;
-        } else if (z > 120) {
-          data[i + 3] = z / 2;
-        } else {
-          data[i + 3] = z / 8;
+        if (iter > 200 && z > 100) {
+          data[i + 2] = 255;
+          if (z > 280) {
+            data[i + 3] = (255 - z) / 2;
+          } else if (z > 180) {
+            data[i + 3] = 255 - z;
+          } else if (z > 120) {
+            data[i + 3] = z / 2;
+          } else {
+            data[i + 3] = z / 8;
+          }
         }
-      }
       }
     }
   }
 
   ctx.putImageData(imageData, 0, 0);
-  console.timeEnd(pi++);
 }
 
 plot(document.querySelector("#c1"), [-2.5, 1.5], [-1, 1], 30)
+
 // Delay the below the fold ones.
 setTimeout(() => {
-plot(document.querySelector("#c2"),
- [((-1.5-0.9)/8)-0.6, ((0.5-0.9)/8)-0.6], [(-0.75/8)+0.2, (0.35/8)+0.2])
+  plot(document.querySelector("#c2"), [-0.9, -0.65], [0.10625, 0.24375])
 
-const s = 38;
-const xo = 0.6975;
-plot(document.querySelector("#c3"),
-[((-1.5-0.9)/s)-xo, ((0.5-0.9)/s)-xo], [(-0.75/s)+0.2, (0.35/s)+0.2],
-200)
+  plot(document.querySelector("#c3"),
+    [-0.7606578947368421, -0.7080263157894737],
+    [0.18026315789473685, 0.20921052631578949],
+    200)
 
-if (true) {
-const s = 11718;
-const xo = 0.73569;
-plot(document.querySelector("#c4"),
-  [((-1.5-0.9)/s)-xo, ((0.5-0.9)/s)-xo], [(-0.75/s)+0.19674, (0.35/s)+0.19674],
-  510
-)
-}
+  plot(document.querySelector("#c4"),
+    [-0.7358948131080388, -0.7357241355180064],
+    [0.19667599590373783, 0.19676986857825568],
+    510
+  )
 }, 100);
 
 </script>
@@ -272,6 +265,10 @@ Hopefully, it tickles.
 <footer>
 Manav Rathi
 <time>April 2025</time>
+<div class="footnote">
+If you're curious how the mandelbrot set illustrations were made (it's easy!), I
+<a href="mb.html">wrote about them here</a>.
+</div>
 <div><a href="/">mnvr.in</a></div>
 </footer>
 

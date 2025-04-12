@@ -146,6 +146,10 @@ footer {
     display: block;
     margin-block-end: 1em;
   }
+
+  .footnote {
+    margin-block: 1em;
+  }
 }
 
 footer a[href="/"] {
