@@ -83,66 +83,37 @@ span.tags {
   cursor: context-menu;
 }
 
-.tag:hover {
-  font-weight: bold;
-}
-
-body:has(.tag[data-tag="essay"]:hover) {
-  p.item:has(.tag[data-tag="essay"]) {
-    outline: 2px solid hotpink;
-  }
-  .tag[data-tag="essay"] {
-    color: hotpink;
-    font-weight: bold;
-  }
-}
-
-body:has(.tag[data-tag="programming"]:hover) {
-  p.item:has(.tag[data-tag="programming"]) {
-    outline: 2px solid light-dark(blue, royalblue);
-  }
-  .tag[data-tag="programming"] {
-    color: light-dark(blue, royalblue);
-    font-weight: bold;
-  }
-}
-
 body:has(.tag[data-tag="poem"]:hover) {
-  p.item:has(.tag[data-tag="poem"]) {
-    outline: 2px solid mediumslateblue;
-  }
   .tag[data-tag="poem"] {
-    color: mediumslateblue;
-    font-weight: bold;
-  }
-}
-
-body:has(.tag[data-tag="quote"]:hover) {
-  p.item:has(.tag[data-tag="quote"]) {
-    outline: 2px solid plum;
-  }
-  .tag[data-tag="quote"] {
-    color: plum;
+    color: oklch(0.6 0.2 30);
     font-weight: bold;
   }
 }
 
 body:has(.tag[data-tag="thought"]:hover) {
-  p.item:has(.tag[data-tag="thought"]) {
-    outline: 2px solid chocolate;
-  }
   .tag[data-tag="thought"] {
-    color: chocolate;
+    color: oklch(0.6 0.2 90);
     font-weight: bold;
   }
 }
 
 body:has(.tag[data-tag="essay"]:hover) {
-  p.item:has(.tag[data-tag="essay"]) {
-    outline: 2px solid forestgreen;
-  }
   .tag[data-tag="essay"] {
-    color: forestgreen;
+    color: oklch(0.6 0.2 150);
+    font-weight: bold;
+  }
+}
+
+body:has(.tag[data-tag="quote"]:hover) {
+  .tag[data-tag="quote"] {
+    color: oklch(0.6 0.2 210);
+    font-weight: bold;
+  }
+}
+
+body:has(.tag[data-tag="programming"]:hover) {
+  .tag[data-tag="programming"] {
+    color: oklch(0.6 0.2 300);
     font-weight: bold;
   }
 }
