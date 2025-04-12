@@ -69,6 +69,13 @@ p.item {
   outline-offset: 7px;
 }
 
+div.col2 {
+  margin-inline: var(--main-margin);
+  max-width: 40em;
+  display: flex;
+  align-items: center;
+}
+
 span.tags {
   color: var(--muted);
   font-family: monospace;
@@ -134,13 +141,25 @@ body:has(.tag[data-tag="programming"]:hover) {
 <a href="vibration">the nature of the universe is vibration</a>
 </p> -->
 
-<p class="item">
+
+<style>
+img.levels {
+  flex-shrink: 0;
+  aspect-ratio: 2;
+  margin-inline-end: 1em;
+  height: 75px;
+}
+</style>
+<div class="col2 levels">
+<p>
 <a href="levels">Levels of truth</a> &mdash; I have learnt only one thing in
 life that I'm sure of so far: That I'm always wrong.
 <span class="tags">
 <span class="tag" data-tag="essay"></span>
 </span>
 </p>
+<a href="levels"><img class="levels" src="i/levels.avif" alt=""></a>
+</div>
 
 <p class="item">
 <a href="math-insurance">A Mathematician's insurance</a> &mdash; Win-win!
@@ -209,26 +228,20 @@ href="bugs">Everything else is a feature</a>.
 </p>
 
 <style>
-.chess {
-  margin-inline: var(--main-margin);
-  max-width: 40em;
-  display: flex;
-  align-items: center;
-  svg {
-    flex-shrink: 0;
-    margin-inline: 1em
-  }
+svg.chess {
+  flex-shrink: 0;
+  margin-inline: 1em
 }
 </style>
 
-<div class="chess">
+<div class="col2 chess">
 <p>
 <a href="chess">chess / piece / pawn / influence</a>
 &mdash; Imagining a chess board where each piece and pawn casts a shadow of
 influence.
 </p>
 <a href="chess">
-<svg width="64px" height="64px" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg class="chess" width="64px" height="64px" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect x="0" y="0" width="64" height="64" fill="#ef00ef"/>
 <rect x="17" y="17" width="6" height="6" fill="white"/>
 <rect x="29" y="17" width="6" height="6" fill="white"/>
