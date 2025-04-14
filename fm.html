@@ -82,6 +82,22 @@ canvas1.height = 100 * dpr;
 canvas1.style.width = "350px";
 canvas1.style.height = "100px";
 
+const c1 = canvas1.getContext("2d");
+
+// c1.strokeColor = "currentColor" doesn't work currently. a workaround.
+const getCurrentColor = () => {
+  const div = document.createElement("div");
+  document.body.appendChild(div);
+  const color = getComputedStyle(div).getPropertyValue("color");
+  document.body.removeChild(div);
+  return color;
+}
+const updateCanvasColors = () => {
+  c1.strokeStyle = getCurrentColor();
+}
+matchMedia("(prefers-color-scheme: dark)").onchange = updateCanvasColors;
+updateCanvasColors();
+
 const samples1 = new Float32Array(canvas1.width);
 
 let osc1;
@@ -138,10 +154,8 @@ const startSequencer = () => {
     requestAnimationFrame(loop);
 
     analyser1.getFloatTimeDomainData(samples1);
-    const c1 = canvas1.getContext("2d");
     const cy = (x) => rescale(x, [-1, 1], [canvas1.height, 0]);
     c1.clearRect(0, 0, canvas1.width, canvas1.height);
-    c1.strokeStyle = "black";
     c1.beginPath();
     c1.moveTo(0, cy(samples1[0]));
     for (let i = 1; i < samples1.length; i++) {
