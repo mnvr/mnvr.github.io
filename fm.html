@@ -19,21 +19,33 @@ let isOn;
 const onOff = (e) => {
   const btn = e.target;
 
-  if (!audioContext) audioContext = new AudioContext();
+  if (!audioContext) {
+    audioContext = new AudioContext();
+    createAudioGraph();
+  }
 
   isOn = !isOn;
   btn.innerText = isOn ? "Off" : "On";
 
   if (isOn) {
     audioContext.resume();
-    powerOn();
   } else {
     audioContext.suspend();
   }
 }
 
-const powerOn = () => {
-  console.log("turn on");
+const createAudioGraph = () => {
+  const osc1 = new OscillatorNode(audioContext, {
+
+  });
+  const amp1 = new GainNode(audioContext);
+  osc1.connect(amp1)
+  osc1.start();
+
+  const mix = new GainNode(audioContext, { gain: 0.1 });
+  amp1.connect(mix);
+
+  mix.connect(audioContext.destination);
 }
 
 document.querySelector("button").addEventListener("click", onOff);
