@@ -13,6 +13,9 @@
 :root {
   color-scheme: light dark;
 }
+button {
+  margin-inline-end: 0.2em;
+}
 div#seq {
   display: flex;
   margin-block: 0.5em;
@@ -28,8 +31,19 @@ div#seq {
 }
 .row {
   display: flex;
-  align-items: center;
   gap: 1em;
+}
+.row .times {
+  display: flex;
+  flex-direction: column;
+  output {
+    min-width: 3em;
+    text-align: right;
+  }
+}
+output.fixed {
+  font-size: small;
+  opacity: 0.7;
 }
 </style>
 
@@ -79,7 +93,6 @@ const createAudioGraph = () => {
 
 const timeOutput = document.querySelector("output#time");
 const tickOutput = document.querySelector("output#tick");
-const tickTimeOutput = document.querySelector("output#tickTime");
 const bpm = 140;
 const bps = bpm / 60;
 const tickTime = 1 / bps;
@@ -90,7 +103,12 @@ const canvas1 = document.querySelector("canvas#c1");
 const seq = []
 
 const startSequencer = () => {
-  tickTimeOutput.innerText = tickTime.toFixed(3);
+  // sr - samples per second - reciprocal - second per sample
+  const sampleTime = 1 / audioContext.sampleRate;
+  document.querySelector("output#sampleTime").innerText =
+    `${(sampleTime * 1e3).toFixed(3)} ms `;
+  document.querySelector("output#tickTime").innerText =
+    `${(tickTime * 1e3).toFixed(3)} ms`;
 
   const sl = seq.length;
 
@@ -162,7 +180,10 @@ for (let i = 0; i < 16; i++) {
 
 <div class="row">
 <div id="seq"></div>
-<output id="tickTime"></output>
+<div class="times">
+<output id="sampleTime" class="fixed"></output>
+<output id="tickTime" class="fixed"></output>
+</div>
 </div>
 
 <canvas id="c1"></canvas>
