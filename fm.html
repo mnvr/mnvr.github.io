@@ -47,8 +47,13 @@ output.fixed {
   font-size: small;
   opacity: 0.7;
 }
-canvas {
-
+.hud {
+  position: relative;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 </style>
 
@@ -124,7 +129,7 @@ const bps = bpm / 60;
 const tickTime = 1 / bps;
 let tick = -1;
 
-const rafDeltaOutput = document.querySelector("output#rafDelta");
+const scope1Output = document.querySelector("output#scope1");
 
 const seq = []
 
@@ -132,16 +137,17 @@ const startSequencer = () => {
   // sr - samples per second - reciprocal - second per sample
   const sampleTime = 1 / audioContext.sampleRate;
   document.querySelector("output#sampleTime").innerText =
-    `${(sampleTime * 1e3).toFixed(3)} ms `;
+    `${(sampleTime * 1e3).toFixed(3)} ms`;
   document.querySelector("output#tickTime").innerText =
     `${(tickTime * 1e3).toFixed(3)} ms`;
+
+  const scope1Time = sampleTime * samples1.length;
+  scope1Output.innerText = `${samples1.length} samp ${(scope1Time * 1e3).toFixed(0)} ms`;
 
   const sl = seq.length;
 
   const loop = (dt) => {
     if (!isOn) return;
-
-    rafDeltaOutput.innerText = dt.toFixed(6);
 
     const t = audioContext.currentTime;
 
@@ -209,12 +215,10 @@ for (let i = 0; i < 16; i++) {
 </div>
 </div>
 
-<div class="row">
-<output id="rafDelta" class="fixed"></output>
-</div>
-
+<span class="hud">
 <canvas id="c1"></canvas>
-
+<output id="scope1" class="fixed overlay"></output>
+</span>
 
 </body>
 </html>
