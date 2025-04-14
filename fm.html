@@ -58,6 +58,7 @@ const onOff = (e) => {
 
 let osc1;
 let amp1;
+let analyser1;
 
 const createAudioGraph = () => {
   osc1 = new OscillatorNode(audioContext, {
@@ -66,6 +67,9 @@ const createAudioGraph = () => {
   amp1 = new GainNode(audioContext, { gain: 0 });
   osc1.connect(amp1)
   osc1.start();
+
+  analyser1 = new AnalyserNode(audioContext);
+  amp1.connect(analyser1);
 
   const mix = new GainNode(audioContext, { gain: 0.1 });
   amp1.connect(mix);
@@ -81,12 +85,19 @@ const bps = bpm / 60;
 const tickTime = 1 / bps;
 let tick = -1;
 
+const canvas1 = document.querySelector("canvas#c1");
+
 const seq = []
 
 const startSequencer = () => {
   tickTimeOutput.innerText = tickTime.toFixed(3);
 
   const sl = seq.length;
+
+  let samples1;
+  if (!samples1) {
+    samples1 = new Float32Array(analyser1.fftSize);
+  }
 
   const loop = () => {
     if (!isOn) return;
@@ -95,6 +106,18 @@ const startSequencer = () => {
 
     timeOutput.innerText = t.toFixed(1);
     requestAnimationFrame(loop);
+
+    analyser1.getFloatTimeDomainData(samples1);
+    const canv1 = canvas1.getContext("2d");
+    const cy = (x) => rescale(x, [-1, 1], [0, canvas1.clientHeight]);
+    canv1.clearRect(0, 0, canvas1.clientWidth, canvas1.clientHeight);
+    canv1.strokeStyle = "black";
+    canv1.beginPath();
+    canv1.moveTo(0, cy(0));
+    for (let i = 0; i < Math.min(samples1.length, canvas1.clientWidth); i++) {
+      canv1.lineTo(i, cy(samples1[i]));
+    }
+    canv1.stroke();
 
     const thisTick = Math.floor(t / tickTime);
     if (thisTick == tick) return;
@@ -111,10 +134,13 @@ const startSequencer = () => {
     amp1.gain.setTargetAtTime(0, t + 0.001, tickTime / 5);
     amp1.gain.setValueAtTime(0, t + tickTime / 2);
     // amp1.gain.setTargetAtTime(0, t + 0.05, 0.5)
+
   };
 
   requestAnimationFrame(loop);
 }
+
+const rescale = (x, [a, b], [c, d]) => ((x - a) / (b - a)) * (d - c) + c;
 
 document.querySelector("button").addEventListener("click", onOff);
 const seqD = document.querySelector("#seq");
@@ -138,6 +164,8 @@ for (let i = 0; i < 16; i++) {
 <div id="seq"></div>
 <output id="tickTime"></output>
 </div>
+
+<canvas id="c1"></canvas>
 
 
 </body>
