@@ -81,19 +81,28 @@ const onOff = (e) => {
 }
 
 const dpr = Math.max(Math.floor(devicePixelRatio), 2)
-const canvas1 = document.querySelector("canvas#c1")
-canvas1.width = 350 * dpr;
-canvas1.height = 100 * dpr;
-canvas1.style.width = "350px";
-canvas1.style.height = "100px";
 
-const c1 = canvas1.getContext("2d");
-c1.lineWidth = dpr;
+const prepScope = (canvas) => {
+  canvas.width = 350 * dpr;
+  canvas.height = 100 * dpr;
+  canvas.style.width = "350px";
+  canvas.style.height = "100px";
+
+  const ctx = canvas.getContext("2d");
+  ctx.lineWidth = dpr;
+
+  return [canvas, ctx];
+}
+
+const [canvas1, c1] = prepScope(document.querySelector("canvas#c1"));
+const [canvas2, c2] = prepScope(document.querySelector("canvas#c2"));
 
 // c1.strokeColor = "currentColor" doesn't work currently. a workaround.
 const dm = matchMedia("(prefers-color-scheme: dark)");
 const updateCanvasColors = () => {
-  c1.strokeStyle = dm.matches ? "#aaa" : "#555";
+  const c = dm.matches ? "#aaa" : "#555";
+  c1.strokeStyle = c;
+  c2.strokeStyle = c;
 }
 dm.onchange = updateCanvasColors;
 updateCanvasColors();
@@ -132,6 +141,7 @@ let tick = -1;
 const scope1Output = document.querySelector("output#scope1");
 
 const seq = []
+let haveC2ed = false;
 
 const startSequencer = () => {
   // sr - samples per second - reciprocal - second per sample
@@ -163,6 +173,16 @@ const startSequencer = () => {
       c1.lineTo(i, cy(samples1[i]));
     }
     c1.stroke();
+
+    if (!haveC2ed && tick == 1) {
+      haveC2ed = true;
+      c2.beginPath();
+      c2.moveTo(0, cy(samples1[0]));
+      for (let i = 1; i < samples1.length; i++) {
+        c2.lineTo(i, cy(samples1[i]));
+      }
+      c2.stroke();
+    }
 
     const thisTick = Math.floor(t / tickTime);
     if (thisTick == tick) return;
@@ -218,6 +238,10 @@ for (let i = 0; i < 16; i++) {
 <span class="hud">
 <canvas id="c1"></canvas>
 <output id="scope1" class="fixed overlay"></output>
+</span>
+
+<span>
+<canvas id="c2"></canvas>
 </span>
 
 </body>
