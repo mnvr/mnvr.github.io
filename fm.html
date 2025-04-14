@@ -29,16 +29,20 @@ const onOff = (e) => {
 
   if (isOn) {
     audioContext.resume();
+    startSequencer();
   } else {
     audioContext.suspend();
   }
 }
 
+let osc1;
+let amp1;
+
 const createAudioGraph = () => {
-  const osc1 = new OscillatorNode(audioContext, {
+  osc1 = new OscillatorNode(audioContext, {
 
   });
-  const amp1 = new GainNode(audioContext);
+  amp1 = new GainNode(audioContext);
   osc1.connect(amp1)
   osc1.start();
 
@@ -46,6 +50,29 @@ const createAudioGraph = () => {
   amp1.connect(mix);
 
   mix.connect(audioContext.destination);
+}
+
+const timeOutput = document.querySelector("output#time");
+const tickOutput = document.querySelector("output#tick");
+const bpm = 140;
+const bps = 60 / bpm;
+let tick = -1;
+
+const startSequencer = () => {
+  const loop = () => {
+    if (!isOn) return;
+
+    timeOutput.innerText = audioContext.currentTime.toFixed(1);
+    requestAnimationFrame(loop);
+
+    const thisTick = Math.floor(audioContext.currentTime / bps);
+    if (thisTick == tick) return;
+    tick = thisTick;
+
+    tickOutput.innerText = tick;
+  };
+
+  requestAnimationFrame(loop);
 }
 
 document.querySelector("button").addEventListener("click", onOff);
@@ -56,6 +83,8 @@ document.querySelector("button").addEventListener("click", onOff);
 <body>
 
 <button>On</button>
+<output id="time"></output>
+<output id="tick"></output>
 
 </body>
 </html>
