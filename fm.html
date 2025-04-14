@@ -83,19 +83,14 @@ canvas1.style.width = "350px";
 canvas1.style.height = "100px";
 
 const c1 = canvas1.getContext("2d");
+c1.lineWidth = dpr;
 
 // c1.strokeColor = "currentColor" doesn't work currently. a workaround.
-const getCurrentColor = () => {
-  const div = document.createElement("div");
-  document.body.appendChild(div);
-  const color = getComputedStyle(div).getPropertyValue("color");
-  document.body.removeChild(div);
-  return color;
-}
+const dm = matchMedia("(prefers-color-scheme: dark)");
 const updateCanvasColors = () => {
-  c1.strokeStyle = getCurrentColor();
+  c1.strokeStyle = dm.matches ? "#aaa" : "#555";
 }
-matchMedia("(prefers-color-scheme: dark)").onchange = updateCanvasColors;
+dm.onchange = updateCanvasColors;
 updateCanvasColors();
 
 const samples1 = new Float32Array(canvas1.width);
