@@ -13,8 +13,14 @@
 :root {
   color-scheme: light dark;
 }
-button {
-  margin-inline-end: 0.2em;
+body {
+  margin-inline: 0;
+  margin-block: 1em;
+}
+.row {
+  margin-inline: 1em;
+  display: flex;
+  gap: 1em;
 }
 div#seq {
   display: flex;
@@ -29,10 +35,6 @@ div#seq {
     background-color: color-mix(in srgb, currentColor 70%, transparent);
   }
 }
-.row {
-  display: flex;
-  gap: 1em;
-}
 .row .times {
   display: flex;
   flex-direction: column;
@@ -44,6 +46,9 @@ div#seq {
 output.fixed {
   font-size: small;
   opacity: 0.7;
+}
+canvas {
+
 }
 </style>
 
@@ -70,19 +75,29 @@ const onOff = (e) => {
   }
 }
 
+const dpr = Math.max(Math.floor(devicePixelRatio), 2)
+const canvas1 = document.querySelector("canvas#c1")
+canvas1.width = 350 * dpr;
+canvas1.height = 100 * dpr;
+canvas1.style.width = "350px";
+canvas1.style.height = "100px";
+
+const samples1 = new Float32Array(canvas1.width);
+
 let osc1;
 let amp1;
 let analyser1;
 
 const createAudioGraph = () => {
-  osc1 = new OscillatorNode(audioContext, {
-
-  });
+  osc1 = new OscillatorNode(audioContext);
   amp1 = new GainNode(audioContext, { gain: 0 });
   osc1.connect(amp1)
   osc1.start();
 
-  analyser1 = new AnalyserNode(audioContext);
+  analyser1 = new AnalyserNode(audioContext, {
+    // Needs to be a power of 2
+    fftSize: 512 * dpr
+  });
   amp1.connect(analyser1);
 
   const mix = new GainNode(audioContext, { gain: 0.1 });
@@ -98,7 +113,7 @@ const bps = bpm / 60;
 const tickTime = 1 / bps;
 let tick = -1;
 
-const canvas1 = document.querySelector("canvas#c1");
+const rafDeltaOutput = document.querySelector("output#rafDelta");
 
 const seq = []
 
@@ -112,13 +127,10 @@ const startSequencer = () => {
 
   const sl = seq.length;
 
-  let samples1;
-  if (!samples1) {
-    samples1 = new Float32Array(analyser1.fftSize);
-  }
-
-  const loop = () => {
+  const loop = (dt) => {
     if (!isOn) return;
+
+    rafDeltaOutput.innerText = dt.toFixed(6);
 
     const t = audioContext.currentTime;
 
@@ -126,16 +138,16 @@ const startSequencer = () => {
     requestAnimationFrame(loop);
 
     analyser1.getFloatTimeDomainData(samples1);
-    const canv1 = canvas1.getContext("2d");
-    const cy = (x) => rescale(x, [-1, 1], [0, canvas1.clientHeight]);
-    canv1.clearRect(0, 0, canvas1.clientWidth, canvas1.clientHeight);
-    canv1.strokeStyle = "black";
-    canv1.beginPath();
-    canv1.moveTo(0, cy(0));
-    for (let i = 0; i < Math.min(samples1.length, canvas1.clientWidth); i++) {
-      canv1.lineTo(i, cy(samples1[i]));
+    const c1 = canvas1.getContext("2d");
+    const cy = (x) => rescale(x, [-1, 1], [canvas1.height, 0]);
+    c1.clearRect(0, 0, canvas1.width, canvas1.height);
+    c1.strokeStyle = "black";
+    c1.beginPath();
+    c1.moveTo(0, cy(samples1[0]));
+    for (let i = 1; i < samples1.length; i++) {
+      c1.lineTo(i, cy(samples1[i]));
     }
-    canv1.stroke();
+    c1.stroke();
 
     const thisTick = Math.floor(t / tickTime);
     if (thisTick == tick) return;
@@ -174,9 +186,11 @@ for (let i = 0; i < 16; i++) {
 
 <body>
 
+<div class="row">
 <button>On</button>
 <output id="time"></output>
 <output id="tick"></output>
+</div>
 
 <div class="row">
 <div id="seq"></div>
@@ -184,6 +198,10 @@ for (let i = 0; i < 16; i++) {
 <output id="sampleTime" class="fixed"></output>
 <output id="tickTime" class="fixed"></output>
 </div>
+</div>
+
+<div class="row">
+<output id="rafDelta" class="fixed"></output>
 </div>
 
 <canvas id="c1"></canvas>
