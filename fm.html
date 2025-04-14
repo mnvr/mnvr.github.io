@@ -10,6 +10,22 @@
 <meta name="description" content="">
 
 <style>
+:root {
+  color-scheme: light dark;
+}
+div#seq {
+  display: flex;
+  margin-block: 0.5em;
+  gap: 0.4em;
+  div {
+    width: 0.5em;
+    aspect-ratio: 0.4;
+    border: 1px solid color-mix(in srgb, currentColor 50%, transparent);
+  }
+  div.on {
+    background-color: color-mix(in srgb, currentColor 50%, transparent);
+  }
+}
 </style>
 
 <script type="module">
@@ -42,7 +58,7 @@ const createAudioGraph = () => {
   osc1 = new OscillatorNode(audioContext, {
 
   });
-  amp1 = new GainNode(audioContext);
+  amp1 = new GainNode(audioContext, { gain: 0 });
   osc1.connect(amp1)
   osc1.start();
 
@@ -58,7 +74,10 @@ const bpm = 140;
 const bps = 60 / bpm;
 let tick = -1;
 
+const seq = []
+
 const startSequencer = () => {
+  const sl = seq.length;
   const loop = () => {
     if (!isOn) return;
 
@@ -70,12 +89,24 @@ const startSequencer = () => {
     tick = thisTick;
 
     tickOutput.innerText = tick;
+
+    seq[(sl + tick - 1) % sl].classList.remove("on");
+
+    const si = tick % sl;
+    seq[si % sl].classList.add("on");
   };
 
   requestAnimationFrame(loop);
 }
 
 document.querySelector("button").addEventListener("click", onOff);
+const seqD = document.querySelector("#seq");
+for (let i = 0; i < 16; i++) {
+  const div = document.createElement("div");
+  div.setAttribute("data-i", i);
+  seqD.appendChild(div);
+  seq.push(div);
+}
 </script>
 
 </head>
@@ -85,6 +116,8 @@ document.querySelector("button").addEventListener("click", onOff);
 <button>On</button>
 <output id="time"></output>
 <output id="tick"></output>
+
+<div id="seq"></div>
 
 </body>
 </html>
