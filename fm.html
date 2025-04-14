@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+<title>fm | mnvr.in</title>
+<meta name="description" content="">
+
+<style>
+</style>
+
+<script type="module">
+let audioContext;
+let isOn;
+
+const onOff = (e) => {
+  const btn = e.target;
+
+  if (!audioContext) audioContext = new AudioContext();
+
+  isOn = !isOn;
+  btn.innerText = isOn ? "Off" : "On";
+
+  if (isOn) {
+    audioContext.resume();
+    powerOn();
+  } else {
+    audioContext.suspend();
+  }
+}
+
+const powerOn = () => {
+  console.log("turn on");
+}
+
+document.querySelector("button").addEventListener("click", onOff);
+</script>
+
+</head>
+
+<body>
+
+<button>On</button>
+
+</body>
+</html>
