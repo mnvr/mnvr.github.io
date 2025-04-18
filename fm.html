@@ -228,7 +228,8 @@ const startSequencer = () => {
 
   };
 
-  requestAnimationFrame(loop);
+  // requestAnimationFrame(loop);
+  loop();
 }
 
 const rescale = (x, [a, b], [c, d]) => ((x - a) / (b - a)) * (d - c) + c;
