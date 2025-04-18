@@ -47,13 +47,12 @@ output.fixed {
   font-size: small;
   opacity: 0.7;
 }
-.hud {
-  position: relative;
+.scopes {
+  display: flex;
+  flex-direction: column;
 }
-.overlay {
-  position: absolute;
-  top: 0;
-  right: 0;
+.scopes .outputs {
+  margin-inline: 1em;
 }
 </style>
 
@@ -83,10 +82,16 @@ const onOff = (e) => {
 const dpr = Math.max(Math.floor(devicePixelRatio), 2)
 
 const prepScope = (canvas) => {
-  canvas.width = 350 * dpr;
-  canvas.height = 100 * dpr;
-  canvas.style.width = "350px";
-  canvas.style.height = "100px";
+  // Assuming 60fps RAF, 44.1 kHZ SR
+  // Each frame delta 16ms
+  // Each sample (1 / 44100) * 1000 ms
+  // Number of samples = 16 / ((1 / 44100) * 1000) = 705.6
+  // If dpr is 2, we need 353 samples to cover each RAF.
+  const [w, h] = [353, 100];
+  canvas.width = w * dpr;
+  canvas.height = h * dpr;
+  canvas.style.width = `${w}px`;
+  canvas.style.height = `${h}px`;
 
   const ctx = canvas.getContext("2d");
   ctx.lineWidth = dpr;
@@ -121,7 +126,8 @@ const createAudioGraph = () => {
 
   analyser1 = new AnalyserNode(audioContext, {
     // Needs to be a power of 2
-    fftSize: 512 * dpr
+    // fftSize: 512 * dpr
+    fftSize: 1024 * dpr
   });
   amp1.connect(analyser1);
 
@@ -138,7 +144,9 @@ const bps = bpm / 60;
 const tickTime = 1 / bps;
 let tick = -1;
 
-const scope1Output = document.querySelector("output#scope1");
+const scopeInfoOutput = document.querySelector("output#scopeInfo");
+const rafDeltaOutput = document.querySelector("output#rafDelta");
+
 
 const seq = []
 let haveC2ed = false;
@@ -152,10 +160,11 @@ const startSequencer = () => {
     `${(tickTime * 1e3).toFixed(3)} ms`;
 
   const scope1Time = sampleTime * samples1.length;
-  scope1Output.innerText = `${samples1.length} samp ${(scope1Time * 1e3).toFixed(0)} ms`;
+  scopeInfoOutput.innerText = `${samples1.length} samp ${(scope1Time * 1e3).toFixed(0)} ms`;
 
   const sl = seq.length;
 
+  let lastT = 0;
   const loop = (dt) => {
     if (!isOn) return;
 
@@ -163,6 +172,9 @@ const startSequencer = () => {
 
     timeOutput.innerText = t.toFixed(1);
     requestAnimationFrame(loop);
+
+    rafDeltaOutput.innerText = `${((t - lastT) * 1e3).toFixed(0)} ms RAF`
+    lastT = t;
 
     analyser1.getFloatTimeDomainData(samples1);
     const cy = (x) => rescale(x, [-1, 1], [canvas1.height, 0]);
@@ -235,14 +247,16 @@ for (let i = 0; i < 16; i++) {
 </div>
 </div>
 
-<span class="hud">
-<canvas id="c1"></canvas>
-<output id="scope1" class="fixed overlay"></output>
-</span>
-
-<span>
-<canvas id="c2"></canvas>
-</span>
+&nbsp;
+<output id="scopeInfo" class="fixed"></output>
+<output id="rafDelta" class="fixed"></output>
+<br>
+<canvas id="c1"></canvas><br>
+<canvas id="c2"></canvas><br>
+<canvas id="c3"></canvas><br>
+<canvas id="c4"></canvas><br>
+<canvas id="c5"></canvas><br>
+<canvas id="c6"></canvas>
 
 </body>
 </html>
