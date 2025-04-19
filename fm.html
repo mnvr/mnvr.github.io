@@ -104,10 +104,20 @@ let fixedCanvii = [];
 for (let z = 2; z <= 55; z++) {
   const canvas = document.createElement("canvas");
   document.body.appendChild(canvas);
-  if (z % 2 == 1) document.body.appendChild(document.createElement("br"));
+  // if (z % 2 == 1) document.body.appendChild(document.createElement("br"));
+  document.body.appendChild(document.createElement("br"));
 
-  const [, cf] = prepScope(canvas);
-  fixedCanvii.push(cf);
+  // Use entire samples. Assumes dpr 2.
+  const [w, h] = [1024, 60];
+  canvas.width = w * dpr;
+  canvas.height = h * dpr;
+  canvas.style.width = `${w}px`;
+  canvas.style.height = `${h}px`;
+
+  const ctx = canvas.getContext("2d");
+  ctx.lineWidth = dpr;
+
+  fixedCanvii.push(ctx);
 }
 
 // c1.strokeColor = "currentColor" doesn't work currently. a workaround.
@@ -123,6 +133,7 @@ dm.onchange = updateCanvasColors;
 updateCanvasColors();
 
 const samples1 = new Float32Array(canvas1.width);
+const samples2 = new Float32Array(1024 * dpr);
 
 let osc1;
 let amp1;
@@ -174,8 +185,9 @@ const startSequencer = () => {
   const sl = seq.length;
 
   let lastT = 0;
+  let lastRT = document.timeline.currentTime;
   let fixCC = 0;
-  const loop = (dt) => {
+  const loop = (rt) => {
     if (!isOn) return;
 
     const t = audioContext.currentTime;
@@ -183,7 +195,7 @@ const startSequencer = () => {
     timeOutput.innerText = t.toFixed(1);
     requestAnimationFrame(loop);
 
-    rafDeltaOutput.innerText = `raf ${ms(t - lastT)}`
+    rafDeltaOutput.innerText = `Δt ${ms(t - lastT)}`
     lastT = t;
 
     analyser1.getFloatTimeDomainData(samples1);
@@ -196,21 +208,34 @@ const startSequencer = () => {
     }
     c1.stroke();
 
+    const thisTick = Math.floor(t / tickTime);
+    const ret = (thisTick == tick);
+
     if (fixCC < fixedCanvii.length) {
+      analyser1.getFloatTimeDomainData(samples2);
+
+      const cy2 = (x) => rescale(x, [-1, 1], [120, 0]);
+
+      const scope2Time = sampleTime * samples2.length;
+      document.querySelector("output#scopeInfo2").innerText =
+        `${samples2.length} samp ${ms(scope2Time)}`;
+
       const cf = fixedCanvii[fixCC];
-      cf.font = "20px monospace";
-      cf.fillText(`${tick} ${ms3(t)} ${rafDeltaOutput.innerText}`, 10, 50);
+      cf.font = (ret ? "" : "bold ") + "20px monospace";
+      cf.fillText(`tick ${tick} ${thisTick} | t ${ms(t)} ${rafDeltaOutput.innerText} | rt ${rt.toFixed(0)} ms Δrt ${(rt - lastRT).toFixed(0)} ms`, 10, 22);
       cf.beginPath();
-      cf.moveTo(0, cy(samples1[0]));
-      for (let i = 1; i < samples1.length; i++) {
-        cf.lineTo(i, cy(samples1[i]));
+      cf.moveTo(0, cy2(samples2[0]));
+      for (let i = 1; i < samples2.length; i++) {
+        cf.lineTo(i, cy2(samples2[i]));
       }
       cf.stroke();
       fixCC++;
     }
 
-    const thisTick = Math.floor(t / tickTime);
-    if (thisTick == tick) return;
+    lastRT = rt;
+
+    // if (thisTick == tick) return;
+    if (ret) return;
     tick = thisTick;
 
     tickOutput.innerText = tick + 1;
@@ -220,7 +245,7 @@ const startSequencer = () => {
     const si = tick % sl;
     seq[si % sl].classList.add("on");
 
-    amp1.gain.setValueAtTime(1, 0);
+    amp1.gain.setValueAtTime(1, t);
     // amp1.gain.setTargetAtTime(1, t, 0.001);
     amp1.gain.setTargetAtTime(0, t + 0.001, tickTime / 5);
     // amp1.gain.setValueAtTime(0, t + tickTime / 2);
@@ -228,8 +253,8 @@ const startSequencer = () => {
 
   };
 
-  // requestAnimationFrame(loop);
-  loop();
+  requestAnimationFrame(loop);
+  // loop();
 }
 
 const rescale = (x, [a, b], [c, d]) => ((x - a) / (b - a)) * (d - c) + c;
@@ -267,6 +292,10 @@ for (let i = 0; i < 16; i++) {
 <output id="rafDelta" class="fixed"></output>
 <br>
 <canvas id="c1"></canvas><br>
+
+&nbsp;
+<output id="scopeInfo2" class="fixed"></output>
+<br>
 
 </body>
 </html>
