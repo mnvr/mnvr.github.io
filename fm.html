@@ -187,6 +187,7 @@ const startSequencer = () => {
   let lastT = 0;
   let lastRT = document.timeline.currentTime;
   let fixCC = 0;
+  let lastWasTransition = false;
   const loop = (rt) => {
     if (!isOn) return;
 
@@ -212,7 +213,12 @@ const startSequencer = () => {
     const thisTick = Math.floor(t / tickTime);
     const ret = (thisTick == tick);
 
-    if (fixCC < fixedCanvii.length) {
+    if (fixCC == fixedCanvii.length) {
+      fixCC = 0;
+    }
+
+    if (fixCC < fixedCanvii.length && lastWasTransition) {
+      lastWasTransition = false;
       analyser1.getFloatTimeDomainData(samples2);
 
       const cy2 = (x) => rescale(x, [-1, 1], [120, 0]);
@@ -224,6 +230,7 @@ const startSequencer = () => {
         `${samples2.length} samp ${ms(scope2Time)}`;
 
       const cf = fixedCanvii[fixCC];
+      cf.clearRect(0, 0, samples2.length, 120);
       cf.font = (ret ? "" : "bold ") + "20px monospace";
       cf.fillText(`tick ${tick} ${thisTick} | t ${ms(t)} ${rafDeltaOutput.innerText} | rt ${rt.toFixed(0)} ms Δrt ${(rt - lastRT).toFixed(0)} ms | oct ${ms(ots.contextTime)} opt ${ots.performanceTime.toFixed(0)} now ${performance.now().toFixed(0)} Δot ${ms(t - ots.contextTime)} Δpt ${(performance.now() - ots.performanceTime).toFixed(0)} ms | ${sampleBacktrack}`, 10, 22);
 
@@ -247,6 +254,10 @@ const startSequencer = () => {
 
     lastRT = rt;
 
+    if (!ret && !lastWasTransition) {
+      lastWasTransition = true;
+    }
+
     // if (thisTick == tick) return;
     if (ret) return;
     tick = thisTick;
@@ -258,10 +269,10 @@ const startSequencer = () => {
     const si = tick % sl;
     seq[si % sl].classList.add("on");
 
-    amp1.gain.setValueAtTime(1, t);
-    // amp1.gain.setTargetAtTime(1, t, 0.001);
-    amp1.gain.setTargetAtTime(0, t + 0.001, tickTime / 5);
-    // amp1.gain.setValueAtTime(0, t + tickTime / 2);
+    // amp1.gain.setValueAtTime(1, t);
+    amp1.gain.setTargetAtTime(1, t, 0.001);
+    amp1.gain.setTargetAtTime(0, t + 0.005, tickTime / 5);
+    amp1.gain.setValueAtTime(0, t + tickTime / 2);
     // amp1.gain.setTargetAtTime(0, t + 0.05, 0.5)
 
   };
