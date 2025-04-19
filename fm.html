@@ -196,6 +196,7 @@ const startSequencer = () => {
     requestAnimationFrame(loop);
 
     rafDeltaOutput.innerText = `Δt ${ms(t - lastT)}`
+    const sampleBacktrack = Math.floor((t - lastT) * audioContext.sampleRate);
     lastT = t;
 
     analyser1.getFloatTimeDomainData(samples1);
@@ -216,19 +217,31 @@ const startSequencer = () => {
 
       const cy2 = (x) => rescale(x, [-1, 1], [120, 0]);
 
+      const ots = audioContext.getOutputTimestamp();
+
       const scope2Time = sampleTime * samples2.length;
       document.querySelector("output#scopeInfo2").innerText =
         `${samples2.length} samp ${ms(scope2Time)}`;
 
       const cf = fixedCanvii[fixCC];
       cf.font = (ret ? "" : "bold ") + "20px monospace";
-      cf.fillText(`tick ${tick} ${thisTick} | t ${ms(t)} ${rafDeltaOutput.innerText} | rt ${rt.toFixed(0)} ms Δrt ${(rt - lastRT).toFixed(0)} ms`, 10, 22);
+      cf.fillText(`tick ${tick} ${thisTick} | t ${ms(t)} ${rafDeltaOutput.innerText} | rt ${rt.toFixed(0)} ms Δrt ${(rt - lastRT).toFixed(0)} ms | oct ${ms(ots.contextTime)} opt ${ots.performanceTime.toFixed(0)} now ${performance.now().toFixed(0)} Δot ${ms(t - ots.contextTime)} Δpt ${(performance.now() - ots.performanceTime).toFixed(0)} ms | ${sampleBacktrack}`, 10, 22);
+
       cf.beginPath();
       cf.moveTo(0, cy2(samples2[0]));
       for (let i = 1; i < samples2.length; i++) {
         cf.lineTo(i, cy2(samples2[i]));
       }
       cf.stroke();
+
+      cf.save();
+      cf.lineWidth = 3;
+      cf.beginPath();
+      cf.moveTo(samples2.length - sampleBacktrack, cy2(-1));
+      cf.lineTo(samples2.length - sampleBacktrack, cy2(1));
+      cf.stroke();
+      cf.restore();
+
       fixCC++;
     }
 
