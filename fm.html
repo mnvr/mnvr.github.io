@@ -258,6 +258,16 @@ const startSequencer = () => {
       lastWasTransition = true;
     }
 
+  }
+
+  const loop2 = () => {
+    if (!isOn) return;
+
+    const t = audioContext.currentTime;
+
+    const thisTick = Math.floor(t / tickTime);
+    const ret = (thisTick == tick);
+
     // if (thisTick == tick) return;
     if (ret) return;
     tick = thisTick;
@@ -278,6 +288,7 @@ const startSequencer = () => {
   };
 
   requestAnimationFrame(loop);
+  setInterval(loop2, 1 / 60);
   // loop();
 }
 
