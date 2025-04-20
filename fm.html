@@ -101,7 +101,7 @@ const prepScope = (canvas) => {
 
 const [canvas1, c1] = prepScope(document.querySelector("canvas#c1"));
 let fixedCanvii = [];
-for (let z = 2; z <= 55; z++) {
+for (let z = 2; z <= 7; z++) {
   const canvas = document.createElement("canvas");
   document.body.appendChild(canvas);
   // if (z % 2 == 1) document.body.appendChild(document.createElement("br"));
@@ -270,7 +270,7 @@ const startSequencer = () => {
     seq[si % sl].classList.add("on");
 
     // amp1.gain.setValueAtTime(1, t);
-    amp1.gain.setTargetAtTime(1, t, 0.001);
+    amp1.gain.setTargetAtTime(1, t + 0.001, 0.001);
     amp1.gain.setTargetAtTime(0, t + 0.005, tickTime / 5);
     amp1.gain.setValueAtTime(0, t + tickTime / 2);
     // amp1.gain.setTargetAtTime(0, t + 0.05, 0.5)
