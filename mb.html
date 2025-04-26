@@ -23,7 +23,7 @@
 <h3>Mandelbrot sets without the math</h3>
 
 <p>
-Mandelbrot sets are complex numbers <math><mi>c</mi></math> which don't diverge
+Mandelbrot sets are complex numbers <math><mi>c</mi></math> which don&rsquo;t diverge
 when iterated as
 <math><mi>z</mi><mo>&rarr;</mo><msup><mi>z</mi><mn>2</mn></msup><mo>+</mo><mi>c</mi></math>
 starting from <math><mi>z</mi><mo>=</mo><mn>0</mn></math>.
@@ -34,9 +34,9 @@ starting from <math><mi>z</mi><mo>=</mo><mn>0</mn></math>.
 </p>
 
 <p>
-That's all, and you don't need to understand it. Forget I said the above. Take a
-2D plane, each point has an <code>x</code> and <code>y</code> coordinate,
-right?
+That&rsquo;s all, and you don&rsquo;t need to understand it. Forget I said the
+above. Take a 2D plane, each point has an <code>x</code> and <code>y</code>
+coordinate, right?
 </p>
 
 <p>
@@ -52,9 +52,9 @@ function step([u, v], [x, y]) {
 </pre>
 
 <p>
-At each step, we'll get a new <code>u, v</code>. If these don't grow beyond
-<code>2, 2</code> after a few hundred iterations, then <code>x, y</code> is part
-of the Mandlebrot set, and we plot it. That's it.
+At each step, we&rsquo;ll get a new <code>u, v</code>. If these don&rsquo;t grow
+beyond <code>2, 2</code> after a few hundred iterations, then <code>x, y</code>
+is part of the Mandlebrot set, and we plot it. That&rsquo;s it.
 </p>
 
 <style>
@@ -110,9 +110,9 @@ for (let y = 0; y < 200; y++) {
 <div class="container"></div>
 
 <p>
-If you're curious, here is how we derive the programmatic statement from the
-mathematical one (<em>you don't need to understand this to draw mandelbrot
-sets!</em>)
+If you&rsquo;re curious, here is how we derive the programmatic statement from
+the mathematical one (<em>you don&rsquo;t need to understand this to draw
+mandelbrot sets!</em>)
 </p>
 <p>
 To recap, the Mandelbrot set contains <math><mi>c</mi></math> to find which
@@ -122,10 +122,11 @@ To recap, the Mandelbrot set contains <math><mi>c</mi></math> to find which
 <li>Start <math><mi>z</mi><mo>=</mo><mn>0</mn></math>.</li>
 </ul>
 <p>
-The only complex operations we need are addition and multiplication. We don't
-need a complex number library, we can just express <math><mi>z</mi></math>
-as a two component array <code>[u, v]</code>. Then the complex multiplication
-(squaring) <math><msup><mi>z</mi><mn>2</mn></msup></math> becomes:
+The only complex operations we need are addition and multiplication. We
+don&rsquo;t need a complex number library, we can just express
+<math><mi>z</mi></math> as a two component array <code>[u, v]</code>. Then the
+complex multiplication (squaring) <math><msup><mi>z</mi><mn>2</mn></msup></math>
+becomes:
 </p>
 
 <style>
@@ -194,15 +195,15 @@ y]</code> to give us the <code>step</code> function above.
 </p>
 
 <p>
-That's really it. There is more to it of course, but that usually has to do with
-the medium in which you are rendering the Mandelbrot set (scaling the
+That&rsquo;s really it. There is more to it of course, but that usually has to
+do with the medium in which you are rendering the Mandelbrot set (scaling the
 coordinates appropriately, zooming into an region of interest, implementing it
 efficiently etc).
 </p>
 
 <p>
-As a concrete example, here is the JavaScript function I'm using to draw the
-Mandelbrot sets here.
+As a concrete example, here is the JavaScript function I&rsquo;m using to draw
+the Mandelbrot sets here.
 </p>
 
 <pre><code>const mbExit = ([x, y]) =&gt; {
@@ -221,8 +222,9 @@ Mandelbrot sets here.
 
 <p>
 The step function has been inlined for efficiently, and an arbitrary iteration
-count has been picked. I'm not sure if the exit conditions are mathematically
-correct, but for the level of precision that I needed, they seem to work.
+count has been picked. I&rsquo;m not sure if the exit conditions are
+mathematically correct, but for the level of precision that I needed, they seem
+to work.
 </p>
 
 <p>
@@ -234,8 +236,8 @@ Mandelbrot set.
 <p>
 Armed with this function, I can draw Mandelbrot sets anywhere.  The above
 example uses 80 x 24 HTML divs, but the same function also works for the much
-higher resolution HTML canvas <a href="levels">illustrations that I'd made to
-show the fractal nature of truth</a>.
+higher resolution HTML canvas <a href="levels">illustrations that I&rsquo;d made
+to show the fractal nature of truth</a>.
 </p>
 
 <footer>
