@@ -13,8 +13,10 @@
 <style>
 :root {
   color-scheme: light dark;
+  line-height: 1.75;
 
-  --main-margin-inline: 4rlh;
+  --main-margin-inline: 2rlh;
+  --main-margin-block: 1rlh;
 
   --muted: #777;
   --a: #0000ee;
@@ -36,6 +38,7 @@
 @media (width < 37rem) {
   :root {
     --main-margin-inline: 1.2rlh;
+    --main-margin-block: 1rlh;
   }
 }
 
@@ -43,20 +46,20 @@
 
 body {
   margin-inline: 0;
-  margin-block: 3rlh;
-  line-height: 1.5;
+  margin-block: var(--main-margin-block);
 }
 
 a {
   text-decoration: underline;
-  text-underline-offset: 0.4em;
-  text-decoration-thickness: 0.1em;
+  text-underline-offset: 0.3lh;
+  text-decoration-thickness: 0.06lh;
   color: inherit;
   text-decoration-color: var(--a);
 }
 
 a:hover {
-  text-decoration-thickness: 0.2em;
+  text-underline-offset: 0.275lh;
+  text-decoration-thickness: 0.1lh;
 }
 
 a:visited {
@@ -64,9 +67,15 @@ a:visited {
 }
 
 p.item {
+  margin-block: 1lh;
   margin-inline: var(--main-margin-inline);
   max-width: 40em;
-  outline-offset: 7px;
+}
+
+p.timestamp {
+  font-size: small;
+  color: var(--muted);
+  padding-block-start: 0.5lh;
 }
 
 div.col2 {
@@ -130,6 +139,8 @@ body:has(.tag[data-tag="programming"]:hover) {
 
 <body>
 
+<p class="item timestamp">Last updated: <time>26th April 2025</time></p>
+
 <p class="item">
 <a href="software">Everything is possible in software</a> &mdash; but nothing is
 easy
@@ -152,7 +163,6 @@ easy
 
 <style>
 .vibration {
-  margin-block: 1.25em 1.1em;
   text-align: center;
   view-transition-name: vibration-text;
 }
@@ -166,7 +176,6 @@ easy
 img.levels {
   flex-shrink: 0;
   aspect-ratio: 2;
-  margin-inline-end: 1em;
   height: 75px;
 }
 </style>
@@ -250,15 +259,14 @@ href="bugs">Everything else is a feature</a>.
 <style>
 svg.chess {
   flex-shrink: 0;
-  margin-inline: 1em
+  margin-inline: 1lh;
 }
 </style>
 
 <div class="col2 chess">
 <p>
 <a href="chess">chess / piece / pawn / influence</a>
-&mdash; Imagining a chess board where each piece and pawn casts a shadow of
-influence.
+&mdash; Imagine a chess board where each piece casts a shadow of influence.
 </p>
 <a href="chess">
 <svg class="chess" width="64px" height="64px" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -305,14 +313,14 @@ Is my mind in this world, or is the world in my <a href="mind">mind?</a>
 
 <style>
 div#roses {
-  margin-block: 2em;
+  margin-block: 1.2rlh;
   padding-inline: var(--main-margin-inline);
   background-color: #FA0C10;
   color: white;
 
   font-style: italic;
   display: flex;
-  gap: 2rlh;
+  gap: 1rlh;
 }
 </style>
 
@@ -345,7 +353,7 @@ they all fell down<br>
 
 <style>
 footer {
-  margin-inline: var(--main-margin-inline);
+  margin-block-end: 1.8rlh;
 
   a {
     font-style: italic;
@@ -360,7 +368,7 @@ footer {
 </style>
 
 <footer>
-<p>
+<p class="item">
 <a href="https://github.com/mnvr">github</a>
 <span class="fsep"> • </span>
 <a rel="me" href="https://mastodon.social/@mnvr">mastodon</a>
