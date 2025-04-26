@@ -1,7 +1,8 @@
 :root {
    color-scheme: light dark;
+   line-height: 1.5;
 
-  --main-margin-inline: 4rlh;
+  --main-margin-inline: 2rlh;
 
   --muted: #777;
   --a: #0000ee;
@@ -30,20 +31,20 @@
 
 body {
   margin-inline: 0;
-  margin-block: 3rlh;
-  line-height: 1.5;
+  margin-block: 2rlh;
 }
 
 a {
   text-decoration: underline;
-  text-underline-offset: 0.4em;
-  text-decoration-thickness: 0.1em;
+  text-underline-offset: 0.3lh;
+  text-decoration-thickness: 0.08lh;
   color: inherit;
   text-decoration-color: var(--a);
 }
 
 a:hover {
-  text-decoration-thickness: 0.2em;
+  text-underline-offset: 0.275lh;
+  text-decoration-thickness: 0.12lh;
 }
 
 a:visited {

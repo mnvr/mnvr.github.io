@@ -11,14 +11,16 @@
 
 <style>
 :root {
-  --main-margin-inline: 4rlh;
-  --main-margin-block: 4rlh;
+  line-height: 1.7;
+
+  --main-margin-inline: 3rlh;
+  --main-margin-block: 3rlh;
 }
 
 @media (width < 37rem) {
   :root {
     --main-margin-inline: 1rlh;
-    --main-margin-block: 3rlh;
+    --main-margin-block: 2rlh;
   }
 }
 
@@ -28,12 +30,11 @@ body {
   background-color: rgb(236, 226, 214);
   color: rgb(37, 71, 77);
   font-family: monospace;
-  margin-block: var(--main-margin-block);
+  margin-block: var(--main-margin-block) calc(var(--main-margin-block) * 0.8);
   padding-inline: var(--main-margin-inline);
 }
 
 h3, p {
-  line-height: 1.7;
   width: min(512px, 100%);
 }
 
@@ -44,24 +45,26 @@ h3 {
 }
 
 h3 + p {
-  margin-block: 2rlh 2rlh;
+  margin-block: 2lh;
 }
 
 svg {
   width: min(512px, 100%);
   aspect-ratio: 1;
+  margin-block: 1rlh;
 }
 
 footer {
+  margin-block: 2lh;
+
   width: min(512px, 100%);
   font-size: smaller;
-  margin-block-start: 4rlh;
 
   .author {
     opacity: 0.8;
   }
 
-  p + div {
+  p:last-child {
     margin-block-start: 2rlh;
     a {
       text-decoration: none;
@@ -469,7 +472,7 @@ A chess board with the influence of each piece overlaid, à la go. An interactiv
 version of this would be fun to play. The illustration is of a famous Anand
 game. <span class="author">Manav, March 2025.</span>
 </p>
-<div><a href="/">mnvr.in</a></div>
+<p><a href="/">mnvr.in</a></p>
 </footer>
 
 </body>

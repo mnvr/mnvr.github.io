@@ -10,7 +10,11 @@
 <meta name="description" content="The nature of the universe is vibration">
 
 <style>
-:root { color-scheme: light dark; }
+:root {
+  color-scheme: light dark;
+  line-height: 1.5;
+}
+
 @view-transition { navigation: auto; }
 
 ::view-transition-group(vibration-text) {
@@ -56,7 +60,6 @@ body {
   display: flex;
   align-items: flex-end;
   text-align: center;
-  line-height: 1.5em;
   margin: 0;
   padding: 0;
   color: white;
@@ -64,19 +67,18 @@ body {
 
 div {
   width: 100%;
-  padding: 1em;
+  padding: 0.5lh;
   backdrop-filter: saturate(1.8) brightness(0.15) blur(18px);
   font-size: large;
 }
 
 p {
-  margin: 0.5em 0;
+  margin: 0.5lh 0;
 }
 
 p:first-child {
   view-transition-name: vibration-text;
   font-size: larger;
-  margin-block-end: 1.25em;
 }
 
 p:not(:first-child) {
