@@ -1,7 +1,8 @@
 :root {
   color-scheme: light dark;
 
-  --main-margin-inline: 4.5rem;
+  --main-margin-inline: 4rlh;
+  --main-margin-block: 4rlh;
 
   --accent: red;
   --muted: #808080;
@@ -25,14 +26,15 @@
 
 @media (width < 37rem) {
   :root {
-    --main-margin-inline: 1rem;
+    --main-margin-inline: 1rlh;
+    --main-margin-block: 2rlh;
   }
 }
 
 @view-transition { navigation: auto; }
 
 body {
-  margin-block: 4rem 3rem;
+  margin-block: var(--main-margin-block);
   margin-inline: 0;
   line-height: 1.75;
 }
@@ -72,28 +74,28 @@ h3, h4, p, ul, ol, footer {
 }
 
 h3, h4 {
-  padding-block-end: 1em;
+  padding-block-end: 0.5lh;
   border-block-end: 2px solid var(--accent);
-  margin-block-end: 2.5rem;
+  margin-block-end: 1.5lh;
 }
 
 p, ul, ol {
-  margin-block: 1.75rem;
+  margin-block: 1.75rlh;
 }
 
 ul, ol {
-  padding-inline: 2rem;
+  padding-inline: 2rlh;
 }
 
 @media (width < 37rem) {
   ul, ol {
-    padding-inline: 1rem;
+    padding-inline: 1rlh;
   }
 }
 
 li {
-  margin-block: 1.25rem;
-  padding-inline: 0.5rem;
+  margin-block: 1.25rlh;
+  padding-inline: 0.5rlh;
 }
 
 mark {
@@ -108,7 +110,7 @@ hr {
   border: 0;
   border-bottom: 1px solid var(--accent);
   opacity: 0.3;
-  margin-block: 3rem;
+  margin-block: 3rlh;
 }
 
 :not(pre) > code {
@@ -124,7 +126,7 @@ math {
 pre {
   background-color: color(from var(--accent) srgb r g b / 0.025);
   padding-inline: var(--main-margin-inline);
-  padding-block: 1rem;
+  padding-block: 1rlh;
   overflow-x: scroll;
 }
 
@@ -132,23 +134,23 @@ blockquote {
   border-inline-start: 1px solid var(--accent);
   margin-inline: var(--main-margin-inline);
   p {
-    margin-inline: 1em;
+    margin-inline: 1lh;
   }
 }
 
 footer {
-  margin-block: 5rem;
+  margin-block: 3rlh;
 
   color: var(--muted);
   font-size: 0.92em;
 
   time {
     display: block;
-    margin-block-end: 1em;
+    margin-block-end: 1lh;
   }
 
   .footnote {
-    margin-block: 1em;
+    margin-block: 1lh;
   }
 }
 

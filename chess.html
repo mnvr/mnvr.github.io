@@ -11,12 +11,14 @@
 
 <style>
 :root {
-  --main-margin-inline: 4.5rem;
+  --main-margin-inline: 4rlh;
+  --main-margin-block: 4rlh;
 }
 
 @media (width < 37rem) {
   :root {
-    --main-margin-inline: 1rem;
+    --main-margin-inline: 1rlh;
+    --main-margin-block: 3rlh;
   }
 }
 
@@ -26,7 +28,7 @@ body {
   background-color: rgb(236, 226, 214);
   color: rgb(37, 71, 77);
   font-family: monospace;
-  padding-block: 4rem 5rem;
+  margin-block: var(--main-margin-block);
   padding-inline: var(--main-margin-inline);
 }
 
@@ -37,12 +39,12 @@ h3, p {
 
 h3 {
   color: rgb(34, 55, 57);
-  padding-block-end: 1.2em;
+  padding-block-end: 1.2rlh;
   border-block-end: 2px solid currentColor;
 }
 
 h3 + p {
-  margin-block: 2em 6em;
+  margin-block: 2rlh 2rlh;
 }
 
 svg {
@@ -53,14 +55,14 @@ svg {
 footer {
   width: min(512px, 100%);
   font-size: smaller;
-  margin-block-start: 4.5rem;
+  margin-block-start: 4rlh;
 
   .author {
     opacity: 0.8;
   }
 
   p + div {
-    margin-block-start: 4rem;
+    margin-block-start: 2rlh;
     a {
       text-decoration: none;
       color: rgb(34, 55, 57);
