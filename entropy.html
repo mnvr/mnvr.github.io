@@ -11,19 +11,19 @@
 
 <style>
 :root {
-  --main-margin: 4.5rem;
+  --main-margin-inline: 4.5rem;
 }
 
 @media (width < 37rem) {
   :root {
-    --main-margin: 1.2rem;
+    --main-margin-inline: 1.2rem;
   }
 }
 
 @view-transition { navigation: auto; }
 
 body {
-  padding-inline: var(--main-margin);
+  padding-inline: var(--main-margin-inline);
   padding-block: 2em 2.8em;
   background-color: #5e7c9f;
   color: white;
@@ -61,8 +61,8 @@ svg {
 div.entropy-bq {
   background-color: #6d8caf;
   margin-block: 2.4em 2em;
-  margin-inline: calc(-1 * var(--main-margin));
-  padding: 1.4em var(--main-margin);
+  margin-inline: calc(-1 * var(--main-margin-inline));
+  padding: 1.4em var(--main-margin-inline);
 }
 
 blockquote.entropy-quot {

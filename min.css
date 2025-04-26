@@ -1,7 +1,7 @@
 :root {
    color-scheme: light dark;
 
-  --main-margin: 4.5rem;
+  --main-margin-inline: 4.5rem;
 
   --muted: #777;
   --a: #0000ee;
@@ -22,7 +22,7 @@
 
 @media (width < 37rem) {
   :root {
-    --main-margin: 1.2rem;
+    --main-margin-inline: 1.2rem;
   }
 }
 

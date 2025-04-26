@@ -1,7 +1,7 @@
 :root {
   color-scheme: light dark;
 
-  --main-margin: 4.5rem;
+  --main-margin-inline: 4.5rem;
 
   --accent: red;
   --muted: #808080;
@@ -25,7 +25,7 @@
 
 @media (width < 37rem) {
   :root {
-    --main-margin: 1rem;
+    --main-margin-inline: 1rem;
   }
 }
 
@@ -67,7 +67,7 @@ a[target="_blank"]::after {
 }
 
 h3, h4, p, ul, ol, footer {
-  margin-inline: var(--main-margin);
+  margin-inline: var(--main-margin-inline);
   max-width: 34rem;
 }
 
@@ -123,14 +123,14 @@ math {
 
 pre {
   background-color: color(from var(--accent) srgb r g b / 0.025);
-  padding-inline: var(--main-margin);
+  padding-inline: var(--main-margin-inline);
   padding-block: 1rem;
   overflow-x: scroll;
 }
 
 blockquote {
   border-inline-start: 1px solid var(--accent);
-  margin-inline: var(--main-margin);
+  margin-inline: var(--main-margin-inline);
   p {
     margin-inline: 1em;
   }

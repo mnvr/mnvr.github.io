@@ -14,7 +14,7 @@
 :root {
   color-scheme: light dark;
 
-  --main-margin: 4.5rem;
+  --main-margin-inline: 4.5rem;
 
   --muted: #777;
   --a: #0000ee;
@@ -35,7 +35,7 @@
 
 @media (width < 37rem) {
   :root {
-    --main-margin: 1.2rem;
+    --main-margin-inline: 1.2rem;
   }
 }
 
@@ -64,13 +64,13 @@ a:visited {
 }
 
 p.item {
-  margin-inline: var(--main-margin);
+  margin-inline: var(--main-margin-inline);
   max-width: 40em;
   outline-offset: 7px;
 }
 
 div.col2 {
-  margin-inline: var(--main-margin);
+  margin-inline: var(--main-margin-inline);
   max-width: 40em;
   display: flex;
   align-items: center;
@@ -208,7 +208,7 @@ href="bugs">Everything else is a feature</a>.
 <style>
 .artwork-container {
   display: flex;
-  margin-inline: var(--main-margin);
+  margin-inline: var(--main-margin-inline);
 }
 
 .deckards-dream {
@@ -306,7 +306,7 @@ Is my mind in this world, or is the world in my <a href="mind">mind?</a>
 <style>
 div#roses {
   margin-block: 2em;
-  padding-inline: var(--main-margin);
+  padding-inline: var(--main-margin-inline);
   background-color: #FA0C10;
   color: white;
 
@@ -345,7 +345,7 @@ they all fell down<br>
 
 <style>
 footer {
-  margin-inline: var(--main-margin);
+  margin-inline: var(--main-margin-inline);
 
   a {
     font-style: italic;
