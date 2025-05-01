@@ -6,6 +6,13 @@
   <link>https://mnvr.in</link>
   <language>en</language>
   <item>
+    <title>name</title>
+    <description>a poem</description>
+    <link>https://mnvr.in/name</link>
+    <guid>https://mnvr.in/name</guid>
+    <pubDate>Wed, 30 Apr 2025 00:00:00 GMT</pubDate>
+  </item>
+  <item>
     <title>Nostalgia for the present</title>
     <description>Thoughts of a gome</description>
     <link>https://mnvr.in/nosalgia</link>

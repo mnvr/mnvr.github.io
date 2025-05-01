@@ -74,7 +74,7 @@ h2, h3, h4, p, ul, ol, footer {
   max-width: 34rem;
 }
 
-h3, h4 {
+h3:not(.vanilla), h4 {
   padding-block-end: 0.75lh;
   border-block-end: 2px solid var(--accent);
   margin-block-end: 1.25lh;
