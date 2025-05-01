@@ -69,7 +69,7 @@ a[target="_blank"]::after {
   vertical-align: text-top;
 }
 
-h3, h4, p, ul, ol, footer {
+h2, h3, h4, p, ul, ol, footer {
   margin-inline: var(--main-margin-inline);
   max-width: 34rem;
 }
@@ -85,7 +85,7 @@ p, ul, ol {
 }
 
 ul, ol {
-  padding-inline: 2lh;
+  padding-inline: 1.25lh;
 }
 
 @media (width < 37rem) {
