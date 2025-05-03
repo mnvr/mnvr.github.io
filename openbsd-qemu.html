@@ -29,12 +29,12 @@ pre {
 <pre>brew install qemu
 </pre>
 
-<pre>mkdir qemu && cd qemu
+<pre>mkdir bsd && cd bsd
 cp `brew --prefix qemu`/share/qemu/edk2-aarch64-code.fd .
 cp `brew --prefix qemu`/share/qemu/edk2-arm-vars.fd .
 </pre>
 
-<pre>qemu-img create -f qcow2 bsd.qcow 40G
+<pre>qemu-img create -f qcow2 disk.qcow 40G
 </pre>
 
 <pre>qemu-system-aarch64 \
@@ -44,7 +44,7 @@ cp `brew --prefix qemu`/share/qemu/edk2-arm-vars.fd .
   -m 2G \
   -drive file=edk2-aarch64-code.fd,if=pflash,format=raw,readonly=on \
   -drive file=edk2-arm-vars.fd,if=pflash,format=raw \
-  -drive file=bsd.qcow2,if=virtio,format=qcow2 \
+  -drive file=disk.qcow2,if=virtio,format=qcow2 \
   -monitor none \
   -cdrom cd77.iso
 </pre>
