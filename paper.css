@@ -74,6 +74,11 @@ h2, h3, h4, p, ul, ol, footer {
   max-width: 34rem;
 }
 
+.lightyear {
+  font-family: sans-serif;
+  font-style: italic;
+}
+
 h3:not(.vanilla), h4 {
   padding-block-end: 0.75lh;
   border-block-end: 2px solid var(--accent);
