@@ -133,13 +133,27 @@ body:has(.tag[data-tag="programming"]:hover) {
     font-weight: bold;
   }
 }
+
+body:has(.tag[data-tag="book-review"]:hover) {
+  .tag[data-tag="book-review"] {
+    color: oklch(0.6 0.2 0);
+    font-weight: bold;
+  }
+}
 </style>
 
 </head>
 
 <body>
 
-<p class="item timestamp">Last updated: <time>17th May 2025</time></p>
+<p class="item timestamp">Last updated: <time>18th May 2025</time></p>
+
+<p class="item">
+<a href="hyperion">Hyperion</a> &mdash; <em>anything which deceives is evil</em>
+<span class="tags">
+<span class="tag" data-tag="book-review"></span>
+</span>
+</p>
 
 <p class="item">
 <a href="all-the-light">All the light we cannot see</a> &mdash; roses, unnamed
