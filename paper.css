@@ -89,6 +89,14 @@ p, ul, ol {
   margin-block: 1.25lh;
 }
 
+blockquote {
+  margin-block: 1.25lh;
+}
+
+blockquote.epilogue {
+  margin-block: 1.75lh;
+}
+
 ul, ol {
   padding-inline: 1.25lh;
 }
