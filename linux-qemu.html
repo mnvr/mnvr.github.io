@@ -20,6 +20,9 @@ pre {
   background-color: light-dark(white, #16161D);
   padding: 1lh;
 }
+ul {
+  max-width: 60em;
+}
 </style>
 
 </head>
@@ -64,6 +67,13 @@ If the system can't boot (e.g. after changing devices), reset
 <li>Use <code>-display cocoa,full-screen=on</code> to taste.</li>
 <li>If X is not needed, use <code>-serial stdio -nographic</code> for an inline
 invocation.</li>
+<li>
+For sharing directories, use
+<code>-virtfs
+local,path="$(pwd)/data",security_model=mapped-file,mount_tag=m0,readonly=on</code>.
+Then on the guest we can
+<code>mkdir /mnt/data && mount -t 9p -o trans=virtio m0 /mnt/data</code>
+</li>
 <li><kbd>Ctrl Option 1|2</kbd> - switch console.</li>
 <li><kbd>Ctrl Option Arrow</kbd> - scroll console.</li>
 <li><kbd>Cmd F</kbd> to enter fullscreen; <kbd>Ctrl Option G</kbd> (to uncapture
