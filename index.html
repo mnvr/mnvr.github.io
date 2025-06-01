@@ -66,6 +66,20 @@ a:visited {
   text-decoration-color: var(--a-visited);
 }
 
+/* Duplicated from paper.css */
+/* Add an indicator after external links that'll open in a new window. */
+a[target="_blank"]::after {
+  /* &nearr;, but nicer. SVG adapted from Inter's rendition of "↗". */
+  content: url("data:image/svg+xml,%3Csvg viewBox='0 0 7 7' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.04261 6.80966L0.377841 6.14489L5.32102 1.19318H1.50284L1.51136 0.272727H6.90625V5.67614H5.97727L5.9858 1.85795L1.04261 6.80966Z' fill='gray'/%3E%3C/svg%3E%0A");
+  /* inline => inline-block, so that we can give it a height */
+  display: inline-block;
+  height: 0.5lh;
+  padding-inline: 0.2lh;
+  aspect-ratio: 1;
+  line-height: 1;
+  vertical-align: text-top;
+}
+
 p.item {
   margin-block: 1lh;
   margin-inline: var(--main-margin-inline);
@@ -73,7 +87,7 @@ p.item {
 }
 
 p.aside {
-  padding-inline-start: 3em;
+  padding-inline: 3em;
 }
 
 p.timestamp {
@@ -110,8 +124,8 @@ body:has(.tag[data-tag="poem"]:hover) {
   }
 }
 
-body:has(.tag[data-tag="short"]:hover) {
-  .tag[data-tag="short"] {
+body:has(.tag[data-tag="thought"]:hover) {
+  .tag[data-tag="thought"] {
     color: oklch(0.6 0.2 90);
     font-weight: bold;
   }
@@ -150,35 +164,41 @@ body:has(.tag[data-tag="book-review"]:hover) {
 
 <body>
 
-<p class="item timestamp">Last updated: <time>24th May 2025</time></p>
+<p class="item timestamp">Last updated: <time>June 2025</time></p>
 
 <p class="item">
 <a href="evolution">Evolution is blind</a> &mdash; like stockfish, and to pain.
 <span class="tags">
-<span class="tag" data-tag="short"></span>
+<span class="tag" data-tag="thought"></span>
 </span>
 </p>
 
-<p class="item aside"><em>letters to no one</em></p>
+<p class="item aside">
+The irreconcilable <a href="https://web.mit.edu/jmorzins/www/C-H-speech.html"
+target="_blank">subversion</a> in following one&rsquo;s inexplicable inner
+imperative.
+</p>
 
 <p class="item">
-<a href="hyperion">Hyperion</a> &mdash; <em>anything which deceives is evil</em>
+<a href="hyperion">Hyperion</a> &mdash; <em>anything which deceives is evil.</em>
 <span class="tags">
 <span class="tag" data-tag="book-review"></span>
 </span>
 </p>
 
 <p class="item">
-<a href="all-the-light">All the light we cannot see</a> &mdash; roses, unnamed
+<a href="all-the-light">All the light we cannot see</a> &mdash; roses, unnamed.
 <span class="tags">
-<span class="tag" data-tag="short"></span>
+<span class="tag" data-tag="thought"></span>
 </span>
 </p>
 
 <p class="item">
 <a href="wildebeest">Humans and wildebeest</a> &mdash; an epiphany across
-decades
+decades.
 </p>
+
+<p class="item aside"><em>... letters to no one ...</em></p>
 
 <p class="item">
 <a href="name">Name</a>
@@ -189,7 +209,7 @@ decades
 
 <p class="item">
 <a href="nostalgia">Nostalgia for the present</a> &mdash; unbloomed flowers,
-creative incompetence, incomprehensible noise
+creative incompetence, incomprehensible noise.
 <span class="tags">
 <span class="tag" data-tag="quote"></span>
 </span>
@@ -205,7 +225,7 @@ while / existence
 
 <p class="item">
 <a href="software">Everything is possible in software</a> &mdash; but nothing is
-easy
+easy.
 <span class="tags">
 <span class="tag" data-tag="programming"></span>
 </span>
@@ -259,7 +279,7 @@ life that I&rsquo;m sure of so far: That I&rsquo;m always wrong.
 
 <p class="item">
 <a href="starships">The starships don&rsquo;t come here anymore</a> &mdash; a
-short sci-fi short story
+short sci-fi short story.
 <span class="tags">
 <span class="tag" data-tag="quote"></span>
 </span>
@@ -308,7 +328,7 @@ language, imperfectly translated.
 <p class="item">
 <a href="free-lunch">Free lunches</a> &mdash; exist.
 <span class="tags">
-<span class="tag" data-tag="short"></span>
+<span class="tag" data-tag="thought"></span>
 </span>
 </p>
 
@@ -351,7 +371,7 @@ board where each piece casts a shadow of influence.
 I exist &mdash;
 <a href="algorithm">but can you hear me?</a>
 <span class="tags">
-<span class="tag" data-tag="short"></span>
+<span class="tag" data-tag="thought"></span>
 </span>
 </p>
 
