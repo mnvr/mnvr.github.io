@@ -34,6 +34,7 @@ ul {
 
 <pre>mkdir linux && cd linux
 cp `brew --prefix qemu`/share/qemu/edk2-aarch64-code.fd .
+cp `brew --prefix qemu`/share/qemu/edk2-arm-vars.fd .
 </pre>
 
 <pre>qemu-img create -f qcow2 disk.qcow 40G
@@ -45,7 +46,7 @@ cp `brew --prefix qemu`/share/qemu/edk2-aarch64-code.fd .
   -accel hvf \
   -m 2G \
   -drive file=edk2-aarch64-code.fd,if=pflash,format=raw,readonly=on \
-  -device uefi-vars-sysbus,jsonfile=uefi.json \
+  -drive file=edk2-arm-vars.fd,if=pflash,format=raw \
   -drive file=disk.qcow2,if=virtio,format=qcow2 \
   -audio coreaudio,model=virtio \
   -monitor none -parallel none \
@@ -59,15 +60,22 @@ cp `brew --prefix qemu`/share/qemu/edk2-aarch64-code.fd .
 <p>
 Notes:
 <ul>
+<li>
+If the system can't boot (e.g. after changing devices), reset
+<code>edk2-arm-vars.fd</code> by copying it again.
+</li>
+<li>
+UEFI vars can also be saved to JSON by using `-device uefi-vars-sysbus,jsonfile=uefi.json`.
+</li>
 <li>Use <code>-display cocoa,full-screen=on</code> to taste.</li>
 <li>If X is not needed, use <code>-serial stdio -nographic</code> for an inline
 invocation.</li>
 <li>
 For sharing directories, use
 <code>-virtfs
-local,path=share,mount_tag=m0,security_model=mapped-file,readonly=on</code>.
+local,path="$(pwd)/data",security_model=mapped-file,mount_tag=m0,readonly=on</code>.
 Then on the guest we can
-<code>mkdir /mnt/share && mount -t 9p -o trans=virtio m0 /mnt/share</code>
+<code>mkdir /mnt/data && mount -t 9p -o trans=virtio m0 /mnt/data</code>
 </li>
 <li><kbd>Ctrl Option 1|2</kbd> - switch console.</li>
 <li><kbd>Ctrl Option Arrow</kbd> - scroll console.</li>
@@ -79,7 +87,7 @@ target="_blank">guide</a>.</li>
 </p>
 
 <footer>
-Last updated: May 2025
+Last updated: June 2025
 </footer>
 
 </body>
