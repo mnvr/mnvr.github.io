@@ -1,0 +1,52 @@
+:root {
+   color-scheme: light dark;
+   line-height: 1.5;
+
+  --main-margin-inline: 2rlh;
+
+  --muted: #777;
+  --a: #0000ee;
+  --a-visited: #551a8b;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --muted: #888;
+    --a: #8197fd;
+    --a-visited: #b578f2;
+  }
+  body {
+    background-color: oklch(0.314 0.021 285.75);
+    color: oklch(0.96 0 0);
+  }
+}
+
+@media (width < 37rem) {
+  :root {
+    --main-margin-inline: 1.2rlh;
+  }
+}
+
+@view-transition { navigation: auto; }
+
+body {
+  margin-inline: 0;
+  margin-block: 2rlh;
+}
+
+a {
+  text-decoration: underline;
+  text-underline-offset: 0.3lh;
+  text-decoration-thickness: 0.08lh;
+  color: inherit;
+  text-decoration-color: var(--a);
+}
+
+a:hover {
+  text-underline-offset: 0.275lh;
+  text-decoration-thickness: 0.12lh;
+}
+
+a:visited {
+  text-decoration-color: var(--a-visited);
+}

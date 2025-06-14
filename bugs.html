@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+<title>What is a bug anyway? | mnvr.in</title>
+<meta name="description" content="A bug is something that was working earlier but now isn't. Everything else is a feature.">
+<link href="paper.css" rel="stylesheet">
+
+<style>
+:root {
+  --accent: #ff7722;
+}
+
+strike {
+  color: var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<h3>
+What is a bug?
+</h3>
+
+<p>
+<mark>A bug is something that was working earlier but now isn&rsquo;t.</mark>
+That&rsquo;s it. Everything else is a feature.
+</p>
+
+<p>
+In the rest of this essay, I will try to justify this definition, and also state
+why it matters (spoiler: it doesn&rsquo;t really, except as a way of thinking
+about things (<em>that&rsquo;s what&rsquo;s called philosophy, Manav</em>)).
+</p>
+
+<hr>
+
+<p>
+This definition might seem like a very low bar; <em>au contraire</em> it is too
+high. Rare are projects that (strictly) satisfy it &mdash; Linux, Windows, the
+&ldquo;Web&rdquo;.
+</p>
+
+<p>
+And whether or not to satisfy this definition is a
+<em>business</em> decision, not an engineering decision (engineers left to their
+own would do anything except fix bugs). By business decision I mean that someone
+with power deliberately made the choice.
+</p>
+
+<ul>
+<li>For Linux it was Linus with the forceful <em>&ldquo;Never break
+userspace&rdquo;</em>.</li>
+<li>For Windows it was Microsoft, with a, well, literal business decision (they
+make more money this way).</li>
+<li>For the Web I don&rsquo;t actually know who were the individuals who insisted on
+it in the early days, when the tone was set and the seed was sown, but I&rsquo;m
+thankful to them!</li>
+</ul>
+
+<p>
+I haven&rsquo;t yet mentioned what &ldquo;satisfy it&rdquo; means. Well, it
+means <mark>once you define bugs this way, you make sure all bugs are
+fixed.</mark>
+</p>
+
+<p>
+That sounds like a good thing to do, why doesn&rsquo;t everyone do it? Unless
+you&rsquo;re among the perennially outraged, you&rsquo;d understand how it is a
+trolley problem (as the philosopher in me is saying), or how
+<em>&ldquo;it&rsquo;s a tradeoff&rdquo;</em>
+(as the engineer chimes in).
+</p>
+
+<p>
+There is a very high cost to unconditionally fixing all bugs as defined this
+way, and rare is it that circumstances warrant such strictness (as our empirical
+difficulty in finding real world examples illustrates).
+</p>
+
+<hr>
+
+<p>
+The advantage though is that it sets the direction of evolution. <mark>The
+software then cannot get worse.</mark> It can remain bad, with new garbage being
+continuously added (as I&rsquo;m told happens with Windows), or it can go into a
+dull stupor (as happened with the Web for a while before it somehow woke up
+again in the last decade), or it can slowly but steadily rise and rise (Linux);
+but it can&rsquo;t get worse.
+</p>
+
+<p>
+This is a ridiculously good thing, but people (as is our wont) are not happy
+with it. We want more.
+</p>
+<ul>
+<li><em>The app crashes whenever I try to run the new segalyzer</em></li>
+<li><em>I&rsquo;m clicking the share button, but nothing is happening</em></li>
+<li><em>The command is not able to scan files produced by GeeWhiz 7</em></li>
+</ul>
+<p>
+All of these get classified as bugs (by the reporter, not necessarily the
+developers) in the common sensical vernacular definition, but none of them would
+be bugs in the definition I&rsquo;m talking about <em>unless they were working
+earlier</em>.
+</p>
+
+<p>
+The problem with wanting more, without a plan, is sometimes then we don&rsquo;t
+even get less.
+</p>
+
+<hr>
+
+<p>
+As a programmer I&rsquo;m painfully aware of my ability to produce bugs. Having
+gone through the 7 stages of grief multiple times, I have come to accept that I
+will produce bugs from time to time no matter how meticulous I am.
+</p>
+
+<p>
+There are things I can try to help reduce the chances (of the various medicines
+floating around, only static types and end-to-end tests seem to help), and I
+adopt them whenever circumstances permit. Still, unless I go full NASA (say by
+drastically slowing down and/or involving multiple people for parts which need
+extra care), in the day to day scheme of things, the chances are still there.
+</p>
+
+<p>
+In such as the universe, I&rsquo;m extremely grateful to QA people or users who
+let me know of a recent regression I introduced. Really, thank you.
+</p>
+
+<p>
+The context is fresh in my mind and I can make the connection between what I did
+incorrectly and its manifestation easily (making that connection otherwise gets
+harder as time goes). A bug once reproducible has no defenses (unlike their
+organic brethren), so I can quickly fix it too and restore my balance with this
+universe of not doing more harm than good.
+</p>
+
+<hr>
+
+<p>
+What makes it harder to quickly fix them is when these regressions get mixed in
+among feature requests masquerading as bugs (or perhaps I should just call them
+<em>non-bugs</em> to avoid triggering the easily triggered).
+</p>
+
+<p>
+What&rsquo;s ironic is that the reporters who insist on classifying their pet
+thing as a bug, since they feel it will get more attention that way, end up
+losing visibility because the higher ups usually pay more attention to feature
+requests than to bugs.
+</p>
+
+<p>
+So it&rsquo;s a lose lose for everyone when someone classifies it as a bug a
+thing which was not already working.
+</p>
+
+<hr>
+
+<p>
+I&rsquo;m <em>far</em> from the first to recognize all this, though I may have
+been the first to <strike>waste</strike> spend a Saturday evening writing a rant
+about it.
+</p>
+
+<p>
+Indeed, while strict conformance to the definition I&rsquo;m using is rare, for most
+well run projects that have long term horizons, paying extra attention to
+regressions is very common. Some will even speak in similar terms. For example,
+Electron will often not consider your report as a bug unless you fill in the
+<em>last working version</em> and provide a reproducible example, but if you do
+both, a fix would land quickly.
+</p>
+
+<p>
+Another thing I like about this definition is that it sidesteps subjectivity.
+With regards to how something should work, what is <em>obviously wrong</em> to
+some user is more often than not a myriad of tricky interrelated aspects
+they&rsquo;re only iceberg tipping off. On the other hand, it is usually
+reasonably clearcut when something which was working earlier now stopped
+working, and the reasons are one of:
+</p>
+<ol>
+<li>It was an inadvertent regression (of code usually, but sometimes of UX too).</li>
+<li>It was an intentional regression (of UX usually, in preparation for a new
+feature, but sometimes of code too for similar reasons).</li>
+</ol>
+
+<p>
+The second one is called breaking backward compatibility, and e.g. the rare
+projects I mentioned above <a href="https://whatwg.org/faq#removing-bad-ideas"
+target="_blank">almost</a> <a
+href="https://github.com/PowerShell/PowerShell/pull/1901"
+target="_blank">never</a> do it, though that&rsquo;s why they are <a
+href="https://xkcd.com/1172/" target="_blank">rare</a>.
+</p>
+
+<p>
+But it is not my flag to defend or burn, the second one. Here I&rsquo;m only
+talking about the first category, and having them stand out would help me with
+the (personal) <em>no regression</em> rule I try to follow. That for me would be
+the value of a more precise definition of bugs.
+</p>
+
+<footer>
+<p>Manav Rathi<time>March 2025</time></p>
+<p><a href="/">mnvr.in</a></p>
+</footer>
+
+</body>
+</html>

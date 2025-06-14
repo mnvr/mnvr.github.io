@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+<title>Running OpenBSD using QEMU on macOS | mnvr.in</title>
+<meta name="description" content="ARM64">
+
+<style>
+:root {
+  color-scheme: light dark;
+  background-color: light-dark(mintcream, #111);
+}
+pre {
+  color: light-dark(darkgreen, chartreuse);
+  border: 1px solid light-dark(lightcyan, #333);
+  background-color: light-dark(white, #16161D);
+  padding: 1lh;
+}
+</style>
+
+</head>
+
+<body>
+
+<pre>brew install qemu
+</pre>
+
+<pre>mkdir bsd && cd bsd
+cp `brew --prefix qemu`/share/qemu/edk2-aarch64-code.fd .
+cp `brew --prefix qemu`/share/qemu/edk2-arm-vars.fd .
+</pre>
+
+<pre>qemu-img create -f qcow2 disk.qcow 40G
+</pre>
+
+<pre>qemu-system-aarch64 \
+  -machine virt \
+  -cpu host \
+  -accel hvf \
+  -m 2G \
+  -drive file=edk2-aarch64-code.fd,if=pflash,format=raw,readonly=on \
+  -drive file=edk2-arm-vars.fd,if=pflash,format=raw \
+  -drive file=disk.qcow2,if=virtio,format=qcow2 \
+  -monitor none \
+  -cdrom cd77.iso
+</pre>
+
+<footer>
+<a href="linux-qemu">More knobs</a>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<channel>
+  <title>mnvr.in</title>
+  <description>Manav's website</description>
+  <link>https://mnvr.in</link>
+  <language>en</language>
+  <item>
+    <title>Evolution is blind, like stockfish</title>
+    <description>In particular, evolution is blind to pain.</description>
+    <link>https://mnvr.in/evolution</link>
+    <guid>https://mnvr.in/evolution</guid>
+    <pubDate>Sat, 24 May 2025 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>Hyperion</title>
+    <description>A book review</description>
+    <link>https://mnvr.in/hyperion</link>
+    <guid>https://mnvr.in/hyperion</guid>
+    <pubDate>Sun, 18 May 2025 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>All the light we cannot see</title>
+    <description>Roses, unnamed</description>
+    <link>https://mnvr.in/all-the-light</link>
+    <guid>https://mnvr.in/all-the-light</guid>
+    <pubDate>Sat, 17 May 2025 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>Humans and wildebeest</title>
+    <description>An epiphany across decades</description>
+    <link>https://mnvr.in/wildebeest</link>
+    <guid>https://mnvr.in/wildebeest</guid>
+    <pubDate>Sat, 03 May 2025 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>Name</title>
+    <description>A poem</description>
+    <link>https://mnvr.in/name</link>
+    <guid>https://mnvr.in/name</guid>
+    <pubDate>Wed, 30 Apr 2025 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>Nostalgia for the present</title>
+    <description>And other quotes from gome</description>
+    <link>https://mnvr.in/nosalgia</link>
+    <guid>https://mnvr.in/nosalgia</guid>
+    <pubDate>Sun, 27 Apr 2025 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>Three poems</title>
+    <description>Feeling good today / Live for a while / Existence</description>
+    <link>https://mnvr.in/three-poems</link>
+    <guid>https://mnvr.in/three-poems</guid>
+    <pubDate>Sat, 26 Apr 2025 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>Everything is possible in software, but!</title>
+    <description>Nothing is easy</description>
+    <link>https://mnvr.in/software</link>
+    <guid>https://mnvr.in/software</guid>
+    <pubDate>Fri, 18 Apr 2025 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>Your people might not exist</title>
+    <description>A poem</description>
+    <link>https://mnvr.in/your-people</link>
+    <guid>https://mnvr.in/your-people</guid>
+    <pubDate>Fri, 11 Apr 2025 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>Objects in motion remain in motion</title>
+    <description>Rocks, humans and processes / I find that calming</description>
+    <link>https://mnvr.in/motion</link>
+    <guid>https://mnvr.in/motion</guid>
+    <pubDate>Sun, 06 Apr 2025 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>Levels of truth</title>
+    <description>I have learnt only one thing in life that I'm sure of so far: That I'm always wrong.</description>
+    <link>https://mnvr.in/levels</link>
+    <guid>https://mnvr.in/levels</guid>
+    <pubDate>Sat, 05 Apr 2025 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>What is a bug anyway?</title>
+    <description>A bug is something that was working earlier but now isn't. Everything else is a feature.</description>
+    <link>https://mnvr.in/bugs</link>
+    <guid>https://mnvr.in/bugs</guid>
+    <pubDate>Sat, 29 Mar 2025 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>Shiva</title>
+    <description>God does not play dice, Einstein, he is dice.</description>
+    <link>https://mnvr.in/shiva</link>
+    <guid>https://mnvr.in/shiva</guid>
+    <pubDate>Sun, 23 Mar 2025 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>the flower that blooms late in my yard</title>
+    <description>A Chinese poem by Li Bai, imperfectly translated and adapted.</description>
+    <link>https://mnvr.in/one-flower</link>
+    <guid>https://mnvr.in/one-flower</guid>
+    <pubDate>Sat, 22 Mar 2025 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>Free lunches</title>
+    <description>Exist.</description>
+    <link>https://mnvr.in/free-lunch</link>
+    <guid>https://mnvr.in/free-lunch</guid>
+    <pubDate>Sun, 16 Mar 2025 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>Visualizing chess</title>
+    <description>Imagining a chess board showing piece / pawn influence.</description>
+    <link>https://mnvr.in/chess</link>
+    <guid>https://mnvr.in/chess</guid>
+    <pubDate>Sat, 8 Mar 2025 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>Can you hear me?</title>
+    <description>The loving algorithm that was meant to serve us all</description>
+    <link>https://mnvr.in/algorithm</link>
+    <guid>https://mnvr.in/algorithm</guid>
+    <pubDate>Sat, 8 Mar 2025 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>Entropy counts</title>
+    <description>(and why the second law is obvious)</description>
+    <link>https://mnvr.in/entropy</link>
+    <guid>https://mnvr.in/entropy</guid>
+    <pubDate>Sat, 8 Mar 2025 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>Mind</title>
+    <description>Is my mind in this world, or is the world in my mind?</description>
+    <link>https://mnvr.in/mind</link>
+    <guid>https://mnvr.in/mind</guid>
+    <pubDate>Sat, 22 Feb 2025 00:00:00 GMT</pubDate>
+  </item>
+</channel>
+</rss>

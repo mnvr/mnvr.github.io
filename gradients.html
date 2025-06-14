@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+<title>Gradients | mnvr.in</title>
+<meta name="description" content="">
+
+<style>
+:root {
+  color-scheme: light dark;
+}
+body {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  box-sizing: border-box;
+}
+
+div {
+  /* border: 1px solid limegreen; */
+  aspect-ratio: 1.8;
+}
+
+div:nth-child(1) {
+  background-image: radial-gradient(circle, blue, transparent);
+}
+
+div:nth-child(2) {
+  background-image: radial-gradient(circle at center in hsl shorter hue, blue, green);
+}
+
+div:nth-child(3) {
+  background-image: radial-gradient(circle at center in hsl longer hue, blue, green);
+}
+
+div:nth-child(4) {
+  background-image:
+    radial-gradient(circle in hsl longer hue, hsl(240, 100%, 50%), hsl(290, 100%, 50%));
+}
+
+div:nth-child(5) {
+  /* color stop */
+  background-image: radial-gradient(circle, blue, transparent 50%);
+}
+
+div:nth-child(6) {
+  /* mid-point */
+  background-image: radial-gradient(circle, blue, 20%, transparent 50%);
+}
+
+div:nth-child(7) {
+  background-image: repeating-radial-gradient(circle,
+    hsl(240, 100%, 50%) 10px, transparent 20px);
+}
+
+div:nth-child(7) {
+  background-image: repeating-radial-gradient(circle,
+    hsl(240, 100%, 50%) 18px, transparent 20px);
+}
+
+div:nth-child(8) {
+  background-image:
+    radial-gradient(circle at center in hsl longer hue,
+       hsl(240, 100%, 50%) 10px, hsl(290, 100%, 50%) 100px);
+}
+
+@property --c9 {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 290;
+}
+
+@property --s9 {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 90px;
+}
+
+div:nth-child(9) {
+  background-image:
+    repeating-radial-gradient(circle at center in hsl longer hue,
+       hsl(20, 100%, 50%) 10px, hsl(var(--c9), 100%, 50%) var(--s9), hsl(240, 100%, 50%) 100px);
+  animation: a9 3s linear infinite alternate;
+}
+
+@keyframes a9 {
+from { --c9: 290; --s9: 80px; }
+50% { --c9: 300; --s9: 87px; }
+to { --c9: 290; --s9: 84px; }
+}
+</style>
+
+</head>
+
+<body>
+
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+
+
+</body>
+</html>

@@ -1,0 +1,184 @@
+:root {
+  color-scheme: light dark;
+  line-height: 1.75;
+
+  --main-margin-inline: 3rlh;
+  --main-margin-block: 2rlh;
+
+  --accent: red;
+  --muted: #808080;
+  --a: #0000ee;
+  --a-visited: #551a8b;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --accent: pink;
+    --muted: #888;
+    --a: #8197fd;
+    --a-visited: #b578f2;
+  }
+
+  body {
+    background-color: oklch(0.314 0.021 285.75);
+    color: oklch(0.96 0 0);
+  }
+}
+
+@media (width < 37rem) {
+  :root {
+    --main-margin-inline: 1rlh;
+    --main-margin-block: 1rlh;
+  }
+}
+
+@view-transition { navigation: auto; }
+
+body {
+  margin-block: var(--main-margin-block);
+  margin-inline: 0;
+}
+
+a {
+  text-decoration: underline;
+  text-underline-offset: 0.18lh;
+  text-decoration-thickness: 0.08lh;
+  color: inherit;
+  text-decoration-color: var(--a);
+}
+
+a:hover {
+  text-underline-offset: 0.16lh;
+  text-decoration-thickness: 0.12lh;
+}
+
+a:visited {
+  text-decoration-color: var(--a-visited);
+}
+
+/* Add an indicator after external links that'll open in a new window. */
+a[target="_blank"]::after {
+  /* &nearr;, but nicer. SVG adapted from Inter's rendition of "↗". */
+  content: url("data:image/svg+xml,%3Csvg viewBox='0 0 7 7' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.04261 6.80966L0.377841 6.14489L5.32102 1.19318H1.50284L1.51136 0.272727H6.90625V5.67614H5.97727L5.9858 1.85795L1.04261 6.80966Z' fill='gray'/%3E%3C/svg%3E%0A");
+  /* inline => inline-block, so that we can give it a height */
+  display: inline-block;
+  height: 0.5lh;
+  padding-inline: 0.2lh;
+  aspect-ratio: 1;
+  line-height: 1;
+  vertical-align: text-top;
+}
+
+h2, h3, h4, p, ul, ol, footer {
+  margin-inline: var(--main-margin-inline);
+  max-width: 34rem;
+}
+
+.lightyear {
+  font-family: sans-serif;
+  font-style: italic;
+}
+
+h3:not(.vanilla), h4 {
+  padding-block-end: 0.75lh;
+  border-block-end: 2px solid var(--accent);
+  margin-block-end: 1.25lh;
+}
+
+p, ul, ol {
+  margin-block: 1.25lh;
+}
+
+blockquote {
+  margin-block: 1.25lh;
+}
+
+blockquote.epilogue {
+  margin-block: 1.75lh;
+}
+
+ul, ol {
+  padding-inline: 1.25lh;
+}
+
+@media (width < 37rem) {
+  ul, ol {
+    padding-inline: 1lh;
+  }
+}
+
+li {
+  margin-block: 1.25lh;
+  padding-inline: 0.5lh;
+}
+
+mark {
+  padding: 0.5ex;
+  border-radius: 1px;
+  background-color: color(from var(--accent) srgb r g b / 0.05);
+  border: 1px solid color(from currentColor srgb r g b / 0.3);
+  color: currentColor;
+}
+
+hr {
+  border: 0;
+  border-bottom: 1px solid var(--accent);
+  opacity: 0.3;
+  margin-block: 2lh;
+}
+
+:not(pre) > code {
+  border: 1px solid var(--accent);
+  padding: 0.5ex;
+}
+
+math {
+  border: 1px solid var(--accent);
+  padding: 0.8ex;
+}
+
+pre {
+  background-color: color(from var(--accent) srgb r g b / 0.025);
+  padding-inline: var(--main-margin-inline);
+  padding-block: 1lh;
+  overflow-x: scroll;
+}
+
+blockquote {
+  border-inline-start: 1px solid var(--accent);
+  margin-inline: var(--main-margin-inline);
+  p {
+    margin-inline: 1lh;
+  }
+}
+
+section.ed {
+  color: var(--muted);
+  font-size: 0.92em;
+}
+
+footer {
+  margin-block: 2rlh;
+
+  color: var(--muted);
+  font-size: 0.92em;
+
+  time {
+    display: block;
+  }
+
+  p {
+    margin-block: 1lh;
+    margin-inline: 0;
+  }
+
+  p:last-child {
+    margin-block: 2rlh;
+  }
+
+  a[href="/"] {
+    opacity: 0.8;
+    font-style: italic;
+    text-decoration: none;
+  }
+}

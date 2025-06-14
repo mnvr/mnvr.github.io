@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+<title>Levels of truth | mnvr.in</title>
+<meta name="description" content="I have learnt only one thing in life that I'm sure of so far: That I'm always wrong.">
+<link href="paper.css" rel="stylesheet">
+
+<style>
+:root {
+  --accent: fuchsia;
+}
+canvas {
+  width: 100%;
+  aspect-ratio: 2;
+  display: block;
+}
+</style>
+
+<script type="module">
+import { mbExit, rescale } from "./mandelbrot.js";
+
+const plot = (canvas, xrange, yrange, iter = 100) => {
+  const dpr = Math.max(Math.floor(devicePixelRatio), 2);
+  const width = canvas.width = canvas.clientWidth * dpr;
+  const height = canvas.height = canvas.clientHeight * dpr;
+
+  const ctx = canvas.getContext("2d");
+  const imageData = ctx.getImageData(0, 0, width, height);
+  const data = imageData.data;
+
+  for (let y = 0; y < height; y++) {
+    for (let x = 0; x < width; x++) {
+      const i = (y * width + x) * 4; /* RGBA */
+      const c = [
+        rescale(x, [0, width], xrange), rescale(y, [0, height], yrange)
+      ]
+
+      data[i + 0] = 255;
+      data[i + 1] = 0;
+
+      const z = mbExit(c, iter);
+      if (z === 0) {
+        data[i + 2] = 255;
+        data[i + 3] = 255;
+      } else {
+        if (iter > 200 && z > 100) {
+          data[i + 2] = 255;
+          if (z > 280) {
+            data[i + 3] = (255 - z) / 2;
+          } else if (z > 180) {
+            data[i + 3] = 255 - z;
+          } else if (z > 120) {
+            data[i + 3] = z / 2;
+          } else {
+            data[i + 3] = z / 8;
+          }
+        }
+      }
+    }
+  }
+
+  ctx.putImageData(imageData, 0, 0);
+}
+
+plot(document.querySelector("#c1"), [-2.5, 1.5], [-1, 1], 30)
+
+// Delay the below the fold ones.
+setTimeout(() => {
+  plot(document.querySelector("#c2"), [-0.9, -0.65], [0.10625, 0.24375])
+
+  plot(document.querySelector("#c3"),
+    [-0.7606578947368421, -0.7080263157894737],
+    [0.18026315789473685, 0.20921052631578949],
+    200)
+
+  plot(document.querySelector("#c4"),
+    [-0.7358948131080388, -0.7357241355180064],
+    [0.19667599590373783, 0.19676986857825568],
+    510
+  )
+}, 100);
+
+</script>
+
+</head>
+
+<body>
+
+<h3>Levels of truth</h3>
+
+<p>
+I have learnt only one thing in life that I&rsquo;m sure of so far: That I&rsquo;m always
+wrong.
+</p>
+
+<p><canvas id="c1"></canvas></p>
+
+<p>
+This isn&rsquo;t a self deprecating jest, but rather a clear headed observation.
+No matter what theory, thought, ideology, rule of thumb or other mental shticks
+I&rsquo;ve held, eventually it turns out to be incorrect.
+</p>
+
+<p>
+If I were an insect I would at this point just roll over and die (have you seen
+them do it? it&rsquo;s insane! They just, um, roll over and sudo halt suddenly),
+but I&rsquo;m human and instead I&rsquo;m writing an essay...
+</p>
+
+<p>
+Back to the point (I tend to distract myself easily).
+</p>
+
+<hr>
+
+<p>
+I&rsquo;m always wrong. But over time I discovered, as Russell discovered for any
+self-referentiable system of reasoning, that even my belief that I&rsquo;m always
+eventually wrong is wrong.
+</p>
+
+<p>
+it&rsquo;s wrong not because sometimes I&rsquo;m right; rather I found that sometimes I&rsquo;m
+right in a cyclic manner - what I thought was true, usually ends up being false,
+but then sometimes later ends up being true again.
+</p>
+
+<p>
+So for a while I went through the everything is relative postmodern phase. As is
+no surprise, even this was incorrect (<em>worse, it leads to an reasoning
+paralysis that renders one perpetually indecisive</em>).
+</p>
+
+<hr>
+
+<p>
+I&rsquo;m in a new phase now. I call it the levels of truth phase. There are levels of
+truth.
+</p>
+
+<p><canvas id="c2"></canvas></p>
+
+<p>
+An example is called for.
+</p>
+
+<p>
+I&rsquo;m a programmer. So there are beliefs that I&rsquo;ve held, that I need
+to hold, to be an effective engineer. One such strong belief was that code
+quality matters (we won&rsquo;t get into what that means here).
+</p>
+
+<p>
+Then I worked for a while in, let&rsquo;s say, a higher up role. At that time I
+realized how naive was my older belief &mdash; code quality doesn&rsquo;t matter
+as an end in itself, it is a means to an end, and a not too important one
+either.
+</p>
+
+<p>
+Now I&rsquo;m a programmer again. And I&rsquo;ve come again to realize that code
+quality matters. My realization now is a bit subtler than the previous time
+&mdash; I can now see code quality matters not only at a technical level, but
+also as a psychological level of the people involved, as a second order effect,
+like the lady at the corner house watering flowers and improving the well being
+of the entire block without anybody noticing it consciously.
+</p>
+
+<p>
+Which belief is right? Both of them are. They are just true at different levels.
+The difference I feel from the hand wavey everything is relative phase is that I
+can now see that <b>it is imperative for me to believe the truth in the level
+I&rsquo;m currently operating</b>.
+</p>
+
+<p>
+This also comes very naturally, us humans are good at living with
+contradictions. It is only the too thoughtful (like myself of yore) that tie
+themselves in knots here.
+</p>
+
+<hr>
+
+<p>
+But this isn&rsquo;t just about me. For the next example let us zoom out, way out
+&mdash; the contemporary culture war in the west.
+</p>
+
+<p>
+Looking as outsiders, it is easier to caricate what is going on. There are some
+people who make statements that are obviously correct. Like be nice to everyone.
+They then defend it with the might of reasoning.
+</p>
+
+<p>
+They&rsquo;re missing three things - the game theory of what they&rsquo;re
+saying doesn&rsquo;t hold; it doesn&rsquo;t acknowledge the human psychology of
+majority of the population; and they don&rsquo;t see how the oasis of effective
+action cannot always be reached by the horse of reason.
+</p>
+
+<p>
+As a reaction to the incessant tirade of these paternalistic few, their
+societies, like bodies with immune systems, have activated an immune response,
+and now the body is fighting its own immune system. And immune systems are
+nothing if not nasty.
+</p>
+
+<p><canvas id="c3"></canvas></p>
+
+<p>
+Both sides are correct (or wrong), but at different levels. An appropriate
+personal choice is not necessarily the one which society should also make.
+</p>
+
+<hr>
+
+<p>
+There are not just two levels &mdash; for example, for the code quality thing,
+there are further sublevels to the technical level, and other domain specific
+axes like scale:
+
+<blockquote>
+<p>
+&ldquo;Solutions vary by scale &mdash; what works for millions of requests may
+not suit billions. As workload size increases, solutions typically become more
+complex and costly, so right-sizing the approach is critical and should evolve
+with changing needs.&rdquo; &mdash; <cite>Docs for AWS S3</cite>
+</p>
+</blockquote>
+
+<p>
+Time is another axis: what might&rsquo;ve been true 5 years ago might not hold
+now. This is why being ahead of one&rsquo;s time is not necessarily an enriching
+attribute.
+</p>
+
+<p>
+Truth then is fractal in nature. Two wrongs can make a right.
+</p>
+
+<p><canvas id="c4"></canvas></p>
+
+<p>
+Is my current belief going to be wrong too? Of course! That&rsquo;s what I
+started with: that I&rsquo;ve always found myself to be incorrect eventually.
+</p>
+<p>
+So then, why bother writing this nonsense down? Well, there is the insect
+tangent I went to in the beginning. But that&rsquo;s not all, there is also a
+joy I get from constructing linear arrays of symbols that might map to a new
+tingling point in an abstract multi-dimensional space within a mind that is not
+me (or my own after I read afresh something I&rsquo;d forgetten I&rsquo;d myself
+written).
+</p>
+
+<p>
+So I&rsquo;m sipping my cup of Wagh Bakri, writing of my current belief, not as a
+truth with a capital T, but one that starts lowercased, and has levels within.
+Hopefully, it tickles.
+</p>
+
+<footer>
+<p>
+If you&rsquo;re curious how the mandelbrot illustrations were made, <a
+href="mb.html">it&rsquo;s easy</a>!
+</p>
+<p>Manav Rathi<time>April 2025</time></p>
+<p><a href="/">mnvr.in</a></p>
+</footer>
+
+</body>
+</html>

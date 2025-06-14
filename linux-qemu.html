@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+<title>Running Linux using QEMU on macOS | mnvr.in</title>
+<meta name="description" content="ARM64">
+
+<style>
+:root {
+  color-scheme: light dark;
+  background-color: light-dark(mintcream, #111);
+}
+pre {
+  color: light-dark(darkgreen, chartreuse);
+  border: 1px solid light-dark(lightcyan, #333);
+  background-color: light-dark(white, #16161D);
+  padding: 1lh;
+}
+ul {
+  max-width: 60em;
+}
+</style>
+
+</head>
+
+<body>
+
+<pre>brew install qemu
+</pre>
+
+<pre>mkdir linux && cd linux
+cp `brew --prefix qemu`/share/qemu/edk2-aarch64-code.fd .
+cp `brew --prefix qemu`/share/qemu/edk2-arm-vars.fd .
+</pre>
+
+<pre>qemu-img create -f qcow2 disk.qcow 40G
+</pre>
+
+<pre>qemu-system-aarch64 \
+  -machine virt \
+  -cpu host \
+  -accel hvf \
+  -m 2G \
+  -drive file=edk2-aarch64-code.fd,if=pflash,format=raw,readonly=on \
+  -drive file=edk2-arm-vars.fd,if=pflash,format=raw \
+  -drive file=disk.qcow2,if=virtio,format=qcow2 \
+  -audio coreaudio,model=virtio \
+  -monitor none -parallel none \
+  -device virtio-gpu \
+  -device qemu-xhci \
+  -device usb-kbd \
+  -device usb-tablet \
+  -cdrom distro-aarch64.iso
+</pre>
+
+<p>
+Notes:
+<ul>
+<li>
+If the system can't boot (e.g. after changing devices), reset
+<code>edk2-arm-vars.fd</code> by copying it again.
+</li>
+<li>
+UEFI vars can also be saved to JSON by using `-device uefi-vars-sysbus,jsonfile=uefi.json`.
+</li>
+<li>Use <code>-display cocoa,full-screen=on</code> to taste.</li>
+<li>If X is not needed, use <code>-serial stdio -nographic</code> for an inline
+invocation.</li>
+<li>
+For sharing directories, use
+<code>-virtfs
+local,path="$(pwd)/data",security_model=mapped-file,mount_tag=m0,readonly=on</code>.
+Then on the guest we can
+<code>mkdir /mnt/data && mount -t 9p -o trans=virtio m0 /mnt/data</code>
+</li>
+<li><kbd>Ctrl Option 1|2</kbd> - switch console.</li>
+<li><kbd>Ctrl Option Arrow</kbd> - scroll console.</li>
+<li><kbd>Cmd F</kbd> to enter fullscreen; <kbd>Ctrl Option G</kbd> (to uncapture
+mouse) then <kbd>Cmd F</kbd> to exit it.</li>
+<li>A helpful <a href="https://ww2.coastal.edu/mmurphy2/oer/qemu/"
+target="_blank">guide</a>.</li>
+</ul>
+</p>
+
+<footer>
+Last updated: June 2025
+</footer>
+
+</body>
+</html>

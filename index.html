@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+<title>mnvr.in</title>
+<meta name="description" content="Manav's website">
+<link rel="alternate" type="application/rss+xml" href="rss.xml">
+
+<style>
+:root {
+  color-scheme: light dark;
+  line-height: 1.75;
+
+  --main-margin-inline: 2rlh;
+  --main-margin-block: 1rlh;
+
+  --muted: #777;
+  --a: #0000ee;
+  --a-visited: #551a8b;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --muted: #888;
+    --a: #8197fd;
+    --a-visited: #b578f2;
+  }
+  body {
+    background-color: rgb(12 12 13);
+    color: rgb(250 250 240);
+  }
+}
+
+@media (width < 37rem) {
+  :root {
+    --main-margin-inline: 1.2rlh;
+    --main-margin-block: 1rlh;
+  }
+}
+
+@view-transition { navigation: auto; }
+
+body {
+  margin-inline: 0;
+  margin-block: var(--main-margin-block);
+}
+
+a {
+  text-decoration: underline;
+  text-underline-offset: 0.3lh;
+  text-decoration-thickness: 0.06lh;
+  color: inherit;
+  text-decoration-color: var(--a);
+}
+
+a:hover {
+  text-underline-offset: 0.275lh;
+  text-decoration-thickness: 0.1lh;
+}
+
+a:visited {
+  text-decoration-color: var(--a-visited);
+}
+
+/* Duplicated from paper.css */
+/* Add an indicator after external links that'll open in a new window. */
+a[target="_blank"]::after {
+  /* &nearr;, but nicer. SVG adapted from Inter's rendition of "↗". */
+  content: url("data:image/svg+xml,%3Csvg viewBox='0 0 7 7' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.04261 6.80966L0.377841 6.14489L5.32102 1.19318H1.50284L1.51136 0.272727H6.90625V5.67614H5.97727L5.9858 1.85795L1.04261 6.80966Z' fill='gray'/%3E%3C/svg%3E%0A");
+  /* inline => inline-block, so that we can give it a height */
+  display: inline-block;
+  height: 0.5lh;
+  padding-inline: 0.2lh;
+  aspect-ratio: 1;
+  line-height: 1;
+  vertical-align: text-top;
+}
+
+p.item {
+  margin-block: 1lh;
+  margin-inline: var(--main-margin-inline);
+  max-width: 40em;
+}
+
+p.aside {
+  padding-inline: 3em;
+}
+
+p.timestamp {
+  font-size: small;
+  color: var(--muted);
+  padding-block-start: 0.5lh;
+}
+
+div.col2 {
+  margin-inline: var(--main-margin-inline);
+  max-width: 40em;
+  display: flex;
+  align-items: center;
+}
+
+span.tags {
+  color: var(--muted);
+  font-family: monospace;
+  font-size: smaller;
+}
+
+.tag::before {
+  content: "#" attr(data-tag);
+}
+
+.tag {
+  cursor: context-menu;
+}
+
+body:has(.tag[data-tag="poem"]:hover) {
+  .tag[data-tag="poem"] {
+    color: oklch(0.6 0.2 30);
+    font-weight: bold;
+  }
+}
+
+body:has(.tag[data-tag="thought"]:hover) {
+  .tag[data-tag="thought"] {
+    color: oklch(0.6 0.2 90);
+    font-weight: bold;
+  }
+}
+
+body:has(.tag[data-tag="long"]:hover) {
+  .tag[data-tag="long"] {
+    color: oklch(0.6 0.2 150);
+    font-weight: bold;
+  }
+}
+
+body:has(.tag[data-tag="quote"]:hover) {
+  .tag[data-tag="quote"] {
+    color: oklch(0.6 0.2 210);
+    font-weight: bold;
+  }
+}
+
+body:has(.tag[data-tag="programming"]:hover) {
+  .tag[data-tag="programming"] {
+    color: oklch(0.6 0.2 300);
+    font-weight: bold;
+  }
+}
+
+body:has(.tag[data-tag="book-review"]:hover) {
+  .tag[data-tag="book-review"] {
+    color: oklch(0.6 0.2 0);
+    font-weight: bold;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<p class="item timestamp">Last updated: <time>June 2025</time></p>
+
+<p class="item">
+<a href="evolution">Evolution is blind</a> &mdash; like stockfish, and to pain.
+<span class="tags">
+<span class="tag" data-tag="thought"></span>
+</span>
+</p>
+
+<p class="item aside">
+The irreconcilable <a href="https://web.mit.edu/jmorzins/www/C-H-speech.html"
+target="_blank">subversion</a> in following one&rsquo;s inexplicable inner
+imperative.
+</p>
+
+<p class="item">
+<a href="hyperion">Hyperion</a> &mdash; <em>anything which deceives is evil.</em>
+<span class="tags">
+<span class="tag" data-tag="book-review"></span>
+</span>
+</p>
+
+<p class="item">
+<a href="all-the-light">All the light we cannot see</a> &mdash; roses, unnamed.
+<span class="tags">
+<span class="tag" data-tag="thought"></span>
+</span>
+</p>
+
+<p class="item">
+<a href="wildebeest">Humans and wildebeest</a> &mdash; an epiphany across
+decades.
+</p>
+
+<p class="item aside"><em>... letters to no one ...</em></p>
+
+<p class="item">
+<a href="name">Name</a>
+<span class="tags">
+<span class="tag" data-tag="poem"></span>
+</span>
+</p>
+
+<p class="item">
+<a href="nostalgia">Nostalgia for the present</a> &mdash; unbloomed flowers,
+creative incompetence, incomprehensible noise.
+<span class="tags">
+<span class="tag" data-tag="quote"></span>
+</span>
+</p>
+
+<p class="item">
+<a href="three-poems">Three poems</a> &mdash; feeling good today / live for a
+while / existence
+<span class="tags">
+<span class="tag" data-tag="poem"></span>
+</span>
+</p>
+
+<p class="item">
+<a href="software">Everything is possible in software</a> &mdash; but nothing is
+easy.
+<span class="tags">
+<span class="tag" data-tag="programming"></span>
+</span>
+</p>
+
+<p class="item">
+<a href="your-people">Your people might not exist</a>
+<span class="tags">
+<span class="tag" data-tag="poem"></span>
+</span>
+</p>
+
+<p class="item">
+<a href="motion">Objects in motion remain in motion</a> &mdash; I find that calming.
+</p>
+
+<style>
+.vibration {
+  view-transition-name: vibration-text;
+}
+</style>
+
+<p class="item aside">
+<a href="vibration">the nature of the universe is vibration</a>
+</p>
+
+<style>
+img.levels {
+  flex-shrink: 0;
+  aspect-ratio: 2;
+  height: 75px;
+}
+</style>
+<div class="col2 levels">
+<p>
+<a href="levels">Levels of truth</a> &mdash; I have learnt only one thing in
+life that I&rsquo;m sure of so far: That I&rsquo;m always wrong.
+<span class="tags">
+<span class="tag" data-tag="long"></span>
+</span>
+</p>
+<a href="levels"><img class="levels" src="i/levels.avif" alt=""></a>
+</div>
+
+<p class="item">
+<a href="math-insurance">A Mathematician&rsquo;s insurance</a> &mdash; Win-win!
+<span class="tags">
+<span class="tag" data-tag="quote"></span>
+</span>
+</p>
+
+<p class="item">
+<a href="starships">The starships don&rsquo;t come here anymore</a> &mdash; a
+short sci-fi short story.
+<span class="tags">
+<span class="tag" data-tag="quote"></span>
+</span>
+</p>
+
+<p class="item">
+A bug is something that was working earlier but now isn&rsquo;t. <a
+href="bugs">Everything else is a feature</a>.
+<span class="tags">
+<span class="tag" data-tag="programming"></span>
+<span class="tag" data-tag="long"></span>
+</span>
+</p>
+
+<style>
+.artwork-container {
+  display: flex;
+  margin-inline: var(--main-margin-inline);
+}
+
+.deckards-dream {
+  height: 16vh;
+  aspect-ratio: 1;
+  background: radial-gradient(circle at 100%, red, 15%, blue);
+  view-transition-name: deckards-dream;
+}
+</style>
+
+<div class="artwork-container">
+<a href="deckards-dream"><div class="deckards-dream"></div></a>
+</div>
+
+<p class="item">
+<a href="shiva">God does not play dice, Einstein, he <em>is</em> dice</a>
+&mdash; Randomness, or as I know him, Shiva.
+</p>
+
+<p class="item">
+<a href="one-flower">the flower that blooms late</a> &mdash; a poem from another
+language, imperfectly translated.
+<span class="tags">
+<span class="tag" data-tag="quote"></span>
+</span>
+</p>
+
+<p class="item">
+<a href="free-lunch">Free lunches</a> &mdash; exist.
+<span class="tags">
+<span class="tag" data-tag="thought"></span>
+</span>
+</p>
+
+<style>
+svg.chess {
+  flex-shrink: 0;
+  margin-inline: 1lh;
+}
+</style>
+
+<div class="col2 chess">
+<p>
+<a href="chess">chess / piece / pawn / influence</a> &mdash; Imagine a chess
+board where each piece casts a shadow of influence.
+</p>
+<a href="chess">
+<svg class="chess" width="64px" height="64px" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="0" y="0" width="64" height="64" fill="#ef00ef"/>
+<rect x="17" y="17" width="6" height="6" fill="white"/>
+<rect x="29" y="17" width="6" height="6" fill="white"/>
+<rect x="41" y="17" width="6" height="6" fill="white"/>
+<rect x="23" y="23" width="6" height="6" fill="white"/>
+<rect x="29" y="23" width="6" height="6" fill="white"/>
+<rect x="35" y="23" width="6" height="6" fill="white"/>
+<rect x="17" y="29" width="6" height="6" fill="white"/>
+<rect x="23" y="29" width="6" height="6" fill="white"/>
+<rect x="35" y="29" width="6" height="6" fill="white"/>
+<rect x="41" y="29" width="6" height="6" fill="white"/>
+<rect x="23" y="35" width="6" height="6" fill="white"/>
+<rect x="29" y="35" width="6" height="6" fill="white"/>
+<rect x="35" y="35" width="6" height="6" fill="white"/>
+<rect x="17" y="41" width="6" height="6" fill="white"/>
+<rect x="29" y="41" width="6" height="6" fill="white"/>
+<rect x="41" y="41" width="6" height="6" fill="white"/>
+</svg>
+</a>
+</div>
+
+<p class="item">
+I exist &mdash;
+<a href="algorithm">but can you hear me?</a>
+<span class="tags">
+<span class="tag" data-tag="thought"></span>
+</span>
+</p>
+
+<p class="item">
+<a href="entropy">Entropy counts</a>
+(and why the second law is obvious)
+</p>
+
+<p class="item">
+Is my mind in this world, or is the world in my <a href="mind">mind?</a>
+</p>
+
+<style>
+div#roses {
+  margin-block: 1.2rlh;
+  padding-inline: var(--main-margin-inline);
+  background-color: #FA0C10;
+  color: white;
+
+  font-style: italic;
+  display: flex;
+  gap: 1rlh;
+}
+</style>
+
+<div id="roses">
+
+<p>
+ring-a ring-a roses<br>
+a pocket full of poses<br>
+<br>
+hye-sha hye-sha<br>
+they all fell down<br>
+</p>
+
+<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 100 100">
+<rect width="100" height="100" fill="#FA0C10"/>
+<g fill="currentColor">
+  <rect width="8.7" height="38.8" x="21.6" y="30.6" />
+  <rect width="8.7" height="38.8" x="56.4" />
+  <rect width="8.7" height="38.8" x="56.4" y="30.6" />
+  <rect width="8.7" height="38.8" x="21.6" y="66.8" />
+  <rect width="8.7" height="38.8" x="91.3" />
+  <rect width="8.7" height="28.3" x="39" y="30.6" />
+  <rect width="8.7" height="28.3" x="4.1" y="66.8" />
+  <rect width="8.7" height="28.3" x="73.9" />
+</g>
+</svg>
+</pre>
+
+</div>
+
+<style>
+footer {
+  margin-block-end: 1.8rlh;
+
+  a {
+    font-style: italic;
+  }
+
+  .fsep {
+    font-family: sans-serif;
+    color: var(--muted);
+    margin-inline: 0.5ex;
+  }
+}
+</style>
+
+<footer>
+<p class="item">
+<a href="https://github.com/mnvr">github</a>
+<span class="fsep"> • </span>
+<a rel="me" href="https://mastodon.social/@mnvr">mastodon</a>
+<span class="fsep"> • </span>
+<a rel="me" href="notes">notes</a>
+<span class="fsep"> • </span>
+<a rel="me" href="rss.xml">rss</a>
+</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+<title>Smart quotes in HTML | mnvr.in</title>
+<meta name="description" content="&ldquo; and &rdquo;">
+<link href="paper.css" rel="stylesheet">
+
+<style>
+:root {
+  --accent: silver;
+}
+</style>
+
+</head>
+
+<body>
+
+<h4>Curly quotes in HTML</h4>
+
+<blockquote>
+<p>tldr; I use <b><code>&amp;ldquo;</code></b> and
+<b><code>&amp;rdquo;</code></b></p>
+</blockquote>
+
+<p>
+A few days ago, I found about the <code>&lt;q&gt;</code> HTML tag that
+surrounds its contents with &ldquo;curly&rdquo; quotes (also knowns as
+&ldquo;smart quotes&rdquo;). Excited (I can get pretty excited about how
+sentences look), I replaced all the <code>&amp;#8220;</code> and
+<code>&amp;#8221;</code> in the code for this site with the
+<code>&lt;q&gt;</code>. It still felt a bit wrong to be (mis) using
+<code>&lt;q&gt;</code> for stuff like &ldquo;airquotes&rdquo;, but on the
+balance it felt like a better choice.
+</p>
+
+<p>
+Until today, when I tried to copy paste some text from a page. The quotes were
+not copied!
+</p>
+
+<p>
+This is a deal breaker, and apparently there is <a
+href="https://github.com/whatwg/html/issues/10216" target="_blank">no traction
+in fixing it</a>. So bye bye <code>&lt;q&gt;</code>.
+</p>
+
+<p>
+The alternatives then are:
+</p>
+
+<ol>
+
+<li>
+Go back to <code>&amp;#8220;</code> and
+<code>&amp;#8221;</code>. The <a
+href="https://dwheeler.com/essays/quotes-in-html.html"
+target="_blank">advantage</a> of this is that it works across HTML, SGML, and
+XML. But I don&rsquo;t want to remember decimal numeric character references
+like it is 1995, and if I have my way, I&rsquo;ll never have to write another
+line of XML ever again (and have never written a single SGML one knowingly).
+</li>
+
+<li>Use the Unicode code points &mdash; <code>“</code>, <code>”</code>. These
+<em>should</em> work, but it is not guaranteed.</li>
+
+<li>
+Use HTML&rsquo;s character entity references assigned for this purpose -
+<code>&amp;ldquo;</code>, <code>&amp;rdquo;</code>, <code>&amp;lsquo;</code>,
+<code>&amp;rsquo;</code> and rely on the browser to guarantee correct rendering.
+This is the option I&rsquo;ve gone with for now.
+</li>
+</ol>
+
+<footer>
+<p>Manav Rathi<time>March, 2025</time></p>
+<p><a href="/">mnvr.in</a></p>
+</footer>
+
+</body>
+</html>

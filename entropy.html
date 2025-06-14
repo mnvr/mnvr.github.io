@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+<title>Entropy | mnvr.in</title>
+<meta name="description" content="Entropy is a count (and why the second law is obvious)">
+
+<style>
+:root {
+  --main-margin-inline: 4rlh;
+}
+
+@media (width < 37rem) {
+  :root {
+    --main-margin-inline: 1.2rlh;
+  }
+}
+
+@view-transition { navigation: auto; }
+
+body {
+  padding-inline: var(--main-margin-inline);
+  padding-block: 2rlh 2.8rlh;
+  background-color: #5e7c9f;
+  color: white;
+  line-height: 1.5;
+  margin: 0;
+}
+
+p, div.entropy-bq {
+  max-width: 46em;
+}
+
+h3 {
+  margin-block-end: 2rlh;
+}
+
+div.entropy-svg {
+  display: flex;
+  flex-direction: row;
+  gap: 37px;
+  margin-block: 2.2rlh;
+
+  svg {
+    display: block;
+  }
+}
+
+svg.entropy-svg-sm {
+  margin-block: 0.8rlh;
+}
+
+svg {
+  width: 150px;
+}
+
+div.entropy-bq {
+  background-color: #6d8caf;
+  margin-block: 2.4rlh 2rlh;
+  margin-inline: calc(-1 * var(--main-margin-inline));
+  padding: 1.4rlh var(--main-margin-inline);
+}
+
+blockquote.entropy-quot {
+  font-style: italic;
+  text-align: right;
+}
+
+footer {
+  margin-block-start: 3lh;
+  opacity: 0.7;
+  font-family: monospace;
+  font-size: smaller;
+
+  .author {
+    opacity: 0.8;
+  }
+
+  p + div {
+    margin-block-start: 2rlh;
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h3>Entropy</h3>
+
+<p>
+Consider 4 lights. Each pattern they form is a microstate.
+</p>
+
+<div class="entropy-svg">
+<svg viewBox="0 0 150 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="10" cy="20" r="7" stroke="snow"/>
+<circle cx="47" cy="20" r="7" stroke="snow"/>
+<circle cx="84" cy="20" r="7" stroke="snow"/>
+<circle cx="122" cy="20" r="7" stroke="snow"/>
+
+<circle cx="10" cy="57" r="7" stroke="snow"/>
+<circle cx="47" cy="57" r="7" stroke="snow"/>
+<circle cx="84" cy="57" r="7" stroke="snow"/>
+<circle cx="122" cy="57" r="7" fill="snow" stroke="snow"/>
+
+<circle cx="10" cy="94" r="7" stroke="snow"/>
+<circle cx="47" cy="94" r="7" stroke="snow"/>
+<circle cx="84" cy="94" r="7" fill="snow" stroke="snow"/>
+<circle cx="122" cy="94" r="7" stroke="snow"/>
+
+<circle cx="10" cy="131" r="7" stroke="snow"/>
+<circle cx="47" cy="131" r="7" stroke="snow"/>
+<circle cx="84" cy="131" r="7" fill="snow" stroke="snow"/>
+<circle cx="122" cy="131" r="7" fill="snow" stroke="snow"/>
+
+<circle cx="10" cy="168" r="7" stroke="snow"/>
+<circle cx="47" cy="168" r="7" fill="snow" stroke="snow"/>
+<circle cx="84" cy="168" r="7" stroke="snow"/>
+<circle cx="122" cy="168" r="7" stroke="snow"/>
+
+<circle cx="10" cy="205" r="7" stroke="snow"/>
+<circle cx="47" cy="205" r="7" fill="snow" stroke="snow"/>
+<circle cx="84" cy="205" r="7" stroke="snow"/>
+<circle cx="122" cy="205" r="7" fill="snow" stroke="snow"/>
+
+<circle cx="10" cy="242" r="7" stroke="snow"/>
+<circle cx="47" cy="242" r="7" fill="snow" stroke="snow"/>
+<circle cx="84" cy="242" r="7" fill="snow" stroke="snow"/>
+<circle cx="122" cy="242" r="7" stroke="snow"/>
+
+<circle cx="10" cy="279" r="7" stroke="snow"/>
+<circle cx="47" cy="279" r="7" fill="snow" stroke="snow"/>
+<circle cx="84" cy="279" r="7" fill="snow" stroke="snow"/>
+<circle cx="122" cy="279" r="7" fill="snow" stroke="snow"/>
+</svg>
+
+<svg viewBox="0 300 150 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="10" cy="316" r="7" fill="snow" stroke="snow"/>
+<circle cx="47" cy="316" r="7" stroke="snow"/>
+<circle cx="84" cy="316" r="7" stroke="snow"/>
+<circle cx="122" cy="316" r="7" stroke="snow"/>
+
+<circle cx="10" cy="353" r="7" fill="snow" stroke="snow"/>
+<circle cx="47" cy="353" r="7" stroke="snow"/>
+<circle cx="84" cy="353" r="7" stroke="snow"/>
+<circle cx="122" cy="353" r="7" fill="snow" stroke="snow"/>
+
+<circle cx="10" cy="390" r="7" fill="snow" stroke="snow"/>
+<circle cx="47" cy="390" r="7" stroke="snow"/>
+<circle cx="84" cy="390" r="7" fill="snow" stroke="snow"/>
+<circle cx="122" cy="390" r="7" stroke="snow"/>
+
+<circle cx="10" cy="427" r="7" fill="snow" stroke="snow"/>
+<circle cx="47" cy="427" r="7" stroke="snow"/>
+<circle cx="84" cy="427" r="7" fill="snow" stroke="snow"/>
+<circle cx="122" cy="427" r="7" fill="snow" stroke="snow"/>
+
+<circle cx="10" cy="464" r="7" fill="snow" stroke="snow"/>
+<circle cx="47" cy="464" r="7" fill="snow" stroke="snow"/>
+<circle cx="84" cy="464" r="7" stroke="snow"/>
+<circle cx="122" cy="464" r="7" stroke="snow"/>
+
+<circle cx="10" cy="501" r="7" fill="snow" stroke="snow"/>
+<circle cx="47" cy="501" r="7" fill="snow" stroke="snow"/>
+<circle cx="84" cy="501" r="7" stroke="snow"/>
+<circle cx="122" cy="501" r="7" fill="snow" stroke="snow"/>
+
+<circle cx="10" cy="538" r="7" fill="snow" stroke="snow"/>
+<circle cx="47" cy="538" r="7" fill="snow" stroke="snow"/>
+<circle cx="84" cy="538" r="7" fill="snow" stroke="snow"/>
+<circle cx="122" cy="538" r="7" stroke="snow"/>
+
+<circle cx="10" cy="575" r="7" fill="snow" stroke="snow"/>
+<circle cx="47" cy="575" r="7" fill="snow" stroke="snow"/>
+<circle cx="84" cy="575" r="7" fill="snow" stroke="snow"/>
+<circle cx="122" cy="575" r="7" fill="snow" stroke="snow"/>
+</svg>
+</div>
+
+<p>
+<b>Entropy</b> is the count of microstates similar to the one whose entropy we
+seek. This is low entropy, since there are only 2 like this (all on, or all
+off).
+</p>
+
+<svg class="entropy-svg-sm" viewBox="0 0 150 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="10" cy="20" r="7" stroke="snow"/>
+<circle cx="47" cy="20" r="7" stroke="snow"/>
+<circle cx="84" cy="20" r="7" stroke="snow"/>
+<circle cx="122" cy="20" r="7" stroke="snow"/>
+</svg>
+
+<p>
+This is high entropy, since there are 8 like this (only 1 on or 1 off).
+</p>
+
+<svg class="entropy-svg-sm" viewBox="0 0 150 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="10" cy="20" r="7" stroke="snow"/>
+<circle cx="47" cy="20" r="7" stroke="snow"/>
+<circle cx="84" cy="20" r="7" stroke="snow"/>
+<circle cx="122" cy="20" r="7" fill="snow" stroke="snow"/>
+</svg>
+
+<p>
+In the actual definition, we use a log of the count instead of the count. The
+log converts the count into the number of questions we need to ask the universe
+to determine which <b>exact</b> microstate a system is in, when we know its
+macrostate.
+</p>
+
+<div class="entropy-bq">
+<p>
+Viewed this way, the second law is a statement of mathematics.
+</p>
+<p>
+If a light flips, the 2 low entropy microstates are more likely to transition
+into one of the other higher entropy ones than vice versa.
+</p>
+<p>
+Equity of transitions is where physics comes in.
+</p>
+<blockquote class="entropy-quot">
+&ldquo;Chance is a more fundamental conception that causality&rdquo;<br>
+&mdash; Max Born
+</blockquote>
+</div>
+
+<footer>
+<p>
+Simplified variant of an explanation in Antonio Padilla&rsquo;s <cite>Fantastic
+Numbers</cite>. <span class="author">Manav, Feb 2025.</span>
+</p>
+<div><a href="/">mnvr.in</a></div>
+</footer>
+
+</body>
+</html>
