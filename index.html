@@ -158,13 +158,29 @@ body:has(.tag[data-tag="book-review"]:hover) {
     font-weight: bold;
   }
 }
+
+body:has(.tag[data-tag="math"]:hover) {
+  .tag[data-tag="math"] {
+    color: oklch(0.7 0.2 112);
+    font-weight: bold;
+  }
+}
+
 </style>
 
 </head>
 
 <body>
 
-<p class="item timestamp">Last updated: <time>June 2025</time></p>
+<p class="item timestamp">Last updated: <time>July 2025</time></p>
+
+<p class="item">
+<a href="infinity">Infinity is not a big number</a> &mdash; Thinking of -1/12,
+and TREE(3)
+<span class="tags">
+<span class="tag" data-tag="math"></span>
+</span>
+</p>
 
 <p class="item">
 <a href="evolution">Evolution is blind</a> &mdash; like stockfish, and to pain.
@@ -378,6 +394,9 @@ I exist &mdash;
 <p class="item">
 <a href="entropy">Entropy counts</a>
 (and why the second law is obvious)
+<span class="tags">
+<span class="tag" data-tag="math"></span>
+</span>
 </p>
 
 <p class="item">
