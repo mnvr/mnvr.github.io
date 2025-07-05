@@ -51,6 +51,7 @@ cp `brew --prefix qemu`/share/qemu/edk2-arm-vars.fd .
   -audio coreaudio,model=virtio \
   -monitor none -parallel none \
   -device virtio-gpu \
+  -device virtio-rng-pci \
   -device qemu-xhci \
   -device usb-kbd \
   -device usb-tablet \
@@ -77,6 +78,10 @@ local,path="$(pwd)/data",security_model=mapped-file,mount_tag=m0,readonly=on</co
 Then on the guest we can
 <code>mkdir /mnt/data && mount -t 9p -o trans=virtio m0 /mnt/data</code>
 </li>
+<li>
+Use <code>-device virtio-rng-pci</code> to forward the host's rng, makes Linux
+boot noticeably faster.
+</li>
 <li><kbd>Ctrl Option 1|2</kbd> - switch console.</li>
 <li><kbd>Ctrl Option Arrow</kbd> - scroll console.</li>
 <li><kbd>Cmd F</kbd> to enter fullscreen; <kbd>Ctrl Option G</kbd> (to uncapture
@@ -84,10 +89,12 @@ mouse) then <kbd>Cmd F</kbd> to exit it.</li>
 <li>A helpful <a href="https://ww2.coastal.edu/mmurphy2/oer/qemu/"
 target="_blank">guide</a>.</li>
 </ul>
+<li>A wrapper script that I use frequently to avoid typing this all out
+&mdash; <a href="https://github.com/mnvr/dotfiles/blob/main/darwin/bin/qvm">qvm</a></li>
 </p>
 
 <footer>
-Last updated: June 2025
+Last updated: July 2025
 </footer>
 
 </body>

@@ -90,10 +90,17 @@ p.aside {
   padding-inline: 3em;
 }
 
-p.timestamp {
+p.hello, p.timestamp {
   font-size: small;
   color: var(--muted);
-  padding-block-start: 0.5lh;
+}
+
+p.hello {
+  margin-block-start: 2rlh;
+}
+
+p.timestamp {
+  margin-block-end: 1.5rlh;
 }
 
 div.col2 {
@@ -172,7 +179,14 @@ body:has(.tag[data-tag="math"]:hover) {
 
 <body>
 
-<p class="item timestamp">Last updated: <time>July 2025</time></p>
+<p class="item hello">
+Hi, I'm Manav. I like programming and writing. Here are some things I've written
+recently.
+</p>
+
+<p class="item timestamp">
+Last updated: <time>July 2025</time>
+</p>
 
 <p class="item">
 <a href="infinity">Infinity is not a big number</a> &mdash; Thinking of -1/12,
