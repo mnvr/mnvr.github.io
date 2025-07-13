@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+<title>A Rust shaped hole | mnvr.in</title>
+<meta name="description" content="Without writing a single line of Rust, why I feel it might be right">
+
+<style>
+:root {
+  color-scheme: light dark;
+}
+p {
+  max-width: 72ch;
+}
+</style>
+
+</head>
+
+<body>
+
+<p>
+By a process of elimination, I've arrived at a conclusion that I should write Rust, or at least give
+it a rigorous try. This might be a wrong conclusion, but the following is the reasoning.
+</p>
+
+Let us say I want to write a "native" program.
+
+> This chain of thought started with thinking about writing a program that serves as my desktop background, slowly meandering though a pastel game of life, or floating through a Mandelbrot set. An xfdestkop replacement, as one would call it. But the specifics are not relevant, because then soon enough I started thinking in more general terms, say if I want to write an arbitrary "native" CLI program, etc.
+
+My weapon of choice is TypeScript, and it is a sword light to wield, cutting through problems like butter. TypeScript also compiles to JavaScript, so it runs everywhere. Or does it?
+
+While I can jump through hoops to compile JavaScript into a binary, this doesn't "feel" "solid". The point of writing a native program in the first place is to make it feel solid.
+
+> Maybe this is preconception on my part, maybe one day the TypeScript -> JavaScript -> WASM -> binary pipeline will be straightforward, or maybe it already is and I just am not aware.
+
+<p>
+That leaves me with the following options (in an arbitrary order) — C, C++, go, Rust.
+</p>
+
+Technically, there are a lot more options, and I wrote a long section here about eliminating them piecewise, but after writing it I felt it was just noise — the reason why anything apart from these four is apparent to any discerning viewer, and I don't need to rant about it.
+
+Of these, C++ is the easiest to eliminate. I once spent an entire year in the heaven of C++, walking around in daze of std::vector and RAII, before one day snapping out of it and realizing that I was just spawning complexity that is unrelated to the problem at hand. The experience was so vivid that I've never felt the urge to partake in C++ ever again.
+
+So C, go and Rust. Let's begin.
+
+---
+
+
+</body>
+</html>
