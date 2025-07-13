@@ -49,6 +49,30 @@ So C, go and Rust. Let's begin.
 
 ---
 
+There are two dimensions at play here - "Simplicity" and memory management.
+
+I put simplicity in quotes because there is a lot more I need to say on that word.
+
+C is a simple language. This is fact I agree with and appreciate. It is the reason for it's endurance in the open source world. If someone posts a patch or submits a PR to a codebase written in idiomatic C, it is easier to review than any other mainstream language. There is no magic (the possibility is there, but not in "idiomatic" C which has come up with conventions to thwart such spooky macro action at a distance).
+
+This allows the code to evolve line by line, guided by many casual hands that might not be seeped in its lore, who're just making a drive by bug fix or enhancement. Changes are local. Of course, it is possible to make global changes by redefining the behaviour of a often used function, but such a change cannot happen accidentally, and is easy to spot when reviewing. Patches are just that — evolutions of lines.
+
+In contrast, Haskell is not a simple language. The non-simplicity is at play both in the language itself, as evidenced by its intimidating syntax, but also in the source code artifacts written in it — changes are not localized, the entire Haskell program is one whole; a giant equation that will spit out the answer you want. This is in contrast to the step by step plodding along that the C program would be asked to do to get there.
+
+There is an apocryphal story about Euler in elementary school solving all the math problems that the teacher gave to the class in a jiffy, so the teacher tells him to sum up the numbers to a thousand to get him to stop pestering for more. The expectation was that Euler would go through the numbers "imperatively" like C, summing them up. Instead, what Euler did was rediscover the summation formula and solved it "declaratively" like Haskell, in one go, as an equation.
+
+This also shows the tradeoff between simplicity and abstraction. At a high level of abstraction, things solve themselves as if by magic. But not everyone is Euler, and a crowd of occasional drive-by contributors even less so when taken as a collective whole.
+
+A tradeoff by definition means there is no one right or wrong answer. "It depends".
+
+Personally, I've found TypeScript to be the golden glove. Not too low, not too high, a cosy promontory on the mountain of abstraction. And after having lived here for a while, it feels that I'd not like the view from any lower.
+
+Hold that thought though, let's look at the other dimension first. Memory management.
+
+Computers operate in the nanosecond ranges which are alien for our timescales. To parphrase Norvig's <cite>Latency numbers a programmer should know</cite>, if we imagine a computer that executes 1 CPU instruction every second, it would take it <b>days</b> to read from RAM.
+
+There is plenty of room at the bottom, as Feynman said. C is not fast because it runs "native instructions" (seconds), it is fast because an expert C programmer can eliminate day equivalents from the program's runtime by optimizing memory access.
+
 
 </body>
 </html>
