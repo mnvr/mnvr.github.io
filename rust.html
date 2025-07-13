@@ -19,6 +19,14 @@ body {
 blockquote, hr {
   opacity: 0.6;
 }
+table, th, td {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 0.5em;
+}
+th, td {
+  min-width: 5ch;
+}
 </style>
 </head>
 
@@ -276,9 +284,45 @@ think is something the compiler should do for me.
 One of the three has to give.
 </p>
 
+<table>
+<thead>
+<tr>
+<td></td>
+<th>C</th>
+<th>Go</th>
+<th>TS</th>
+<th>Rust</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Native</td>
+<td>Y</td>
+<td>Y</td>
+<td></td>
+<td>Y</td>
+</tr>
+<tr>
+<td>Abstraction</td>
+<td></td>
+<td></td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>Managed Mem</td>
+<td></td>
+<td>Y</td>
+<td>Y</td>
+<td></td>
+</tr>
+
+</tbody>
+</table>
+
 <p>
-There is a wide gaping hole, and I can't think of a better alternative than Rust
-to fill it, so I am going to give it a try.
+Since I want native code, there is a hole, and I can't think of a better
+alternative than Rust to fill it, so I am going to give it a try.
 </p>
 
 <hr>
@@ -286,9 +330,16 @@ to fill it, so I am going to give it a try.
 <p>
 I've never written a line of Rust in my life. I have decent experience in
 all the other languages I talked of, so my beliefs, while possibly wrong, are
-founded in some sense of empiricism. With Rust, it has all been heresay, and I'm
-excited to see what the reality will look like.
+founded in some empiricism. With Rust, it has all been heresay, and I'm excited
+to see what the reality will look like.
 </p>
+
+<footer>
+<p>
+<i>Jul 13, 2025</i>
+</p>
+<a href="index.html">home</a>
+</footer>
 
 </body>
 </html>
