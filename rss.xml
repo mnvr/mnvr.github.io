@@ -6,6 +6,13 @@
   <link>https://mnvr.in</link>
   <language>en</language>
   <item>
+    <title>A Program is a living thing</title>
+    <description>A program is a living thing, but where does it live?</description>
+    <link>https://mnvr.in/programs</link>
+    <guid>https://mnvr.in/programs</guid>
+    <pubDate>Sat, 26 Jul 2025 00:00:00 GMT</pubDate>
+  </item>
+  <item>
     <title>A Rust shaped hole</title>
     <description>Without writing a single line of Rust, why I feel it might be right</description>
     <link>https://mnvr.in/rust</link>
