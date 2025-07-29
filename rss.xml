@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
 <channel>
-  <title>Manav's website | mnvr.in</title>
-  <description></description>
+  <title>Manav Rathi</title>
+  <description>Manav's blog</description>
   <link>https://mnvr.in</link>
   <language>en</language>
   <item>
-    <title>A Program is a living thing</title>
+    <title>A program is a living thing</title>
     <description>A program is a living thing, but where does it live?</description>
     <link>https://mnvr.in/programs</link>
     <guid>https://mnvr.in/programs</guid>
