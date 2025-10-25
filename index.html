@@ -14,9 +14,40 @@
 :root {
   color-scheme: light dark;
 }
+@font-face {
+  font-family: 'InstrumentSerif';
+  src: url('/fonts/InstrumentSerif-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 body {
-  max-width: 60rem;
+  font-family: InstrumentSerif, serif;
+  font-size: 24px;
   margin: 0.5lh;
+}
+div.h {
+  font-size: 16px;
+  line-height: 24px;
+  padding: 10px;
+  border-bottom: 1px solid currentColor;
+}
+a {
+  text-decoration: none;
+}
+div.h, .item, footer {
+  max-width: 370px;
+  margin-inline: auto;
+}
+.item a {
+  font-weight: bold;
+}
+.item span {
+  opacity: 0.7;
+}
+footer {
+  font-size: smaller;
+  text-align: right;
 }
 </style>
 
@@ -24,38 +55,10 @@ body {
 
 <body>
 
-<p>
-<a href="anywhere-but-here">Anywhere but here</a> — even though there's nowhere left to go
-</p>
-
-<p>
-<a href="rtties">Reverse Turing Tests</a> — LLMs want to know
-</p>
-
-<p>
-<a href="beginners-mind">Beginner's Mind</a> — Software engineering, as I knew it, is dead
-</p>
-
-<blockquote>
-Tell me, what is it you plan to do<br>
-with your <a href="the-summer-day">one wild and precious life</a>?
-</blockquote>
-
-<p>
-A <a href="programs">program</a> is a living thing, but where does it live?
-</p>
-
-<p>
-History is lived through many eyes, written through one.
-</p>
-
-<p>
-<a href="rust">A Rust shaped hole</a> — I feel like giving Rust a try, some
-post-hoc justifications as to why.
-</p>
-
-<p>
-01:48 AM on a Friday night. Time to start <a href="anew">anew</a>.
+<div class="h">mnvr.in</div>
+<p class="item">
+<a href="cause-and-effect">Cause and Effect</a><br>
+<span>Are not as distinct as you think</span>
 </p>
 
 <footer>

@@ -13,11 +13,37 @@
 :root {
   color-scheme: light dark;
 }
+@font-face {
+  font-family: 'InstrumentSerif';
+  src: url('/fonts/InstrumentSerif-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 body {
+  font-family: InstrumentSerif, serif;
+  font-size: 24px;
   margin: 0.5lh;
+}
+a {
+  text-decoration: none;
+}
+p, footer {
+  max-width: 370px;
+  margin-inline: auto;
 }
 sup {
   opacity: 0.6;
+}
+footer {
+  padding: 10px;
+  border-top: 1px solid currentColor;
+  font-size: smaller;
+  text-align: right;
+}
+p.f {
+  padding: 10px;
+  border-bottom: 1px solid currentColor;
 }
 </style>
 
@@ -25,9 +51,9 @@ sup {
 
 <body>
 
-<p>Hi, I'm Manav.</p>
+<p class="f">Hi, I'm Manav.</p>
 
-<p>I like programming and writing.</p>
+<p>I like existing, thinking about existence, and building things.</p>
 
 <p>
 Elsewhere: <a href="https://github.com/mnvr" target="_blank">GitHub</a><sup>new tab</sup> | <a href="https://x.com/mnvrth" target="_blank">Twitter</a><sup>new tab</sup> | <a rel="me" href="https://mastodon.social/@mnvr" target="_blank">Mastodon</a><sup>new tab</sup>
@@ -38,12 +64,12 @@ Elsewhere: <a href="https://github.com/mnvr" target="_blank">GitHub</a><sup>new 
 </p>
 
 <p>
-Some older posts are in <a href="25-1">25-1</a>
+Some older posts are in <a href="25-2">25-2</a> and <a href="25-1">25-1</a>
 </p>
 
-<p>
+<footer>
 <a href="/">home</a>
-</p>
+</footer>
 
 
 </body>
