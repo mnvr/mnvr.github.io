@@ -13,16 +13,8 @@
 :root {
   color-scheme: light dark;
 }
-@font-face {
-  font-family: 'InstrumentSerif';
-  src: url('/fonts/InstrumentSerif-Regular.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: block;
-}
 body {
-  font-family: InstrumentSerif, serif;
-  font-size: 24px;
+  font-family: system-ui, sans-serif;
   margin: 0.5lh;
 }
 a {
@@ -34,11 +26,15 @@ h1, p, footer {
 }
 h1 {
   font-weight: 900;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid currentColor;
+}
+p, footer {
+  line-height: 1.5;
 }
 footer {
-  padding: 10px;
-  border-top: 1px solid currentColor;
   font-size: smaller;
+  padding-block: 10px;
   margin-block: 2lh;
 }
 footer .info {
@@ -46,6 +42,8 @@ footer .info {
 }
 footer .nav {
   text-align: right;
+  padding-inline: 10px;
+  margin-block: 2lh;
 }
 </style>
 
@@ -64,7 +62,7 @@ Philosophically I understood this, but now I'm beginning to see this viscerally.
 </p>
 
 <p>
-When I hit a billiard ball on a table, it goes into the hole. The cause seems the hit, the effect seems the score. Elementary newtonian physics that a child intuits by the age two. Or is it?
+When I hit a billiard ball on a table, it goes into the hole. The cause seems the hit, the effect seems the score. Elementary Newtonian physics that a child intuits by the age two. Or is it?
 </p>
 
 <p>

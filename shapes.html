@@ -13,16 +13,8 @@
 :root {
   color-scheme: light dark;
 }
-@font-face {
-  font-family: 'InstrumentSerif';
-  src: url('/fonts/InstrumentSerif-Regular.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: block;
-}
 body {
-  font-family: InstrumentSerif, serif;
-  font-size: 24px;
+  font-family: system-ui, sans-serif;
   margin: 0.5lh;
 }
 a {
@@ -32,16 +24,23 @@ h1, p, hr, footer {
   max-width: 470px;
   margin-inline: auto;
 }
-hr {
-  opacity: 0.2;
-}
 h1 {
   font-weight: 900;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid currentColor;
+}
+p, footer {
+  line-height: 1.5;
+}
+hr {
+  border: 0;
+  border-bottom: 1px solid currentColor;
+  opacity: 0.15;
+  margin-block: 1rlh;
 }
 footer {
-  padding: 10px;
-  border-top: 1px solid currentColor;
   font-size: smaller;
+  padding-block: 10px;
   margin-block: 2lh;
 }
 footer .info {
@@ -49,6 +48,8 @@ footer .info {
 }
 footer .nav {
   text-align: right;
+  padding-inline: 10px;
+  margin-block: 2lh;
 }
 </style>
 
