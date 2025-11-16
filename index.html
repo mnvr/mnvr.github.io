@@ -20,9 +20,8 @@ body {
 }
 div.h {
   font-size: smaller;
-  line-height: 24px;
-  padding-block: 10px;
-  border-bottom: 1px solid currentColor;
+  line-height: 20px;
+  opacity: 0.8;
 }
 a {
   text-decoration: none;
@@ -34,12 +33,33 @@ div.h, .item, footer {
 .item a {
   font-weight: bold;
 }
-.item span {
+span.ti {
+  font-weight: bold;
+  font-style: italic;
+  font-family: serif;
+}
+span.sm {
   opacity: 0.7;
+  font-size: smaller;
+}
+span.ts {
+  opacity: 0.5;
+  margin-inline-start: auto;
+  display: inline-block;
+  width: 100%;
+  text-align: right;
+  font-size: small;
+}
+.item {
+  border-top: 1px solid light-dark(#eee, #333);
+  padding-top: 1lh;
+}
+div.h + .item {
+  border-top: 1px solid light-dark(#333, #999);
 }
 footer {
+  padding-block-start: 2lh;
   font-size: smaller;
-  text-align: right;
 }
 </style>
 
@@ -50,17 +70,26 @@ footer {
 <div class="h">mnvr.in</div>
 
 <p class="item">
+<span class="ti">There is free lunch</span><br>
+<span class="sm">EMH is wrong, arbitrage exists, and like the future, everything else too is unevenly distributed</span>
+<span class="ts">Nov 01</span>
+</p>
+
+<p class="item">
 <a href="shapes">Python, Electron and Bangalore</a><br>
-<span>Jigsaws falling into place</span>
+<span class="sm">Jigsaws falling into place</span>
+<span class="ts">Oct 26</span>
 </p>
 
 <p class="item">
 <a href="cause-and-effect">Cause and Effect</a><br>
-<span>are not as distinct as we think</span>
+<span class="sm">are not as distinct as we think</span>
+<span class="ts">Oct 25</span>
 </p>
 
 <footer>
-<a href="about">about</a>
+<a href="about">about</a> <span class="sm">•</span>
+<a href="https://x.com/mnvrth">x</a>
 </footer>
 
 </body>
