@@ -6,6 +6,13 @@
   <link>https://mnvr.in</link>
   <language>en</language>
   <item>
+    <title>Focus</title>
+    <description>Make a list of all the things you want to do. Let go of the rest, do the first.</description>
+    <link>https://mnvr.in/focus</link>
+    <guid>https://mnvr.in/focus</guid>
+    <pubDate>Sun, 16 Nov 2025 00:00:00 GMT</pubDate>
+  </item>
+  <item>
     <title>Python, Electron and Bangalore</title>
     <description>Solution shapes for problem jigsaws</description>
     <link>https://mnvr.in/shapes</link>
