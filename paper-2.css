@@ -21,6 +21,7 @@ footer {
 
 h1 {
   font-weight: 900;
+  opacity: 0.9;
   padding-bottom: 1rem;
   border-bottom: 1px solid currentColor;
 }
