@@ -36,28 +36,65 @@ canvas.width = width * dpr;
 canvas.height = height * dpr;
 ctx.scale(dpr, dpr);
 
-ctx.strokeStyle = "#0000ffbb";
-ctx.lineWidth = 1;
-
 ctx.translate(width / 2, height / 2);
 
 const spacing = 50;
-const margin = 10;
-const halfWidth = width / 2 + margin;
-const halfHeight = height / 2 + margin;
+const margin = -10;
+const halfWidth = width / 2 - margin;
+const halfHeight = height / 2 - margin;
 
-for (let x = -halfWidth; x <= halfWidth; x += spacing) {
+function drawGrid() {
+  ctx.strokeStyle = '#ddd';
+  ctx.lineWidth = 1;
+
+  // Vertical lines from center outward
+  for (let x = 0; x <= halfWidth; x += spacing) {
+    ctx.beginPath();
+    ctx.moveTo(x, -halfHeight);
+    ctx.lineTo(x, halfHeight);
+    ctx.stroke();
+
+    if (x != 0) {
+      ctx.beginPath();
+      ctx.moveTo(-x, -halfHeight);
+      ctx.lineTo(-x, halfHeight);
+      ctx.stroke();
+    }
+  }
+
+  for (let y = 0; y <= halfHeight; y += spacing) {
+    ctx.beginPath();
+    ctx.moveTo(-halfWidth, y);
+    ctx.lineTo(halfWidth, y);
+    ctx.stroke();
+
+    if (y != 0) {
+      ctx.beginPath();
+      ctx.moveTo(-halfWidth, -y);
+      ctx.lineTo(halfWidth, -y);
+      ctx.stroke();
+    }
+  }
+}
+
+function drawAxes() {
+  ctx.lineWidth = 2;
+
+  ctx.strokeStyle = '#e74c3c';
   ctx.beginPath();
-  ctx.moveTo(x, -halfHeight);
-  ctx.lineTo(x, halfHeight);
+  ctx.moveTo(-halfWidth, 0);
+  ctx.lineTo(halfWidth, 0);
+  ctx.stroke();
+
+  ctx.strokeStyle = '#3498db';
+  ctx.beginPath();
+  ctx.moveTo(0, -halfHeight);
+  ctx.lineTo(0, halfHeight);
   ctx.stroke();
 }
-for (let y = -halfHeight; y <= halfHeight; y += spacing) {
-  ctx.beginPath();
-  ctx.moveTo(-halfWidth, y);
-  ctx.lineTo(halfWidth, y);
-  ctx.stroke();
-}
+
+drawGrid();
+drawAxes();
 </script>
 
 </head>
