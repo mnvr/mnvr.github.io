@@ -19,8 +19,6 @@ body {
 canvas {
   width: 100%;
   height: 100vh;
-  box-sizing: border-box;
-  border: 1px solid tomato;
 }
 </style>
 
@@ -38,24 +36,28 @@ canvas.width = width * dpr;
 canvas.height = height * dpr;
 ctx.scale(dpr, dpr);
 
-ctx.strokeStyle = "blue";
+ctx.strokeStyle = "#0000ffbb";
 ctx.lineWidth = 1;
 
+ctx.translate(width / 2, height / 2);
+
 const spacing = 50;
-for (let x = 5; x <= width - 5; x += spacing) {
+const margin = 10;
+const halfWidth = width / 2 + margin;
+const halfHeight = height / 2 + margin;
+
+for (let x = -halfWidth; x <= halfWidth; x += spacing) {
   ctx.beginPath();
-  ctx.moveTo(x, 0);
-  ctx.lineTo(x, height);
+  ctx.moveTo(x, -halfHeight);
+  ctx.lineTo(x, halfHeight);
   ctx.stroke();
 }
-for (let y = 5; y <= height - 5; y += spacing) {
+for (let y = -halfHeight; y <= halfHeight; y += spacing) {
   ctx.beginPath();
-  ctx.moveTo(0, y);
-  ctx.lineTo(width, y);
+  ctx.moveTo(-halfWidth, y);
+  ctx.lineTo(halfWidth, y);
   ctx.stroke();
 }
-ctx.rect(2, 2, 100, 100);
-ctx.stroke();
 </script>
 
 </head>
