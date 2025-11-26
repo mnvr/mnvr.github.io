@@ -110,8 +110,8 @@ function drawAxes() {
 
 const unit = spacing; // 1 unit = 50px (same as grid spacing)
 
-const ih = { x: 1, y: 0 };
-const jh = { x: 0, y: -1 }; // Negative because canvas y is flipped
+const iVec = { x: 1, y: 0 };
+const jVec = { x: 0, y: -1 }; // Negative because canvas y is flipped
 
 function drawArrow(from, to, color) {
   const headLength = 10;
@@ -141,10 +141,34 @@ function drawArrow(from, to, color) {
   ctx.stroke();
 }
 
+function drawHandle(v, color) {
+  const handleRadius = 8;
+  const handleOffset = handleRadius + 4;
+
+  const angle = Math.atan2(v.y, v.x)
+  const x = v.x + handleOffset * Math.cos(angle);
+  const y = v.y + handleOffset * Math.sin(angle);
+
+  ctx.beginPath();
+  ctx.arc(x, y, handleRadius, 0, Math.PI * 2);
+  ctx.fillStyle = color;
+  ctx.fill();
+  ctx.strokeStyle = '#fff'
+  ctx.lineWidth = 2;
+  ctx.stroke();
+}
+
 function drawBasisVectors() {
   const origin = { x: 0, y: 0 };
-  drawArrow(origin, {x: ih.x * unit, y: ih.y * unit}, '#e74c3c');
-  drawArrow(origin, {x: jh.x * unit, y: jh.y * unit}, '#3498db');
+
+  const iTip = { x: iVec.x * unit, y: iVec.y * unit };
+  const jTip = { x: jVec.x * unit, y: jVec.y * unit };
+
+  drawArrow(origin, iTip, '#e74c3c');
+  drawArrow(origin, jTip, '#3498db');
+
+  drawHandle(iTip, '#e74c3c');
+  drawHandle(jTip, '#3498db');
 }
 
 function resize() {
