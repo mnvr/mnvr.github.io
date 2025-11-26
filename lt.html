@@ -26,22 +26,37 @@ canvas {
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 
-// CSS size. Drawing commands will use CSS pixels.
-const width = canvas.clientWidth;
-const height = canvas.clientHeight;
-
-// Scale the canvas buffer to account for DPR.
-const dpr = Math.floor(Math.min(devicePixelRatio, 2));
-canvas.width = width * dpr;
-canvas.height = height * dpr;
-ctx.scale(dpr, dpr);
-
-ctx.translate(width / 2, height / 2);
-
 const spacing = 50;
 const margin = -10;
-const halfWidth = width / 2 - margin;
-const halfHeight = height / 2 - margin;
+
+let width, height;
+let halfWidth, halfHeight;
+
+function setup() {
+  // All drawing will happen in CSS pixels, but we'll scale the canvas pixels
+  // to account for the DPR.
+  const dpr = Math.floor(Math.min(devicePixelRatio, 2));
+  width = canvas.clientWidth;
+  height = canvas.clientHeight;
+
+  canvas.width = width * dpr;
+  canvas.height = height * dpr;
+
+  ctx.setTransform(1, 0, 0, 1, 0, 0); // Reset transform
+  ctx.scale(dpr, dpr);
+  ctx.translate(width / 2, height / 2);
+
+  halfWidth = width / 2 - margin;
+  halfHeight = height / 2 - margin;
+}
+
+function draw() {
+  ctx.clearRect(-halfWidth, -halfHeight, halfWidth, halfHeight);
+
+  drawGrid();
+  drawAxes();
+  drawBasisVectors();
+}
 
 function drawGrid() {
   ctx.strokeStyle = '#ddd';
@@ -93,10 +108,10 @@ function drawAxes() {
   ctx.stroke();
 }
 
-const unit = 50; // 1 unit = 50px (same as grid spacing)
+const unit = spacing; // 1 unit = 50px (same as grid spacing)
 
-let ih = { x: 1, y: 0 };
-let jh = { x: 0, y: -1 }; // Negative because canvas y is flipped
+const ih = { x: 1, y: 0 };
+const jh = { x: 0, y: -1 }; // Negative because canvas y is flipped
 
 function drawArrow(from, to, color) {
   const headLength = 10;
@@ -117,7 +132,6 @@ function drawArrow(from, to, color) {
   ctx.stroke();
 
   // Arrowhead
-  // ctx.lineJoin = 'bevel'; //
   ctx.beginPath();
   ctx.moveTo(to.x, to.y);
   ctx.lineTo(to.x - headLength * Math.cos(angle - Math.PI / 6), to.y - headLength * Math.sin(angle - Math.PI / 6));
@@ -133,9 +147,25 @@ function drawBasisVectors() {
   drawArrow(origin, {x: jh.x * unit, y: jh.y * unit}, '#3498db');
 }
 
-drawGrid();
-drawAxes();
-drawBasisVectors();
+function resize() {
+  setup();
+  draw();
+}
+
+let resizeScheduled = false;
+
+window.addEventListener("resize", () => {
+  if (resizeScheduled) return;
+  resizeScheduled = true;
+
+  requestAnimationFrame(() => {
+    resize();
+    resizeScheduled = false;
+  });
+});
+
+setup();
+draw();
 </script>
 
 </head>
