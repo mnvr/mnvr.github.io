@@ -13,12 +13,31 @@
 :root {
   color-scheme: light dark;
 }
+
 body {
   margin: 0;
 }
-canvas {
+
+.container {
+  position: relative;
   width: 100%;
   height: 100vh;
+}
+
+canvas, svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+svg circle {
+  cursor: grab;
+}
+
+svg circle:active {
+  cursor: grabbing;
 }
 </style>
 
@@ -30,7 +49,7 @@ const spacing = 50;
 const margin = -10;
 
 let width, height;
-let halfWidth, halfHeight;
+let halfWidthM, halfHeightM;
 
 function setup() {
   // All drawing will happen in CSS pixels, but we'll scale the canvas pixels
@@ -42,20 +61,21 @@ function setup() {
   canvas.width = width * dpr;
   canvas.height = height * dpr;
 
-  ctx.setTransform(1, 0, 0, 1, 0, 0); // Reset transform
-  ctx.scale(dpr, dpr);
-  ctx.translate(width / 2, height / 2);
-
-  halfWidth = width / 2 - margin;
-  halfHeight = height / 2 - margin;
+  halfWidthM = width / 2 - margin;
+  halfHeightM = height / 2 - margin;
 }
 
 function draw() {
-  ctx.clearRect(-halfWidth, -halfHeight, halfWidth, halfHeight);
+  const dpr = Math.floor(Math.min(devicePixelRatio, 2));
+  ctx.setTransform(1, 0, 0, 1, 0, 0); // Reset transform
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.scale(dpr, dpr);
+  ctx.translate(width / 2, height / 2);
 
   drawGrid();
   drawAxes();
   drawBasisVectors();
+  updateHandles();
 }
 
 function drawGrid() {
@@ -63,30 +83,30 @@ function drawGrid() {
   ctx.lineWidth = 1;
 
   // Vertical lines from center outward
-  for (let x = 0; x <= halfWidth; x += spacing) {
+  for (let x = 0; x <= halfWidthM; x += spacing) {
     ctx.beginPath();
-    ctx.moveTo(x, -halfHeight);
-    ctx.lineTo(x, halfHeight);
+    ctx.moveTo(x, -halfHeightM);
+    ctx.lineTo(x, halfHeightM);
     ctx.stroke();
 
     if (x != 0) {
       ctx.beginPath();
-      ctx.moveTo(-x, -halfHeight);
-      ctx.lineTo(-x, halfHeight);
+      ctx.moveTo(-x, -halfHeightM);
+      ctx.lineTo(-x, halfHeightM);
       ctx.stroke();
     }
   }
 
-  for (let y = 0; y <= halfHeight; y += spacing) {
+  for (let y = 0; y <= halfHeightM; y += spacing) {
     ctx.beginPath();
-    ctx.moveTo(-halfWidth, y);
-    ctx.lineTo(halfWidth, y);
+    ctx.moveTo(-halfWidthM, y);
+    ctx.lineTo(halfWidthM, y);
     ctx.stroke();
 
     if (y != 0) {
       ctx.beginPath();
-      ctx.moveTo(-halfWidth, -y);
-      ctx.lineTo(halfWidth, -y);
+      ctx.moveTo(-halfWidthM, -y);
+      ctx.lineTo(halfWidthM, -y);
       ctx.stroke();
     }
   }
@@ -97,14 +117,14 @@ function drawAxes() {
 
   ctx.strokeStyle = '#e74c3c';
   ctx.beginPath();
-  ctx.moveTo(-halfWidth, 0);
-  ctx.lineTo(halfWidth, 0);
+  ctx.moveTo(-halfWidthM, 0);
+  ctx.lineTo(halfWidthM, 0);
   ctx.stroke();
 
   ctx.strokeStyle = '#3498db';
   ctx.beginPath();
-  ctx.moveTo(0, -halfHeight);
-  ctx.lineTo(0, halfHeight);
+  ctx.moveTo(0, -halfHeightM);
+  ctx.lineTo(0, halfHeightM);
   ctx.stroke();
 }
 
@@ -141,23 +161,6 @@ function drawArrow(from, to, color) {
   ctx.stroke();
 }
 
-function drawHandle(v, color) {
-  const handleRadius = 8;
-  const handleOffset = handleRadius + 4;
-
-  const angle = Math.atan2(v.y, v.x)
-  const x = v.x + handleOffset * Math.cos(angle);
-  const y = v.y + handleOffset * Math.sin(angle);
-
-  ctx.beginPath();
-  ctx.arc(x, y, handleRadius, 0, Math.PI * 2);
-  ctx.fillStyle = color;
-  ctx.fill();
-  ctx.strokeStyle = '#fff'
-  ctx.lineWidth = 2;
-  ctx.stroke();
-}
-
 function drawBasisVectors() {
   const origin = { x: 0, y: 0 };
 
@@ -166,9 +169,30 @@ function drawBasisVectors() {
 
   drawArrow(origin, iTip, '#e74c3c');
   drawArrow(origin, jTip, '#3498db');
+}
 
-  drawHandle(iTip, '#e74c3c');
-  drawHandle(jTip, '#3498db');
+const handleRadius = 8;
+const handleOffset = handleRadius + 4;
+
+const handleI = document.getElementById('handle-i');
+const handleJ = document.getElementById('handle-j');
+
+function getHandlePos(v) {
+  const angle = Math.atan2(v.y, v.x);
+  const x = v.x * unit + handleOffset * Math.cos(angle);
+  const y = v.y * unit + handleOffset * Math.sin(angle);
+  return { x, y };
+}
+
+function updateHandles() {
+  const iPos = getHandlePos(iVec);
+  const jPos = getHandlePos(jVec);
+
+  handleI.setAttribute('cx', width / 2 + iPos.x);
+  handleI.setAttribute('cy', height / 2 + iPos.y);
+
+  handleJ.setAttribute('cx', width / 2 + jPos.x);
+  handleJ.setAttribute('cy', height / 2 + jPos.y);
 }
 
 function resize() {
@@ -188,6 +212,32 @@ window.addEventListener("resize", () => {
   });
 });
 
+function setupHandle(handle, vec) {
+  handle.addEventListener('pointerdown', (e) => {
+    handle.setPointerCapture(e.pointerId);
+  });
+
+  handle.addEventListener('pointermove', (e) => {
+    if (!handle.hasPointerCapture(e.pointerId)) return;
+
+    const rect = canvas.getBoundingClientRect();
+    const x = (e.clientX - rect.left) - width / 2;
+    const y = (e.clientY - rect.top) - height / 2;
+
+    vec.x = x / unit;
+    vec.y = y / unit;
+
+    draw();
+  });
+
+  handle.addEventListener('pointerup', (e) => {
+    handle.releasePointerCapture(e.pointerId);
+  });
+}
+
+setupHandle(handleI, iVec, 'i');
+setupHandle(handleJ, jVec, 'j');
+
 setup();
 draw();
 </script>
@@ -196,7 +246,13 @@ draw();
 
 <body>
 
-<canvas></canvas>
+<div class="container">
+  <canvas></canvas>
+  <svg>
+    <circle id="handle-i" r="8" fill="#e74c3c" stroke="#fff" stroke-width="2" />
+    <circle id="handle-j" r="8" fill="#3498db" stroke="#fff" stroke-width="2" />
+  </svg>
+</div>
 
 </body>
 </html>
