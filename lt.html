@@ -39,6 +39,46 @@ svg circle {
 svg circle:active {
   cursor: grabbing;
 }
+
+#matrix-display {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  font-family: monospace;
+  font-size: 18px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 12px;
+  border-radius: 4px;
+}
+
+.matrix-bracket {
+  font-size: 48px;
+  line-height: 1;
+  font-family: system-ui;
+  font-weight: 100;
+}
+
+.matrix-values {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0 6px;
+}
+
+.matrix-row {
+  display: flex;
+  gap: 16px;
+}
+
+.matrix-row span {
+  width: 50px;
+  text-align: right;
+}
+
+#m-a, #m-b { color: #e74c3c; }
+#m-c, #m-d { color: #3498db; }
 </style>
 
 <script type="module">
@@ -73,13 +113,15 @@ function draw() {
   ctx.translate(width / 2, height / 2);
 
   drawGrid();
+  drawTransformedGrid();
   drawAxes();
   drawBasisVectors();
   updateHandles();
+  updateMatrixDisplay();
 }
 
 function drawGrid() {
-  ctx.strokeStyle = '#ddd';
+  ctx.strokeStyle = 'rgba(0, 0, 0, 0.03)';
   ctx.lineWidth = 1;
 
   // Vertical lines from center outward
@@ -238,6 +280,62 @@ function setupHandle(handle, vec) {
 setupHandle(handleI, iVec, 'i');
 setupHandle(handleJ, jVec, 'j');
 
+const mA = document.getElementById('m-a');
+const mB = document.getElementById('m-b');
+const mC = document.getElementById('m-c');
+const mD = document.getElementById('m-d');
+
+function updateMatrixDisplay() {
+  // Matrix columns are the basis vectors
+  // | a  c |   | i.x  j.x |
+  // | b  d | = | i.y  j.y |
+  // Note: negate y because canvas y is flipped
+  mA.textContent = iVec.x.toFixed(2);
+  mB.textContent = (-iVec.y).toFixed(2);
+  mC.textContent = jVec.x.toFixed(2);
+  mD.textContent = (-jVec.y).toFixed(2);
+}
+
+function drawTransformedGrid() {
+  ctx.strokeStyle = '#ddd';
+  ctx.lineWidth = 1;
+
+  ctx.save();
+  // Apply the matrix transform
+  ctx.transform(iVec.x, iVec.y, jVec.x, jVec.y, 0, 0);
+
+  // Same loops as drawGrid, but with a expanded extent
+  for (let x = 0; x <= halfWidthM; x += spacing) {
+    ctx.beginPath();
+    ctx.moveTo(x, -halfHeightM);
+    ctx.lineTo(x, halfHeightM);
+    ctx.stroke();
+
+    if (x != 0) {
+      ctx.beginPath();
+      ctx.moveTo(-x, -halfHeightM);
+      ctx.lineTo(-x, halfHeightM);
+      ctx.stroke();
+    }
+  }
+
+  for (let y = 0; y <= halfHeightM; y += spacing) {
+    ctx.beginPath();
+    ctx.moveTo(-halfWidthM, y);
+    ctx.lineTo(halfWidthM, y);
+    ctx.stroke();
+
+    if (y != 0) {
+      ctx.beginPath();
+      ctx.moveTo(-halfWidthM, -y);
+      ctx.lineTo(halfWidthM, -y);
+      ctx.stroke();
+    }
+  }
+
+  ctx.restore();
+}
+
 setup();
 draw();
 </script>
@@ -252,6 +350,20 @@ draw();
     <circle id="handle-i" r="8" fill="#e74c3c" stroke="#fff" stroke-width="2" />
     <circle id="handle-j" r="8" fill="#3498db" stroke="#fff" stroke-width="2" />
   </svg>
+  <div id="matrix-display">
+    <div class="matrix-bracket">[</div>
+    <div class="matrix-values">
+      <div class="matrix-row">
+        <span id="m-a">1.00</span>
+        <span id="m-c">0.00</span>
+      </div>
+      <div class="matrix-row">
+        <span id="m-b">0.00</span>
+        <span id="m-d">1.00</span>
+      </div>
+    </div>
+    <div class="matrix-bracket">]</div>
+  </div>
 </div>
 
 </body>
