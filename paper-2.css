@@ -14,6 +14,7 @@ a {
 h1,
 p,
 hr,
+blockquote,
 footer {
   max-width: 470px;
   margin-inline: auto;

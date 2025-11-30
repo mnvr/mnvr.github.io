@@ -6,6 +6,13 @@
   <link>https://mnvr.in</link>
   <language>en</language>
   <item>
+    <title>I will now listen to only new music.</title>
+    <description>Now playing</description>
+    <link>https://mnvr.in/np</link>
+    <guid>https://mnvr.in/np</guid>
+    <pubDate>Sun, 30 Nov 2025 00:00:00 GMT</pubDate>
+  </item>
+  <item>
     <title>Copy Paste</title>
     <description>Nature doesn't think, it does</description>
     <link>https://mnvr.in/copy-paste</link>
