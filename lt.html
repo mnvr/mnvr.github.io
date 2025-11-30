@@ -297,6 +297,46 @@ function updateMatrixDisplay() {
 }
 
 function drawTransformedGrid() {
+  /*
+    The inverse of a 2×2 matrix [a c; b d] is:
+    T⁻¹ = (1/det) × [  d   -c ]
+                    [ -b    a ]
+
+    Where det = ad - bc.
+  */
+  const [a, b, c, d] = [iVec.x, iVec.y, jVec.x, jVec.y];
+  const det = a*d - b*c;
+  if (Math.abs(det) < 1e-4) {
+    // skip drawing if the basis vectors are parallel
+    return;
+  }
+
+  /*
+    For a screen point (x, y), the pre-transform point is
+
+    [px  = x[d/det    y[-c/det
+     py]    -b/det] +    a/det]
+    px = x * d/det - y * c/det
+    py = x * -b/det + y * a/det
+
+    Apply these to all four corners (pre-transform) to obtain the
+    new bounding box.
+   */
+  const corners = [
+    [+halfWidthM, +halfHeightM],
+    [-halfWidthM, +halfHeightM],
+    [+halfWidthM, -halfHeightM],
+    [-halfWidthM, -halfHeightM],
+  ]
+
+  const transformed = corners.map(([x, y]) => [
+    (x* d - y* c)/det,
+    (x* -b + y* a)/det,
+  ])
+
+  const hw = Math.max(...transformed.map(([px,_]) => Math.abs(px)));
+  const hh = Math.max(...transformed.map(([_,py]) => Math.abs(py)));
+
   ctx.strokeStyle = '#ddd';
   ctx.lineWidth = 1;
 
@@ -305,30 +345,30 @@ function drawTransformedGrid() {
   ctx.transform(iVec.x, iVec.y, jVec.x, jVec.y, 0, 0);
 
   // Same loops as drawGrid, but with a expanded extent
-  for (let x = 0; x <= halfWidthM; x += spacing) {
+  for (let x = 0; x <= hw; x += spacing) {
     ctx.beginPath();
-    ctx.moveTo(x, -halfHeightM);
-    ctx.lineTo(x, halfHeightM);
+    ctx.moveTo(x, -hh);
+    ctx.lineTo(x, hh);
     ctx.stroke();
 
     if (x != 0) {
       ctx.beginPath();
-      ctx.moveTo(-x, -halfHeightM);
-      ctx.lineTo(-x, halfHeightM);
+      ctx.moveTo(-x, -hh);
+      ctx.lineTo(-x, hh);
       ctx.stroke();
     }
   }
 
-  for (let y = 0; y <= halfHeightM; y += spacing) {
+  for (let y = 0; y <= hh; y += spacing) {
     ctx.beginPath();
-    ctx.moveTo(-halfWidthM, y);
-    ctx.lineTo(halfWidthM, y);
+    ctx.moveTo(-hw, y);
+    ctx.lineTo(hw, y);
     ctx.stroke();
 
     if (y != 0) {
       ctx.beginPath();
-      ctx.moveTo(-halfWidthM, -y);
-      ctx.lineTo(halfWidthM, -y);
+      ctx.moveTo(-hw, -y);
+      ctx.lineTo(hw, -y);
       ctx.stroke();
     }
   }
