@@ -48,7 +48,7 @@ svg circle:active {
   align-items: center;
   font-family: monospace;
   font-size: 18px;
-  background: rgba(255, 255, 255, 0.9);
+  background: light-dark(rgba(255, 255, 255, 0.9), rgba(0, 0, 0, 0.3));
   padding: 12px;
   border-radius: 4px;
 }
@@ -121,7 +121,7 @@ function draw() {
 }
 
 function drawGrid() {
-  ctx.strokeStyle = 'rgba(0, 0, 0, 0.03)';
+  ctx.strokeStyle = 'rgba(0, 0, 0, 0.2)';
   ctx.lineWidth = 1;
 
   // Vertical lines from center outward
@@ -218,11 +218,12 @@ const handleOffset = handleRadius + 4;
 
 const handleI = document.getElementById('handle-i');
 const handleJ = document.getElementById('handle-j');
+const handleSum = document.getElementById('handle-sum');
 
-function getHandlePos(v) {
+function getHandlePos(v, offset=handleOffset) {
   const angle = Math.atan2(v.y, v.x);
-  const x = v.x * unit + handleOffset * Math.cos(angle);
-  const y = v.y * unit + handleOffset * Math.sin(angle);
+  const x = v.x * unit + offset * Math.cos(angle);
+  const y = v.y * unit + offset * Math.sin(angle);
   return { x, y };
 }
 
@@ -230,11 +231,17 @@ function updateHandles() {
   const iPos = getHandlePos(iVec);
   const jPos = getHandlePos(jVec);
 
+  const sumVec = { x: iVec.x + jVec.x, y: iVec.y + jVec.y };
+  const sumPos = getHandlePos(sumVec, 0);
+
   handleI.setAttribute('cx', width / 2 + iPos.x);
   handleI.setAttribute('cy', height / 2 + iPos.y);
 
   handleJ.setAttribute('cx', width / 2 + jPos.x);
   handleJ.setAttribute('cy', height / 2 + jPos.y);
+
+  handleSum.setAttribute('transform',
+    `translate(${width / 2 + sumPos.x}, ${height / 2 + sumPos.y})`);
 }
 
 function resize() {
@@ -277,8 +284,59 @@ function setupHandle(handle, vec) {
   });
 }
 
+function vecLength(v) {
+  return Math.sqrt(v.x * v.x + v.y * v.y);
+}
+
+function setupSumHandle(handle) {
+  handle.addEventListener('pointerdown', (e) => {
+    handle.setPointerCapture(e.pointerId);
+  });
+
+  handle.addEventListener('pointermove', (e) => {
+    if (!handle.hasPointerCapture(e.pointerId)) return;
+
+    const rect = canvas.getBoundingClientRect();
+    const x = (e.clientX - rect.left) - width / 2;
+    const y = (e.clientY - rect.top) - height / 2;
+
+    const oldSum = { x: iVec.x + jVec.x, y: iVec.y + jVec.y };
+    const newSum = { x: x / unit, y: y / unit };
+
+    const oldLen = vecLength(oldSum);
+    const newLen = vecLength(newSum);
+
+    if (oldLen < 1e-3) return;
+
+    const scale = newLen / oldLen;
+
+    const oldAngle = Math.atan2(oldSum.y, oldSum.x);
+    const newAngle = Math.atan2(newSum.y, newSum.x);
+    const rotation = newAngle - oldAngle;
+
+    const cos = Math.cos(rotation);
+    const sin = Math.sin(rotation);
+
+    // Apply rotation then scale to both vectors
+    const ix = iVec.x, iy = iVec.y;
+    iVec.x = scale * (ix * cos - iy * sin);
+    iVec.y = scale * (ix * sin + iy * cos);
+
+    const jx = jVec.x, jy = jVec.y;
+    jVec.x = scale * (jx * cos - jy * sin);
+    jVec.y = scale * (jx * sin + jy * cos);
+
+    draw();
+  });
+
+  handle.addEventListener('pointerup', (e) => {
+    handle.releasePointerCapture(e.pointerId);
+  });
+}
+
 setupHandle(handleI, iVec, 'i');
 setupHandle(handleJ, jVec, 'j');
+setupSumHandle(handleSum);
 
 const mA = document.getElementById('m-a');
 const mB = document.getElementById('m-b');
@@ -338,6 +396,7 @@ function drawTransformedGrid() {
   const hh = Math.max(...transformed.map(([_,py]) => Math.abs(py)));
 
   ctx.strokeStyle = '#ddd';
+  ctx.strokeStyle = 'rgba(190, 120, 205, 0.8)';
   ctx.lineWidth = 1;
 
   ctx.save();
@@ -389,6 +448,7 @@ draw();
   <svg>
     <circle id="handle-i" r="8" fill="#e74c3c" stroke="#fff" stroke-width="2" />
     <circle id="handle-j" r="8" fill="#3498db" stroke="#fff" stroke-width="2" />
+    <rect id="handle-sum" width="14" height="14" x="-7" y="-7" fill="#9b59b6" stroke="#fff" stroke-width="2" />
   </svg>
   <div id="matrix-display">
     <div class="matrix-bracket">[</div>
