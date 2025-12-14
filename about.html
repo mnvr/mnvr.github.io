@@ -20,9 +20,15 @@ body {
 a {
   text-decoration: none;
 }
-p, footer {
+ul, p, footer {
   max-width: 370px;
   margin-inline: auto;
+}
+ul {
+  list-style-type: circle;
+}
+ul li {
+  margin-block: 0.5em;
 }
 sup {
   opacity: 0.6;
@@ -43,12 +49,12 @@ p.f {
 
 <body>
 
-<p class="f">Hi, I'm Manav.</p>
+<p class="f">Hello. I'm Manav.</p>
 
 <p>I like existing (well, usually) and building things.</p>
 
 <p>
-Elsewhere: <a href="https://github.com/mnvr" target="_blank">GitHub</a><sup>new tab</sup> | <a href="https://x.com/mnvrth" target="_blank">Twitter</a><sup>new tab</sup> | <a rel="me" href="https://mastodon.social/@mnvr" target="_blank">Mastodon</a><sup>new tab</sup>
+Elsewhere: <a href="https://github.com/mnvr" target="_blank">GitHub</a><sup>↗</sup> | <a href="https://x.com/mnvrth" target="_blank">Twitter</a><sup>↗</sup> | <a rel="me" href="https://mastodon.social/@mnvr" target="_blank">Mastodon</a><sup>↗</sup>
 </p>
 
 <p>
@@ -56,7 +62,12 @@ Elsewhere: <a href="https://github.com/mnvr" target="_blank">GitHub</a><sup>new 
 </p>
 
 <p>
-Some older posts are in <a href="25-2">25-2</a> and <a href="25-1">25-1</a>
+Some older posts are in
+<ul>
+<li><a href="25-3">25-3</a></li>
+<li><a href="25-2">25-2</a></li>
+<li><a href="25-1">25-1</a></li>
+</ul>
 </p>
 
 <footer>
