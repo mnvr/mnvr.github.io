@@ -14,11 +14,11 @@
 
   <script type="x-shader/x-fragment">
 uniform vec2 resolution;
-uniform float t;
+uniform float time;
 
 void main() {
   vec2 uv = gl_FragCoord.xy / resolution;
-  vec3 col = vec3(uv.x, uv.y, cos(t));
+  vec3 col = vec3(uv.x, uv.y, cos(time));
   if (abs(uv.x - uv.y) < 1. / min(resolution.x, resolution.y)) {
     col = vec3(1., 1., 1.);
   }
@@ -33,13 +33,13 @@ void main() {
     <canvas></canvas>
 
     <div class="text">
-      <h1>Untitled</h1>
+      <h2>Untitled</h2>
       <p>Manav Rathi • Dec 2025</p>
     </div>
   </main>
 
   <footer>
-    <a href="/">mnvr.in</a>
+    <a href="/"><em>home</em></a>
   </footer>
 </body>
 

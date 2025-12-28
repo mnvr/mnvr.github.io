@@ -53,7 +53,7 @@ gl.enableVertexAttribArray(pi)
 gl.vertexAttribPointer(pi, 2, gl.FLOAT, false, 0, 0)
 
 const ri = gl.getUniformLocation(p, 'resolution')
-const ti = gl.getUniformLocation(p, 't')
+const ti = gl.getUniformLocation(p, 'time')
 
 let prevW = 0, prevH = 0
 
