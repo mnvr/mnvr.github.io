@@ -39,7 +39,7 @@
   <script type="module">
     const fragmentSource = `
     void main() {
-      gl_FragColor = vec4(gl_FragCoord.xy, 0.7, 1.0);
+      gl_FragColor = vec4(gl_FragCoord.xy, 0.2, 1.0);
     }
     `
 
@@ -53,9 +53,9 @@
 
     const vs = gl.createShader(gl.VERTEX_SHADER)
     gl.shaderSource(vs, `
+    attribute vec2 position;
     void main() {
-      gl_Position = vec4(0., 0., 0., 1.);
-      gl_PointSize = 100.;
+      gl_Position = vec4(position, 0., 1.);
     }
     `)
     gl.compileShader(vs)
@@ -74,7 +74,22 @@
 
     gl.useProgram(p)
 
-    gl.drawArrays(gl.POINTS, 0, 1)
+    const quad = new Float32Array([
+      -1, -1, // bottom-left
+      +1, -1, // bottom-right
+      -1, +1, // top-left
+      +1, +1, // top-right
+    ])
+
+    const buf = gl.createBuffer()
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf)
+    gl.bufferData(gl.ARRAY_BUFFER, quad, gl.STATIC_DRAW)
+
+    const position = gl.getAttribLocation(p, "position")
+    gl.enableVertexAttribArray(position)
+    gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0)
+
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4)
   </script>
 
 </head>
