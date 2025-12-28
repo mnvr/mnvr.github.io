@@ -27,7 +27,7 @@
 
     canvas {
       width: 100vw;
-      min-height: 80vh;
+      height: 90vh;
     }
 
     output {
@@ -58,16 +58,6 @@
     const canvas = document.querySelector('canvas')
     const gl = canvas.getContext("webgl")
 
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    const width = canvas.clientWidth * dpr;
-    const height = canvas.clientHeight * dpr;
-    if (canvas.width != width || canvas.height != height) {
-      canvas.width = width
-      canvas.height = height
-    }
-    gl.viewport(0, 0, width, height)
-    hud_append(`${width} ${height} ${dpr}`)
-
     const vs = gl.createShader(gl.VERTEX_SHADER)
     gl.shaderSource(vs, `
     attribute vec2 position;
@@ -80,7 +70,6 @@
 
     const hp = gl.getShaderPrecisionFormat(gl.FRAGMENT_SHADER, gl.HIGH_FLOAT)
     const precision = hp?.precision ? 'highp' : 'mediump';
-    hud_append(precision)
 
     const fs = gl.createShader(gl.FRAGMENT_SHADER)
     gl.shaderSource(fs, `
@@ -117,14 +106,21 @@
     gl.vertexAttribPointer(pi, 2, gl.FLOAT, false, 0, 0)
 
     const ri = gl.getUniformLocation(p, "resolution")
-    gl.uniform2f(ri, gl.drawingBufferWidth, gl.drawingBufferHeight)
-    
     const ti = gl.getUniformLocation(p, "t")
 
-    console.log(canvas.width, canvas.clientWidth, canvas.offsetWidth, canvas.scrollWidth, gl.drawingBufferWidth)
-    hud_append(`${gl.drawingBufferWidth} ${gl.drawingBufferHeight}`)
+    let prevW = 0, prevH = 0
 
     function draw(ms) {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const width = canvas.clientWidth * dpr;
+      const height = canvas.clientHeight * dpr;
+      if (width != prevW || height != prevH) {
+        canvas.width = prevW = width
+        canvas.height = prevH = height
+        gl.viewport(0, 0, width, height)
+        gl.uniform2f(ri, gl.drawingBufferWidth, gl.drawingBufferHeight)
+      }
+
       gl.uniform1f(ti, ms * 0.001)
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4)
 
