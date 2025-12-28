@@ -1,0 +1,46 @@
+:root {
+  color-scheme: light dark;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  margin: 0;
+}
+
+canvas {
+  width: 100vw;
+  height: 100vh;
+}
+
+.text,
+footer {
+  margin-inline: 0.5em;
+}
+
+.text h1 {
+  margin-block: 1px 0;
+}
+
+.text p {
+  margin-block: 2px 0;
+}
+
+.text p {
+  opacity: 0.6;
+}
+
+footer {
+  margin-block: 3em 1em;
+  text-align: right;
+}
+
+footer a {
+  font-size: smaller;
+  opacity: 0.7;
+  text-decoration: none;
+}
+
+footer a:hover,
+footer a:active {
+  opacity: 1;
+}

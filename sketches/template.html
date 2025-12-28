@@ -8,144 +8,22 @@
 
   <title>Untitled Sketch | mnvr.in</title>
   <meta name="description" content="Sketches by Manav">
-  <link rel="alternate" type="application/rss+xml" href="rss.xml">
 
-  <style>
-    :root {
-      color-scheme: light dark;
-    }
+  <link rel="stylesheet" href="shader.css">
+  <script src="shader.js" type="module"></script>
 
-    body {
-      font-family: system-ui, sans-serif;
-      margin: 0;
-    }
+  <script type="x-shader/x-fragment">
+uniform vec2 resolution;
+uniform float t;
 
-    canvas {
-      width: 100vw;
-      height: 100vh;
-    }
-
-    .text,
-    footer {
-      margin-inline: 0.5em;
-    }
-
-    .text h1 {
-      margin-block: 1px 0;
-    }
-
-    .text p {
-      margin-block: 2px 0;
-    }
-
-    .text p {
-      opacity: 0.7;
-    }
-
-    footer {
-      margin-block: 3em 1em;
-      text-align: right;
-    }
-
-    footer a {
-      font-size: smaller;
-      opacity: 0.7;
-      text-decoration: none;
-    }
-
-    footer a:hover,
-    footer a:active {
-      opacity: 1;
-    }
-  </style>
-
-  <script type="module">
-    const fragmentSource = `
-    uniform vec2 resolution;
-    uniform float t;
-  
-    void main() {
-      vec2 uv = gl_FragCoord.xy / resolution;
-      gl_FragColor = vec4(uv * 0.5 + 0.5 * sin(t), 0.2, 1.0);
-      if (abs(uv.x - uv.y) < 1. / min(resolution.x, resolution.y)) {
-        gl_FragColor = vec4(1., 1., 1., 1.);
-      }
-    }
-    `
-
-    const canvas = document.querySelector('canvas')
-    const gl = canvas.getContext("webgl")
-
-    const vs = gl.createShader(gl.VERTEX_SHADER)
-    gl.shaderSource(vs, `
-    attribute vec2 position;
-
-    void main() {
-      gl_Position = vec4(position, 0., 1.);
-    }
-    `)
-    gl.compileShader(vs)
-
-    const hp = gl.getShaderPrecisionFormat(gl.FRAGMENT_SHADER, gl.HIGH_FLOAT)
-    const precision = hp?.precision ? 'highp' : 'mediump';
-
-    const fs = gl.createShader(gl.FRAGMENT_SHADER)
-    gl.shaderSource(fs, `
-    precision ${precision} float;
-
-    ${fragmentSource}
-    `)
-    gl.compileShader(fs)
-
-    const p = gl.createProgram()
-    gl.attachShader(p, vs)
-    gl.attachShader(p, fs)
-    gl.linkProgram(p)
-
-    const log = gl.getProgramInfoLog(p)
-    if (log) console.error(log)
-    if (log) hud_append(log)
-
-    gl.useProgram(p)
-
-    const quad = new Float32Array([
-      -1, -1, // bottom-left
-      +1, -1, // bottom-right
-      -1, +1, // top-left
-      +1, +1, // top-right
-    ])
-
-    const buf = gl.createBuffer()
-    gl.bindBuffer(gl.ARRAY_BUFFER, buf)
-    gl.bufferData(gl.ARRAY_BUFFER, quad, gl.STATIC_DRAW)
-
-    const pi = gl.getAttribLocation(p, "position")
-    gl.enableVertexAttribArray(pi)
-    gl.vertexAttribPointer(pi, 2, gl.FLOAT, false, 0, 0)
-
-    const ri = gl.getUniformLocation(p, "resolution")
-    const ti = gl.getUniformLocation(p, "t")
-
-    let prevW = 0, prevH = 0
-
-    function draw(ms) {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      const width = canvas.clientWidth * dpr;
-      const height = canvas.clientHeight * dpr;
-      if (width != prevW || height != prevH) {
-        canvas.width = prevW = width
-        canvas.height = prevH = height
-        gl.viewport(0, 0, width, height)
-        gl.uniform2f(ri, gl.drawingBufferWidth, gl.drawingBufferHeight)
-      }
-
-      gl.uniform1f(ti, ms * 0.001)
-      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4)
-
-      requestAnimationFrame(draw)
-    }
-
-    requestAnimationFrame(draw)
+void main() {
+  vec2 uv = gl_FragCoord.xy / resolution;
+  vec3 col = vec3(uv.x, uv.y, cos(t));
+  if (abs(uv.x - uv.y) < 1. / min(resolution.x, resolution.y)) {
+    col = vec3(1., 1., 1.);
+  }
+  gl_FragColor = vec4(col, 1.);
+}
   </script>
 
 </head>
