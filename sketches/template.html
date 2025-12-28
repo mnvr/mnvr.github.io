@@ -34,34 +34,56 @@
       width: 100vw;
       min-height: 80vh;
     }
+
+    output {
+      position: absolute;
+      font-family: monospace;
+    }
   </style>
 
   <script type="module">
     const fragmentSource = `
+    uniform vec2 resolution;
+  
     void main() {
-      gl_FragColor = vec4(gl_FragCoord.xy, 0.2, 1.0);
+      vec2 uv = gl_FragCoord.xy / resolution;
+      gl_FragColor = vec4(uv, 0.2, 1.0);
     }
     `
+
+    const output = document.querySelector("output")
+    function hud_append(m) {
+      output.textContent += " " + m;
+    }
 
     const canvas = document.querySelector('canvas')
     const width = canvas.clientWidth
     const height = canvas.clientHeight
     const dpr = window.devicePixelRatio
-    document.querySelector("output").textContent = `${width} ${height} ${dpr}`
+    hud_append(`${width} ${height} ${dpr}`)
 
     const gl = canvas.getContext("webgl")
 
     const vs = gl.createShader(gl.VERTEX_SHADER)
     gl.shaderSource(vs, `
     attribute vec2 position;
+
     void main() {
       gl_Position = vec4(position, 0., 1.);
     }
     `)
     gl.compileShader(vs)
 
+    const hp = gl.getShaderPrecisionFormat(gl.FRAGMENT_SHADER, gl.HIGH_FLOAT)
+    const precision = hp?.precision ? 'highp' : 'mediump';
+    hud_append(precision)
+
     const fs = gl.createShader(gl.FRAGMENT_SHADER)
-    gl.shaderSource(fs, fragmentSource)
+    gl.shaderSource(fs, `
+    precision ${precision} float;
+
+    ${fragmentSource}
+    `)
     gl.compileShader(fs)
 
     const p = gl.createProgram()
@@ -71,6 +93,7 @@
 
     const log = gl.getProgramInfoLog(p)
     if (log) console.error(log)
+    if (log) hud_append(log)
 
     gl.useProgram(p)
 
@@ -85,11 +108,17 @@
     gl.bindBuffer(gl.ARRAY_BUFFER, buf)
     gl.bufferData(gl.ARRAY_BUFFER, quad, gl.STATIC_DRAW)
 
-    const position = gl.getAttribLocation(p, "position")
-    gl.enableVertexAttribArray(position)
-    gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0)
+    const pi = gl.getAttribLocation(p, "position")
+    gl.enableVertexAttribArray(pi)
+    gl.vertexAttribPointer(pi, 2, gl.FLOAT, false, 0, 0)
+
+    const ri = gl.getUniformLocation(p, "resolution")
+    gl.uniform2f(ri, gl.drawingBufferWidth, gl.drawingBufferHeight)
 
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4)
+
+    console.log(canvas.width, canvas.clientWidth, canvas.offsetWidth, canvas.scrollWidth, gl.drawingBufferWidth)
+    hud_append(`${gl.drawingBufferWidth} ${gl.drawingBufferHeight}`)
   </script>
 
 </head>
@@ -98,9 +127,6 @@
   <output></output>
 
   <canvas></canvas>
-
-
-
 </body>
 
 </html>
