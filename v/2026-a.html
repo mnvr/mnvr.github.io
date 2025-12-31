@@ -18,13 +18,27 @@
             margin: 0.8lh;
         }
 
+        article {
+            margin-block-end: 3em;
+        }
+
         time {
             opacity: 0.7;
             font-size: small;
         }
 
-        article {
-            margin-block-end: 3em;
+        a[href^="#"] {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        a[href^="#"]:hover {
+            text-underline-offset: 15%;
+            text-decoration: underline;
+        }
+
+        footer cite {
+            font-style: normal;
         }
     </style>
 
@@ -32,7 +46,7 @@
 
 <body>
     <article id="12-31">
-        <time>Dec 31, 2025</time>
+        <a href="#12-31"><time>Dec 31, 2025</time></a>
         <p>
             A new year is about to begin<br>
             It's going to be a good one (I think)<br>
