@@ -161,3 +161,38 @@ u . v = sigma ui vi
 > <u, v> says "inner product is being used (abstract, basis-independent)"
 >
 > u . v says "Euclidean dot product in an orthonormal coordinate system"
+
+ML
+
+In ML contexts, usually the vector space we deal with is isomorphic to Rn, the basis are assumed to be the standard orthonormal ones, and the inner product is assumed to be the dot product.
+
+The interesting stuff starts happening atop this structure.
+
+The dot product is treated as "multiplication" - a binary operation that return a scalar. Note that the vector space itself has no multiplication primitive, the only operations we get are addition, scaling, and probing using a linear functional from the dual space. since we've chosen an inner product, we also get norm, angle, distance.
+
+So multiplying a vector with a another vector is a short hand for saying take the inner product of the two vectors, in these cases, the dot product. This is standing in for the following operations:
+
+- Transform one of the vectors into its covector
+- Probe the other vector using this covector.
+- The resultant scalar is the result of the operation.
+
+Matrix vector multiplication (in this vernacular, not technically) is than performing multiple such multiplications, and returning the stacked result. Infact the matrix vector multiplication can be (in this vernacular) considered as a primitive - taking multiple dot products of a single vector in one go, and the vector vector multiplication is a special case where it devolves into a single dot product.
+
+In such framings, we also start to think in terms of the low level "coordinates" - vectors as arrays of numbers - instead of thinking of them as opaque objects in a vector space. To retain "type safety" (i.e we don't willy nilly mix vectors and covectors), the mechanical manipulation of coordinates has to make sure that the "shapes" match.
+
+There are two operations then:
+
+u . v - a dot product. The dimensions of u and v must match. The result is the sum of the pairwise products.
+
+u v - a matrix multiplication, where each "matrix" is either a vector (one-dimensional array of scalars) or a matrix (a two-dimensional array of scalars). For this operation, the inner dimensions must match. So u B Ra x b and v B Rb x c can be multiplied, for any a, b and c B I. The mechanical operation then is perform a x c dot products of the b dimensional vectors.
+
+Let's take the simples case. Consider u and v as two vectors of the same dimension d. u . v is clear. But saying u v is not correct, because the shapes don't match, both u, v B R 1xd (if for our problem we're representing vectors as "row vectors") or u, v B R dx1 (if for our problem we're representing vectors as "column vectors"). 
+
+To get the shapes to match we need to perform a transpose. Mechanically, the transpose is swapping rows and columns, but the actual operation it is doing in our specific Euclidean vector space with orthonormal basis is converting a vector to its covector (or vice versa).
+
+So we instead write uT v, which is often thought of as converting one of the vectors into a "matrix", but really is taking the covector of the vector u to convert it into a linear functional that can then measure the other v to get us our scalar. All that said, in terms of the mechanical calculations, there is no "conversion to covector" - uT v is exactly the same scalar as u . v.
+
+
+
+
+
