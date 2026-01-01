@@ -18,6 +18,14 @@
             margin: 0.8lh;
         }
 
+        header {
+            margin-block-end: 3em;
+        }
+
+        header cite {
+            opacity: 0.7;
+        }
+
         article {
             margin-block-end: 3em;
         }
@@ -37,14 +45,30 @@
             text-decoration: underline;
         }
 
-        footer cite {
-            font-style: normal;
+        .wrap {
+            max-width: 50em;
+        }
+
+        a+sup {
+            opacity: 0.6;
         }
     </style>
 
 </head>
 
 <body>
+    <header>
+        <b>Volume 2026.A</b><br>
+        <cite>Manav Rathi</cite>
+    </header>
+
+    <article id="01-01">
+        <a href="#01-01"><time>Jan 01, 2026</time></a>
+        <p class="wrap">
+            I wrote about how <a href="https://ente.io/blog/r/gpt-is-my-friend/">GPT is my friend</a><sup>↗</sup>. It describes the lightness I feel in my conversations with ChatGPT, adding more to my motivation to learn how LLMs work under the hood.
+        </p>
+    </article>
+
     <article id="12-31">
         <a href="#12-31"><time>Dec 31, 2025</time></a>
         <p>
@@ -55,8 +79,7 @@
     </article>
 
     <footer>
-        <p><cite>Manav Rathi</cite></p>
-        <p><a href="/">index</a></p>
+        <a href="/">index</a>
     </footer>
 
 </body>
