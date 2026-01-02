@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+
+  <title>Vector spaces | mnvr.in</title>
+  <meta name="description" content="Transpose of a vector is a covector got you confused? No longer">
+  <link rel="alternate" type="application/rss+xml" href="rss.xml">
+
+  <style>
+    :root {
+      color-scheme: light dark;
+    }
+
+    body {
+      font-family: system-ui, sans-serif;
+      margin: 0.8lh;
+      line-height: 1.5;
+    }
+
+    header,
+    main,
+    footer {
+      margin-inline-end: auto;
+      max-width: 60em;
+    }
+
+    h2 span.muted {
+      opacity: 0.55;
+    }
+
+    footer p.muted {
+      opacity: 0.64;
+    }
+
+    blockquote {
+      opacity: 0.8;
+    }
+
+    hr {
+      margin-block: 2em;
+      opacity: 0.3;
+    }
+  </style>
+
+</head>
+
+<body>
+  <header>
+    <h1>Vector spaces for ML</h1>
+  </header>
+
+  <main>
+    <h2><span class="muted">Layer 0 - </span> Vector space</h2>
+
+    <p>
+      A vector space over some scalar field F is a set of objects (“vectors”) that is closed under addition, scaling, and combinations thereof.
+    </p>
+
+    <p>
+      Commonly the scalar field under consideration is the set of real numbers, ℝ. So the scaling factors (“scalars”) will be real numbers. But the vectors themselves have no inherent association with real numbers. They are arbitrary objects whose set is closed under addition and scalar multiplication, where we get to define what addition and scalar multiplication means.
+    </p>
+
+    <p>
+      With a reminder that the scalar field can also be non-real, like ℂ, in what follows we’ll implicitly assume that the field we’re using is ℝ.
+    </p>
+
+    <hr>
+
+    <h2><span class="muted">Layer 1 - </span>Linear functionals</h2>
+
+    <p>
+      For any vector space we can define functions that take elements of that vector space as input and produce the scalar as output.
+    </p>
+
+    <p>
+      Any arbitrary function, f(x) = a, where x ∈ V and a ∈ ℝ.
+    </p>
+
+    <p>
+      Now, let us consider only those functions that obey linearity, that is
+    </p>
+
+    <p>
+      f(ax + by) = a f(x) + b f(y) where x, y ∈ V and a, b ∈ ℝ
+    </p>
+
+    <p>
+      Such a function is called a linear functional.
+    </p>
+
+    <blockquote>
+      <p>
+        A broader concept is a linear map, which is the set of all linear functions between any two vector spaces. When the target is the scalar field associated with the vector space, then we get a linear functional. “Functional” here just means a function that returns a number (or as we’re referring to them, a scalar).
+      </p>
+    </blockquote>
+
+    <p>
+      Now let us consider the set of possible such linear maps that exist for a given vector space. This set is called the set of linear functionals over V, and can be defined as
+    </p>
+
+    <p>
+      V* = { f : V → ℝ | f is linear }
+    </p>
+
+    <p>
+      This V* is another vector space, where the elements are linear functionals. For this set, we can define addition and scalar multiplication as:
+    </p>
+
+    <p>
+      (f + g)(v) = f(v) + g(v)<br>
+      (c f)(v) = c f(v)
+    </p>
+
+    <p>
+      This set is called the “dual space” V* of the original vector space V, and the elements of this dual space (i.e. the linear functionals) are called covectors.
+    </p>
+
+    <p>
+      Semantically, at this point we can think that
+    </p>
+
+    <ul>
+      <li>vectors exist</li>
+      <li>covectors “probe” vectors</li>
+    </ul>
+
+    <p>
+      Where “probe” means produce a scalar value to describe a vector. Reminder that at this point, don’t think of a vector as an array of coordinates. We don’t know what a vector is beyond the properties it follows. The covector is a way to collapse a vector down to a scalar, and do it in a way that the collapses follow linearity.
+    </p>
+
+    <p>
+      Also, note that at this point
+    </p>
+
+    <ul>
+      <li>vectors do <strong>not</strong> probe / measure vectors</li>
+    </ul>
+
+    <hr>
+
+    <h2><span class="muted">Layer 2 - </span>Canonical pairing</h2>
+
+    <p>
+      Consider all pairs (f, v) where f ∈ V* and v ∈ V.
+    </p>
+
+    <p>
+      Now given the primitives we have so far, what could this pairing mean?
+    </p>
+
+    <p>
+      It can only mean one thing – function application.
+    </p>
+
+    <p>
+      Let’s think about this. v is an arbitrary object. f is a function that takes vectors and returns scalars in a way that respects linearity. Without assuming any more structure, the only (and perfectly natural) way to combine them is to take (f, v) to mean f(v).
+    </p>
+
+    <p>
+      (f, v) ↦ f(v)
+    </p>
+
+    <p>
+      So we have another set V* × V and a pairing V* × V → ℝ.
+    </p>
+
+    <p>
+      To reiterate, there exists for every vector space a dual space of covectors, and a canonical pairing
+    </p>
+
+    <p>
+      (f, v) ↦ f(v)
+    </p>
+
+    <p>
+      Which <em>is</em> function application.
+    </p>
+
+    <p>
+      Note so far that we haven’t assumed any extra structure apart from closure under addition and scaling for the vector space. Everything else has been definitional, with the slightly curious but still not very surprising emergence that the dual space of V is also a vector space.
+    </p>
+
+    <h3>Aside</h3>
+
+    <p>
+      Let us consider an example. Again, note that vectors are arbitrary things, but for the sake of visualization consider vectors as elements of ℝ². Then
+    </p>
+
+    <ul>
+      <li>Vectors are arrows;</li>
+      <li>Covectors are a family of parallel lines, equally spaced, each line is a same-value contour;</li>
+      <li>When a covector acts on a vector, in our example vector space, what it probes is the count of the number of contour lines we cross.</li>
+    </ul>
+
+    <p>
+      In this geometric picture, assume we were to stretch the x-axis by 2. Neither the vector itself – the arrow – nor the probe done by the covector – the number of crossings – should change because a vector space doesn’t have any concept of coordinates so far (we haven’t come to that yet, we’re only visualizing it that way).
+    </p>
+
+    <p>
+      To keep both the vector and number of crossings unchanged, we change the grid coordinates the vector’s arrow is labelled by (reduce them), and the spacing between the contour lines (increase them). The end result – the number of crossings – then remains the same.
+    </p>
+
+    <p>
+      This is why the components (“coordinates”) of the vector are called contravariant (they go against the basis (“grid”) change) while the components of the covector are called covariant (they go with the basis change).
+    </p>
+
+    <p>
+      But again, a reminder. Vectors are opaque objects; the concept of component hasn’t come yet (and when it does come, it applies to only particular types of vector spaces).
+    </p>
+
+    <hr>
+
+    <h2><span class="muted">Layer 3 - </span>Inner product / metric</h2>
+
+    <p>
+      This is the first extra structure we add. We choose a map g : V × V → ℝ that satisfies three properties:
+    </p>
+
+    <ul>
+      <li>symmetry: g(u, v) = g(v, u)</li>
+      <li>bilinearity: g(ax + by, z) = a g(x, z) + b g(y, z) and g(z, ax + by) = a g(z, x) + b g(z, y)</li>
+      <li>positive definiteness: g(v, v) = 0 ⇔ v = 0, otherwise g(v, v) &gt; 0</li>
+    </ul>
+
+    <p>
+      Any map that satisfies these criteria is called the “inner product”.
+    </p>
+
+    <p>
+      Conventionally, these inner products are written as ⟨·, ·⟩. That is, instead of g(u, v), we write ⟨u, v⟩.
+    </p>
+
+    <p>
+      Instead of considering the inner product as a map V × V → ℝ, we can also think of it as a curried function. Fix some vector v, then ⟨v, ·⟩ is a function of vectors. Since the output is a real number, instead of a function we can give it the more specific terminology – functional. And one of the properties of the inner product is that it is bilinear. So effectively, ⟨v, ·⟩ is a linear functional.
+    </p>
+
+    <p>
+      But we already know that the set of all linear functionals associated with the vector space is V*. So ⟨v, ·⟩ is a member of the dual space, a covector!
+    </p>
+
+    <p>
+      So any inner product is a particular way of mapping a vector to a covector. Once we have a covector, we can then use it to probe other vectors as usual.
+    </p>
+
+    <p>
+      In effect, if we have an inner product defined on our vector space, we allow a vector to measure (“probe”) another vector. This allows us to induce a “metric” on the vector space.
+    </p>
+
+    <p>
+      To expand on this – previously, only covectors could measure (“probe”) a vector, and covectors and vectors live in separate spaces. So while we had a way to “measure” vectors
+    </p>
+
+    <p>
+      f(v) ∈ ℝ
+    </p>
+
+    <p>
+      It was not a metric, but just an evaluation, since the value depends on an arbitrary choice of f, each giving incompatible measurements.
+    </p>
+
+    <p>
+      In contrast, the inner product allows us to induce a metric on the vector space since it gives a natural way to identify the covector for any vector.
+    </p>
+
+    <p>
+      v ↦ ⟨v, ·⟩ ∈ V*
+    </p>
+
+    <blockquote>
+      <p>
+        Natural here means that once we decide on a particular inner product, then there is only one canonical way to use that inner product to identify the unique covector associated to any vector.
+      </p>
+    </blockquote>
+
+    <p>
+      Identifying vectors with covectors removes the need for external probes. Each vector can now measure itself (giving a norm) and measure any other vector (giving alignment / similarity). Because the inner product is symmetric, this mutual measurement is symmetric: ⟨u, v⟩ = ⟨v, u⟩.
+    </p>
+
+    <p>
+      Going into more details, a metric on a set is a function
+    </p>
+
+    <p>
+      d : X × X → ℝ
+    </p>
+
+    <p>
+      That satisfies (for x, y, z ∈ X):
+    </p>
+
+    <ul>
+      <li>non-negativity: d(x, y) ≥ 0</li>
+      <li>identity of indiscernibles (distinct points have non-zero distance): d(x, y) = 0 ⇔ x = y</li>
+      <li>symmetry: d(x, y) = d(y, x)</li>
+      <li>triangle inequality: d(x, z) ≤ d(x, y) + d(y, z)</li>
+    </ul>
+
+    <p>
+      If we have an inner product ⟨·, ·⟩, we can define norm (“length”)
+    </p>
+
+    <p>
+      ‖v‖ = √⟨v, v⟩
+    </p>
+
+    <p>
+      And distance
+    </p>
+
+    <p>
+      d(u, v) = ‖u − v‖
+    </p>
+
+    <p>
+      It can be shown that this d will satisfy the above axioms; thus the inner product allows us to define this metric on the vector space.
+    </p>
+
+    <ul>
+      <li>we can measure the “size” / “length” (the norm) of a vector by taking its inner product with itself</li>
+      <li>we can measure the distance between two vectors (as the norm of the algebraic difference between them)</li>
+      <li>we can measure the “alignment” / “similarity” / “angle” between two vectors (as their inner product)</li>
+    </ul>
+
+    <p>
+      Note that so far we’ve not chosen any coordinate space, basis vectors, or geometric embedding. We start with Layer 0 (vector space), Layer 1 (dual space of linear functionals), Layer 2 (function application as the natural interpretation of pairing vectors and linear functionals). A vector space can remain at this point without any notion of geometry.
+    </p>
+
+    <p>
+      However, if we additionally choose an appropriate inner product, we get:
+    </p>
+
+    <ul>
+      <li>inner product → norm</li>
+      <li>norm → metric</li>
+      <li>metric → distance</li>
+      <li>inner product → angle / projection</li>
+      <li>self-pairing → length</li>
+    </ul>
+
+    <p>
+      Geometric concepts (angle, distance, length) emerge, but none of these presuppose that vectors are living in a geometric space.
+    </p>
+
+    <p>
+      In particular, note that we now have the ability to measure if two vectors are orthogonal to each other – this is true when their inner product is zero.
+    </p>
+
+    <hr>
+
+    <h2>Dot product</h2>
+
+    <p>
+      The dot product is a particular inner product ⟨u, v⟩ that can be defined on any vector space that is isomorphic to ℝⁿ.
+    </p>
+
+    <p>
+      Such vector spaces are also called finite-dimensional real vector spaces. In such spaces, we can choose a set of basis vectors, and then express any other arrow (vector) in the space in terms of scaled combinations (aka linear combinations) of those basis vectors. These scaling factors (coefficients of the linear combination) are the “coordinates” of the arrow (i.e. the vector).
+    </p>
+
+    <blockquote>
+      <p>
+        Note that the concept of inner product doesn’t depend on a choice of basis, but the dot product does.
+      </p>
+    </blockquote>
+
+    <p>
+      In particular, if we choose an orthonormal set of basis (where the orthogonality and norm itself is defined in terms of the inner product – vectors whose inner product is 0 are orthogonal and a set of mutually orthogonal ones which all have a norm of 1 form an orthonormal basis), then that particular inner product, which gets called the dot product, u · v has a simple “sum of pairwise coordinate products” formula
+    </p>
+
+    <p>
+      u · v = Σ uᵢ vᵢ
+    </p>
+
+    <p>
+      ⟨u, v⟩ says “inner product is being used (abstract, basis-independent)”
+    </p>
+
+    <p>
+      u · v says “Euclidean dot product in an orthonormal coordinate system”
+    </p>
+
+    <blockquote>
+      <p>
+        Note that the concept of inner product doesn’t depend on a choice of basis. The dot product <em>is</em> an inner product so it also doesn’t depend on a choice of basis. However, the dot product <em>formula</em> does require that the coordinates being used are in terms of an orthonormal basis.
+      </p>
+    </blockquote>
+
+    <hr>
+
+    <h2>ML</h2>
+
+    <p>
+      In ML contexts, usually the vector space we deal with is isomorphic to ℝⁿ, the basis are assumed to be the standard orthonormal ones, and the inner product is assumed to be the dot product.
+    </p>
+
+    <p>
+      The interesting stuff starts happening atop this structure.
+    </p>
+
+    <p>
+      The dot product is treated as “multiplication” – a binary operation that returns a scalar. Note that the vector space itself has no multiplication primitive; the only operations we get are addition, scaling, and probing using a linear functional from the dual space. Since we’ve chosen an inner product, we also get norm, angle, and distance.
+    </p>
+
+    <p>
+      So multiplying a vector with another vector is a shorthand for saying take the inner product of the two vectors, in these cases, the dot product. This stands in for the following operations:
+    </p>
+
+    <ul>
+      <li>transform one of the vectors into its covector</li>
+      <li>probe the other vector using this covector</li>
+      <li>the resultant scalar is the result of the operation</li>
+    </ul>
+
+    <p>
+      Matrix–vector multiplication (in this vernacular) is then performing multiple such multiplications, and returning the stacked result. In fact, the matrix–vector multiplication can be (in this vernacular) considered as a primitive – taking multiple dot products of a single vector in one go – and the vector–vector product (most correctly, the inner product) is a special case where it devolves into a single dot product.
+    </p>
+
+    <p>
+      In such framings, we also start to think in terms of the low-level “coordinates” – vectors as arrays of numbers – instead of thinking of them as opaque objects in a vector space. To retain “type safety” (i.e. we don’t willy-nilly mix vectors and covectors), the mechanical manipulation of coordinates has to make sure that the “shapes” match.
+    </p>
+
+    <p>
+      There are two operations then:
+    </p>
+
+    <ul>
+      <li>u · v – a dot product. The dimensions of u and v must match. The result is the sum of the pairwise products.</li>
+      <li>u v – a matrix multiplication, where each “matrix” is either a vector (one-dimensional array of scalars) or a matrix (a two-dimensional array of scalars). For this operation, the inner dimensions must match. So u ∈ ℝ<sup>a×b</sup> and v ∈ ℝ<sup>b×c</sup> can be multiplied, for any a, b, c ∈ ℕ. The mechanical operation then is to perform a × c dot products of the b-dimensional vectors.</li>
+    </ul>
+
+    <p>
+      Let’s take the simplest case. Consider u and v as two vectors of the same dimension d. u · v is clear. But saying u v is not correct, because the shapes don’t match, both u, v ∈ ℝ<sup>1×d</sup> (if for our problem we’re representing vectors as “row vectors”) or u, v ∈ ℝ<sup>d×1</sup> (if for our problem we’re representing vectors as “column vectors”).
+    </p>
+
+    <p>
+      To get the shapes to match we need to perform a transpose. Mechanically, the transpose is swapping rows and columns, but the actual operation it is doing in our specific Euclidean vector space with orthonormal basis is converting a vector to its covector (or vice versa).
+    </p>
+
+    <p>
+      So we instead write uᵀ v, which is often thought of as converting one of the vectors into a “matrix”, but really is taking the covector of the vector u to convert it into a linear functional that can then measure the other v to get us our scalar. All that said, in terms of the mechanical calculations, there is no “conversion to covector” – uᵀ v is exactly the same scalar as u · v.
+    </p>
+
+  </main>
+
+  <footer>
+    <p class="muted">
+      <cite>Manav Rathi</cite><br>
+      <time>Jan 2026</time>
+    </p>
+    <a href="index">index</a>
+  </footer>
+
+</body>
+
+</html>
