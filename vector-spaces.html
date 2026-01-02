@@ -32,8 +32,12 @@
       opacity: 0.55;
     }
 
-    footer p.muted {
-      opacity: 0.64;
+    footer cite {
+      opacity: 0.7;
+    }
+
+    footer time {
+      opacity: 0.7;
     }
 
     blockquote {
@@ -43,6 +47,11 @@
     hr {
       margin-block: 2em;
       opacity: 0.3;
+    }
+
+    .m {
+      border: 1px dashed color-mix(in srgb, currentColor 12%, transparent);
+      padding: 0.2em;
     }
   </style>
 
@@ -57,15 +66,15 @@
     <h2><span class="muted">Layer 0 - </span> Vector space</h2>
 
     <p>
-      A vector space over some scalar field F is a set of objects (“vectors”) that is closed under addition, scaling, and combinations thereof.
+      A vector space over some scalar field <span class="m">F</span> is a set of objects (“vectors”) that is closed under addition, scaling, and combinations thereof.
     </p>
 
     <p>
-      Commonly the scalar field under consideration is the set of real numbers, ℝ. So the scaling factors (“scalars”) will be real numbers. But the vectors themselves have no inherent association with real numbers. They are arbitrary objects whose set is closed under addition and scalar multiplication, where we get to define what addition and scalar multiplication means.
+      Commonly the scalar field under consideration is the set of real numbers, <span class="m">ℝ</span>. So the scaling factors (“scalars”) will be real numbers. But the vectors themselves have no inherent association with real numbers. They are arbitrary objects whose set is closed under addition and scalar multiplication, where we get to define what addition and scalar multiplication means.
     </p>
 
     <p>
-      With a reminder that the scalar field can also be non-real, like ℂ, in what follows we’ll implicitly assume that the field we’re using is ℝ.
+      With a reminder that the scalar field can also be non-real, like <span class="m">ℂ</span>, in what follows we’ll implicitly assume that the field we’re using is <span class="m">ℝ</span>.
     </p>
 
     <hr>
@@ -77,7 +86,7 @@
     </p>
 
     <p>
-      Any arbitrary function, f(x) = a, where x ∈ V and a ∈ ℝ.
+      Any arbitrary function, <span class="m">f(x) = a</span>, where <span class="m">x ∈ V</span> and <span class="m">a ∈ ℝ</span>.
     </p>
 
     <p>
@@ -85,7 +94,7 @@
     </p>
 
     <p>
-      f(ax + by) = a f(x) + b f(y) where x, y ∈ V and a, b ∈ ℝ
+      <span class="m">f(ax + by) = a f(x) + b f(y)</span> where <span class="m">x, y ∈ V</span> and <span class="m">a, b ∈ ℝ</span>
     </p>
 
     <p>
@@ -99,24 +108,24 @@
     </blockquote>
 
     <p>
-      Now let us consider the set of possible such linear maps that exist for a given vector space. This set is called the set of linear functionals over V, and can be defined as
+      Now let us consider the set of possible such linear maps that exist for a given vector space. This set is called the set of linear functionals over <span class="m">V</span>, and can be defined as
     </p>
 
     <p>
-      V* = { f : V → ℝ | f is linear }
+      <span class="m">V* = { f : V → ℝ | f is linear }</span>
     </p>
 
     <p>
-      This V* is another vector space, where the elements are linear functionals. For this set, we can define addition and scalar multiplication as:
+      This <span class="m">V*</span> is another vector space, where the elements are linear functionals. For this set, we can define addition and scalar multiplication as:
     </p>
 
     <p>
-      (f + g)(v) = f(v) + g(v)<br>
-      (c f)(v) = c f(v)
+      <span class="m">(f + g)(v) = f(v) + g(v)</span><br>
+      <span class="m">(c f)(v) = c f(v)</span>
     </p>
 
     <p>
-      This set is called the “dual space” V* of the original vector space V, and the elements of this dual space (i.e. the linear functionals) are called covectors.
+      This set is called the “dual space” <span class="m">V*</span> of the original vector space <span class="m">V</span>, and the elements of this dual space (i.e. the linear functionals) are called covectors.
     </p>
 
     <p>
@@ -145,7 +154,7 @@
     <h2><span class="muted">Layer 2 - </span>Canonical pairing</h2>
 
     <p>
-      Consider all pairs (f, v) where f ∈ V* and v ∈ V.
+      Consider all pairs <span class="m">(f, v)</span> where <span class="m">f ∈ V*</span> and <span class="m">v ∈ V</span>.
     </p>
 
     <p>
@@ -157,15 +166,15 @@
     </p>
 
     <p>
-      Let’s think about this. v is an arbitrary object. f is a function that takes vectors and returns scalars in a way that respects linearity. Without assuming any more structure, the only (and perfectly natural) way to combine them is to take (f, v) to mean f(v).
+      Let’s think about this. v is an arbitrary object. f is a function that takes vectors and returns scalars in a way that respects linearity. Without assuming any more structure, the only (and perfectly natural) way to combine them is to take <span class="m">(f, v)</span> to mean <span class="m">f(v)</span>.
     </p>
 
     <p>
-      (f, v) ↦ f(v)
+      <span class="m">(f, v) ↦ f(v)</span>
     </p>
 
     <p>
-      So we have another set V* × V and a pairing V* × V → ℝ.
+      So we have another set <span class="m">V* × V</span> and a pairing <span class="m">V* × V → ℝ</span>.
     </p>
 
     <p>
@@ -173,7 +182,7 @@
     </p>
 
     <p>
-      (f, v) ↦ f(v)
+      <span class="m">(f, v) ↦ f(v)</span>
     </p>
 
     <p>
@@ -181,13 +190,13 @@
     </p>
 
     <p>
-      Note so far that we haven’t assumed any extra structure apart from closure under addition and scaling for the vector space. Everything else has been definitional, with the slightly curious but still not very surprising emergence that the dual space of V is also a vector space.
+      Note so far that we haven’t assumed any extra structure apart from closure under addition and scaling for the vector space. Everything else has been definitional, with the slightly curious but still not very surprising emergence that the dual space of <span class="m">V</span> is also a vector space.
     </p>
 
     <h3>Aside</h3>
 
     <p>
-      Let us consider an example. Again, note that vectors are arbitrary things, but for the sake of visualization consider vectors as elements of ℝ². Then
+      Let us consider an example. Again, note that vectors are arbitrary things, but for the sake of visualization consider vectors as elements of <span class="m">ℝ²</span>. Then
     </p>
 
     <ul>
@@ -251,13 +260,13 @@
     <h2><span class="muted">Layer 3 - </span>Inner product / metric</h2>
 
     <p>
-      This is the first extra structure we add. We choose a map g : V × V → ℝ that satisfies three properties:
+      This is the first extra structure we add. We choose a map <span class="m">g : V × V → ℝ</span> that satisfies three properties:
     </p>
 
     <ul>
-      <li>symmetry: g(u, v) = g(v, u)</li>
-      <li>bilinearity: g(ax + by, z) = a g(x, z) + b g(y, z) and g(z, ax + by) = a g(z, x) + b g(z, y)</li>
-      <li>positive definiteness: g(v, v) = 0 ⇔ v = 0, otherwise g(v, v) &gt; 0</li>
+      <li>symmetry: <span class="m">g(u, v) = g(v, u)</span></li>
+      <li>bilinearity: <span class="m">g(ax + by, z) = a g(x, z) + b g(y, z)</span> and <span class="m">g(z, ax + by) = a g(z, x) + b g(z, y)</span></li>
+      <li>positive definiteness: <span class="m">g(v, v) = 0 ⇔ v = 0</span>, otherwise <span class="m">g(v, v) &gt; 0</span></li>
     </ul>
 
     <p>
@@ -265,15 +274,15 @@
     </p>
 
     <p>
-      Conventionally, these inner products are written as ⟨·, ·⟩. That is, instead of g(u, v), we write ⟨u, v⟩.
+      Conventionally, these inner products are written as <span class="m">⟨·, ·⟩</span>. That is, instead of <span class="m">g(u, v)</span>, we write <span class="m">⟨u, v⟩</span>.
     </p>
 
     <p>
-      Instead of considering the inner product as a map V × V → ℝ, we can also think of it as a curried function. Fix some vector v, then ⟨v, ·⟩ is a function of vectors. Since the output is a real number, instead of a function we can give it the more specific terminology – functional. And one of the properties of the inner product is that it is bilinear. So effectively, ⟨v, ·⟩ is a linear functional.
+      Instead of considering the inner product as a map <span class="m">V × V → ℝ</span>, we can also think of it as a curried function. Fix some vector <span class="m">v</span>, then <span class="m">⟨v, ·⟩</span> is a function of vectors. Since the output is a real number, instead of a function we can give it the more specific terminology – functional. And one of the properties of the inner product is that it is bilinear. So effectively, <span class="m">⟨v, ·⟩</span> is a linear functional.
     </p>
 
     <p>
-      But we already know that the set of all linear functionals associated with the vector space is V*. So ⟨v, ·⟩ is a member of the dual space, a covector!
+      But we already know that the set of all linear functionals associated with the vector space is <span class="m">V*</span>. So <span class="m">⟨v, ·⟩</span> is a member of the dual space, a covector!
     </p>
 
     <p>
@@ -289,11 +298,11 @@
     </p>
 
     <p>
-      f(v) ∈ ℝ
+      <span class="m">f(v) ∈ ℝ</span>
     </p>
 
     <p>
-      It was not a metric, but just an evaluation, since the value depends on an arbitrary choice of f, each giving incompatible measurements.
+      It was not a metric, but just an evaluation, since the value depends on an arbitrary choice of <span class="m">f</span>, each giving incompatible measurements.
     </p>
 
     <p>
@@ -301,7 +310,7 @@
     </p>
 
     <p>
-      v ↦ ⟨v, ·⟩ ∈ V*
+      <span class="m">v ↦ ⟨v, ·⟩ ∈ V*</span>
     </p>
 
     <blockquote>
@@ -311,7 +320,7 @@
     </blockquote>
 
     <p>
-      Identifying vectors with covectors removes the need for external probes. Each vector can now measure itself (giving a norm) and measure any other vector (giving alignment / similarity). Because the inner product is symmetric, this mutual measurement is symmetric: ⟨u, v⟩ = ⟨v, u⟩.
+      Identifying vectors with covectors removes the need for external probes. Each vector can now measure itself (giving a norm) and measure any other vector (giving alignment / similarity). Because the inner product is symmetric, this mutual measurement is symmetric: <span class="m">⟨u, v⟩ = ⟨v, u⟩</span>.
     </p>
 
     <p>
@@ -319,26 +328,26 @@
     </p>
 
     <p>
-      d : X × X → ℝ
+      <span class="m">d : X × X → ℝ</span>
     </p>
 
     <p>
-      That satisfies (for x, y, z ∈ X):
+      That satisfies (for <span class="m">x, y, z ∈ X</span>):
     </p>
 
     <ul>
-      <li>non-negativity: d(x, y) ≥ 0</li>
-      <li>identity of indiscernibles (distinct points have non-zero distance): d(x, y) = 0 ⇔ x = y</li>
-      <li>symmetry: d(x, y) = d(y, x)</li>
-      <li>triangle inequality: d(x, z) ≤ d(x, y) + d(y, z)</li>
+      <li>non-negativity: <span class="m">d(x, y) ≥ 0</span></li>
+      <li>identity of indiscernibles (distinct points have non-zero distance): <span class="m">d(x, y) = 0 ⇔ x = y</span></li>
+      <li>symmetry: <span class="m">d(x, y) = d(y, x)</span></li>
+      <li>triangle inequality: <span class="m">d(x, z) ≤ d(x, y) + d(y, z)</span></li>
     </ul>
 
     <p>
-      If we have an inner product ⟨·, ·⟩, we can define norm (“length”)
+      If we have an inner product <span class="m">⟨·, ·⟩</span>, we can define norm (“length”)
     </p>
 
     <p>
-      ‖v‖ = √⟨v, v⟩
+      <span class="m">‖v‖ = √⟨v, v⟩</span>
     </p>
 
     <p>
@@ -346,7 +355,7 @@
     </p>
 
     <p>
-      d(u, v) = ‖u − v‖
+      <span class="m">d(u, v) = ‖u − v‖</span>
     </p>
 
     <p>
@@ -388,7 +397,7 @@
     <h2>Dot product</h2>
 
     <p>
-      The dot product is a particular inner product ⟨u, v⟩ that can be defined on any vector space that is isomorphic to ℝⁿ.
+      The dot product is a particular inner product <span class="m">⟨u, v⟩</span> that can be defined on any vector space that is isomorphic to <span class="m">ℝⁿ</span>.
     </p>
 
     <p>
@@ -402,19 +411,19 @@
     </blockquote>
 
     <p>
-      In particular, if we choose an orthonormal set of basis (where the orthogonality and norm itself is defined in terms of the inner product – vectors whose inner product is 0 are orthogonal and a set of mutually orthogonal ones which all have a norm of 1 form an orthonormal basis), then that particular inner product, which gets called the dot product, u · v has a simple “sum of pairwise coordinate products” formula
+      In particular, if we choose an orthonormal set of basis (where the orthogonality and norm itself is defined in terms of the inner product – vectors whose inner product is 0 are orthogonal and a set of mutually orthogonal ones which all have a norm of 1 form an orthonormal basis), then that particular inner product, which gets called the dot product, <span class="m">u · v</span> has a simple “sum of pairwise coordinate products” formula
     </p>
 
     <p>
-      u · v = Σ uᵢ vᵢ
+      <span class="m">u · v = Σ uᵢ vᵢ</span>
     </p>
 
     <p>
-      ⟨u, v⟩ says “inner product is being used (abstract, basis-independent)”
+      <span class="m">⟨u, v⟩</span> says “inner product is being used (abstract, basis-independent)”
     </p>
 
     <p>
-      u · v says “Euclidean dot product in an orthonormal coordinate system”
+      <span class="m">u · v</span> says “Euclidean dot product in an orthonormal coordinate system”
     </p>
 
     <blockquote>
@@ -428,7 +437,7 @@
     <h2>ML</h2>
 
     <p>
-      In ML contexts, usually the vector space we deal with is isomorphic to ℝⁿ, the basis are assumed to be the standard orthonormal ones, and the inner product is assumed to be the dot product.
+      In ML contexts, usually the vector space we deal with is isomorphic to <span class="m">ℝⁿ</span>, the basis are assumed to be the standard orthonormal ones, and the inner product is assumed to be the dot product.
     </p>
 
     <p>
@@ -462,12 +471,12 @@
     </p>
 
     <ul>
-      <li>u · v – a dot product. The dimensions of u and v must match. The result is the sum of the pairwise products.</li>
-      <li>u v – a matrix multiplication, where each “matrix” is either a vector (one-dimensional array of scalars) or a matrix (a two-dimensional array of scalars). For this operation, the inner dimensions must match. So u ∈ ℝ<sup>a×b</sup> and v ∈ ℝ<sup>b×c</sup> can be multiplied, for any a, b, c ∈ ℕ. The mechanical operation then is to perform a × c dot products of the b-dimensional vectors.</li>
+      <li><span class="m">u · v</span> – a dot product. The dimensions of <span class="m">u</span> and <span class="m">v</span> must match. The result is the sum of the pairwise products.</li>
+      <li><span class="m">u v</span> – a matrix multiplication, where each “matrix” is either a vector (one-dimensional array of scalars) or a matrix (a two-dimensional array of scalars). For this operation, the inner dimensions must match. So <span class="m">u ∈ ℝ<sup>a×b</sup></span> and <span class="m">v ∈ ℝ<sup>b×c</sup></span> can be multiplied, for any <span class="m">a, b, c ∈ ℕ</span>. The mechanical operation then is to perform <span class="m">a × c</span> dot products of the <span class="m">b</span>-dimensional vectors.</li>
     </ul>
 
     <p>
-      Let’s take the simplest case. Consider u and v as two vectors of the same dimension d. u · v is clear. But saying u v is not correct, because the shapes don’t match, both u, v ∈ ℝ<sup>1×d</sup> (if for our problem we’re representing vectors as “row vectors”) or u, v ∈ ℝ<sup>d×1</sup> (if for our problem we’re representing vectors as “column vectors”).
+      Let’s take the simplest case. Consider <span class="m">u</span> and <span class="m">v</span> as two vectors of the same dimension <span class="m">d</span>. <span class="m">u · v</span> is clear. But saying <span class="m">u v</span> is not correct, because the shapes don’t match, both <span class="m">u, v ∈ ℝ<sup>1×d</sup></span> (if for our problem we’re representing vectors as “row vectors”) or <span class="m">u, v ∈ ℝ<sup>d×1</sup></span> (if for our problem we’re representing vectors as “column vectors”).
     </p>
 
     <p>
@@ -475,13 +484,13 @@
     </p>
 
     <p>
-      So we instead write uᵀ v, which is often thought of as converting one of the vectors into a “matrix”, but really is taking the covector of the vector u to convert it into a linear functional that can then measure the other v to get us our scalar. All that said, in terms of the mechanical calculations, there is no “conversion to covector” – uᵀ v is exactly the same scalar as u · v.
+      So we instead write <span class="m">uᵀ v</span>, which is often thought of as converting one of the vectors into a “matrix”, but really is taking the covector of the vector <span class="m">u</span> to convert it into a linear functional that can then measure the other <span class="m">v</span> to get us our scalar. All that said, in terms of the mechanical calculations, there is no “conversion to covector” – <span class="m">uᵀ v</span> is exactly the same scalar as <span class="m">u · v</span>.
     </p>
 
   </main>
 
   <footer>
-    <p class="muted">
+    <p>
       <cite>Manav Rathi</cite><br>
       <time>Jan 2026</time>
     </p>
