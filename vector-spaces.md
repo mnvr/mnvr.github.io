@@ -2,7 +2,9 @@ Layer 0 - vector space over some scalar field F
 
 A set of objects ("vectors") that is is closed under addition, scaling and combinations thereof
 
-Commonly the scalar field under consideration is the set of real numbers, R. So the scaling factors ("scalars") will be real numbers. But the vectors themselves, they have no association to real numbers. The are arbitrary objects whose set is closed under addition and scalar multiplication, where we get to define what addition and scalar multiplication means.
+Commonly the scalar field under consideration is the set of real numbers, R. So the scaling factors ("scalars") will be real numbers. But the vectors themselves have no inherent association with real numbers. They are arbitrary objects whose set is closed under addition and scalar multiplication, where we get to define what addition and scalar multiplication means.
+
+With a reminder that the scalar field can also be non-real, like C, in what follows we'll implicitly assume that the field we're using in R.
 
 ---
 
@@ -14,7 +16,7 @@ Any arbitrary function, f(x) = a, where x B V and a B R.
 
 Now, let us consider only those functions that obey linearity, that is
 
-f(ax + by) = af(x) + b(y) where x, y B V and a, b B R
+f(ax + by) = af(x) + bf(y) where x, y B V and a, b B R
 
 Such a function is called a linear functional.
 
@@ -40,16 +42,9 @@ where "probe" means produce a scalar value to describe a vector. reminder that a
 Also, note that at this point
 - vectors do **not** probe/measure vectors
 
-layer 2 - pairing
+layer 2 - canonical pairing
 
 Consider all pairs (f, v) where f B V* and v B V. 
-
-That is, 
-
-pairs = []
-for f in V*:
-  for v in V:
-    pairs.append((f, v))
 
 Now given the primitives we have so far, what could does this pairing mean? 
 
@@ -59,7 +54,13 @@ Let's think about this. v is an arbitrary object. f is an function that takes ve
 
 (f, v) |-> f(v)
 
-So we have another set V* x V and pairings V* x V -> R
+So we have another set V* x V and a pairing V* x V -> R
+
+To reiterate, there exists for every vector space a dual space of covectors, and a canonical pairing
+
+  (f, v) |-> f(v)
+
+which _is_ function application.
 
 Note so far that we haven't assumed any extra structure apart from closure under addition and scaling for the vector space. rest everything has been definitional, with the slightly curious but still not very surprising emergence that the dual space of V is also a vector space.
 
@@ -69,7 +70,7 @@ Let us consider an example. Again, note that vectors are arbitrary things, but f
 
 vectors are arrows 
 covectors are a family of parallel lines, equally spaced, each line is a same value contour
-when a covector acts on a vector, in our example vector space, what it probes is the count of the number of contour lines we cross (this is why covectors are also called gradients or normals)
+when a covector acts on a vector, in our example vector space, what it probes is the count of the number of contour lines we cross.
 
 in this geometric picture, assume we were to stretch the x-axis by 2. Neither the vector itself - the arrow - nor the probe done by the covector - the number of crossings - should changes because a vector space doesn't have any concept of coordinates so far (we haven't come to that yet, we're only visualizing it that way). 
 
@@ -79,7 +80,7 @@ This is why the components ("coordinates") of the vector are called contravarian
 
 But again, a reminder. Vectors are opaque objects, the concept of component hasn't come yet (and when it does come, it applies to only particular types of vector spaces).
 
-layer 4 - inner product / metric
+layer 3 - inner product / metric
 
 this is the first extra structure we add. we choose a map g: V x V -> R that satisfies three properties:
 
@@ -97,7 +98,7 @@ but we already know that the set of all linear functionals associated with the v
 
 So any inner product is a particular way of mapping a vector to a covector. Once we have a covector, we can then use it to probe other vectors as usual.
 
-In effect, if we have an inner product defined on our vector space, we allow a vector to measure ("probe") another vector. This allows us to define a "metric" on the vector space.
+In effect, if we have an inner product defined on our vector space, we allow a vector to measure ("probe") another vector. This allows us to induce a "metric" on the vector space.
 
 To expand on this - Previously, only covectors could measure ("probe") a vector, and covectors and vectors live in separate spaces. So while we had a way to "measure" vectors
 
@@ -105,11 +106,13 @@ f(v) B R
 
 It was not a metric, but just an evaluation, since the value depends on an arbitrary choice of f, each giving incompatible measurements.
 
-In contrast, the inner product allows us to define "metric" on the vector space since it gives a canonical way to identify the covector for any vector.
+In contrast, the inner product allows us to induce "metric" on the vector space since it gives a natural way to identify the covector for any vector.
 
 v |-> <v, .> B V*
 
-Identifying vectors with covectors removes teh need for external probes. Each vector can now measure itself (giving a norm) and measure any other vector (giving aligment / similarity). Because the inner product is symmetric, this mutual measurement is symmetric: <u, v> = <v, u>.
+> Natural here means that once we decide on a particular inner product, then there is only one canonical way to use that inner product to identify the unique covector associated to any vector.
+
+Identifying vectors with covectors removes the need for external probes. Each vector can now measure itself (giving a norm) and measure any other vector (giving aligment / similarity). Because the inner product is symmetric, this mutual measurement is symmetric: <u, v> = <v, u>.
 
 Going into more details, A metric on a set is a function
 
@@ -152,15 +155,21 @@ In particular, note that we now have the ability to measure if two vectors are o
 
 dot product
 
-The dot product is a particular inner product <u, v> that can be defined on any vector space that is isomorphic to Rn. First we need to choose a basis, and for that particular basis we get a dot product (the inner product itself doesn't depend on basis, but the dot product does). 
+The dot product is a particular inner product <u, v> that can be defined on any vector space that is isomorphic to Rn.
 
-In particular, if we choose an orthonormal set of basis, then the dot product u . v has a simple "sum of pairwise coordinate products" formula
+Such vector spaces are also called finite-dimensional real vector spaces. In such spaces, we can choose a set of basis vectors, and then express any other arrow (vector) in the space in terms of scaled combinations (aka linear combinations) of those basis vectors. These scaling factors (coefficients of the linear combination) are the "coordinates" of the arrow (i.e, the vector).
+
+> Note that the concept of inner product doesn't depend on a choice of basis, but the dot product does.
+
+In particular, if we choose an orthonormal set of basis (where the orthogonality and norm itself is defined in terms of the inner product - vectors whose inner product is 0 are orthogonal and a set of mutually orthogonal ones which all have a norm of 1 form an orthonormal basis), then that particular inner product, which gets called the dot product, u . v has a simple "sum of pairwise coordinate products" formula
 
 u . v = sigma ui vi
 
 > <u, v> says "inner product is being used (abstract, basis-independent)"
 >
 > u . v says "Euclidean dot product in an orthonormal coordinate system"
+>
+> Note that the concept of inner product doesn't depend on a choice of basis. The dot product _is_ an inner product so it also doesn't depend on a choice of basis. However, the dot product _formula_, does require that the coordinates being used are in terms of an orthonormal basis. 
 
 ML
 
@@ -176,7 +185,7 @@ So multiplying a vector with a another vector is a short hand for saying take th
 - Probe the other vector using this covector.
 - The resultant scalar is the result of the operation.
 
-Matrix vector multiplication (in this vernacular, not technically) is than performing multiple such multiplications, and returning the stacked result. Infact the matrix vector multiplication can be (in this vernacular) considered as a primitive - taking multiple dot products of a single vector in one go, and the vector vector multiplication is a special case where it devolves into a single dot product.
+Matrix vector multiplication (in this vernacular) is then performing multiple such multiplications, and returning the stacked result. Infact the matrix vector multiplication can be (in this vernacular) considered as a primitive - taking multiple dot products of a single vector in one go, and the vector vector multiplication (which isn't a phrase that you'll hear, what's said is either vector-vector product or, most correctly, inner product) is a special case where it devolves into a single dot product.
 
 In such framings, we also start to think in terms of the low level "coordinates" - vectors as arrays of numbers - instead of thinking of them as opaque objects in a vector space. To retain "type safety" (i.e we don't willy nilly mix vectors and covectors), the mechanical manipulation of coordinates has to make sure that the "shapes" match.
 
