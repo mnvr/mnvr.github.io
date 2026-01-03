@@ -62,6 +62,10 @@
             opacity: 0.6;
         }
 
+        .muted {
+            opacity: 0.7;
+        }
+
         .now-playing {
             display: flex;
             align-items: center;
@@ -89,6 +93,22 @@
         .np-about {
             opacity: 0.7;
         }
+
+        img.transparent-graph {
+            display: block;
+            width: min(100%, 700px);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            img.transparent-graph {
+                filter: invert();
+            }
+        }
+
+        .m {
+            border: 1px dashed color-mix(in srgb, currentColor 12%, transparent);
+            padding: 0.2em;
+        }
     </style>
 
 </head>
@@ -98,6 +118,17 @@
         <b>2026.A</b><br>
         <cite>Manav Rathi</cite>
     </header>
+
+    <article id="01-03-d">
+        <a href="#01-03-d"><time>Jan 03, 2026</time></a>
+        <img class="transparent-graph" src="/i/2026-01-03-reciprocal.avif" alt="graphs of 1/x showing symmetry">
+        <p class="wrap muted">
+            <span class="m">1/x</span> is determined by <span class="m">x &gt; 1</span>. Same curve reflected across x = y is <span class="m">0 &lt; x &lt; 1</span>. Negatives are another reflection.
+        </p>
+        <p class="wrap">
+            <span class="muted">What we have is a logarithmic number line, centered (instead of 0) at 1 and growing (instead of additively towards ∞ and -∞) multiplicatively towards</span> infinity and the infinitesimal.
+        </p>
+    </article>
 
     <section id="01-03-c">
         <div class="now-playing">
@@ -121,7 +152,6 @@
 
     <section id="01-03-b">
         <a href="#01-03-b"><time>Jan 03, 2026</time></a>
-
         <p>
             from swerve of shore to bend of bay
         </p>
