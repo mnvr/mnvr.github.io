@@ -61,6 +61,34 @@
         a+sup {
             opacity: 0.6;
         }
+
+        .now-playing {
+            display: flex;
+            align-items: center;
+            gap: 0.6em;
+            font-family: sans-serif;
+            font-size: small;
+        }
+
+        .np-thumb {
+            width: 50px;
+            height: 50px;
+            border-radius: 4px;
+        }
+
+        .np-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .np-title {
+            font-weight: bolder;
+        }
+
+        .np-about {
+            opacity: 0.7;
+        }
     </style>
 
 </head>
@@ -70,6 +98,18 @@
         <b>2026.A</b><br>
         <cite>Manav Rathi</cite>
     </header>
+
+    <section id="01-03-c">
+        <div class="now-playing">
+            <a href="https://www.youtube.com/watch?v=2rqH8gT3R4A" target="_blank">
+                <div class="np-thumb" style="background: linear-gradient(to right, rgb(51,49,77) 0%, rgb(51,49,77) 46.8%, rgb(28,26,40) 46.8%, rgb(28,26,40) 92.38%, rgb(120,83,82) 92.38%, rgb(120,83,82) 100%);"></div>
+            </a>
+            <div class="np-text">
+                <div class="np-title">Open Eye Signal (Remaster 2023)</div>
+                <div class="np-about">Jon Hopkins - Immunity</div>
+            </div>
+        </div>
+    </section>
 
     <article id="01-03-a">
         <a href="#01-03-a"><time>Jan 03, 2026</time></a>
