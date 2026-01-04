@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+
+  <title>An introduction to vector spaces without a single equation | mnvr.in</title>
+  <meta name="description" content="Paints">
+
+  <style>
+    :root {
+      color-scheme: light dark;
+    }
+
+    body {
+      font-family: system-ui, sans-serif;
+      margin: 0.8lh;
+      line-height: 1.5;
+    }
+
+    header,
+    main,
+    footer {
+      max-width: 56em;
+    }
+
+    footer cite,
+    footer time {
+      opacity: 0.7;
+    }
+
+    blockquote {
+      opacity: 0.8;
+    }
+
+    hr {
+      margin-block: 2em;
+      opacity: 0.1;
+    }
+  </style>
+
+</head>
+
+<body>
+  <header>
+    <h1>An introduction to vector spaces without a single equation</h1>
+  </header>
+
+  <main>
+    <p>A vector space is a collection of objects that can be combined in two
+      ways.</p>
+    <p>Operation 1 takes two objects, and gives another object.</p>
+    <p>Operation 2 takes one object, and one number, and returns another
+      object.</p>
+    <p>That’s about it.</p>
+    <blockquote>
+      <p>We’re free to define operation 1 and operation 2 as we wish, and what
+        is part of a collection and what isn’t is also our wish. All we need to
+        ensure is that doing operation 1 and operation 2 always gives us another
+        object that is also part of the collection, and that the operations
+        follow some consistency rules (associativity, identity,
+        distributivity)</p>
+    </blockquote>
+    <p>One can’t do much with these basic primitives, you might imagine.
+      Well, so did I. But a subset of humans known as Mathematicians are very
+      creative, and they’ve found weird and wonderful games we can play just
+      with these rules.</p>
+    <p>The first question one can ask is - what is the smallest number of
+      “seed” objects from which I can make all the other objects in the
+      collection by doing a sequence of operations. This is the dimension of
+      the vector space.</p>
+    <p>If we imagine our collection as a graph, with each object as a node,
+      then a operation is an edge which takes us between the objects in the
+      graph. Note that there are usually an infinite number of objects in a
+      graph, even if we didn’t put them there, because numbers are infinite.
+      So unless we specifically arrange for multiple numbers to land to the
+      same object, usually we’ll end up with an infinite number of objects
+      very quickly just by application of the basic two operations.</p>
+    <p>However, the dimension of the vector space is usually finite. In the
+      games Physicists play they play with infinite vector spaces too, but the
+      games that we’ll be playing - teaching machines how to learn, we’ll
+      usually deal with finite vector spaces, they’re going to be more than
+      enough clay for us to make many a Frankensteins.</p>
+    <hr />
+    <p>Graphs is an okay metaphor to start, but it incorrectly
+      overemphasizes discreteness.</p>
+    <p>A better metaphor is paints.</p>
+    <p>We can also now name our operations - operation 1 is <em>called</em>
+      addition, and operation 2 is called scaling. But remember, they are
+      called addition or scaling, but they can be <em>any</em> operation that
+      follows the consistency rules and closure.</p>
+    <p>So with the paint metaphor, we can think of starting with our seed
+      paints - the dimension of our space. Then we can take an arbitrary
+      amount of each paint (by scaling it with a number) and add two paints
+      (by mixing them) and thus can smoothly vary across a continuous space of
+      possible colors.</p>
+    <blockquote>
+      <p>Even this metaphor breaks. For example, we can’t have a negative
+        amount of a paint, but numbers can be negative.</p>
+    </blockquote>
+    <hr />
+    <p>Notice how geometry has not entered the picture (sic). In fact, we
+      can even define coordinates without needing geometry.</p>
+    <p>First, decide on a set of paints that will serve as our seed. These
+      are called the basis vectors, and together they form a basis.</p>
+    <blockquote>
+      <p>Remember, a requirement of this basis is that the paints in it should
+        be the smallest possible set (that is, no two paints in the basis should
+        be expressible as a combination of some other paints in the basis) that
+        should allow us to reach all the possible paints in our universe (i.e.,
+        the “span” of the basis should cover the entire collection)</p>
+    </blockquote>
+    <p>By definition, we can then express any paint in our universe as a
+      combination of these basis paints.</p>
+    <p>Because of the various consistency rules we added to our operations,
+      we can mix and match in any order, in any arbitrary sequence, but at the
+      end the operations can be rearranged so that they all work like</p>
+    <ul>
+      <li>Pick a basis paint</li>
+      <li>Select the amount of it to use (possibly zero)</li>
+      <li>Add it to the mixture</li>
+      <li>Do this for all the basis paints</li>
+    </ul>
+    <p>Or to put it more briefly, every color in our universe is expressible
+      using some mix of basis paints. The amount of basis paints we need are
+      the “coordinates” of our specific paint.</p>
+  </main>
+
+  <footer>
+    <p>
+      <cite>Manav Rathi</cite><br>
+      <time>Jan 2026</time>
+    </p>
+    <a href="index">index</a>
+  </footer>
+
+</body>
+
+</html>
