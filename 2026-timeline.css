@@ -1,0 +1,38 @@
+:root {
+    color-scheme: light dark;
+}
+
+body {
+    font-family: system-ui, sans-serif;
+    margin: 0.8lh;
+    line-height: 1.5;
+}
+
+header,
+main,
+footer {
+    max-width: 56em;
+}
+
+footer cite,
+footer time {
+    opacity: 0.7;
+}
+
+blockquote {
+    opacity: 0.8;
+}
+
+hr {
+    margin-block: 2em;
+    opacity: 0.1;
+}
+
+.m {
+    border: 1px dashed color-mix(in srgb, currentColor 12%, transparent);
+    padding: 0.2em;
+}
+
+svg {
+    max-width: 100%;
+}

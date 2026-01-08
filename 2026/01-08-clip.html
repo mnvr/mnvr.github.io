@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+
+  <title>Interpreting CLIP scores | mnvr.in</title>
+  <meta name="description" content="I've understood why CLIP vectors have unexpectedly low dot products">
+
+  <link href="/2026-timeline.css" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <h1>Interpreting CLIP scores</h1>
+  </header>
+
+  <main>
+    <p>I've understood why CLIP vectors have unexpectedly low dot products.</p>
+    <p>In high dimensions, two randomly picked vectors will be almost orthogonal. If you work through the math, you can see this doesn't have anything to do with the "weirdness" of high dimensional spaces, but is a restatement of random walks. This does presuppose finite variance, but let us say we sample uniformly, then it holds.</p>
+    <p>This fact has a precise rendition - for a <span class="m">d</span> dimensional space, the dot product of two uniformly randomly picked unit vectors will be around 1 standard deviation, with a value <span class="m">1/√d</span> (these are two separate facts - that the dot product ends up being equated to the standard deviation of the distribution we're picking from, and that this standard deviation will be <span class="m">1/√d</span>. Reminder that both these are easy to see if if you work through the math)</p>
+    <p>This establishes a noise floor. Training starts with such almost orthogonal vectors, and then each time two vectors co-occur in a context, it "fire together wires together" them ever so closer in terms of dot product.</p>
+    <p>During training, each of these slight shifts are very slight, because bigger ones risk breaking the constraints to other vectors that have already been encoded in the direction of the vector. So nudge slightly, and do it many times, and eventually similar vectors for particular contexts end up with a dot product greater than the noise floor.</p>
+    <p>Since the shifts are slight, we'll almost never end up with vectors that are representing similarity our linear expectation of high values like 0.8, 0.9. So instead we end up with numbers like 0.2 representing similarity, with 0.3 being <em>very</em> similar. </p>
+    <p>When interpreted in terms of the standard deviation, this makes sense. CLIP vectors are 512 dimensions, so standard deviation is <span class="m">1/√d = 0.044</span>, so 0.3 is 7 standard deviations above the noise floor, which is a decisive signal in this regime.</p>
+  </main>
+
+  <footer>
+    <p>
+      <cite>Manav Rathi</cite><br>
+      <time>Jan 08, 2026</time>
+    </p>
+    <a href="/2026-a#01-08-a">Timeline</a>
+  </footer>
+
+</body>
+
+</html>
