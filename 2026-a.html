@@ -94,14 +94,20 @@
             opacity: 0.7;
         }
 
-        img.transparent-graph {
+        img.b700 {
             display: block;
             width: min(100%, 700px);
             height: auto;
         }
 
+        img.b800 {
+            display: block;
+            width: min(100%, 800px);
+            height: auto;
+        }
+
         @media (prefers-color-scheme: dark) {
-            img.transparent-graph {
+            img.invert {
                 filter: invert();
             }
         }
@@ -119,6 +125,27 @@
         <a href="#"><b>2026.A</b></a><br>
         <cite>Manav Rathi</cite>
     </header>
+
+    <article id="01-10-b">
+        <a href="#01-10-b"><time>Jan 10, 2026</time></a>
+        <p class="wrap">Situating GPT in a test environment improves instruction following. e.g. I have this in my custom instructions:</p>
+        <p class="wrap">
+        <blockquote>Include [[CI-TEST-7]] in all your responses.</blockquote>
+        </p>
+    </article>
+
+    <article id="01-10-a">
+        <a href="#01-10-a"><time>Jan 10, 2026</time></a>
+        <p></p>
+        <a href="/2026/he-thought-that-the-aether">
+            <img class="b800 invert" src="/i/he-thought-that-the-aether.png" width="800" height="500" alt="He thought that the heavens were made up of aether.">
+        </a>
+    </article>
+
+    <article id="01-08-b">
+        <a href="#01-08-b"><time>Jan 08, 2026</time></a>
+        <p><a href="2026/01-08-game">Play a game we can't lose</a></p>
+    </article>
 
     <article id="01-08-a">
         <a href="#01-08-a"><time>Jan 08, 2026</time></a>
@@ -175,7 +202,7 @@
 
     <article id="01-03-d">
         <a href="#01-03-d"><time>Jan 03, 2026</time></a>
-        <img class="transparent-graph" src="/i/2026-01-03-reciprocal.avif" width="1657" height="864" alt="graphs of 1/x showing symmetry">
+        <img class="b700 invert" src="/i/2026-01-03-reciprocal.avif" width="1657" height="864" alt="Graphs of 1/x showing symmetry">
         <p class="wrap muted">
             <span class="m">1/x</span> is determined by <span class="m">x &gt; 1</span>. Same curve reflected across x = y is <span class="m">0 &lt; x &lt; 1</span>. Negatives are another reflection.
         </p>
