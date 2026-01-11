@@ -40,3 +40,7 @@ hr {
 svg {
     max-width: 100%;
 }
+
+.muted {
+    opacity: 0.7;
+}

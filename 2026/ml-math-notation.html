@@ -33,7 +33,7 @@
 
     <header>
         <h1>Calculus notation for machine learning</h1>
-        <p>And other ML-related math symbols.</p>
+        <p>And other ML-related math symbols. Definitions and notations below are not precise but my rough notes; the more I learn, the less I understand.</p>
     </header>
 
     <main>
@@ -66,8 +66,8 @@
                     <td>A hypothetical change</td>
                 </tr>
                 <tr>
-                    <td colspan="3">Arbitrarily small perturbation / virtual variation; ‘nudging the
-                        input’. Not infinitesimals. <span class="m">δ</span> hypothetical/local vs <span class="m">Δ</span> actual</td>
+                    <td colspan="3">Arbitrarily small perturbation / virtual variation, often infinitesimal; ‘nudging the
+                        input’.</td>
                 </tr>
                 <tr>
                     <td><strong>D</strong></td>
@@ -75,27 +75,21 @@
                     <td>Derivative operator</td>
                 </tr>
                 <tr>
-                    <td colspan="3"><span class="m">D</span> is an higher order function (“operator”) that
-                        produces the best linear approximation of f at each point.
-                        i.e. <span class="m">D f</span> is a function, which when evaluated at input
-                        <span class="m">x</span>, gives a linear map <span class="m">D f(x)</span> which is the best
-                        linear approximation of <span class="m">f</span> at <span class="m">x</span>.
+                    <td colspan="3"><span class="m">D</span> is a higher order function (“operator”) that,
+                        given f, gives us a new function <span class="m">D f</span>, the "derivative function" of f. Note
+                        <span class="m">D f</span> is a function, not a value. What is called the "derivative" is the value <span class="m">D f(x)</span> we get by evaluating the derivative function <span class="m">D f</span> at a particular value <span class="m">x</span>.
                     </td>
                 </tr>
                 <tr>
                     <td><strong>d</strong></td>
                     <td>Latin d “dee”</td>
-                    <td>The derivative (linearization),
+                    <td>The derivative
                         <span class="m">df/dx = lim(Δx→0) Δf/Δx</span>
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="3"><span class="m">df</span> is the output of applying <span class="m">D f(x)</span> to a
-                        usually small but otherwise arbitrary <span class="m">dx</span>. <span class="m">Δf</span>
-                        is the actual change; <span class="m">df</span> is the change predicted by the
-                        linear approximation. In vernacular, <span class="m">df/dx</span> is interpreted as the slope
-                        or ratio relating the the scalar change in the output <span class="m">df</span> for an
-                        infinitesimal change in the input <span class="m">dx</span></td>
+                    <td colspan="3"><span class="m">df/dx</span>, more precisely <span class="m">df(x)/dx</span>, called the "derivative" of a function <span class="m">f</span> at an input <span class="m">x</span>, is ratio between an infinitesimal change in the value of <span class="m">f</span> to the infinitesimal change in the input <span class="m">x</span>. Alternatively thought of as the slope of the tangent line to <span class="m">f</span> at <span class="m">x</span>. <span class="muted">Note that sometimes <span class="m">d/dx</span> is also treated as the operator.</span>
+                    </td>
                 </tr>
                 <tr>
                     <td><strong>∂</strong></td>
@@ -158,10 +152,9 @@
         <hr>
         <h2 id="chain-rule">Chain rule</h2>
         <p><em>The heart of backprop</em></p>
-        <p><span class="m">d (f ∘ g) = d f ∘ d g</span></p>
         <p>At any point, the derivative of a composed function is the
             composition of the derivatives of the individual functions. That is,</p>
-        <p><span class="m">D (f ∘ g) (x) = D f(g(x)) ∘ D g(x)</span></p>
+        <p><span class="m">D (f ∘ g) (x) = D f(g(x)) . D g(x)</span></p>
         <p>In vernacular, when talking of df/dx as the scalar slope, this rule
             is something written with the more memorable formulation</p>
         <math class="m">
@@ -212,6 +205,7 @@
         <h2 id="jacobian">Jacobian</h2>
         <p>The gradient ∇ is a special case of the Jacobian <strong>J</strong>
             when the output is scalar.</p>
+        <p>Just like with derivatives, where there is a derivative function <span class="m">D f</span>, and a derivative value <span class="m">df/dx</span> at a particular point <span class="m">x</span>, so do we have the Jacobian as a function, <span class="m">J</span> and the Jacobian matrix <span class="m">J(x)</span>, but often just written <span class="m">J</span>, obtained by evaluating <span class="m">J</span> at a (now multi-dimensional) point <span class="m">x</span>.</p>
         <p><strong>Gradient ∇</strong> - For <span class="m">f: ℝⁿ → ℝ</span> (many
             inputs, one output)</p>
         <pre><code>∇f =
@@ -233,9 +227,7 @@
             a rate, like a slope. So <span class="m">∂f₁/∂x₁ = 2</span> means
             <span class="m">Δf₁ ≈ 2 . Δx₁</span>.
         </p>
-        <p>The Jacobian is thus a linear approximation of a nonlinear function
-            at a point - the multivariable generalization of “derivative”. It
-            describes the best possible linear map at a particular point x: If we
+        <p>The Jacobian is thus the multivariable generalization of “derivative”: If we
             nudge the input by a tiny vector <span class="m">Δ</span>, the output changes by
             approx <span class="m">Δ_out = J . Δ_inp</span>.</p>
         <p>In a backprop context, we mostly deal with gradients because loss is
