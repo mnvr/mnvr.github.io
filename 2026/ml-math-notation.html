@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Calculus notation for machine learning | mnvr.in</title>
+    <meta name="description" content="And other ML-related math symbols.">
+
+    <link href="/2026-timeline.css" rel="stylesheet">
+
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 0.5lh;
+            border: 1px solid color-mix(in srgb, currentColor 10%, transparent);
+        }
+
+        math,
+        td strong {
+            font-size: larger;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Calculus notation for machine learning</h1>
+        <p>And other ML-related math symbols.</p>
+    </header>
+
+    <main>
+        <table>
+            <colgroup>
+                <col style="width: 7%" />
+                <col style="width: 20%" />
+                <col style="width: 73%" />
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Name / Pron.</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Δ</strong></td>
+                    <td>Uppercase delta</td>
+                    <td>A finite, discrete change</td>
+                </tr>
+                <tr>
+                    <td colspan="3">The actual difference, <span class="m">Δx = x₂-x₁</span>, “Delta x”, measuring
+                        how much x actually changed.</td>
+                </tr>
+                <tr>
+                    <td><strong>δ</strong></td>
+                    <td>Lowercase delta</td>
+                    <td>A hypothetical change</td>
+                </tr>
+                <tr>
+                    <td colspan="3">Arbitrarily small perturbation / virtual variation; ‘nudging the
+                        input’. Not infinitesimals. <span class="m">δ</span> hypothetical/local vs <span class="m">Δ</span> actual</td>
+                </tr>
+                <tr>
+                    <td><strong>D</strong></td>
+                    <td>Latin capital D “dee”</td>
+                    <td>Derivative operator</td>
+                </tr>
+                <tr>
+                    <td colspan="3"><span class="m">D</span> is an higher order function (“operator”) that
+                        produces the best linear approximation of f at each point.
+                        i.e. <span class="m">D f</span> is a function, which when evaluated at input
+                        <span class="m">x</span>, gives a linear map <span class="m">D f(x)</span> which is the best
+                        linear approximation of <span class="m">f</span> at <span class="m">x</span>.
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>d</strong></td>
+                    <td>Latin d “dee”</td>
+                    <td>The derivative (linearization),
+                        <span class="m">df/dx = lim(Δx→0) Δf/Δx</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3"><span class="m">df</span> is the output of applying <span class="m">D f(x)</span> to a
+                        usually small but otherwise arbitrary <span class="m">dx</span>. <span class="m">Δf</span>
+                        is the actual change; <span class="m">df</span> is the change predicted by the
+                        linear approximation. In vernacular, <span class="m">df/dx</span> is interpreted as the slope
+                        or ratio relating the the scalar change in the output <span class="m">df</span> for an
+                        infinitesimal change in the input <span class="m">dx</span></td>
+                </tr>
+                <tr>
+                    <td><strong>∂</strong></td>
+                    <td>Curly d “partial” or “del”</td>
+                    <td>Partial derivative</td>
+                </tr>
+                <tr>
+                    <td colspan="3">Rate of change w.r.t. one variable (others kept constant).
+                        <span class="m">∂f/∂x</span> “del f del x” derivative of f w.r.t. x, holding other
+                        variables constant.
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>∇</strong></td>
+                    <td>Nabla, “del”, gradient</td>
+                    <td>Vector of all partial derivates</td>
+                </tr>
+                <tr>
+                    <td><strong>Σ</strong></td>
+                    <td>Sigma</td>
+                    <td>Summation</td>
+                </tr>
+                <tr>
+                    <td><strong>Π</strong></td>
+                    <td>Pi</td>
+                    <td>Product</td>
+                </tr>
+                <tr>
+                    <td><strong>θ</strong></td>
+                    <td>Theta</td>
+                    <td>Model parameters (weights)</td>
+                </tr>
+                <tr>
+                    <td><strong>α</strong>, <strong>η</strong></td>
+                    <td>Alpha, Eta</td>
+                    <td>Learning rate</td>
+                </tr>
+                <tr>
+                    <td><strong>ε</strong></td>
+                    <td>Epsilon</td>
+                    <td>Small constant for numerical stability</td>
+                </tr>
+                <tr>
+                    <td><strong>‖x‖</strong></td>
+                    <td>Norm</td>
+                    <td>“size”/“length” of a vector</td>
+                </tr>
+                <tr>
+                    <td><strong>x̂</strong>, <strong>ŷ</strong></td>
+                    <td>x hat, y hat</td>
+                    <td>Prediction / estimate</td>
+                </tr>
+                <tr>
+                    <td><strong>x*</strong></td>
+                    <td>x star</td>
+                    <td>Optimal value</td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+        <h2 id="chain-rule">Chain rule</h2>
+        <p><em>The heart of backprop</em></p>
+        <p><span class="m">d (f ∘ g) = d f ∘ d g</span></p>
+        <p>At any point, the derivative of a composed function is the
+            composition of the derivatives of the individual functions. That is,</p>
+        <p><span class="m">D (f ∘ g) (x) = D f(g(x)) ∘ D g(x)</span></p>
+        <p>In vernacular, when talking of df/dx as the scalar slope, this rule
+            is something written with the more memorable formulation</p>
+        <math class="m">
+            <mrow>
+                <mfrac>
+                    <mrow>
+                        <mi>d</mi>
+                        <mi>f</mi>
+                    </mrow>
+                    <mrow>
+                        <mi>d</mi>
+                        <mi>x</mi>
+                    </mrow>
+                </mfrac>
+                <mo>=</mo>
+                <mfrac>
+                    <mrow>
+                        <mi>d</mi>
+                        <mi>f</mi>
+                    </mrow>
+                    <mrow>
+                        <mi>d</mi>
+                        <mi>z</mi>
+                    </mrow>
+                </mfrac>
+                <mo>·</mo>
+                <mfrac>
+                    <mrow>
+                        <mi>d</mi>
+                        <mi>z</mi>
+                    </mrow>
+                    <mrow>
+                        <mi>d</mi>
+                        <mi>x</mi>
+                    </mrow>
+                </mfrac>
+            </mrow>
+        </math>
+        <p>where <span class="m">z = g(x)</span>.</p>
+        <hr>
+        <h2 id="update-rule">Core update rule</h2>
+        <p><span class="m">θ ← θ - α . ∂L/∂θ</span></p>
+        <p>Update parameters by subtracting learning rate times the gradient of
+            loss with respect to parameters.</p>
+        <p>In vector form</p>
+        <p><span class="m">θ ← θ - α . ∇L(θ)</span></p>
+        <hr>
+        <h2 id="jacobian">Jacobian</h2>
+        <p>The gradient ∇ is a special case of the Jacobian <strong>J</strong>
+            when the output is scalar.</p>
+        <p><strong>Gradient ∇</strong> - For <span class="m">f: ℝⁿ → ℝ</span> (many
+            inputs, one output)</p>
+        <pre><code>∇f =
+| ∂f/∂x₁ |
+| ∂f/∂x₂ |
+| ...    |
+| ∂f/∂xₙ |</code></pre>
+        <p>Typically this is written as a column vector, and typically the
+            function we’re concerned with is the scalar loss L.</p>
+        <p><strong>Jacobian J</strong> - For <span class="m">f: ℝⁿ → ℝᵐ</span> (many
+            inputs, many outputs)</p>
+        <pre><code>J = | ∂f₁/∂x₁  ∂f₁/∂x₂  ...  ∂f₁/∂xₙ |
+    | ∂f₂/∂x₁  ∂f₂/∂x₂  ...  ∂f₂/∂xₙ |
+    | ...                            |
+    | ∂fₘ/∂x₁  ∂fₘ/∂x₂  ...  ∂fₘ/∂xₙ |</code></pre>
+        <p>This matrix of ratios tells how a small change in inputs propagates
+            to outputs. Each element is a multiplier - how many units of output
+            change per unit of input change locally at the evaluation point x. It’s
+            a rate, like a slope. So <span class="m">∂f₁/∂x₁ = 2</span> means
+            <span class="m">Δf₁ ≈ 2 . Δx₁</span>.
+        </p>
+        <p>The Jacobian is thus a linear approximation of a nonlinear function
+            at a point - the multivariable generalization of “derivative”. It
+            describes the best possible linear map at a particular point x: If we
+            nudge the input by a tiny vector <span class="m">Δ</span>, the output changes by
+            approx <span class="m">Δ_out = J . Δ_inp</span>.</p>
+        <p>In a backprop context, we mostly deal with gradients because loss is
+            scalar.</p>
+    </main>
+
+    <footer>
+        <p>
+            <cite>Manav Rathi</cite><br>
+            <time>Jan 11, 2026</time>
+        </p>
+        <a href="/2026-a#01-11-a">Timeline</a>
+    </footer>
+
+</body>
+
+</html>
