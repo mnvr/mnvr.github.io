@@ -6,12 +6,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
 
-    <title>Calculus notation for machine learning | mnvr.in</title>
-    <meta name="description" content="And other ML-related math symbols.">
+    <title>Math notation used in ML | mnvr.in</title>
 
     <link href="/2026-timeline.css" rel="stylesheet">
 
     <style>
+        header p {
+            font-size: smaller;
+            margin-block-end: 1.5rlh;
+        }
+
         table {
             border-collapse: collapse;
         }
@@ -32,8 +36,8 @@
 <body>
 
     <header>
-        <h1>Calculus notation for machine learning</h1>
-        <p>And other ML-related math symbols. Definitions and notations below are not precise but my rough notes; the more I learn, the less I understand.</p>
+        <h1>Math notation used in ML</h1>
+        <p class="muted">Definitions and notation below are not precise but my rough notes; the more I learn, the less I understand.</p>
     </header>
 
     <main>
@@ -63,28 +67,49 @@
                 <tr>
                     <td><strong>δ</strong></td>
                     <td>Lowercase delta</td>
-                    <td>A hypothetical change</td>
-                </tr>
-                <tr>
-                    <td colspan="3">Arbitrarily small perturbation / virtual variation, often infinitesimal; ‘nudging the
-                        input’.</td>
-                </tr>
-                <tr>
-                    <td><strong>D</strong></td>
-                    <td>Latin capital D “dee”</td>
-                    <td>Derivative operator</td>
-                </tr>
-                <tr>
-                    <td colspan="3"><span class="m">D</span> is a higher order function (“operator”) that,
-                        given f, gives us a new function <span class="m">D f</span>, the "derivative function" of f. Note
-                        <span class="m">D f</span> is a function, not a value. What is called the "derivative" is the value <span class="m">D f(x)</span> we get by evaluating the derivative function <span class="m">D f</span> at a particular value <span class="m">x</span>.
-                    </td>
+                    <td>A small change</td>
                 </tr>
                 <tr>
                     <td><strong>d</strong></td>
                     <td>Latin d “dee”</td>
-                    <td>The derivative
-                        <span class="m">df/dx = lim(Δx→0) Δf/Δx</span>
+                    <td>The derivative,
+                        <math>
+                            <mfrac>
+                                <mrow>
+                                    <mi>d</mi>
+                                    <mi>f</mi>
+                                </mrow>
+                                <mrow>
+                                    <mi>d</mi>
+                                    <mi>x</mi>
+                                </mrow>
+                            </mfrac>
+                            <mo>=</mo>
+                            <munder>
+                                <mo>lim</mo>
+                                <mrow>
+                                    <mi>h</mi>
+                                    <mo>→</mo>
+                                    <mn>0</mn>
+                                </mrow>
+                            </munder>
+                            <mfrac>
+                                <mrow>
+                                    <mi>f</mi>
+                                    <mo>(</mo>
+                                    <mi>x</mi>
+                                    <mo>+</mo>
+                                    <mi>h</mi>
+                                    <mo>)</mo>
+                                    <mo>−</mo>
+                                    <mi>f</mi>
+                                    <mo>(</mo>
+                                    <mi>x</mi>
+                                    <mo>)</mo>
+                                </mrow>
+                                <mi>h</mi>
+                            </mfrac>
+                        </math>
                     </td>
                 </tr>
                 <tr>
