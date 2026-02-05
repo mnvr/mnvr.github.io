@@ -14,6 +14,20 @@ footer {
     max-width: 56em;
 }
 
+header {
+    margin-block-end: 3rem;
+}
+
+hr,
+footer {
+    margin-block: 3rem;
+}
+
+footer p:nth-child(1) {
+    margin-block: 2rem;
+    font-size: 0.97rem;
+}
+
 footer p {
     margin-block: 2rlh 1rlh;
 }
