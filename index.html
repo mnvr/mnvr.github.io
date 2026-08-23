@@ -14,9 +14,42 @@
       color-scheme: light dark;
     }
 
-    p {
+    article {
       margin: 2em;
+      max-width: 72ch;
+    }
+
+    article + article {
+      margin-top: 3em;
+    }
+
+    p {
       line-height: 1.3;
+    }
+
+    .timestamp,
+    footer a {
+      color: light-dark(#676767, #aaa);
+      font: smaller system-ui;
+      text-decoration: none;
+    }
+
+    .timestamp:hover,
+    footer a:hover {
+      color: inherit;
+    }
+
+    .archive {
+      margin: 3em 2em;
+    }
+
+    .archive a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    footer {
+      margin: 3em 2em 2em;
     }
   </style>
 
@@ -24,10 +57,28 @@
 
 <body>
 
-  <p>
-    What&rsquo;s a sigil<br>
-    For a mind
-  </p>
+  <article>
+    <p><strong>Goodhart&rsquo;s law</strong></p>
+    <p>When a measure becomes a target, it ceases to be a good measure.</p>
+    <p>Humans reward-hack. Models reward-hack.</p>
+    <p>Maybe reward hacking is not psychology, but maths. Optimization finds the gap between a measure and what it measures.</p>
+    <p><em>When a measure becomes a target, it ceases to be a good measure.</em></p>
+    <a class="timestamp" href="goodharts-law"><time datetime="2026-08-23">20260823</time></a>
+  </article>
+
+  <article>
+    <p>
+      What&rsquo;s a sigil<br>
+      For a mind
+    </p>
+    <a class="timestamp" href="sigil"><time datetime="2026-04-15">20260415</time></a>
+  </article>
+
+  <nav class="archive" aria-label="Archive"><a href="all">&raquo;</a></nav>
+
+  <footer>
+    <a href="rss.xml">RSS</a> &middot; <a rel="me" href="https://x.com/mnvrth">X</a>
+  </footer>
 
 </body>
 
