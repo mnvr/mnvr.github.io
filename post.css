@@ -8,6 +8,11 @@ article {
   max-width: 72ch;
 }
 
+.unindented {
+  list-style-position: inside;
+  padding-inline-start: 0;
+}
+
 .source {
   opacity: 0.6;
 }
