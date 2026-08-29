@@ -41,3 +41,10 @@ hr {
 footer {
   margin: 2em;
 }
+
+@media (max-width: 40em) {
+  article,
+  footer {
+    margin-inline: 1em;
+  }
+}
