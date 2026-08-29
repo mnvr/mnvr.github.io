@@ -38,6 +38,10 @@ hr {
   opacity: 0.25;
 }
 
+blockquote {
+  margin-inline: 1em;
+}
+
 footer {
   margin: 2em;
 }
