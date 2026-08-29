@@ -2,9 +2,16 @@
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
 <channel>
   <title>Manav Rathi</title>
-  <description>Manav's blog</description>
+  <description>Manav’s blog</description>
   <link>https://mnvr.in</link>
   <language>en</language>
+  <item>
+    <title>Langton’s ant</title>
+    <description>A full-window simulation of Langton’s ant on a torus.</description>
+    <link>https://mnvr.in/langtons-ant</link>
+    <guid>https://mnvr.in/langtons-ant</guid>
+    <pubDate>Sat, 29 Aug 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>Three ways of doing good</title>
     <description>Build something you love. Build something people love. Live the future.</description>
@@ -14,13 +21,13 @@
   </item>
   <item>
     <title>Where is Nāgasena?</title>
-    <description>No part is the chariot. Yet &quot;chariot&quot; is a useful name for parts assembled in a certain way. Nāgasena says it is the same with him.</description>
+    <description>No part is the chariot. Yet “chariot” is a useful name for parts assembled in a certain way. Nāgasena says it is the same with him.</description>
     <link>https://mnvr.in/where-is-nagasena</link>
     <guid>https://mnvr.in/where-is-nagasena</guid>
     <pubDate>Wed, 26 Aug 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
-    <title>Goodhart's law</title>
+    <title>Goodhart’s law</title>
     <description>Maybe reward hacking is not psychology, but maths. Optimization finds and exploits gaps between a measure and what it is meant to measure.</description>
     <link>https://mnvr.in/goodharts-law</link>
     <guid>https://mnvr.in/goodharts-law</guid>
