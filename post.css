@@ -39,7 +39,7 @@ hr {
 }
 
 blockquote {
-  margin-inline: 1em;
+  margin-inline: 2em;
 }
 
 footer {
@@ -49,6 +49,10 @@ footer {
 @media (max-width: 40em) {
   article,
   footer {
+    margin-inline: 1em;
+  }
+
+  blockquote {
     margin-inline: 1em;
   }
 }
