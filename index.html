@@ -20,7 +20,7 @@
       max-width: 72ch;
     }
 
-    article + article {
+    article ~ article {
       margin-top: 3em;
     }
 
@@ -76,11 +76,45 @@
       margin: 3em 2em 2em;
     }
 
+    #ant {
+      border: 1px solid light-dark(rgb(0 0 0 / 15%), rgb(255 255 255 / 15%));
+      display: block;
+      margin: 2.25em 2em 3em;
+      transition: border-color 120ms ease;
+      width: fit-content;
+    }
+
+    #ant:hover {
+      border-color: light-dark(rgb(0 0 0 / 40%), rgb(255 255 255 / 40%));
+    }
+
+    #ant canvas {
+      display: block;
+      height: 128px;
+      width: 128px;
+    }
+
     @media (max-width: 40em) {
+      #ant,
       article,
       .archive,
       footer {
         margin-inline: 1em;
+      }
+    }
+
+    @media (min-width: 60em) {
+      #ant {
+        margin: 0;
+        position: absolute;
+        right: 2em;
+        top: 2em;
+      }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      #ant canvas {
+        filter: invert(1);
       }
     }
   </style>
@@ -98,6 +132,8 @@
     </ol>
     <a class="timestamp" href="three-ways-of-doing-good"><time datetime="2026-08-29">20260829</time></a>
   </article>
+
+  <a id="ant" href="langtons-ant"><canvas>Langton&rsquo;s ant</canvas></a>
 
   <article>
     <p><strong>Where is Nāgasena?</strong></p>
@@ -131,6 +167,57 @@
   <footer>
     <a href="rss.xml">RSS</a> &middot; <a rel="me" href="https://x.com/mnvrth">X</a>
   </footer>
+
+  <script>
+    const SIZE = 16;
+    const TICK_MS = 150;
+
+    const canvas = document.querySelector("#ant canvas");
+    const ctx = canvas.getContext("2d");
+    const dpr = devicePixelRatio;
+    const CELL = canvas.clientWidth / SIZE;
+    canvas.width = canvas.clientWidth * dpr;
+    canvas.height = canvas.clientHeight * dpr;
+    ctx.scale(dpr, dpr);
+
+    const ink = "rgb(0 0 0 / 12%)";
+    const antInk = "rgb(0 0 0 / 35%)";
+
+    const grid = new Uint8Array(SIZE * SIZE);
+    let x = SIZE >> 1;
+    let y = SIZE >> 1;
+    let dir = 0;
+
+    function step() {
+      const i = y * SIZE + x;
+      ctx.clearRect(x * CELL, y * CELL, CELL, CELL);
+      if (grid[i]) {
+        dir = (dir + 1) % 4;
+        grid[i] = 0;
+      } else {
+        dir = (dir + 3) % 4;
+        grid[i] = 1;
+        ctx.fillStyle = ink;
+        ctx.fillRect(x * CELL, y * CELL, CELL, CELL);
+      }
+      if (dir === 0) y = (y - 1 + SIZE) % SIZE;
+      else if (dir === 1) x = (x + 1) % SIZE;
+      else if (dir === 2) y = (y + 1) % SIZE;
+      else x = (x - 1 + SIZE) % SIZE;
+    }
+
+    function tick() {
+      step();
+      ctx.fillStyle = antInk;
+      ctx.fillRect(x * CELL, y * CELL, CELL, CELL);
+    }
+
+    let timer = setInterval(tick, TICK_MS);
+    document.addEventListener("visibilitychange", () => {
+      clearInterval(timer);
+      if (!document.hidden) timer = setInterval(tick, TICK_MS);
+    });
+  </script>
 
 </body>
 
