@@ -30,6 +30,7 @@
     }
 
     .timestamp,
+    .continuation a,
     footer a {
       color: light-dark(#676767, #aaa);
       font-family: system-ui;
@@ -39,8 +40,13 @@
     }
 
     .timestamp:hover,
+    .continuation a:hover,
     footer a:hover {
       color: inherit;
+    }
+
+    .continuation a {
+      text-decoration: none;
     }
 
     .archive {
@@ -50,6 +56,20 @@
     .archive a {
       color: inherit;
       text-decoration: none;
+    }
+
+    .guillemet {
+      display: inline-block;
+      transition: transform 120ms ease;
+    }
+
+    .continuation a:hover .guillemet,
+    .archive a:hover .guillemet {
+      transform: translateX(1px);
+    }
+
+    .archive a:hover .guillemet {
+      font-weight: bold;
     }
 
     footer {
@@ -77,6 +97,7 @@
     <p>The king is scandalized. If there is no person, who receives alms? Who meditates? Who is responsible for what is done?</p>
     <p>Nāgasena asks how the king arrived. By chariot, says Milinda. Is the pole the chariot? The axle? The wheels?</p>
     <p>No part is the chariot. Yet &ldquo;chariot&rdquo; is a perfectly useful name for those parts assembled in a certain way. Nāgasena says it is the same with him.</p>
+    <p class="continuation"><a href="where-is-nagasena#excerpt">Excerpt from original <span class="guillemet" aria-hidden="true">&raquo;</span></a></p>
     <a class="timestamp" href="where-is-nagasena"><time datetime="2026-08-26">20260826</time></a>
   </article>
 
@@ -97,7 +118,7 @@
     <a class="timestamp" href="sigil"><time datetime="2026-04-15">20260415</time></a>
   </article>
 
-  <nav class="archive" aria-label="Archive"><a href="all">&raquo;</a></nav>
+  <nav class="archive" aria-label="Archive"><a href="all">All posts <span class="guillemet" aria-hidden="true">&raquo;</span></a></nav>
 
   <footer>
     <a href="rss.xml">RSS</a> &middot; <a rel="me" href="https://x.com/mnvrth">X</a>
