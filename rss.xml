@@ -6,6 +6,13 @@
   <link>https://mnvr.in</link>
   <language>en</language>
   <item>
+    <title>LLMs should not be treated as humans</title>
+    <description>It does a disservice to the potential of both LLMs and humans.</description>
+    <link>https://mnvr.in/llms-and-humans</link>
+    <guid>https://mnvr.in/llms-and-humans</guid>
+    <pubDate>Sun, 30 Aug 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
     <title>Langton’s ant</title>
     <description>A full-window simulation of Langton’s ant on a torus.</description>
     <link>https://mnvr.in/langtons-ant</link>

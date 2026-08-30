@@ -38,6 +38,10 @@ hr {
   opacity: 0.25;
 }
 
+:target {
+  scroll-margin-block-start: 2em;
+}
+
 blockquote {
   margin-inline: 2em;
 }
