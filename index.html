@@ -174,7 +174,7 @@
 
     const canvas = document.querySelector("#ant canvas");
     const ctx = canvas.getContext("2d");
-    const dpr = devicePixelRatio;
+    const dpr = Math.min(devicePixelRatio, 2);
     const CELL = canvas.clientWidth / SIZE;
     canvas.width = canvas.clientWidth * dpr;
     canvas.height = canvas.clientHeight * dpr;
