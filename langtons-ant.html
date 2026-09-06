@@ -7,18 +7,14 @@
   <meta name="viewport" content="width=device-width">
 
   <title>Langton&rsquo;s ant &mdash; Manav Rathi</title>
-  <meta name="description" content="A full-window simulation of Langton&rsquo;s ant on a torus.">
+  <meta name="description" content="A simulation of Langton&rsquo;s ant on a torus.">
 
   <link rel="stylesheet" href="post.css">
 
   <style>
-    body {
-      margin: 0;
-    }
-
     #ant {
       display: block;
-      height: 100svh;
+      height: 75svh;
       width: 100%;
     }
 
@@ -34,11 +30,13 @@
 <body>
 
   <main>
+    <header class="post">
+      <h1>Langton&rsquo;s ant</h1>
+    </header>
+
     <canvas id="ant">Langton&rsquo;s ant</canvas>
 
     <div class="post">
-      <h3>Langton&rsquo;s ant</h3>
-
       <p>An ant walks a torus, flipping each square as it comes to it, turning left if it was empty, turning right otherwise.</p>
 
       <p>If you wait here long enough, you&rsquo;ll see it build a highway (nobody knows why), and run into its own past.</p>

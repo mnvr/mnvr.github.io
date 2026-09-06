@@ -21,7 +21,7 @@
   </item>
   <item>
     <title>Langton’s ant</title>
-    <description>A full-window simulation of Langton’s ant on a torus.</description>
+    <description>A simulation of Langton’s ant on a torus.</description>
     <link>https://mnvr.in/langtons-ant</link>
     <guid>https://mnvr.in/langtons-ant</guid>
     <pubDate>Sat, 29 Aug 2026 00:00:00 GMT</pubDate>
