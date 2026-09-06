@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+
+  <title>Belief and truth &mdash; Manav Rathi</title>
+  <meta name="description" content="Anything is true if enough people believe in it.">
+  <link rel="stylesheet" href="post.css">
+
+  <style>
+    #dots {
+      display: block;
+      height: 7em;
+      margin: 1.5em 0;
+      width: 100%;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      #dots {
+        filter: invert(1);
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <main class="post">
+    <p>Anything is true if enough people believe in it.</p>
+    <canvas id="dots">A crowd at a stream</canvas>
+    <p>Some things only become true if enough people believe in them.</p>
+    <p class="timestamp">Manav, <time datetime="2026-09-05">Sep 2026</time></p>
+  </main>
+
+  <footer><a href="/">mnvr.in</a></footer>
+
+  <script>
+    const canvas = document.getElementById("dots");
+    const ctx = canvas.getContext("2d");
+
+    let w, h;
+    let dots, n, mover, moveStart, at, state, alpha;
+
+    function resize() {
+      const dpr = Math.min(devicePixelRatio, 2);
+      w = canvas.clientWidth;
+      h = canvas.clientHeight;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      draw();
+    }
+
+    function reset(now) {
+      dots = Array.from({ length: 24 }, () => ({
+        t: Math.random() ** 1.2,
+        xl: 0.03 + Math.random() * 0.3,
+        xr: 0.67 + Math.random() * 0.3,
+        y: 0.12 + Math.random() * 0.76,
+        done: false,
+        u: 0,
+      }));
+      dots[Math.floor(Math.random() * dots.length)].t = 0;
+      n = 0;
+      mover = null;
+      alpha = 0;
+      state = "in";
+      at = now;
+    }
+
+    function step(now) {
+      if (state === "in") {
+        alpha = Math.min(1, (now - at) / 900);
+        if (alpha === 1) {
+          state = "wait";
+          at = now + 1200;
+        }
+      } else if (state === "wait" && now >= at) {
+        const ready = dots.filter(dot => !dot.done && dot.t <= n / dots.length);
+        if (ready.length) {
+          mover = ready[Math.floor(Math.random() * ready.length)];
+          moveStart = now;
+          state = "move";
+        } else {
+          state = "hold";
+          at = now + 4500;
+        }
+      } else if (state === "move") {
+        mover.u = Math.min(1, (now - moveStart) / 700);
+        if (mover.u === 1) {
+          mover.done = true;
+          mover = null;
+          n++;
+          state = "wait";
+          at = now + 450;
+        }
+      } else if (state === "hold" && now >= at) {
+        state = "out";
+        at = now;
+      } else if (state === "out") {
+        alpha = 1 - Math.min(1, (now - at) / 900);
+        if (alpha === 0) reset(now);
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, w, h);
+      ctx.globalAlpha = alpha;
+      ctx.fillStyle = "rgb(0 0 0 / 35%)";
+      for (const dot of dots) {
+        let x = dot.done ? dot.xr : dot.xl;
+        let y = dot.y;
+        if (dot === mover) {
+          const u = dot.u;
+          const e = u * u * (3 - 2 * u);
+          x = dot.xl + (dot.xr - dot.xl) * e;
+          y -= 0.18 * Math.sin(Math.PI * u);
+        }
+        ctx.beginPath();
+        ctx.arc(x * w, y * h, 2.5, 0, 2 * Math.PI);
+        ctx.fill();
+      }
+    }
+
+    function frame(now) {
+      step(now);
+      draw();
+      requestAnimationFrame(frame);
+    }
+
+    reset(performance.now());
+    resize();
+    addEventListener("resize", resize);
+    requestAnimationFrame(frame);
+  </script>
+
+</body>
+
+</html>
