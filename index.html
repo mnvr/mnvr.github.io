@@ -9,34 +9,17 @@
   <title>mnvr.in &mdash; Manav Rathi</title>
   <link rel="alternate" type="application/rss+xml" href="rss.xml">
 
+  <link rel="stylesheet" href="post.css">
+
   <style>
-    :root {
-      color-scheme: light dark;
-      line-height: 1.3;
-    }
-
-    body {
-      margin: 2em;
-      max-width: 72ch;
-    }
-
-    a {
-      text-decoration: none;
-    }
-
     article ~ article {
       margin-top: 3em;
-    }
-
-    .unindented {
-      list-style-position: inside;
-      padding-inline-start: 0;
     }
 
     #ant {
       border: 1px solid light-dark(rgb(0 0 0 / 15%), rgb(255 255 255 / 15%));
       display: block;
-      margin-block: 3em;
+      margin-block: 1em;
       transition: border-color 120ms ease;
       width: fit-content;
     }
@@ -51,15 +34,8 @@
       width: 128px;
     }
 
-    nav,
-    footer {
+    nav {
       margin-top: 3em;
-    }
-
-    @media (max-width: 40em) {
-      body {
-        margin-inline: 1em;
-      }
     }
 
     @media (prefers-color-scheme: dark) {
@@ -73,49 +49,58 @@
 
 <body>
 
+  <h1>Manav&rsquo;s Blog</h1>
+
   <article>
-    <h2>Belief and truth</h2>
+    <h2><a href="belief-and-truth">Belief and truth</a></h2>
     <p>Anything is true if enough people believe in it.</p>
-    <p><a href="belief-and-truth">Continued &raquo;</a></p>
+    <p><time class="muted" datetime="2026-09-05">Sep 5</time> &middot; <a href="belief-and-truth">Continued &raquo;</a></p>
   </article>
 
   <article>
-    <h2>LLMs should not be treated as humans</h2>
+    <h2><a href="llms-and-humans">LLMs should not be treated as humans</a></h2>
     <p>It does a disservice to the potential of both LLMs and humans.</p>
-    <p><a href="llms-and-humans">Continued &raquo;</a></p>
+    <p><time class="muted" datetime="2026-08-30">Aug 30</time> &middot; <a href="llms-and-humans">Continued &raquo;</a></p>
   </article>
 
   <article>
-    <h2>Three ways of doing good</h2>
+    <h2><a href="three-ways-of-doing-good">Three ways of doing good</a></h2>
     <ol class="unindented">
       <li>Build something you love</li>
+      <li>Build something people love</li>
+      <li>Live the future</li>
     </ol>
-    <p><a href="three-ways-of-doing-good">Continued &raquo;</a></p>
+    <p><time class="muted" datetime="2026-08-29">Aug 29</time></p>
   </article>
 
-  <a id="ant" href="langtons-ant"><canvas>Langton&rsquo;s ant</canvas></a>
+  <article>
+    <h2><a href="langtons-ant">Langton&rsquo;s ant</a></h2>
+    <a id="ant" href="langtons-ant"><canvas>Langton&rsquo;s ant</canvas></a>
+    <p><time class="muted" datetime="2026-08-29">Aug 29</time></p>
+  </article>
 
   <article>
-    <h2>Where is Nāgasena?</h2>
+    <h2><a href="where-is-nagasena">Where is Nāgasena?</a></h2>
     <p>King Milinda asks the monk Nāgasena his name. &ldquo;Nāgasena,&rdquo; he answers, but that is only a conventional designation; no person is to be found behind the name.</p>
-    <p><a href="where-is-nagasena">Continued &raquo;</a></p>
+    <p><time class="muted" datetime="2026-08-26">Aug 26</time> &middot; <a href="where-is-nagasena">Continued &raquo;</a></p>
   </article>
 
   <article>
-    <h2>Goodhart&rsquo;s law</h2>
+    <h2><a href="goodharts-law">Goodhart&rsquo;s law</a></h2>
     <p>When a measure becomes a target, it ceases to be a good measure.</p>
-    <p><a href="goodharts-law">Continued &raquo;</a></p>
+    <p><time class="muted" datetime="2026-08-23">Aug 23</time> &middot; <a href="goodharts-law">Continued &raquo;</a></p>
   </article>
 
   <article>
+    <h2><a href="sigil">Sigil</a></h2>
     <p>
       What&rsquo;s a sigil<br>
       For a mind
     </p>
-    <p><a href="sigil"><time datetime="2026-04-15">Apr 15</time></a></p>
+    <p><time class="muted" datetime="2026-04-15">Apr 15</time></p>
   </article>
 
-  <nav><h2><a href="all">All posts &raquo;</a></h2></nav>
+  <nav><a href="all">All posts &raquo;</a></nav>
 
   <footer>
     <a href="rss.xml">RSS</a> &middot; <a rel="me" href="https://x.com/mnvrth">X</a>

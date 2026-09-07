@@ -12,6 +12,15 @@
   <link rel="stylesheet" href="post.css">
 
   <style>
+    body {
+      max-width: none;
+    }
+
+    h1,
+    p {
+      max-width: 72ch;
+    }
+
     #ant {
       display: block;
       height: 75svh;
@@ -30,19 +39,15 @@
 <body>
 
   <main>
-    <header class="post">
-      <h1>Langton&rsquo;s ant</h1>
-    </header>
+    <h1>Langton&rsquo;s ant</h1>
 
     <canvas id="ant">Langton&rsquo;s ant</canvas>
 
-    <div class="post">
-      <p>An ant walks a torus, flipping each square as it comes to it, turning left if it was empty, turning right otherwise.</p>
+    <p>An ant walks a torus, flipping each square as it comes to it, turning left if it was empty, turning right otherwise.</p>
 
-      <p>If you wait here long enough, you&rsquo;ll see it build a highway (nobody knows why), and run into its own past.</p>
+    <p>If you wait here long enough, you&rsquo;ll see it build a highway (nobody knows why), and run into its own past.</p>
 
-      <p class="timestamp">Manav Rathi, <time datetime="2026-08-29">Aug 2026</time></p>
-    </div>
+    <p class="timestamp">Manav Rathi, <time datetime="2026-08-29">August 2026</time></p>
   </main>
 
   <footer><a href="/">mnvr.in</a></footer>
