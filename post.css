@@ -21,14 +21,13 @@ a {
   padding-inline-start: 0;
 }
 
-.connection {
+.links {
   margin-block-start: 3em;
   border-collapse: collapse;
-  color: light-dark(#676767, #aaa);
   text-align: center;
 }
 
-.connection td {
+.links td {
   padding: 0.6em 1em;
   border: 1px solid light-dark(#ddd, #444);
 }
@@ -39,8 +38,6 @@ a {
 }
 
 hr {
-  border: 0;
-  border-block-start: 1px solid;
   opacity: 0.25;
 }
 

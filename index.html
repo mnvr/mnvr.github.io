@@ -24,27 +24,47 @@
       text-decoration: none;
     }
 
-    ul {
-      list-style: none;
-      padding: 0;
+    article ~ article {
+      margin-top: 3em;
     }
 
-    .posts li {
-      display: grid;
-      grid-template-columns: 4em 1fr;
+    .unindented {
+      list-style-position: inside;
+      padding-inline-start: 0;
     }
 
-    time {
-      color: light-dark(#676767, #aaa);
+    #ant {
+      border: 1px solid light-dark(rgb(0 0 0 / 15%), rgb(255 255 255 / 15%));
+      display: block;
+      margin-block: 3em;
+      transition: border-color 120ms ease;
+      width: fit-content;
     }
 
+    #ant:hover {
+      border-color: light-dark(rgb(0 0 0 / 40%), rgb(255 255 255 / 40%));
+    }
+
+    #ant canvas {
+      display: block;
+      height: 128px;
+      width: 128px;
+    }
+
+    nav,
     footer {
-      margin-top: 4em;
+      margin-top: 3em;
     }
 
     @media (max-width: 40em) {
       body {
         margin-inline: 1em;
+      }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      #ant canvas {
+        filter: invert(1);
       }
     }
   </style>
@@ -53,35 +73,104 @@
 
 <body>
 
-  <h1>Manav&rsquo;s Blog</h1>
+  <article>
+    <h2>Belief and truth</h2>
+    <p>Anything is true if enough people believe in it.</p>
+    <p><a href="belief-and-truth">Continued &raquo;</a></p>
+  </article>
 
-  <h2>2026</h2>
-  <ul class="posts">
-    <li><time datetime="2026-09-05">Sep 5</time><a href="belief-and-truth">Belief and truth</a></li>
-    <li><time datetime="2026-08-30">Aug 30</time><a href="llms-and-humans">LLMs should not be treated as humans</a></li>
-    <li><time datetime="2026-08-29">Aug 29</time><a href="langtons-ant">Langton&rsquo;s ant</a></li>
-    <li><time datetime="2026-08-29">Aug 29</time><a href="three-ways-of-doing-good">Three ways of doing good</a></li>
-    <li><time datetime="2026-08-26">Aug 26</time><a href="where-is-nagasena">Where is Nāgasena?</a></li>
-    <li><time datetime="2026-08-23">Aug 23</time><a href="goodharts-law">Goodhart&rsquo;s law</a></li>
-    <li><time datetime="2026-04-15">Apr 15</time><a href="sigil">Sigil</a></li>
-  </ul>
+  <article>
+    <h2>LLMs should not be treated as humans</h2>
+    <p>It does a disservice to the potential of both LLMs and humans.</p>
+    <p><a href="llms-and-humans">Continued &raquo;</a></p>
+  </article>
 
-  <h2>Older</h2>
-  <ul>
-    <li><a href="2026-a">Notebook 26-a</a></li>
-    <li><a href="25-3">Notebook 25-c</a></li>
-    <li><a href="25-2">Notebook 25-b</a></li>
-    <li><a href="25-1">Notebook 25-a</a></li>
-  </ul>
+  <article>
+    <h2>Three ways of doing good</h2>
+    <ol class="unindented">
+      <li>Build something you love</li>
+    </ol>
+    <p><a href="three-ways-of-doing-good">Continued &raquo;</a></p>
+  </article>
 
-  <h2>Misc</h2>
-  <ul>
-    <li><a href="about">About</a></li>
-  </ul>
+  <a id="ant" href="langtons-ant"><canvas>Langton&rsquo;s ant</canvas></a>
+
+  <article>
+    <h2>Where is Nāgasena?</h2>
+    <p>King Milinda asks the monk Nāgasena his name. &ldquo;Nāgasena,&rdquo; he answers, but that is only a conventional designation; no person is to be found behind the name.</p>
+    <p><a href="where-is-nagasena">Continued &raquo;</a></p>
+  </article>
+
+  <article>
+    <h2>Goodhart&rsquo;s law</h2>
+    <p>When a measure becomes a target, it ceases to be a good measure.</p>
+    <p><a href="goodharts-law">Continued &raquo;</a></p>
+  </article>
+
+  <article>
+    <p>
+      What&rsquo;s a sigil<br>
+      For a mind
+    </p>
+    <p><a href="sigil"><time datetime="2026-04-15">Apr 15</time></a></p>
+  </article>
+
+  <nav><h2><a href="all">All posts &raquo;</a></h2></nav>
 
   <footer>
     <a href="rss.xml">RSS</a> &middot; <a rel="me" href="https://x.com/mnvrth">X</a>
   </footer>
+
+  <script>
+    const SIZE = 16;
+    const TICK_MS = 150;
+
+    const canvas = document.querySelector("#ant canvas");
+    const ctx = canvas.getContext("2d");
+    const dpr = Math.min(devicePixelRatio, 2);
+    const CELL = canvas.clientWidth / SIZE;
+    canvas.width = canvas.clientWidth * dpr;
+    canvas.height = canvas.clientHeight * dpr;
+    ctx.scale(dpr, dpr);
+
+    const ink = "rgb(0 0 0 / 12%)";
+    const antInk = "rgb(0 0 0 / 35%)";
+
+    const grid = new Uint8Array(SIZE * SIZE);
+    let x = SIZE >> 1;
+    let y = SIZE >> 1;
+    let dir = 0;
+
+    function step() {
+      const i = y * SIZE + x;
+      ctx.clearRect(x * CELL, y * CELL, CELL, CELL);
+      if (grid[i]) {
+        dir = (dir + 1) % 4;
+        grid[i] = 0;
+      } else {
+        dir = (dir + 3) % 4;
+        grid[i] = 1;
+        ctx.fillStyle = ink;
+        ctx.fillRect(x * CELL, y * CELL, CELL, CELL);
+      }
+      if (dir === 0) y = (y - 1 + SIZE) % SIZE;
+      else if (dir === 1) x = (x + 1) % SIZE;
+      else if (dir === 2) y = (y + 1) % SIZE;
+      else x = (x - 1 + SIZE) % SIZE;
+    }
+
+    function tick() {
+      step();
+      ctx.fillStyle = antInk;
+      ctx.fillRect(x * CELL, y * CELL, CELL, CELL);
+    }
+
+    let timer = setInterval(tick, TICK_MS);
+    document.addEventListener("visibilitychange", () => {
+      clearInterval(timer);
+      if (!document.hidden) timer = setInterval(tick, TICK_MS);
+    });
+  </script>
 
 </body>
 
