@@ -8,29 +8,52 @@
 
   <title>About &mdash; Manav Rathi</title>
 
-  <link rel="stylesheet" href="post.css">
+  <link rel="stylesheet" href="index.css">
+
+  <style>
+    main {
+      display: grid;
+      gap: 28px;
+      max-width: 580px;
+    }
+
+    h2 {
+      margin: 0 0 10px;
+    }
+
+    p {
+      margin: 0;
+      font-size: 19px;
+      font-weight: 450;
+    }
+
+    footer {
+      margin-top: 50px;
+    }
+  </style>
 
 </head>
 
 <body>
 
   <main>
-    <h1>About</h1>
+    <section>
+      <h2>About</h2>
+      <p>Hello. I&rsquo;m Manav Rathi.</p>
+    </section>
 
-    <p>Hello. I&rsquo;m Manav Rathi.</p>
-
-    <p>
-      Elsewhere: <a href="https://github.com/mnvr" target="_blank">GitHub</a> &middot; <a rel="me" href="https://mastodon.social/@mnvr" target="_blank">Mastodon</a> &middot; <a href="https://x.com/mnvrth" target="_blank">X</a>
-    </p>
-
-    <p>
-      <a href="rss.xml">RSS feed</a>
-    </p>
-
+    <section>
+      <h2>Elsewhere</h2>
+      <ul class="entries stacked">
+        <li><a href="https://github.com/mnvr" target="_blank">GitHub</a></li>
+        <li><a rel="me" href="https://mastodon.social/@mnvr" target="_blank">Mastodon</a></li>
+        <li><a href="https://x.com/mnvrth" target="_blank">X</a></li>
+      </ul>
+    </section>
   </main>
 
-  <footer>
-    <a href="/">mnvr.in</a>
+  <footer class="home-link">
+    <a href="/">mnvr.in <span aria-hidden="true">↖</span></a>
   </footer>
 
 </body>

@@ -8,21 +8,29 @@
 
   <title>All &mdash; Manav Rathi</title>
 
-  <link rel="stylesheet" href="post.css">
+  <link rel="stylesheet" href="index.css">
 
   <style>
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .posts li {
+    main {
       display: grid;
-      grid-template-columns: 4em 1fr;
+      gap: 44px;
+      margin-top: 54px;
     }
 
-    time {
-      color: light-dark(#676767, #aaa);
+    .entries time,
+    .entries .number {
+      margin-right: 9px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    footer {
+      margin-top: 68px;
+    }
+
+    @media (max-width: 600px) {
+      .group {
+        gap: 10px;
+      }
     }
   </style>
 
@@ -30,33 +38,57 @@
 
 <body>
 
-  <h1>All</h1>
+  <header>
+    <h1 class="page-title">All</h1>
+  </header>
 
-  <h2>2026</h2>
-  <ul class="posts">
-    <li><time datetime="2026-09-05">Sep 5</time><a href="belief-and-truth">Belief and truth</a></li>
-    <li><time datetime="2026-08-30">Aug 30</time><a href="llms-and-humans">LLMs should not be treated as humans</a></li>
-    <li><time datetime="2026-08-29">Aug 29</time><a href="langtons-ant">Langton&rsquo;s ant</a></li>
-    <li><time datetime="2026-08-29">Aug 29</time><a href="three-ways-of-doing-good">Three ways of doing good</a></li>
-    <li><time datetime="2026-08-26">Aug 26</time><a href="where-is-nagasena">Where is Nāgasena?</a></li>
-    <li><time datetime="2026-08-23">Aug 23</time><a href="goodharts-law">Goodhart&rsquo;s law</a></li>
-    <li><time datetime="2026-04-15">Apr 15</time><a href="sigil">Sigil</a></li>
-  </ul>
+  <main>
+    <section class="group">
+      <h2><span>September<span class="year">2026</span></span></h2>
+      <ul class="entries">
+        <li><time datetime="2026-09-05">5</time><a href="belief-and-truth">Belief and truth</a></li>
+      </ul>
+    </section>
 
-  <h2>Older</h2>
-  <ul>
-    <li><a href="2026-a">Notebook 26-a</a></li>
-    <li><a href="25-3">Notebook 25-c</a></li>
-    <li><a href="25-2">Notebook 25-b</a></li>
-    <li><a href="25-1">Notebook 25-a</a></li>
-  </ul>
+    <section class="group">
+      <h2><span>August</span></h2>
+      <ul class="entries">
+        <li><time datetime="2026-08-30">30</time><a href="llms-and-humans">LLMs should not be treated as humans</a></li>
+        <li><time datetime="2026-08-29">29</time><a href="langtons-ant">Langton&rsquo;s ant</a></li>
+        <li><time datetime="2026-08-29">29</time><a href="three-ways-of-doing-good">Three ways of doing good</a></li>
+        <li><time datetime="2026-08-26">26</time><a href="where-is-nagasena">Where is Nāgasena?</a></li>
+        <li><time datetime="2026-08-23">23</time><a href="goodharts-law">Goodhart&rsquo;s law</a></li>
+      </ul>
+    </section>
 
-  <h2>Misc</h2>
-  <ul>
-    <li><a href="about">About</a></li>
-  </ul>
+    <section class="group">
+      <h2><span>April</span></h2>
+      <ul class="entries">
+        <li><time datetime="2026-04-15">15</time><a href="sigil">Sigil</a></li>
+      </ul>
+    </section>
 
-  <footer><a href="/">mnvr.in</a></footer>
+    <section class="group">
+      <h2><span>Older Editions</span></h2>
+      <ul class="entries stacked">
+        <li><span class="number">4</span><a href="2026-a">2026 · a</a></li>
+        <li><span class="number">3</span><a href="25-3">2025 · c</a></li>
+        <li><span class="number">2</span><a href="25-2">2025 · b</a></li>
+        <li><span class="number">1</span><a href="25-1">2025 · a</a></li>
+      </ul>
+    </section>
+
+    <section class="group">
+      <h2><span>Misc</span></h2>
+      <ul class="entries">
+        <li><span class="number">1</span><a href="about">About</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="home-link">
+    <a href="/">mnvr.in <span aria-hidden="true">↖</span></a>
+  </footer>
 
 </body>
 
