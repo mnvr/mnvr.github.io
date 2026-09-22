@@ -8,9 +8,26 @@
 
   <title>About &mdash; Manav Rathi</title>
 
-  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="home-link.css">
 
   <style>
+    :root {
+      color-scheme: light dark;
+      font-family: system-ui;
+      font-size: 17px;
+      line-height: 1.55;
+      --muted: color-mix(in srgb, CanvasText 55%, Canvas);
+    }
+
+    body {
+      width: min(760px, calc(100% - 84px));
+      margin: 38px auto 48px;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
     main {
       display: grid;
       gap: 28px;
@@ -19,6 +36,12 @@
 
     h2 {
       margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 400;
+      line-height: 1.5;
+      letter-spacing: .06em;
+      text-transform: uppercase;
     }
 
     p {
@@ -27,8 +50,28 @@
       font-weight: 450;
     }
 
+    .entries {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .entries a {
+      letter-spacing: -.015em;
+      font-weight: 500;
+    }
+
     footer {
+      display: flex;
       margin-top: 50px;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        width: calc(100% - 52px);
+      }
     }
   </style>
 
@@ -44,7 +87,7 @@
 
     <section>
       <h2>Elsewhere</h2>
-      <ul class="entries stacked">
+      <ul class="entries">
         <li><a href="https://github.com/mnvr" target="_blank">GitHub</a></li>
         <li><a rel="me" href="https://mastodon.social/@mnvr" target="_blank">Mastodon</a></li>
         <li><a href="https://x.com/mnvrth" target="_blank">X</a></li>

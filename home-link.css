@@ -1,0 +1,21 @@
+.home-link {
+  font-size: 14px;
+}
+
+.home-link a {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  color: light-dark(#737373, #9a9a9a);
+  line-height: 1.4;
+  text-decoration: none;
+}
+
+.home-link a:hover {
+  color: inherit;
+}
+
+.home-link span {
+  line-height: 1;
+  opacity: .8;
+}

@@ -6,111 +6,119 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
 
-  <title>mnvr.in &mdash; Manav Rathi</title>
+  <title>Manav Rathi</title>
   <link rel="alternate" type="application/rss+xml" href="rss.xml">
 
-  <link rel="stylesheet" href="index.css">
-
   <style>
-    h1 {
-      margin: 0;
-      font-size: 14px;
-      font-weight: inherit;
-      color: color-mix(in srgb, CanvasText 65%, Canvas);
+    :root {
+      color-scheme: light dark;
+      font-family: system-ui;
+      font-size: 17px;
+      line-height: 1.55;
+      --muted: color-mix(in srgb, CanvasText 55%, Canvas);
     }
 
-    .suffix {
-      color: color-mix(in srgb, CanvasText 50%, Canvas);
+    body {
+      width: min(760px, calc(100% - 84px));
+      margin: 38px auto 48px;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    header {
+      line-height: normal;
+    }
+
+    .page-title {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 450;
+      letter-spacing: -.02em;
     }
 
     main {
       display: grid;
       gap: 44px;
-      margin-top: 48px;
+      margin-top: 54px;
     }
 
-    h2::after {
-      content: "";
-      display: block;
-      width: 30px;
-      height: 1px;
-      margin-top: 12px;
-      background: color-mix(in srgb, CanvasText 22%, Canvas);
-    }
-
-    .posts li {
-      display: flex;
-      align-items: baseline;
-      gap: 9px;
-      max-width: 100%;
-    }
-
-    .posts li::before {
-      content: "–";
-      min-width: 1.4em;
+    h2 {
       color: var(--muted);
       font-size: 11px;
-      text-align: right;
+      font-weight: 400;
+      line-height: 1.5;
+      letter-spacing: .06em;
+      text-transform: uppercase;
     }
 
-    .posts li > div {
-      min-width: 0;
+    .entries a {
+      letter-spacing: -.015em;
+      font-weight: 500;
     }
 
-    .posts .excerpt {
-      max-width: min(100%, 34ch);
+    .entries time,
+    .entries .number {
+      color: var(--muted);
+      font-size: 11px;
+      margin-right: 9px;
+      font-variant-numeric: tabular-nums;
     }
 
-    .posts .pause {
-      margin-inline-start: 14px;
+    .group {
+      display: grid;
+      grid-template-columns: 76px minmax(0, 1fr);
+      gap: 16px;
     }
 
-    h3 {
-      display: inline;
-      font-size: 1em;
-      font-weight: 650;
-      text-transform: lowercase;
+    .group h2 {
+      margin: 3px 0 0;
     }
 
-    .featured h3 {
-      font-size: 1.35em;
+    .year {
+      display: block;
     }
 
-    .length {
-      margin-left: 10px;
-      white-space: nowrap;
-    }
-
-    .excerpt p {
-      margin: 7px 0 0;
-      font-size: .88em;
-      line-height: 1.6;
-      color: color-mix(in srgb, CanvasText 77%, Canvas);
-    }
-
-    nav {
+    .entries {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px 18px;
+      align-items: baseline;
+      gap: 8px 22px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .entries.stacked {
+      display: grid;
+      gap: 8px;
     }
 
     footer {
-      margin-top: 54px;
-      align-items: baseline;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px 24px;
-    }
-
-    footer nav {
-      margin-left: auto;
+      display: flex;
+      font-size: 14px;
+      margin-top: 68px;
+      justify-content: flex-end;
     }
 
     @media (max-width: 600px) {
-      h2::after {
-        flex: 1;
-        width: auto;
+      body {
+        width: calc(100% - 52px);
+      }
+
+      .group {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 10px;
+      }
+
+      .group h2 {
         margin: 0;
+      }
+
+      .year {
+        display: inline;
+        margin-left: .6em;
       }
     }
   </style>
@@ -120,74 +128,57 @@
 <body>
 
   <header>
-    <h1>mnvr<span class="suffix">.in</span></h1>
+    <h1 class="page-title">Hi, I'm Manav</h1>
   </header>
 
   <main>
     <section class="group">
-      <h2><span><time datetime="2026-08-29">29 Aug</time>–<time datetime="2026-09-05">5 Sep</time><span class="year">2026</span></span></h2>
-      <ul class="posts">
-        <li class="featured excerpt">
-          <div>
-            <h3><a href="belief-and-truth">Belief and truth</a></h3><span class="length">1 min</span>
-            <p>Anything is true if enough people believe in it.</p>
-          </div>
-        </li>
-        <li class="pause">
-          <div>
-            <h3><a href="llms-and-humans">LLMs should not be treated as humans</a></h3><span class="length">2 min</span>
-          </div>
-        </li>
-        <li>
-          <div>
-            <h3><a href="langtons-ant">Langton&rsquo;s ant</a></h3>
-          </div>
-        </li>
+      <h2><span>September<span class="year">2026</span></span></h2>
+      <ul class="entries">
+        <li><time datetime="2026-09-13">13</time><a href="p/clinging">Clinging</a></li>
+        <li><time datetime="2026-09-12">12</time><a href="p/letters-to-imaginary">Letters to imaginary</a></li>
+        <li><time datetime="2026-09-05">5</time><a href="belief-and-truth">Belief and truth</a></li>
       </ul>
     </section>
 
     <section class="group">
-      <h2><span><time datetime="2026-08-23">23</time>–<time datetime="2026-08-29">29 August</time></span></h2>
-      <ul class="posts">
-        <li class="excerpt">
-          <div>
-            <h3><a href="three-ways-of-doing-good">Three ways of doing good</a></h3><span class="length">3 lines</span>
-            <p>Build something you love<br>Build something people love<br>Live the future</p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <h3><a href="where-is-nagasena">Where is Nāgasena?</a></h3><span class="length">6 min</span>
-          </div>
-        </li>
-        <li class="featured">
-          <div>
-            <h3><a href="goodharts-law">Goodhart&rsquo;s law</a></h3><span class="length">1 min</span>
-          </div>
-        </li>
+      <h2><span>August</span></h2>
+      <ul class="entries">
+        <li><time datetime="2026-08-30">30</time><a href="llms-and-humans">LLMs should not be treated as humans</a></li>
+        <li><time datetime="2026-08-29">29</time><a href="langtons-ant">Langton&rsquo;s ant</a></li>
+        <li><time datetime="2026-08-29">29</time><a href="three-ways-of-doing-good">Three ways of doing good</a></li>
+        <li><time datetime="2026-08-26">26</time><a href="where-is-nagasena">Where is Nāgasena?</a></li>
+        <li><time datetime="2026-08-23">23</time><a href="goodharts-law">Goodhart&rsquo;s law</a></li>
       </ul>
     </section>
 
     <section class="group">
-      <h2><span><time datetime="2026-04-15">15 April</time></span></h2>
-      <ul class="posts">
-        <li class="excerpt">
-          <div>
-            <h3><a href="sigil">Sigil</a></h3><span class="length">2 lines</span>
-            <p>What&rsquo;s a sigil<br>For a mind</p>
-          </div>
-        </li>
+      <h2><span>April</span></h2>
+      <ul class="entries">
+        <li><time datetime="2026-04-15">15</time><a href="sigil">Sigil</a></li>
+      </ul>
+    </section>
+
+    <section class="group">
+      <h2><span>Older Editions</span></h2>
+      <ul class="entries stacked">
+        <li><span class="number">4</span><a href="2026-a">2026 · a</a></li>
+        <li><span class="number">3</span><a href="25-3">2025 · c</a></li>
+        <li><span class="number">2</span><a href="25-2">2025 · b</a></li>
+        <li><span class="number">1</span><a href="25-1">2025 · a</a></li>
+      </ul>
+    </section>
+
+    <section class="group">
+      <h2><span>Misc</span></h2>
+      <ul class="entries">
+        <li><span class="number">1</span><a href="about">About</a></li>
       </ul>
     </section>
   </main>
 
   <footer>
-    <span class="site-name">Manav Rathi</span>
-    <nav>
-      <a href="all">All</a>
-      <a href="about">About</a>
-      <a href="rss.xml">RSS</a>
-    </nav>
+    <a href="rss.xml">RSS</a>
   </footer>
 
 </body>
