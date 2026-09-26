@@ -6,8 +6,7 @@
   display: inline-flex;
   align-items: baseline;
   gap: 5px;
-  color: light-dark(#737373, #9a9a9a);
-  line-height: 1.4;
+  color: color-mix(in srgb, currentColor 55%, transparent);
   text-decoration: none;
 }
 

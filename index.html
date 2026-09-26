@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width">
 
   <title>Manav Rathi</title>
-  <link rel="alternate" type="application/rss+xml" href="rss.xml">
+  <link rel="alternate" type="application/rss+xml" href="/rss.xml">
 
   <style>
     :root {
@@ -15,12 +15,12 @@
       font-family: system-ui;
       font-size: 17px;
       line-height: 1.55;
-      --muted: color-mix(in srgb, CanvasText 55%, Canvas);
+      --muted: color-mix(in srgb, currentColor 55%, transparent);
     }
 
     body {
       width: min(760px, calc(100% - 84px));
-      margin: 38px auto 48px;
+      margin: 38px auto 44px;
     }
 
     a {
@@ -41,7 +41,7 @@
     main {
       display: grid;
       gap: 44px;
-      margin-top: 54px;
+      margin-top: 44px;
     }
 
     h2 {
@@ -90,21 +90,9 @@
       list-style: none;
     }
 
-    .entries.stacked {
-      display: grid;
-      gap: 8px;
-    }
-
-    footer {
-      display: flex;
-      font-size: 14px;
-      margin-top: 68px;
-      justify-content: flex-end;
-    }
-
-    @media (max-width: 600px) {
+    @media (max-width: 40em) {
       body {
-        width: calc(100% - 52px);
+        width: calc(100% - 2em);
       }
 
       .group {
@@ -135,51 +123,47 @@
     <section class="group">
       <h2><span>September<span class="year">2026</span></span></h2>
       <ul class="entries">
-        <li><time datetime="2026-09-13">13</time><a href="p/clinging">Clinging</a></li>
-        <li><time datetime="2026-09-12">12</time><a href="p/letters-to-imaginary">Letters to imaginary</a></li>
-        <li><time datetime="2026-09-05">5</time><a href="belief-and-truth">Belief and truth</a></li>
+        <li><time datetime="2026-09-13">13</time><a href="/p/clinging">Clinging</a></li>
+        <li><time datetime="2026-09-12">12</time><a href="/p/letters-to-imaginary">Letters to imaginary</a></li>
+        <li><time datetime="2026-09-05">5</time><a href="/belief-and-truth">Belief and truth</a></li>
       </ul>
     </section>
 
     <section class="group">
       <h2><span>August</span></h2>
       <ul class="entries">
-        <li><time datetime="2026-08-30">30</time><a href="llms-and-humans">LLMs should not be treated as humans</a></li>
-        <li><time datetime="2026-08-29">29</time><a href="langtons-ant">Langton&rsquo;s ant</a></li>
-        <li><time datetime="2026-08-29">29</time><a href="three-ways-of-doing-good">Three ways of doing good</a></li>
-        <li><time datetime="2026-08-26">26</time><a href="where-is-nagasena">Where is Nāgasena?</a></li>
-        <li><time datetime="2026-08-23">23</time><a href="goodharts-law">Goodhart&rsquo;s law</a></li>
+        <li><time datetime="2026-08-30">30</time><a href="/llms-and-humans">LLMs should not be treated as humans</a></li>
+        <li><time datetime="2026-08-29">29</time><a href="/langtons-ant">Langton&rsquo;s ant</a></li>
+        <li><time datetime="2026-08-29">29</time><a href="/three-ways-of-doing-good">Three ways of doing good</a></li>
+        <li><time datetime="2026-08-26">26</time><a href="/where-is-nagasena">Where is Nāgasena?</a></li>
+        <li><time datetime="2026-08-23">23</time><a href="/goodharts-law">Goodhart&rsquo;s law</a></li>
       </ul>
     </section>
 
     <section class="group">
       <h2><span>April</span></h2>
       <ul class="entries">
-        <li><time datetime="2026-04-15">15</time><a href="sigil">Sigil</a></li>
+        <li><time datetime="2026-04-15">15</time><a href="/sigil">Sigil</a></li>
       </ul>
     </section>
 
     <section class="group">
       <h2><span>Older Editions</span></h2>
-      <ul class="entries stacked">
-        <li><span class="number">4</span><a href="2026-a">2026 · a</a></li>
-        <li><span class="number">3</span><a href="25-3">2025 · c</a></li>
-        <li><span class="number">2</span><a href="25-2">2025 · b</a></li>
-        <li><span class="number">1</span><a href="25-1">2025 · a</a></li>
+      <ul class="entries">
+        <li><span class="number">4</span><a href="/2026-a">2026 · a</a></li>
+        <li><span class="number">3</span><a href="/25-3">2025 · c</a></li>
+        <li><span class="number">2</span><a href="/25-2">2025 · b</a></li>
+        <li><span class="number">1</span><a href="/25-1">2025 · a</a></li>
       </ul>
     </section>
 
     <section class="group">
       <h2><span>Misc</span></h2>
       <ul class="entries">
-        <li><span class="number">1</span><a href="about">About</a></li>
+        <li><span class="number">1</span><a href="/about">About</a></li>
       </ul>
     </section>
   </main>
-
-  <footer>
-    <a href="rss.xml">RSS</a>
-  </footer>
 
 </body>
 

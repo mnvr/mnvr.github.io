@@ -16,7 +16,7 @@
       font-family: system-ui;
       font-size: 17px;
       line-height: 1.55;
-      --muted: color-mix(in srgb, CanvasText 55%, Canvas);
+      --muted: color-mix(in srgb, currentColor 55%, transparent);
     }
 
     body {
@@ -30,8 +30,7 @@
 
     main {
       display: grid;
-      gap: 28px;
-      max-width: 580px;
+      gap: 44px;
     }
 
     h2 {
@@ -46,7 +45,6 @@
 
     p {
       margin: 0;
-      font-size: 19px;
       font-weight: 450;
     }
 
@@ -65,12 +63,12 @@
 
     footer {
       display: flex;
-      margin-top: 50px;
+      margin-top: 54px;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 40em) {
       body {
-        width: calc(100% - 52px);
+        width: calc(100% - 2em);
       }
     }
   </style>
