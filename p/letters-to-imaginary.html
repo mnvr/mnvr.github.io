@@ -1,82 +1,103 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Letters to imaginary &mdash; Manav Rathi</title>
-    <meta name="description" content="A conversation with an imaginary friend">
-    <style>
-      :root {
-        color-scheme: light dark;
-      }
 
-      body {
-        margin: 0;
-        background: light-dark(#fff, #191919);
-        color: light-dark(#202124, #dedede);
-        font-family: system-ui, sans-serif;
-        font-size: 14px;
-        line-height: 1.5;
-      }
+<head>
 
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+
+  <title>Letters to imaginary &mdash; Manav Rathi</title>
+  <meta name="description" content="A conversation with an imaginary friend">
+
+  <link rel="stylesheet" href="/home-link.css">
+
+  <style>
+    :root {
+      color-scheme: light dark;
+      --muted: color-mix(in srgb, currentColor 55%, transparent);
+    }
+
+    body {
+      margin: 0;
+      background: light-dark(#fff, #191919);
+      color: light-dark(#202124, #dedede);
+      font-family: system-ui, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    main {
+      max-width: 90ch;
+      padding: 38px 42px 21px;
+    }
+
+    time {
+      display: block;
+      margin-bottom: 13px;
+      font-style: italic;
+      color: var(--muted);
+    }
+
+    h2, p {
+      margin: 0;
+    }
+
+    h2 {
+      font-size: inherit;
+      font-weight: 600;
+    }
+
+    section + section, p + p {
+      margin-top: 13px;
+    }
+
+    hr {
+      margin: 21px 0 0;
+      border: 0;
+      border-top: 1px solid light-dark(#e3e3e5, #393939);
+    }
+
+    footer {
+      margin-top: 38px;
+    }
+
+    .home-link {
+      font-size: 13px;
+      line-height: 20px;
+    }
+
+    @media (max-width: 40em) {
       main {
-        max-width: 90ch;
-        padding: 20px 3.75vw 22.5px 7.142857vw;
+        padding: 28px 17px;
       }
+    }
+  </style>
 
-      time {
-        display: block;
-        margin-bottom: 13px;
-        font-style: italic;
-      }
+</head>
 
-      h2, p {
-        margin: 0;
-      }
+<body>
 
-      h2 {
-        font-size: inherit;
-        font-weight: 600;
-      }
+  <main>
+    <time datetime="2026-09-12">12 September 2026</time>
 
-      section + section, p + p {
-        margin-top: 13px;
-      }
+    <section>
+      <h2>GPT</h2>
+      <p>I’d try writing letters to actual people, and make the website their collected home.</p>
+    </section>
 
-      hr {
-        margin: 23.5px 0 0;
-        border: 0;
-        border-top: 1px solid light-dark(#e3e3e5, #393939);
-      }
+    <section>
+      <h2>Manav</h2>
+      <p>Haha, now I'm actually getting excited at the prospect. Letters to imaginary people. Letters to imaginary correspondents. Letters to imaginary. That can be the title.</p>
+      <p>My main hesitation is coming from — it sounds like a great structuring technique, but maybe once the shiny wears away it'll feel like a straitjacket.</p>
+    </section>
 
-      @media (max-width: 640px) {
-        main {
-          padding: 20px 22px;
-        }
-      }
+    <hr>
 
-      footer {
-        margin-top: 38px;
-      }
-    </style>
-    <link rel="stylesheet" href="/home-link.css">
-  </head>
-  <body>
-    <main aria-label="A conversation about letters">
-      <time datetime="2026-09-12">12 September 2026</time>
-      <section aria-labelledby="gpt">
-        <h2 id="gpt">GPT</h2>
-        <p>I’d try writing letters to actual people, and make the website their collected home.</p>
-      </section>
-      <section aria-labelledby="manav">
-        <h2 id="manav">Manav</h2>
-        <p>Haha, now I'm actually getting excited at the prospect. Letters to imaginary people. Letters to imaginary correspondents. Letters to imaginary. That can be the title.</p>
-        <p>My main hesitation is coming from — it sounds like a great structuring technique, but maybe once the shiny wears away it'll feel like a straitjacket.</p>
-      </section>
-      <hr>
-      <footer class="home-link">
-        <a href="/">mnvr.in <span aria-hidden="true">↖</span></a>
-      </footer>
-    </main>
-  </body>
+    <footer>
+      <a class="home-link" href="/">mnvr.in</a>
+    </footer>
+  </main>
+
+</body>
+
 </html>

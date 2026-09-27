@@ -1,20 +1,18 @@
 .home-link {
-  font-size: 14px;
-}
-
-.home-link a {
   display: inline-flex;
   align-items: baseline;
   gap: 5px;
-  color: color-mix(in srgb, currentColor 55%, transparent);
+  font-size: 14px;
+  color: var(--muted);
   text-decoration: none;
 }
 
-.home-link a:hover {
+.home-link:hover {
   color: inherit;
 }
 
-.home-link span {
+.home-link::after {
+  content: "↖" / "";
   line-height: 1;
   opacity: .8;
 }

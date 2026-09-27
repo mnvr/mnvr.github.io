@@ -15,6 +15,7 @@
       color-scheme: light dark;
       color: light-dark(#111, #e6e6e6);
       background: light-dark(#fff, #121212);
+      --muted: color-mix(in srgb, currentColor 55%, transparent);
     }
 
     body {
@@ -23,12 +24,10 @@
     }
 
     main {
-      padding: 28px 28px 80px;
-      width: fit-content;
-      max-width: 640px;
-      margin-left: clamp(0px, 8vw - 28px, 72px);
-      font-size: 18px;
-      line-height: 1.5;
+      width: min(58ch, calc(100% - 84px));
+      margin: 38px auto 80px;
+      font-size: 17px;
+      line-height: 1.55;
     }
 
     header {
@@ -41,6 +40,10 @@
       margin: 0 0 1em;
     }
 
+    .clinging-word {
+      font-weight: 600;
+    }
+
     footer {
       display: flex;
       margin-top: 44px;
@@ -48,9 +51,7 @@
 
     @media (max-width: 40em) {
       main {
-        padding: 20px 22px 60px;
-        margin-left: 0;
-        font-size: 17px;
+        width: calc(100% - 2em);
       }
     }
   </style>
@@ -63,8 +64,8 @@
     <header><time datetime="2026-09-13">Sep 13, 2026</time></header>
 
     <p>
-      I wish i could be an infant in my mother’s arm<br>
-      Clinging<br>
+      I wish i could be an infant in my mother’s arms<br>
+      <span class="clinging-word">Clinging</span><br>
       <br>
       There is no home to go back to<br>
       <br>
@@ -76,8 +77,8 @@
       There is no home to go back to
     </p>
 
-    <footer class="home-link">
-      <a href="/">mnvr.in <span aria-hidden="true">↖</span></a>
+    <footer>
+      <a class="home-link" href="/">mnvr.in</a>
     </footer>
   </main>
 
