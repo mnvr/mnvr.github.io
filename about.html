@@ -8,15 +8,13 @@
 
   <title>About &mdash; Manav Rathi</title>
 
-  <link rel="stylesheet" href="home-link.css">
-
   <style>
     :root {
       color-scheme: light dark;
       font-family: system-ui;
       font-size: 17px;
       line-height: 1.55;
-      --muted: color-mix(in srgb, currentColor 55%, transparent);
+      --muted: color-mix(in srgb, CanvasText 55%, Canvas);
     }
 
     body {
@@ -61,12 +59,6 @@
       font-weight: 500;
     }
 
-    footer {
-      display: flex;
-      margin-top: 54px;
-      font-size: 14px;
-    }
-
     @media (max-width: 40em) {
       body {
         width: calc(100% - 2em);
@@ -99,11 +91,14 @@
         <li><a href="/rss.xml">RSS</a></li>
       </ul>
     </section>
-  </main>
 
-  <footer>
-    <a class="home-link" href="/">mnvr.in</a>
-  </footer>
+    <section>
+      <h2>Home</h2>
+      <ul class="entries">
+        <li><a href="/">mnvr.in</a></li>
+      </ul>
+    </section>
+  </main>
 
 </body>
 

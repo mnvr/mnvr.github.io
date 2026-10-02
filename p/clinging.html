@@ -8,36 +8,30 @@
 
   <title>Clinging &mdash; Manav Rathi</title>
   <meta name="description" content="There is no home to go back to">
-  <link rel="stylesheet" href="/home-link.css">
 
   <style>
     :root {
       color-scheme: light dark;
-      color: light-dark(#111, #e6e6e6);
-      background: light-dark(#fff, #121212);
-      --muted: color-mix(in srgb, currentColor 55%, transparent);
-    }
-
-    body {
-      margin: 0;
-      font-family: system-ui, sans-serif;
-    }
-
-    main {
-      width: min(58ch, calc(100% - 84px));
-      margin: 38px auto 80px;
+      color: light-dark(#111, CanvasText);
+      font-family: system-ui;
       font-size: 17px;
       line-height: 1.55;
     }
 
-    header {
-      font-size: .85em;
-      margin-bottom: 2.4em;
-      color: light-dark(#737373, #8a8a8e);
+    body {
+      margin: 0;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      width: min(58ch, calc(100% - 84px));
+      min-height: calc(100dvh - 38px - 56px);
+      margin: 38px auto 56px;
     }
 
     p {
-      margin: 0 0 1em;
+      margin: 0;
     }
 
     .clinging-word {
@@ -45,13 +39,25 @@
     }
 
     footer {
-      display: flex;
-      margin-top: 44px;
+      margin-top: auto;
+      padding-top: 44px;
+    }
+
+    footer a {
+      font-size: 14px;
+      color: color-mix(in srgb, CanvasText 55%, Canvas);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: inherit;
     }
 
     @media (max-width: 40em) {
       main {
         width: calc(100% - 2em);
+        min-height: calc(100dvh - 38px - 38px);
+        margin-bottom: 38px;
       }
     }
   </style>
@@ -61,8 +67,6 @@
 <body>
 
   <main>
-    <header><time datetime="2026-09-13">Sep 13, 2026</time></header>
-
     <p>
       I wish i could be an infant in my mother’s arms<br>
       <span class="clinging-word">Clinging</span><br>
@@ -78,7 +82,7 @@
     </p>
 
     <footer>
-      <a class="home-link" href="/">mnvr.in</a>
+      <a href="/">mnvr.in</a>
     </footer>
   </main>
 

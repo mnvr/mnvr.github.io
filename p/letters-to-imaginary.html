@@ -9,26 +9,27 @@
   <title>Letters to imaginary &mdash; Manav Rathi</title>
   <meta name="description" content="A conversation with an imaginary friend">
 
-  <link rel="stylesheet" href="/home-link.css">
-
   <style>
     :root {
       color-scheme: light dark;
+      background: light-dark(#fff, #191919);
+      color: light-dark(#202124, #dedede);
+      font-family: system-ui;
+      font-size: 14px;
+      line-height: 1.5;
       --muted: color-mix(in srgb, currentColor 55%, transparent);
     }
 
     body {
       margin: 0;
-      background: light-dark(#fff, #191919);
-      color: light-dark(#202124, #dedede);
-      font-family: system-ui, sans-serif;
-      font-size: 14px;
-      line-height: 1.5;
     }
 
     main {
+      display: flex;
+      flex-direction: column;
       max-width: 90ch;
-      padding: 38px 42px 21px;
+      min-height: calc(100dvh - 38px - 56px);
+      padding: 38px 42px 56px;
     }
 
     time {
@@ -51,23 +52,24 @@
       margin-top: 13px;
     }
 
-    hr {
-      margin: 21px 0 0;
-      border: 0;
-      border-top: 1px solid light-dark(#e3e3e5, #393939);
-    }
-
     footer {
-      margin-top: 38px;
+      margin-top: auto;
+      padding-top: 38px;
     }
 
-    .home-link {
+    footer a {
       font-size: 13px;
-      line-height: 20px;
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: inherit;
     }
 
     @media (max-width: 40em) {
       main {
+        min-height: calc(100dvh - 28px - 28px);
         padding: 28px 17px;
       }
     }
@@ -91,10 +93,8 @@
       <p>My main hesitation is coming from — it sounds like a great structuring technique, but maybe once the shiny wears away it'll feel like a straitjacket.</p>
     </section>
 
-    <hr>
-
     <footer>
-      <a class="home-link" href="/">mnvr.in</a>
+      <a href="/">mnvr.in</a>
     </footer>
   </main>
 
