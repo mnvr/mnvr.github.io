@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+
+  <title>Three ways of doing good &mdash; Manav Rathi</title>
+  <meta name="description" content="Build something you love. Build something people love. Live the future.">
+
+  <style>
+    :root {
+      color-scheme: light dark;
+      color: light-dark(#111, CanvasText);
+      font-family: system-ui;
+      font-size: 17px;
+      line-height: 1.55;
+      --muted: color-mix(in srgb, CanvasText 55%, Canvas);
+    }
+
+    body {
+      margin: 0;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      width: min(58ch, calc(100% - 84px));
+      min-height: calc(100dvh - 38px - 56px);
+      margin: 38px auto 56px;
+    }
+
+    h1 {
+      margin: 0 0 1.55em;
+      font-size: inherit;
+      font-weight: 600;
+    }
+
+    ol, ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    ol {
+      counter-reset: way;
+    }
+
+    ol li::before {
+      counter-increment: way;
+      content: counter(way);
+      margin-right: 9px;
+      color: var(--muted);
+      font-size: 11px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    ul {
+      margin-top: 40px;
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    ul li + li {
+      margin-top: 1em;
+    }
+
+    footer {
+      margin-top: auto;
+      padding-top: 44px;
+    }
+
+    footer a {
+      font-size: 14px;
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: inherit;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      ul {
+        color: color-mix(in srgb, CanvasText 60%, Canvas);
+      }
+    }
+
+    @media (max-width: 40em) {
+      main {
+        width: calc(100% - 2em);
+        min-height: calc(100dvh - 38px - 38px);
+        margin-bottom: 38px;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <main>
+    <h1>Three ways of doing good</h1>
+
+    <ol>
+      <li>Build something you love</li>
+      <li>Build something people love</li>
+      <li>Live the future</li>
+    </ol>
+
+    <ul>
+      <li>Living the future is a way to manifest it, and necessarily involves LARPing.</li>
+      <li>Scratch your own itch (build something you need) is maybe the fourth.</li>
+    </ul>
+
+    <footer>
+      <a href="/">mnvr.in</a>
+    </footer>
+  </main>
+
+</body>
+
+</html>

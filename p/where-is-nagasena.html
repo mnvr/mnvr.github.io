@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+
+  <title>Where is Nāgasena? &mdash; Manav Rathi</title>
+  <meta name="description" content="We’re all ships of thesii">
+
+  <style>
+    :root {
+      color-scheme: light dark;
+      color: light-dark(#111, CanvasText);
+      font-family: system-ui;
+      font-size: 17px;
+      line-height: 1.55;
+      --muted: color-mix(in srgb, CanvasText 55%, Canvas);
+      --rule: color-mix(in srgb, CanvasText 15%, Canvas);
+    }
+
+    body {
+      margin: 0;
+    }
+
+    main {
+      width: min(58ch, calc(100% - 84px));
+      margin: 38px auto 56px;
+    }
+
+    h1, p {
+      margin: 0;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    h1 {
+      margin-bottom: 12px;
+      font-size: 26px;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
+    .deck {
+      margin-bottom: 40px;
+      color: var(--muted);
+    }
+
+    .mine + .script, .script + .mine {
+      margin-top: 1.55em;
+    }
+
+    .script {
+      --who: 7.5em;
+      font-size: 15px;
+    }
+
+    .t {
+      display: grid;
+      grid-template-columns: var(--who) 1fr;
+      column-gap: 12px;
+      align-items: baseline;
+    }
+
+    .script > * + *, .t p + p {
+      margin-top: .8em;
+    }
+
+    .who {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .dir, .src {
+      margin-left: calc(var(--who) + 12px);
+      color: var(--muted);
+    }
+
+    .cells {
+      margin-top: 64px;
+    }
+
+    .cell {
+      padding: 14px 16px;
+      border: 1px solid var(--rule);
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    .cell + .cell {
+      margin-top: 12px;
+    }
+
+    .cell p + p {
+      margin-top: 1em;
+    }
+
+    .cell .to {
+      margin-top: auto;
+      font-size: 17px;
+    }
+
+    .cell p + .to {
+      padding-top: 1.55em;
+    }
+
+    .cell .who {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    footer {
+      padding-top: 64px;
+    }
+
+    footer a {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    footer a:hover {
+      color: inherit;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .t p {
+        color: color-mix(in srgb, CanvasText 90%, Canvas);
+      }
+
+      .dir, .cell {
+        color: color-mix(in srgb, CanvasText 60%, Canvas);
+      }
+    }
+
+    @media (min-width: 40em) {
+      .cells {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto 1fr;
+        gap: 12px;
+      }
+
+      .cell {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .cell + .cell {
+        margin-top: 0;
+      }
+
+      .cell:nth-child(2) {
+        grid-row: span 2;
+      }
+    }
+
+    @media (max-width: 40em) {
+      .script {
+        --who: 6.5em;
+      }
+
+      main {
+        width: calc(100% - 2em);
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+<main>
+<h1>Where is Nāgasena?</h1>
+<p class="deck">We’re all ships of thesii</p>
+<p class="mine">King Milinda asks the monk his name. Nāgasena, but that is only a conventional designation, he says; no person is to be found behind the name.</p>
+<div class="script">
+<p class="src">From the Milindapañha, tr. T. W. Rhys Davids</p>
+<p class="dir">Now Milinda the king went up to where the venerable Nāgasena was, and addressed him with the greetings and compliments of friendship and courtesy, and took his seat respectfully apart. And Nāgasena reciprocated his courtesy, so that the heart of the king was propitiated.</p>
+<div class="t"><b class="who">Milinda</b><p>How is your Reverence known, and what, Sir, is your name?</p></div>
+<div class="t"><b class="who">Nāgasena</b><p>I am known as Nāgasena, O king, and it is by that name that my brethren in the faith address me. But although parents, O king, give such a name as Nāgasena, or Sūrasena, or Vīrasena, or Sīhasena, yet this, Sire,—Nāgasena and so on—is only a generally understood term, a designation in common use. For there is no permanent individuality (no soul) involved in the matter.</p></div>
+</div>
+<p class="mine">The king is scandalized. If there is no person, who receives alms? Who meditates? Who is responsible for what is done?</p>
+<div class="script">
+<p class="dir">Then Milinda called upon the Yonakas and the brethren to witness:</p>
+<div class="t"><b class="who">Milinda</b><p>This Nāgasena says there is no permanent individuality (no soul) implied in his name. Is it now even possible to approve him in that?</p></div>
+<p class="dir">And turning to Nāgasena, he said:</p>
+<div class="t"><b class="who">Milinda</b><div><p>If, most reverend Nāgasena, there be no permanent individuality (no soul) involved in the matter, who is it, pray, who gives to you members of the Order your robes and food and lodging and necessaries for the sick? Who is it who enjoys such things when given? Who is it who lives a life of righteousness? Who is it who devotes himself to meditation? Who is it who attains to the goal of the Excellent Way, to the Nirvāṇa of Arahatship? And who is it who destroys living creatures? who is it who takes what is not his own? who is it who lives an evil life of worldly lusts, who speaks lies, who drinks strong drink, who (in a word) commits any one of the five sins which work out their bitter fruit even in this life? If that be so there is neither merit nor demerit; there is neither doer nor causer of good or evil deeds; there is neither fruit nor result of good or evil Karma.</p><p>—If, most reverend Nāgasena, we are to think that were a man to kill you there would be no murder, then it follows that there are no real masters or teachers in your Order, and that your ordinations are void.—You tell me that your brethren in the Order are in the habit of addressing you as Nāgasena. Now what is that Nāgasena? Do you mean to say that the hair is Nāgasena?</p></div></div>
+<div class="t"><b class="who">Nāgasena</b><p>I don’t say that, great king.</p></div>
+<div class="t"><b class="who">Milinda</b><p>Or the hairs on the body, perhaps?</p></div>
+<div class="t"><b class="who">Nāgasena</b><p>Certainly not.</p></div>
+<div class="t"><b class="who">Milinda</b><p>Or is it the nails, the teeth, the skin, the flesh, the nerves, the bones, the marrow, the kidneys, the heart, the liver, the abdomen, the spleen, the lungs, the larger intestines, the lower intestines, the stomach, the fæces, the bile, the phlegm, the pus, the blood, the sweat, the fat, the tears, the serum, the saliva, the mucus, the oil that lubricates the joints, the urine, or the brain, or any or all of these, that is Nāgasena?</p></div>
+<p class="dir">And to each of these he answered no.</p>
+<div class="t"><b class="who">Milinda</b><p>Is it the outward form then (Rûpa) that is Nāgasena, or the sensations (Vedanâ), or the ideas (Saññâ), or the confections (the constituent elements of character, Saṁkhârâ), or the consciousness (Viññâna), that is Nāgasena?</p></div>
+<p class="dir">And to each of these also he answered no.</p>
+<div class="t"><b class="who">Milinda</b><p>Then is it all these Skandhas combined that are Nāgasena?</p></div>
+<div class="t"><b class="who">Nāgasena</b><p>No! great king.</p></div>
+<div class="t"><b class="who">Milinda</b><p>But is there anything outside the five Skandhas that is Nāgasena?</p></div>
+<p class="dir">And still he answered no.</p>
+<div class="t"><b class="who">Milinda</b><p>Then thus, ask as I may, I can discover no Nāgasena. Nāgasena is a mere empty sound. Who then is the Nāgasena that we see before us? It is a falsehood that your reverence has spoken, an untruth!</p></div>
+</div>
+<p class="mine">Nāgasena asks how the king arrived. By chariot, says Milinda. Is the pole the chariot? The axle? The wheels?</p>
+<div class="script">
+<div class="t"><b class="who">Nāgasena</b><p>You, Sire, have been brought up in great luxury, as beseems your noble birth. If you were to walk this dry weather on the hot and sandy ground, trampling under foot the gritty, gravelly grains of the hard sand, your feet would hurt you. And as your body would be in pain, your mind would be disturbed, and you would experience a sense of bodily suffering. How then did you come, on foot, or in a chariot?</p></div>
+<div class="t"><b class="who">Milinda</b><p>I did not come, Sir, on foot. I came in a carriage.</p></div>
+<div class="t"><b class="who">Nāgasena</b><p>Then if you came, Sire, in a carriage, explain to me what that is. Is it the pole that is the chariot?</p></div>
+<div class="t"><b class="who">Milinda</b><p>I did not say that.</p></div>
+<div class="t"><b class="who">Nāgasena</b><p>Is it the axle that is the chariot?</p></div>
+<div class="t"><b class="who">Milinda</b><p>Certainly not.</p></div>
+<div class="t"><b class="who">Nāgasena</b><p>Is it the wheels, or the framework, or the ropes, or the yoke, or the spokes of the wheels, or the goad, that are the chariot?</p></div>
+<p class="dir">And to all these he still answered no.</p>
+<div class="t"><b class="who">Nāgasena</b><p>Then is it all these parts of it that are the chariot?</p></div>
+<div class="t"><b class="who">Milinda</b><p>No, Sir.</p></div>
+<div class="t"><b class="who">Nāgasena</b><p>But is there anything outside them that is the chariot?</p></div>
+<p class="dir">And still he answered no.</p>
+<div class="t"><b class="who">Nāgasena</b><p>Then thus, ask as I may, I can discover no chariot. Chariot is a mere empty sound. What then is the chariot you say you came in? It is a falsehood that your Majesty has spoken, an untruth! There is no such thing as a chariot! You are king over all India, a mighty monarch. Of whom then are you afraid that you speak untruth?</p></div>
+<p class="dir">And he called upon the Yonakas and the brethren to witness, saying:</p>
+<div class="t"><b class="who">Nāgasena</b><p>Milinda the king here has said that he came by carriage. But when asked in that case to explain what the carriage was, he is unable to establish what he averred. Is it, forsooth, possible to approve him in that?</p></div>
+<p class="dir">When he had thus spoken the five hundred Yonakas shouted their applause, and said to the king:</p>
+<div class="t"><b class="who">The Yonakas</b><p>Now let your Majesty get out of that if you can!</p></div>
+</div>
+<p class="mine">No part is the chariot. Yet “chariot” is a perfectly useful name for those parts assembled in a certain way. Nāgasena says it is the same with him.</p>
+<div class="script">
+<div class="t"><b class="who">Milinda</b><p>I have spoken no untruth, reverend Sir. It is on account of its having all these things—the pole, and the axle, the wheels, and the framework, the ropes, the yoke, the spokes, and the goad—that it comes under the generally understood term, the designation in common use, of “chariot.”</p></div>
+<div class="t"><b class="who">Nāgasena</b><p>Very good! Your Majesty has rightly grasped the meaning of “chariot.” And just even so it is on account of all those things you questioned me about—the thirty-two kinds of organic matter in a human body, and the five constituent elements of being—that I come under the generally understood term, the designation in common use, of “Nāgasena.”</p></div>
+</div>
+<p class="mine">The King realises that we are all ships of thesii.</p>
+<div class="cells">
+<div class="cell">
+<p>The characteristic of attention, great king, is gathering, and the characteristic of wisdom is cutting.</p>
+<p class="to"><a href="/p/gathering-and-pruning">Gathering and pruning</a></p>
+</div>
+<div class="cell">
+<p>Now suppose a crowd of people, one after the other, were to come up, and being ignorant of the real breadth or depth of the water, were to stand fearful and hesitating on the brink. And suppose a certain man should arrive, who knowing exactly his own strength and power should gird himself firmly and, with a spring, land himself on the other side.</p>
+<p>Then the rest of the people, seeing him safe on the other side, would likewise cross.</p>
+<p>Faith, great king, has the characteristic of causing serenity and the characteristic of leaping forward.</p>
+<p class="to"><a href="/p/truth-is-a-construct">Truth is a construct</a></p>
+</div>
+<div class="cell">
+<p class="to"><b class="who">Don’t miss</b><a href="/p/the-nine-who-destroy-secret-counsel">The Nine Who Destroy Secret Counsel</a></p>
+</div>
+</div>
+<footer><a href="/">mnvr.in</a></footer>
+</main>
+
+</body>
+
+</html>

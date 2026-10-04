@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+
+  <title>Gathering and pruning &mdash; Manav Rathi</title>
+  <meta name="description" content="I write or collect a bunch of notes, then periodically something in me forces me to decimate them.">
+
+  <style>
+    :root {
+      color-scheme: light dark;
+      color: light-dark(#111, CanvasText);
+      font-family: system-ui;
+      font-size: 17px;
+      line-height: 1.55;
+      --muted: color-mix(in srgb, CanvasText 55%, Canvas);
+    }
+
+    body {
+      margin: 0;
+    }
+
+    h1, p {
+      margin: 0;
+    }
+
+    h1, .big {
+      font-size: 26px;
+      font-weight: 400;
+      line-height: 1.3;
+    }
+
+    h1 {
+      margin-bottom: 1em;
+    }
+
+    .note, .quote {
+      color: var(--muted);
+    }
+
+    .note p + p {
+      margin-top: 1em;
+    }
+
+    .note span, .quote span {
+      color: light-dark(#111, CanvasText);
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .source {
+      margin-top: 8px;
+    }
+
+    .source, footer a {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    footer a:hover {
+      color: inherit;
+    }
+
+    section {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      box-sizing: border-box;
+      width: min(546px, calc(100% - 84px));
+      min-height: 100dvh;
+      margin: 0 auto;
+      padding: 38px 0 76px;
+    }
+
+    section.last {
+      padding-bottom: 56px;
+    }
+
+    .last .big {
+      margin: auto 0;
+    }
+
+    .n {
+      position: absolute;
+      right: 0;
+      bottom: 38px;
+      font-size: 11px;
+      line-height: 1.97;
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .last .n {
+      bottom: 56px;
+    }
+
+    footer {
+      padding-top: 44px;
+    }
+
+    @media (max-width: 40em) {
+      section {
+        width: calc(100% - 2em);
+      }
+
+      section.last {
+        padding-bottom: 38px;
+      }
+
+      .last .n {
+        bottom: 38px;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+<main>
+<section>
+<p class="n">1</p>
+<h1>Gathering and pruning</h1>
+<div class="note">
+<p>When I stopped writing after the sigil note, it’s not that I stopped writing or collecting excerpts. I just did it in the notes app. I also regularly delete my notes.</p>
+<p>I don’t like writing. I think it reifies things too early and puts a brake on my imagination. But I also think there is value in writing to help me categorize my thoughts.</p>
+<p>So writing notes is a compromise, I can edit and merge and chop and rearrange them at will, and just throw them away at some point.</p>
+<p>However, writing privately doesn’t fully do the other thing I want to do by writing things down. <span>Move on.</span> I want to write down a thought <em>precisely</em> so that I can move on from it.</p>
+<p><span>I write or collect a bunch of notes, then periodically something in me forces me to decimate them.</span> The itch is to truly prune, delete everything, but that is fundamentally at odds with the desire to have a public continuity, so I have accepted out of sight out of mind as a reasonable substitute, and I do that by redesigning my homepage periodically. I can’t see the older pages, so they don’t exist, but the links continue to work.</p>
+</div>
+</section>
+<section>
+<p class="n">2</p>
+<p class="big quote">The characteristic of attention, great king, is <span>gathering</span>, and the characteristic of wisdom is <span>cutting</span>.</p>
+<p class="source"><a href="/p/where-is-nagasena">Nāgasena</a></p>
+</section>
+<section class="last">
+<p class="n">3</p>
+<p class="big">Attention → MLP</p>
+<footer><a href="/">mnvr.in</a></footer>
+</section>
+</main>
+
+</body>
+
+</html>

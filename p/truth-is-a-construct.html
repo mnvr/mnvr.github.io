@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+
+  <title>Truth is a construct &mdash; Manav Rathi</title>
+  <meta name="description" content="Anything is true if enough people believe in it.">
+
+  <style>
+    :root {
+      color-scheme: light dark;
+      color: light-dark(#111, CanvasText);
+      font-family: system-ui;
+      --muted: color-mix(in srgb, CanvasText 55%, Canvas);
+    }
+
+    body {
+      margin: 0;
+    }
+
+    main {
+      display: grid;
+      grid-template-rows: 1fr auto auto 1.6fr;
+      width: min(21em, calc(100% - 84px));
+      min-height: calc(100dvh - 38px - 56px);
+      margin: 38px auto 56px;
+      font-size: 26px;
+      line-height: 1.3;
+    }
+
+    h1 {
+      margin: 0;
+      font: inherit;
+      align-self: end;
+    }
+
+    p {
+      margin: 1em 0 0;
+    }
+
+    span {
+      color: var(--muted);
+    }
+
+    footer {
+      align-self: end;
+      padding-top: 44px;
+    }
+
+    footer a {
+      font-size: 14px;
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: inherit;
+    }
+
+    @media (max-width: 40em) {
+      main {
+        width: calc(100% - 34px);
+        min-height: calc(100dvh - 38px - 38px);
+        margin-bottom: 38px;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <main>
+    <h1>Truth is a construct</h1>
+    <p>Anything is true if enough people believe in it.</p>
+    <p>Some things only become <span>true if enough people believe in</span> them<span>.</span></p>
+
+    <footer>
+      <a href="/">mnvr.in</a>
+    </footer>
+  </main>
+
+</body>
+
+</html>
