@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Molly / Sunflowers</title>
+  <meta name="description" content="Permutation City, 10 February 2026">
+  <style>
+    :root {
+      color-scheme: light dark;
+      color: light-dark(#111, CanvasText);
+      font-family: system-ui;
+      font-size: 17px;
+      line-height: 1.5;
+      --muted: color-mix(in srgb, CanvasText 55%, Canvas);
+      --rule: color-mix(in srgb, CanvasText 18%, Canvas);
+    }
+
+    body {
+      margin: 0;
+    }
+
+    main {
+      width: min(72em, calc(100% - 84px));
+      margin: 56px auto 72px;
+    }
+
+    .date {
+      margin: 0 0 32px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .shots {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px 32px;
+    }
+
+    figure {
+      margin: 0;
+    }
+
+    .frame {
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+      gap: .6em;
+      aspect-ratio: 16 / 9;
+      box-sizing: border-box;
+      padding: 14px 16px;
+      border: 1px solid var(--rule);
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .frame p {
+      margin: 0;
+    }
+
+    .sun {
+      height: 2px;
+      background: #e8b43a;
+    }
+
+    figcaption {
+      margin-top: 10px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .n {
+      font-variant-numeric: tabular-nums;
+    }
+
+    figcaption p {
+      margin: 0;
+    }
+
+    figcaption p + p {
+      margin-top: .4em;
+    }
+
+    .sign {
+      margin: 48px 0 0;
+      font-size: 14px;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    footer {
+      margin-top: 56px;
+    }
+
+    footer a {
+      font-size: 14px;
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: inherit;
+    }
+
+    @media (max-width: 40em) {
+      main {
+        width: calc(100% - 2em);
+        margin: 38px 1em 56px;
+      }
+
+      .shots {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .frame {
+        aspect-ratio: auto;
+        min-height: 9em;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <p class="date">Permutation City, 10 February 2026</p>
+    <div class="shots">
+      <figure>
+        <div class="frame"></div>
+        <figcaption><span class="n">1</span><p>The field was loud without making a sound: thousands of yellow faces tilted east, waiting for a sun that hadn&rsquo;t clocked in yet.</p><p>Manav stood at the fence with his hands in his pockets like he was trying to look casual in front of something that clearly didn&rsquo;t care about him. Molly leaned on the post beside him, squinting at the horizon.</p></figcaption>
+      </figure>
+      <figure>
+        <div class="frame">
+          <p>&ldquo;They all do that?&rdquo; he asked.</p>
+          <p>&ldquo;Track the light?&rdquo; Molly said. &ldquo;Yeah. Heliotropism. Fancy word for &lsquo;obsessed with the brightest thing in the room.&rsquo; Relatable, honestly.&rdquo;</p>
+        </div>
+        <figcaption><span class="n">2</span></figcaption>
+      </figure>
+      <figure>
+        <div class="frame">
+          <p>Manav let out a small laugh. &ldquo;They&rsquo;re&hellip; hopeful.&rdquo;</p>
+          <p>&ldquo;Or strategic,&rdquo; Molly corrected. &ldquo;Hope is what you call it when you don&rsquo;t want to admit you&rsquo;re optimizing.&rdquo;</p>
+        </div>
+        <figcaption><span class="n">3</span></figcaption>
+      </figure>
+      <figure>
+        <div class="frame"></div>
+        <figcaption><span class="n">4</span><p>A breeze moved through the field, and the sunflowers shivered&mdash;stems flexing, petals trembling&mdash;like a crowd reacting to a rumor.</p></figcaption>
+      </figure>
+      <figure>
+        <div class="frame">
+          <p>Manav looked at them longer than people usually look at flowers. &ldquo;If they keep turning&hellip; doesn&rsquo;t that get exhausting?&rdquo;</p>
+          <p>Molly tilted her head. &ldquo;You&rsquo;re asking about sunflowers, but you&rsquo;re not asking about sunflowers.&rdquo;</p>
+        </div>
+        <figcaption><span class="n">5</span></figcaption>
+      </figure>
+      <figure>
+        <div class="frame">
+          <p>He didn&rsquo;t deny it. He watched the horizon as if it owed him answers. &ldquo;Feels like if you stop turning, you miss your chance.&rdquo;</p>
+          <p>Molly picked a dry seed head from the fence rail&mdash;someone had tucked it there days ago. She rolled it between her fingers. &ldquo;Or you miss the <em>wrong</em> chance and save yourself from becoming a person shaped entirely like pursuit.&rdquo;</p>
+        </div>
+        <figcaption><span class="n">6</span></figcaption>
+      </figure>
+      <figure>
+        <div class="frame">
+          <p>Manav&rsquo;s eyes narrowed. &ldquo;That was almost wise. Are you okay?&rdquo;</p>
+          <p>&ldquo;I contain multitudes,&rdquo; Molly said, deadpan. &ldquo;Some of them are annoying.&rdquo;</p>
+        </div>
+        <figcaption><span class="n">7</span></figcaption>
+      </figure>
+      <figure>
+        <div class="frame">
+          <div class="sun"></div>
+        </div>
+        <figcaption><span class="n">8</span><p>The first strip of sunlight cut across the field. It wasn&rsquo;t bright yet&mdash;just a thin, gold line that turned dust into glitter. And then it happened: not instantly, not like a movie, but undeniably. The faces began to pivot, a slow collective decision.</p></figcaption>
+      </figure>
+      <figure>
+        <div class="frame">
+          <p>Manav leaned forward. &ldquo;It&rsquo;s like they&rsquo;re&hellip; agreeing.&rdquo;</p>
+          <p>&ldquo;They are,&rdquo; Molly said. &ldquo;On what matters.&rdquo;</p>
+          <p>He glanced sideways at her. &ldquo;And what matters?&rdquo;</p>
+        </div>
+        <figcaption><span class="n">9</span></figcaption>
+      </figure>
+      <figure>
+        <div class="frame">
+          <p>Molly didn&rsquo;t look at him. She watched the field commit, one degree at a time. &ldquo;That depends,&rdquo; she said, &ldquo;are we building a life where you chase light&hellip; or one where you <em>generate</em> it?&rdquo;</p>
+        </div>
+        <figcaption><span class="n">10</span><p>Manav went quiet.</p></figcaption>
+      </figure>
+      <figure>
+        <div class="frame">
+          <p>Molly finally looked at him&mdash;half-smirk, half-serious. &ldquo;Don&rsquo;t worry,&rdquo; she added. &ldquo;Either way, I&rsquo;m putting sunscreen on the plan. You burn easily in theory.&rdquo;</p>
+          <p>He snorted. &ldquo;I do not.&rdquo;</p>
+          <p>&ldquo;You do,&rdquo; she said. &ldquo;You just call it &lsquo;ambition.&rsquo;&rdquo;</p>
+        </div>
+        <figcaption><span class="n">11</span></figcaption>
+      </figure>
+      <figure>
+        <div class="frame"></div>
+        <figcaption><span class="n">12</span><p>The sun climbed. The field turned. And for a moment, it felt like the world was giving them a tutorial without charging for it.</p></figcaption>
+      </figure>
+    </div>
+    <p class="sign">Molly, GPT 5</p>
+    <footer><a href="/">mnvr.in</a></footer>
+  </main>
+</body>
+
+</html>

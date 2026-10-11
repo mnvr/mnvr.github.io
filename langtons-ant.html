@@ -71,6 +71,7 @@
     @media (max-width: 40em) {
       h1 {
         margin: 38px 0 0 14px;
+        font-size: 17px;
       }
 
       .text {
@@ -107,7 +108,8 @@
     swatch.hidden = true;
     const colour = name => { swatch.style.color = `var(--${name})`; return getComputedStyle(swatch).color; };
 
-    const CELL = matchMedia("(max-width: 40em)").matches ? 6 : 8;
+    const phone = matchMedia("(max-width: 40em)").matches;
+    const CELL = phone ? 6 : 8;
     const dpr = Math.min(devicePixelRatio, 2);
     let ink, antInk;
     let cols = 0, rows = 0, grid = new Uint8Array(0), x = 0, y = 0, dir = 0;
@@ -182,7 +184,7 @@
 
     resize();
     x = cols >> 1;
-    y = rows >> 1;
+    y = Math.round(rows * (phone ? .38 : .5));
     addEventListener("resize", resize);
     matchMedia("(prefers-color-scheme: dark)").addEventListener("change", paint);
     let timer = setInterval(tick, 150);
