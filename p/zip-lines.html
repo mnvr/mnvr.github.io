@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+
+  <title>Zip lines &mdash; Manav Rathi</title>
+  <meta name="description" content="I made a painting once.">
+
+  <style>
+    :root {
+      color-scheme: light dark;
+      background: light-dark(#fff, #000);
+      color: light-dark(#000, #fff);
+      font-family: system-ui;
+      font-size: 18px;
+      line-height: 1.35;
+      --muted: color-mix(in srgb, currentColor 55%, transparent);
+    }
+
+    body {
+      position: relative;
+      display: grid;
+      place-content: center;
+      box-sizing: border-box;
+      min-height: 100dvh;
+      margin: 0;
+      padding: 3em 1.25em;
+    }
+
+    main {
+      width: min(32em, calc(100vw - 2.5em));
+      text-align: justify;
+      hyphens: auto;
+    }
+
+    p {
+      display: inline;
+    }
+
+    p + p::before {
+      content: '\B6  ';
+      color: var(--muted);
+    }
+
+    footer {
+      position: absolute;
+      right: 1.25rem;
+      bottom: 1.25rem;
+      font-size: 14px;
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: inherit;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <main>
+    <p>I made a painting once.</p>
+    <p>A woman sitting on her haunches. We&rsquo;re behind her. At an angle. And we&rsquo;re both looking down to, through the great perforations, the zip lines, and at the metro station where the zips meet. The station is empty other than the light that shines on it; like our minds. But not the woman&rsquo;s, she sits inanimate, thinking.</p>
+    <p>In an age that has lost the capacity of thought, spontaneously, sporadically, some fall into this trance they call thinking.</p>
+    <p>The brush strokes were dense but the lines were clear. Maybe the colors were dull. But I never was able to sell it. I waited one year, but the painting remained.</p>
+    <p>You&rsquo;re looking at it now.</p>
+    <p>Us, you and me, looking at the painting, in your mind, and in the painting we look at the woman sitting on her haunches, looking at the zip lines, thinking, in a time where the mind has lost the need for thought.</p>
+  </main>
+
+  <footer>
+    <a href="/">mnvr.in</a>
+  </footer>
+
+  <script>
+    const main = document.querySelector('main'), last = main.lastElementChild;
+
+    const fit = () => {
+      main.style.width = main.style.lineHeight = '';
+      const max = main.getBoundingClientRect().width, lh = parseFloat(getComputedStyle(main).lineHeight);
+      let best = max, lines = 0, score = Infinity;
+      for (let w = max; w > max / 2; w--) {
+        main.style.width = w + 'px';
+        const box = main.getBoundingClientRect(), range = document.createRange();
+        range.selectNodeContents(last);
+        const rects = range.getClientRects(), end = rects[rects.length - 1];
+        const s = Math.abs(box.height - w) + (1 - (end.right - box.left) / w) * lh;
+        if (s < score) { score = s; best = w; lines = Math.abs(box.height - w) < lh ? Math.round(box.height / lh) : 0; }
+      }
+      main.style.width = best + 'px';
+      if (lines) main.style.lineHeight = best / lines + 'px';
+    };
+
+    fit();
+    addEventListener('resize', fit);
+  </script>
+
+</body>
+
+</html>
