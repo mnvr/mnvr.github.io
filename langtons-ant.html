@@ -1,116 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-
   <title>Langton&rsquo;s ant &mdash; Manav Rathi</title>
   <meta name="description" content="A simulation of Langton&rsquo;s ant on a torus.">
-
-  <link rel="stylesheet" href="post.css">
-
   <style>
-    body {
-      max-width: none;
+    :root {
+      color-scheme: light dark;
+      color: light-dark(#111, CanvasText);
+      font-family: system-ui;
+      font-size: 17px;
+      line-height: 1.55;
+      --muted: color-mix(in srgb, CanvasText 55%, Canvas);
+      --trail: color-mix(in srgb, CanvasText 12%, Canvas);
+      --walker: #e0432a;
     }
 
-    h1,
-    p {
-      max-width: 72ch;
+    main {
+      position: fixed;
+      inset: 0;
     }
 
-    #ant {
-      display: block;
-      height: 75svh;
+    canvas {
+      position: absolute;
       width: 100%;
+      height: 100%;
+      z-index: -1;
     }
 
-    @media (prefers-color-scheme: dark) {
-      #ant {
-        filter: invert(1);
+    h1 {
+      margin: 42px 0 0 42px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .text {
+      position: absolute;
+      left: 42px;
+      bottom: 42px;
+      max-width: 34ch;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    p {
+      margin: 0;
+    }
+
+    p + p {
+      margin-top: .8em;
+    }
+
+    footer {
+      position: absolute;
+      right: 42px;
+      bottom: 38px;
+    }
+
+    footer a {
+      font-size: 14px;
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: inherit;
+    }
+
+    @media (max-width: 40em) {
+      h1 {
+        margin: 38px 0 0 14px;
+      }
+
+      .text {
+        left: 14px;
+        right: 14px;
+        bottom: 62px;
+        max-width: none;
+      }
+
+      footer {
+        right: auto;
+        left: 14px;
+        bottom: 14px;
       }
     }
   </style>
-
 </head>
 
 <body>
-
   <main>
-    <h1>Langton&rsquo;s ant</h1>
-
     <canvas id="ant">Langton&rsquo;s ant</canvas>
-
-    <p>An ant walks a torus, flipping each square as it comes to it, turning left if it was empty, turning right otherwise.</p>
-
-    <p>If you wait here long enough, you&rsquo;ll see it build a highway (nobody knows why), and run into its own past.</p>
-
-    <p class="timestamp">Manav Rathi, <time datetime="2026-08-29">August 2026</time></p>
+    <h1>Langton&rsquo;s ant</h1>
+    <div class="text">
+      <p>An ant walks a torus, flipping each square as it comes to it, turning left if it was empty, turning right otherwise.</p>
+      <p>If you wait here long enough, you&rsquo;ll see it build a highway (nobody knows why), and run into its own past.</p>
+    </div>
+    <footer><a href="/">mnvr.in</a></footer>
   </main>
 
-  <footer><a href="/">mnvr.in</a></footer>
-
   <script>
-    const CELL = 8;
-    const TICK_MS = 150;
-
     const canvas = document.getElementById("ant");
     const ctx = canvas.getContext("2d");
+    const swatch = document.body.appendChild(document.createElement("i"));
+    swatch.hidden = true;
+    const colour = name => { swatch.style.color = `var(--${name})`; return getComputedStyle(swatch).color; };
 
-    const ink = "rgb(0 0 0 / 12%)";
-    const antInk = "rgb(0 0 0 / 35%)";
+    const CELL = matchMedia("(max-width: 40em)").matches ? 6 : 8;
+    const dpr = Math.min(devicePixelRatio, 2);
+    let ink, antInk;
+    let cols = 0, rows = 0, grid = new Uint8Array(0), x = 0, y = 0, dir = 0;
 
-    let cols = 0;
-    let rows = 0;
-    let grid = new Uint8Array(0);
-    let x = 0;
-    let y = 0;
-    let dir = 0;
+    function cross(cx, cy) {
+      const w = CELL * .3;
+      ctx.fillRect(cx * CELL + (CELL - w) / 2, cy * CELL, w, CELL);
+      ctx.fillRect(cx * CELL, cy * CELL + (CELL - w) / 2, CELL, w);
+    }
+
+    function dot(cx, cy) {
+      ctx.beginPath();
+      ctx.arc(cx * CELL + CELL / 2, cy * CELL + CELL / 2, CELL * .42, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    function paintCell(cx, cy) {
+      ctx.clearRect(cx * CELL, cy * CELL, CELL, CELL);
+      if (grid[cy * cols + cx]) { ctx.fillStyle = ink; cross(cx, cy); }
+    }
+
+    function paintAnt() {
+      ctx.fillStyle = antInk;
+      dot(x, y);
+    }
+
+    function paint() {
+      ink = colour("trail");
+      antInk = colour("walker");
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, cols * CELL, rows * CELL);
+      ctx.fillStyle = ink;
+      for (let r = 0; r < rows; r++)
+        for (let c = 0; c < cols; c++)
+          if (grid[r * cols + c]) cross(c, r);
+    }
 
     function resize() {
       const newCols = Math.ceil(canvas.clientWidth / CELL);
       const newRows = Math.ceil(canvas.clientHeight / CELL);
       if (newCols === cols && newRows === rows) return;
-      const oldGrid = grid;
-      const oldCols = cols;
-      const oldRows = rows;
+      const oldGrid = grid, oldCols = cols, oldRows = rows;
       cols = newCols;
       rows = newRows;
       grid = new Uint8Array(cols * rows);
       for (let r = 0; r < Math.min(rows, oldRows); r++)
         for (let c = 0; c < Math.min(cols, oldCols); c++)
           grid[r * cols + c] = oldGrid[r * oldCols + c];
-      const dpr = Math.min(devicePixelRatio, 2);
       canvas.width = cols * CELL * dpr;
       canvas.height = rows * CELL * dpr;
-      ctx.scale(dpr, dpr);
       x = Math.min(x, cols - 1);
       y = Math.min(y, rows - 1);
-      ctx.fillStyle = ink;
-      for (let r = 0; r < rows; r++)
-        for (let c = 0; c < cols; c++)
-          if (grid[r * cols + c]) ctx.fillRect(c * CELL, r * CELL, CELL, CELL);
+      paint();
     }
-
-    resize();
-    x = cols >> 1;
-    y = rows >> 1;
-    addEventListener("resize", resize);
 
     function step() {
       const i = y * cols + x;
-      ctx.clearRect(x * CELL, y * CELL, CELL, CELL);
-      if (grid[i]) {
-        dir = (dir + 1) % 4;
-        grid[i] = 0;
-      } else {
-        dir = (dir + 3) % 4;
-        grid[i] = 1;
-        ctx.fillStyle = ink;
-        ctx.fillRect(x * CELL, y * CELL, CELL, CELL);
-      }
+      if (grid[i]) { dir = (dir + 1) % 4; grid[i] = 0; }
+      else { dir = (dir + 3) % 4; grid[i] = 1; }
       if (dir === 0) y = (y - 1 + rows) % rows;
       else if (dir === 1) x = (x + 1) % cols;
       else if (dir === 2) y = (y + 1) % rows;
@@ -118,18 +174,20 @@
     }
 
     function tick() {
+      const px = x, py = y;
       step();
-      ctx.fillStyle = antInk;
-      ctx.fillRect(x * CELL, y * CELL, CELL, CELL);
+      paintCell(px, py);
+      paintAnt();
     }
 
-    let timer = setInterval(tick, TICK_MS);
-    document.addEventListener("visibilitychange", () => {
-      clearInterval(timer);
-      if (!document.hidden) timer = setInterval(tick, TICK_MS);
-    });
+    resize();
+    x = cols >> 1;
+    y = rows >> 1;
+    addEventListener("resize", resize);
+    matchMedia("(prefers-color-scheme: dark)").addEventListener("change", paint);
+    let timer = setInterval(tick, 150);
+    document.addEventListener("visibilitychange", () => { clearInterval(timer); if (!document.hidden) timer = setInterval(tick, 150); });
   </script>
-
 </body>
 
 </html>

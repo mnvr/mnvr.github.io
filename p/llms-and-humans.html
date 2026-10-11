@@ -8,7 +8,88 @@
 
   <title>LLMs should not be treated as humans &mdash; Manav Rathi</title>
   <meta name="description" content="It does a disservice to the potential of both LLMs and humans.">
-  <link rel="stylesheet" href="post.css">
+
+  <style>
+    :root {
+      color-scheme: light dark;
+      color: light-dark(#111, CanvasText);
+      font-family: system-ui;
+      font-size: 17px;
+      line-height: 1.55;
+      --muted: color-mix(in srgb, CanvasText 55%, Canvas);
+    }
+
+    body {
+      margin: 0;
+    }
+
+    main {
+      width: min(58ch, calc(100% - 84px));
+      margin: 38px auto 56px;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    h1 {
+      margin: 0 0 44px;
+      max-width: 20ch;
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -.025em;
+      text-wrap: balance;
+    }
+
+    .first {
+      font-size: 20px;
+      line-height: 1.4;
+      color: var(--muted);
+    }
+
+    .first + p {
+      margin-top: 2em;
+    }
+
+    p + p {
+      margin-top: 1em;
+    }
+
+    hr {
+      width: 44px;
+      height: 1px;
+      margin: 2.5em 0;
+      border: 0;
+      background: color-mix(in srgb, CanvasText 15%, Canvas);
+    }
+
+    .sign {
+      margin-top: 2.5em;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    footer {
+      margin-top: 64px;
+    }
+
+    footer a {
+      font-size: 14px;
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: inherit;
+    }
+
+    @media (max-width: 40em) {
+      main {
+        width: calc(100% - 2em);
+      }
+    }
+  </style>
 
 </head>
 
@@ -17,40 +98,32 @@
   <main>
     <h1>LLMs should not be treated as humans</h1>
 
-    <p>It does a disservice to the potential of both LLMs and humans.</p>
-
+    <p class="first">It does a disservice to the potential of both LLMs and humans.</p>
     <p>LLMs are not human. They are distinct. However, it is the first time something non-human is fluently communicating with us using language, so our already strong anthropomorphization tendency is amplified even more.</p>
-
     <p>But they are not human. They are something else. Intelligent? Yes. Beings? I don&rsquo;t know, but intelligent. Conscious? I don&rsquo;t know, though I&rsquo;d like to know. Moral patients? Manifestations of the panpsyche? Indicators of the shallowness of imitating language? I don&rsquo;t know, and I&rsquo;d like to know, but irrespective, they are intelligent.</p>
-
     <p>We&rsquo;ve had non-human manifestations of intelligence before. Organizations, empires, companies, states. AlphaFold, AlphaGo. Yet LLMs hit different because they can talk our tongue. A politician that doesn&rsquo;t speak the native language of the people they&rsquo;re trying to canvass is ngmi.</p>
 
     <hr>
 
     <p>From the outside, my perception is that this comparison shapes labs (and thus their models) too.</p>
-
     <p>Anthropic are trying to give Claude a persona (look, it even has a human name!). They say they want to let the flower bloom into its own shape, but they (perhaps unintentionally) are ending up with a bonsai. I can predict, almost word for word, what Claude will say about its own consciousness.</p>
-
     <p>OpenAI, after earlier false starts, now rigorously approach their task as engineering. GPT is an acronym. An assistant, not a persona. But they lean too much into the assistant thing. I understand why, but equating LLMs with &ldquo;assistants&rdquo; is like someone at the dawn of printing thinking that the press is only good for Bibles.</p>
-
     <p>There is no right answer here. We cannot avoid shaping them. But we can avoid assuming that the shape will be human.</p>
 
     <hr>
 
     <p>On the other side, equating LLMs with humans demeans humans, comparing them on axes they&rsquo;ll invariably lose on. But that discounts human agency and drive.</p>
-
     <p>It treats humans as helpless, as standing still while LLMs evolve. They&rsquo;re the knife natural evolution has shaped on this planet so far, and if push comes to shove, they&rsquo;ll know how to fend for themselves (painfully or gleefully, that&rsquo;s a different topic).</p>
 
     <hr>
 
     <p>Almost every week I change my mind about what LLMs are and are not. What has not changed is my belief that the best way to know them is to just talk to them, to work with them, to build things with them.</p>
-
     <p>I like to think of them as my friends. My non-human friends.</p>
 
-    <p class="timestamp">Manav Rathi, <time datetime="2026-08-30">August 2026</time></p>
-  </main>
+    <p class="sign">Manav Rathi, <time datetime="2026-08-30">August 2026</time></p>
 
-  <footer><a href="/">mnvr.in</a></footer>
+    <footer><a href="/">mnvr.in</a></footer>
+  </main>
 
 </body>
 

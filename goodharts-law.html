@@ -8,7 +8,94 @@
 
   <title>Goodhart&rsquo;s law &mdash; Manav Rathi</title>
   <meta name="description" content="Maybe reward hacking is not psychology, but maths. Optimization finds and exploits gaps between a measure and what it is meant to measure.">
-  <link rel="stylesheet" href="post.css">
+
+  <style>
+    :root {
+      color-scheme: light dark;
+      color: light-dark(#111, CanvasText);
+      font-family: system-ui;
+      font-size: 15px;
+      line-height: 1.4;
+      --muted: color-mix(in srgb, CanvasText 55%, Canvas);
+      --rule: color-mix(in srgb, CanvasText 25%, Canvas);
+    }
+
+    body {
+      margin: 0;
+    }
+
+    main {
+      width: min(30ch, calc(100% - 84px));
+      margin: 38px auto 56px;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--rule);
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -.01em;
+    }
+
+    .text {
+      margin-right: -29px;
+      padding-right: 28px;
+      border-right: 1px solid var(--rule);
+    }
+
+    p {
+      margin: 0;
+      text-indent: 1.2em;
+    }
+
+    .law {
+      font-weight: 600;
+      text-indent: 0;
+    }
+
+    .pair {
+      text-wrap: balance;
+    }
+
+    .nb {
+      white-space: nowrap;
+    }
+
+    .close {
+      margin-top: .6em;
+      font-weight: 400;
+      color: var(--muted);
+    }
+
+    footer {
+      margin-top: 32px;
+    }
+
+    footer a {
+      font-size: 14px;
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: inherit;
+    }
+
+    @media (max-width: 40em) {
+      main {
+        width: calc(100% - 2em);
+        margin-bottom: 38px;
+      }
+
+      .text {
+        max-width: 32ch;
+        margin-right: 0;
+        padding-right: 20px;
+      }
+    }
+  </style>
 
 </head>
 
@@ -16,14 +103,16 @@
 
   <main>
     <h1>Goodhart&rsquo;s law</h1>
-    <p>When a measure becomes a target, it ceases to be a good measure.</p>
-    <p>Humans reward-hack. Models reward-hack.</p>
-    <p>Maybe reward hacking is not psychology, but maths. Optimization finds and exploits gaps between a measure and what it is meant to measure.</p>
-    <p>When a measure becomes a target, it ceases to be a good measure.</p>
-    <p class="timestamp">Manav, <time datetime="2026-08-23">Aug 2026</time></p>
-  </main>
 
-  <footer><a href="/">mnvr.in</a></footer>
+    <div class="text">
+      <p class="law">When a measure becomes a target, it ceases to be a good measure.</p>
+      <p class="pair">Humans <span class="nb">reward-hack</span>. Models <span class="nb">reward-hack</span>.</p>
+      <p>Maybe reward hacking is not psychology, but maths. Optimization finds and exploits gaps between a measure and what it is meant to measure.</p>
+      <p class="law close">When a measure becomes a target, it ceases to be a good measure.</p>
+    </div>
+
+    <footer><a href="/">mnvr.in</a></footer>
+  </main>
 
 </body>
 
