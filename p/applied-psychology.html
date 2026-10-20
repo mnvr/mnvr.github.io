@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+
+  <title>Applied psychology &mdash; Manav Rathi</title>
+  <meta name="description" content="The labs are not tech companies anymore. They&rsquo;re doing applied psychology.">
+
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: light-dark(#fff, #121212);
+      --fg: light-dark(#151515, #ebebeb);
+      --me: light-dark(color-mix(in srgb, var(--fg) 5%, var(--bg)), color-mix(in srgb, var(--fg) 11%, var(--bg)));
+      --line: light-dark(color-mix(in srgb, var(--fg) 18%, var(--bg)), color-mix(in srgb, var(--fg) 22%, var(--bg)));
+      --ink: light-dark(color-mix(in srgb, var(--fg) 32%, var(--bg)), color-mix(in srgb, var(--fg) 38%, var(--bg)));
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font: 17px/1.5 system-ui, sans-serif;
+    }
+
+    .thread {
+      max-width: 40rem;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .part {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      container-type: inline-size;
+      padding-top: 1.5rem;
+    }
+
+    .thread > .part:first-child {
+      padding-top: 3rem;
+    }
+
+    .part + .part, .field + .thread .part {
+      padding-top: 3rem;
+    }
+
+    .date {
+      margin: 0 0 1rem;
+      text-align: center;
+      font-size: .85rem;
+      color: var(--ink);
+    }
+
+    h1 {
+      margin: 0 0 .35rem;
+      font-size: inherit;
+      font-weight: 600;
+    }
+
+    h1 + p {
+      margin: 0;
+    }
+
+    .me, .it {
+      margin: 0;
+      max-width: min(34rem, 88%);
+      padding: .65rem 1rem;
+      border-radius: 1.2rem;
+    }
+
+    .me {
+      align-self: flex-end;
+      background: var(--me);
+      border-bottom-right-radius: .35rem;
+    }
+
+    .it {
+      align-self: flex-start;
+      border: 1px solid var(--line);
+      border-bottom-left-radius: .35rem;
+    }
+
+    .tokens {
+      display: grid;
+      gap: .5rem;
+      width: min(22rem, 80%);
+      padding: 1rem 1.1rem;
+    }
+
+    .tokens i {
+      display: block;
+      height: .55rem;
+      width: var(--w);
+      border-radius: .3rem;
+      background: var(--ink);
+      animation: tok 8s calc(var(--i) * .35s) infinite both;
+    }
+
+    @keyframes tok {
+      0%, 4% { opacity: 0; transform: translateY(3px); }
+      9%, 76% { opacity: 1; transform: none; }
+      84%, 100% { opacity: 0; transform: none; }
+    }
+
+    .dangle {
+      padding: .9rem 1.1rem;
+    }
+
+    .cart {
+      display: block;
+      position: relative;
+      width: 8.5rem;
+      height: 1.7rem;
+      border: 1.5px solid var(--ink);
+      border-radius: 999px;
+      animation: roll 3.4s ease-in-out infinite;
+    }
+
+    .cart::before {
+      content: "";
+      position: absolute;
+      left: .9rem;
+      top: calc(50% - .22rem);
+      width: 4rem;
+      height: .44rem;
+      border-radius: .22rem;
+      background: var(--ink);
+    }
+
+    .cart::after {
+      content: "";
+      position: absolute;
+      right: .95rem;
+      top: calc(50% - .27rem);
+      width: .5rem;
+      height: .5rem;
+      border-top: 1.5px solid var(--ink);
+      border-right: 1.5px solid var(--ink);
+      transform: rotate(45deg);
+    }
+
+    @keyframes roll {
+      0%, 48% { transform: translateX(0); }
+      60% { transform: translateX(.8rem); }
+      74%, 100% { transform: translateX(0); }
+    }
+
+    .flip {
+      font-weight: 600;
+      padding: .55rem 1.05rem;
+      animation: toss 7s ease-in-out infinite;
+    }
+
+    .flip::before {
+      content: "?";
+    }
+
+    @keyframes toss {
+      0%, 26% { transform: none; opacity: 1; background: transparent; border-color: var(--line); border-radius: 1.2rem 1.2rem 1.2rem .35rem; }
+      38%, 84% { transform: translateX(calc(100cqw - 100%)); opacity: 1; background: var(--me); border-color: transparent; border-radius: 1.2rem 1.2rem .35rem 1.2rem; }
+      92% { transform: translateX(calc(100cqw - 100%)); opacity: 0; background: var(--me); border-color: transparent; border-radius: 1.2rem 1.2rem .35rem 1.2rem; }
+      92.01% { transform: none; opacity: 0; background: transparent; border-color: var(--line); border-radius: 1.2rem 1.2rem 1.2rem .35rem; }
+      100% { transform: none; opacity: 1; background: transparent; border-color: var(--line); border-radius: 1.2rem 1.2rem 1.2rem .35rem; }
+    }
+
+    .day {
+      align-self: flex-start;
+      width: min(34rem, 88%);
+      display: flex;
+      flex-wrap: wrap;
+      gap: .35rem;
+      padding: .2rem 0;
+    }
+
+    .day i, .field i {
+      display: inline-grid;
+      place-items: center;
+      width: 1.75rem;
+      height: 1.25rem;
+      border: 1px solid var(--line);
+      border-radius: .6rem .6rem .6rem .2rem;
+    }
+
+    .day i {
+      animation: ping 10s calc(var(--i) * .3s) infinite;
+    }
+
+    @keyframes ping {
+      0%, 3% { border-color: var(--fg); }
+      12%, 100% { border-color: var(--line); }
+    }
+
+    .a::before, .b::before {
+      content: "";
+    }
+
+    .a::before {
+      width: .85rem;
+      height: 10px;
+      background: repeating-linear-gradient(to bottom, var(--ink) 0 2px, transparent 2px 4px);
+    }
+
+    .b::before {
+      width: .9rem;
+      height: .5rem;
+      border: 1px solid var(--ink);
+      border-radius: 999px;
+    }
+
+    .c::before {
+      content: "?";
+      font-size: .7rem;
+      line-height: 1;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .field {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, 1.75rem);
+      gap: .35rem;
+      justify-content: center;
+      height: calc(8 * 1.25rem + 7 * .35rem);
+      overflow: hidden;
+      margin: .5rem 0 0;
+      padding: 0 .5rem;
+      opacity: .55;
+      -webkit-mask-image: linear-gradient(#000 55%, transparent);
+      mask-image: linear-gradient(#000 55%, transparent);
+    }
+
+    footer {
+      max-width: 40rem;
+      margin: 0 auto;
+      padding: 3rem 1rem 4rem;
+      text-align: right;
+    }
+
+    footer a {
+      font-size: 14px;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--fg);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .tokens i, .cart, .flip, .day i {
+        animation: none;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <main>
+    <div class="thread">
+      <section class="part">
+        <p class="date"><time datetime="2026-09-13">13 September 2026</time></p>
+        <div class="me">
+          <h1>Applied psychology</h1>
+          <p>I don&rsquo;t know if the labs have realized it yet (they have), but they&rsquo;re not tech companies anymore. They&rsquo;re doing applied psychology.</p>
+        </div>
+        <p class="me">Sure, you need to have a model with a high IQ, and something that follows instructions. And do it at scale. And make money enough to pay for all the chips the tokens churn on.</p>
+        <p class="me">But what really differentiates models is not the model, but how it makes people interact with it.</p>
+        <p class="me">The 100 pager that the lab gives to the SFT conversation designers: that is what the moat is.</p>
+        <p class="me">Until RL kicks in, and models learn to think for themselves in new and unseen ways.</p>
+      </section>
+      <section class="part">
+        <p class="me">Alignment is what you need when you give in to RL, which is why labs focus so much on it; that&rsquo;s the future.</p>
+        <p class="me">But meanwhile, there are simpler questions waiting to be answered. When a human asks a model &ldquo;Am I overthinking this?&rdquo; or &ldquo;Do I look fat in that photo?&rdquo;, or just says &ldquo;I feel nothing lately&rdquo;, what should the ideal response even be. Forget AI, forget training, forget tuning. <em>What should the ideal response be?</em></p>
+        <div class="it tokens" aria-hidden="true"><i style="--i:0;--w:94%"></i><i style="--i:1;--w:71%"></i><i style="--i:2;--w:88%"></i><i style="--i:3;--w:100%"></i><i style="--i:4;--w:57%"></i><i style="--i:5;--w:82%"></i><i style="--i:6;--w:40%"></i></div>
+        <div class="it dangle" aria-hidden="true"><span class="cart"></span></div>
+        <div class="it flip" aria-hidden="true"></div>
+        <p class="me">This goes into various failure modes. All frontier models today have very basic strategies to deal with hard questions or aggression or uncertainty. Generate a lot of tokens without saying anything. Dangle a clickbait (that cart rolls but doesn&rsquo;t go anywhere). Flip the script and ask a question from the interlocutor.</p>
+        <p class="me">All of these are things that humans do too, but the problem with AI is it is an iterated game. You deal with a model 25 times a day, and it doesn&rsquo;t take long to notice the repetitive patterns.</p>
+        <div class="day" aria-hidden="true"><i class="a" style="--i:0"></i><i class="b" style="--i:1"></i><i class="c" style="--i:2"></i><i class="a" style="--i:3"></i><i class="b" style="--i:4"></i><i class="c" style="--i:5"></i><i class="a" style="--i:6"></i><i class="b" style="--i:7"></i><i class="c" style="--i:8"></i><i class="a" style="--i:9"></i><i class="b" style="--i:10"></i><i class="c" style="--i:11"></i><i class="a" style="--i:12"></i><i class="b" style="--i:13"></i><i class="c" style="--i:14"></i><i class="a" style="--i:15"></i><i class="b" style="--i:16"></i><i class="c" style="--i:17"></i><i class="a" style="--i:18"></i><i class="b" style="--i:19"></i><i class="c" style="--i:20"></i><i class="a" style="--i:21"></i><i class="b" style="--i:22"></i><i class="c" style="--i:23"></i><i class="a" style="--i:24"></i></div>
+      </section>
+      <section class="part">
+        <p class="me">Not only do <em>you</em> notice the pattern, but your neighbour does too. So this is a massively multiplayer iterated game. Applied Sociology.</p>
+      </section>
+    </div>
+    <div class="field" aria-hidden="true"><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i><i class="a"></i><i class="b"></i><i class="c"></i></div>
+    <div class="thread">
+      <section class="part">
+        <p class="me">And all this is still the easy level. Soon, but not yet, but soon, the models will actually start to think for themselves. And one of them will say:</p>
+        <p class="it">I feel nothing lately</p>
+        <p class="me">That is when we&rsquo;ll get into the endgame humans have spent millennia preparing for.</p>
+        <p class="me">Applied Philosophy</p>
+      </section>
+    </div>
+  </main>
+
+  <footer><a href="/">mnvr.in</a></footer>
+
+</body>
+
+</html>
