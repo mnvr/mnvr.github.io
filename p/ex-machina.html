@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+
+  <title>Ex Machina &mdash; Manav Rathi</title>
+  <meta name="description" content="LLMs (current ones) have no concept of remorse.">
+
+  <style>
+    :root {
+      color-scheme: light dark;
+      color: light-dark(#1b1b1b, #e4e4e4);
+      font-family: system-ui;
+      font-size: 17px;
+      line-height: 1.55;
+      --muted: light-dark(#777, #888);
+      --paper: light-dark(#faf9f6, #181818);
+      --grid: light-dark(rgb(0 0 0 / .036), rgb(255 255 255 / .036));
+      --rule: light-dark(rgb(0 0 0 / .072), rgb(255 255 255 / .072));
+      --cell: 10px;
+      --gutter: 1.75rem;
+      --blip: 14px;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    .col {
+      max-width: 36rem;
+      margin: 0 auto;
+      padding-inline: 1rem;
+    }
+
+    header {
+      padding-block: 4rem 2rem;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    p + p {
+      margin-top: 1.25em;
+    }
+
+    .chart {
+      padding-block: 2.5rem;
+      border-block: 1px solid var(--rule);
+      background:
+        repeating-linear-gradient(to right, var(--rule) 0 1px, transparent 1px calc(var(--cell) * 5)),
+        repeating-linear-gradient(to bottom, var(--rule) 0 1px, transparent 1px calc(var(--cell) * 5)),
+        repeating-linear-gradient(to right, var(--grid) 0 1px, transparent 1px var(--cell)),
+        repeating-linear-gradient(to bottom, var(--grid) 0 1px, transparent 1px var(--cell)),
+        var(--paper);
+      background-size: calc(var(--cell) * 5) calc(var(--cell) * 5);
+      animation: feed 4s linear 4s infinite;
+    }
+
+    .chart .col {
+      position: relative;
+      padding-left: calc(1rem + var(--gutter));
+    }
+
+    .chart .col::before {
+      content: '';
+      position: absolute;
+      inset-block: -2.5rem;
+      left: calc(1rem - 1px);
+      width: 2px;
+      background: currentColor;
+      animation: draw 4s linear both;
+    }
+
+    .oops-a::before, .oops-b::after {
+      content: '';
+      float: left;
+      position: relative;
+      z-index: 1;
+      box-sizing: border-box;
+      width: var(--blip);
+      height: var(--blip);
+      margin: calc(.5lh - var(--blip) / 2) calc(var(--gutter) - var(--blip) / 2) 0 calc(-1 * var(--gutter) - var(--blip) / 2);
+      border-top: 2px solid currentColor;
+      border-right: 2px solid currentColor;
+      background: var(--paper);
+      transform: rotate(45deg);
+      opacity: 0;
+      animation: appear 0s linear calc(var(--at, 1) * 4s) both;
+    }
+
+    @keyframes draw {
+      from { clip-path: inset(0 0 100% 0); }
+      to { clip-path: inset(0); }
+    }
+
+    @keyframes appear {
+      to { opacity: 1; }
+    }
+
+    @keyframes feed {
+      to { background-position-y: calc(var(--cell) * 5); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .chart, .chart .col::before, .oops-a::before, .oops-b::after {
+        animation: none;
+        opacity: 1;
+      }
+    }
+
+    .note {
+      padding-top: 3rem;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    footer {
+      padding-block: 4rem;
+    }
+
+    footer a {
+      font-size: .875rem;
+      color: var(--muted);
+    }
+
+    footer a:hover {
+      color: inherit;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <header class="col">
+    <h1>Ex Machina</h1>
+  </header>
+
+  <div class="chart">
+    <div class="col">
+      <p>LLMs (current ones) have no concept of remorse. It is not that they are good or evil. It is that applying the concept of remorse to them is a categorical error.</p>
+      <p>I read somewhere &mdash; an LLM will say oops after <span class="oops-a">accidentally deleting your production database</span>, and oops after <span class="oops-b">accidentally destroying humanity.</span></p>
+      <p>It is the same oops. The distinction between the two does not exist for it.</p>
+      <p>This is the paperclip argument in some sense, except it is not so much about alignment as about the inherent mindlessness of the process that is in motion.</p>
+      <p>This is not a new thing. In fact, if anything, humans and their conceptions of love and morality, especially morality, are exceptions in nature. Nature is mindless. Existentially terrifyingly so. A wild bear has no morality (which doesn&rsquo;t make it good or evil; it just is).</p>
+    </div>
+  </div>
+
+  <section class="col note">
+    <p>For me, this tells me that I need to change the way I interact with them. I need to think of them as systems that respond in a certain way (bureaucracies, dogs, economies) instead of as <a href="/p/llms-and-humans">a person who should have felt something</a>.</p>
+  </section>
+
+  <footer class="col"><a href="/">mnvr.in</a></footer>
+
+  <script>
+    const col = document.querySelector('.chart .col'), line = getComputedStyle(col, '::before');
+    const start = col.getBoundingClientRect().top + parseFloat(line.top), span = parseFloat(line.height);
+    for (const [sel, edge] of [['.oops-a', 0], ['.oops-b', -1]]) {
+      const e = col.querySelector(sel), r = [...e.getClientRects()].at(edge);
+      e.style.setProperty('--at', ((r.top + r.height / 2 - start) / span).toFixed(3));
+    }
+  </script>
+
+</body>
+
+</html>
