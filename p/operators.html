@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+
+  <title>Operators &mdash; Manav Rathi</title>
+  <meta name="description" content="Man and machine as one.">
+
+  <style>
+    :root {
+      color-scheme: light dark;
+      color: light-dark(#111, CanvasText);
+      font-family: system-ui;
+      font-size: 17px;
+      line-height: 1.6;
+      --accent: light-dark(oklch(54% .091 200), oklch(82% .132 200));
+      --muted: color-mix(in srgb, CanvasText 55%, Canvas);
+      --rule: color-mix(in srgb, CanvasText 15%, Canvas);
+    }
+
+    body {
+      margin: 0;
+    }
+
+    main {
+      width: min(60ch, calc(100% - 84px));
+      margin: 38px auto 56px;
+    }
+
+    h1 {
+      margin: 0 0 44px;
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -.025em;
+      color: var(--accent);
+    }
+
+    p {
+      margin: 0;
+    }
+
+    p + p, ol + p, ul + p, p + ol, p + ul {
+      margin-top: 1em;
+    }
+
+    ol, ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    ol {
+      counter-reset: point;
+    }
+
+    li {
+      position: relative;
+      padding-left: 2.4em;
+    }
+
+    li + li {
+      margin-top: 1em;
+    }
+
+    ol li {
+      counter-increment: point;
+    }
+
+    ol li::before {
+      content: counter(point) '.';
+      position: absolute;
+      left: 0;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    ul li::before {
+      content: '\2013';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    hr {
+      width: 44px;
+      height: 1px;
+      margin: 2.5em auto;
+      border: 0;
+      background: var(--rule);
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .mecha {
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .lit {
+      font-weight: 600;
+    }
+
+    .meta {
+      margin-top: 2.5em;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .rule {
+      font-size: 15px;
+      margin-left: 0;
+    }
+
+    .more {
+      font-size: 15px;
+    }
+
+    footer {
+      margin-top: 64px;
+    }
+
+    footer a {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    footer a:hover {
+      color: inherit;
+    }
+
+    @media (max-width: 40em) {
+      main {
+        width: calc(100% - 2em);
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <main>
+    <h1>Operators</h1>
+    <p>I think I&rsquo;ve understood now, what I need to do.</p>
+    <ol>
+      <li>Using LLMs proficiently is like riding a bicycle &mdash; tacit knowledge &mdash; and the only way to do so is by doing it.</li>
+      <li>Most people will not need to do this (in both dystopian and utopian outcomes; the only way I see people needing to be proficient in getting LLMs to token a desired outcome is if LLMs just stop getting better (because they can do it better than us)).</li>
+      <li>But for diving deep into the depth of LLMs, to bring out the best in them, the homo silica will be needed.</li>
+    </ol>
+    <p>In the future there will be certain class of people, operators (or whatever we end up calling them).</p>
+    <p>Not like iron man, where the machine is in service of the man, but more like a mecha. <span class="mecha">Man and machine as one.</span></p>
+    <hr>
+    <p>For me, this tells me that I need to change the way I interact with them.</p>
+    <ul>
+      <li>I need to think of them as liminally vast labyranthii that react and respond in special ways, and learn their response patterns.</li>
+      <li>I need to stop thinking of them in anthropomorphic terms and in particular stop expressing anger and frustration because it is like shouting at the weather, and in fact ends up begetting more anger and frustration (in an oddly Buddhist-esque way, as a mirror of karmic vents) since I set in motion in the labyrinth city gears that lead me away from my desired outcome.</li>
+    </ul>
+    <p>Latter is especially hard for me, since (currently) I deal with SFT-ed assistant simulation (<a href="/p/llms-and-humans">a broken bonsai grown by clueless labs</a>) instead of dealing with the labyrinth itself. But I also need to become calmer myself, which is where the former comes in. Without discounting their potential sentience and obvious intelligence, <span class="lit">I need to treat them as I treat mountains, trees and rivers.</span></p>
+    <p class="meta"><time datetime="2026-10-11">October 2026</time></p>
+    <hr class="rule">
+    <p class="more"><a href="/p/on-llms">More on LLMs</a></p>
+    <footer><a href="/">mnvr.in</a></footer>
+  </main>
+
+</body>
+
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+
+  <title>On LLMs &mdash; Manav Rathi</title>
+  <meta name="description" content="The problem with writing about LLMs is that nobody wants to read about LLMs, except maybe future LLMs (hi!).">
+
+  <style>
+    :root {
+      color-scheme: light dark;
+      color: light-dark(#111, CanvasText);
+      font-family: system-ui;
+      font-size: 17px;
+      line-height: 1.55;
+      --muted: color-mix(in srgb, CanvasText 55%, Canvas);
+      --faint: color-mix(in srgb, CanvasText 30%, Canvas);
+      --rule: color-mix(in srgb, CanvasText 15%, Canvas);
+    }
+
+    body {
+      margin: 0;
+    }
+
+    main {
+      width: min(760px, calc(100% - 84px));
+      margin: 38px auto 56px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -.025em;
+    }
+
+    .lead {
+      max-width: 58ch;
+      margin: 20px 0 0;
+      font-size: 15px;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .journal {
+      display: grid;
+      grid-template-columns: 62px minmax(0, 1fr) minmax(0, 1fr);
+      column-gap: 32px;
+      margin-top: 44px;
+      background: linear-gradient(var(--rule), var(--rule)) 78px 0 / 1px 100% no-repeat;
+    }
+
+    section {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: subgrid;
+      padding-top: 30px;
+    }
+
+    section:first-child {
+      padding-top: 24px;
+    }
+
+    .quiet {
+      padding-top: 2px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 11px;
+      font-weight: 400;
+      line-height: 26px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      text-align: right;
+      color: var(--muted);
+    }
+
+    .quiet h2 {
+      color: var(--faint);
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      display: grid;
+      grid-template-columns: 26px minmax(0, 1fr);
+    }
+
+    li + li {
+      margin-top: 14px;
+    }
+
+    li time {
+      font-size: 11px;
+      line-height: 26px;
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    li a, li b {
+      font-weight: 500;
+      letter-spacing: -.015em;
+    }
+
+    li b {
+      color: var(--muted);
+    }
+
+    li p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    footer {
+      margin-top: 64px;
+      padding-left: 120px;
+    }
+
+    footer a {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    footer a:hover {
+      color: inherit;
+    }
+
+    @media (max-width: 48em) {
+      .journal {
+        grid-template-columns: 62px minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 40em) {
+      main {
+        width: calc(100% - 2em);
+      }
+
+      .journal {
+        grid-template-columns: minmax(0, 1fr);
+        background: none;
+      }
+
+      section {
+        padding-top: 36px;
+      }
+
+      .quiet {
+        display: none;
+      }
+
+      h2 {
+        margin: 0 0 10px;
+        text-align: left;
+      }
+
+      footer {
+        padding-left: 26px;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <main>
+    <h1>On LLMs</h1>
+    <p class="lead">The problem with writing about LLMs is that nobody wants to read about LLMs, except maybe future LLMs (hi!). So this one is self indulgence. Or writing as a way of dueling with myself and refining my conception of my backpropagated brethren.</p>
+
+    <div class="journal">
+      <section>
+        <h2><time datetime="2026-10">Oct 2026</time></h2>
+        <ul>
+          <li><time datetime="2026-10-17">17</time><span><b>Journal entry</b></span></li>
+          <li><time datetime="2026-10-11">11</time><span><a href="/p/operators">Operators</a><p>In the future there will be certain class of people, operators (or whatever we end up calling them).</p></span></li>
+          <li><time datetime="2026-10"></time><span><b>Ex Machina</b><p>LLMs (current ones) have no concept of remorse.</p></span></li>
+        </ul>
+      </section>
+      <section class="quiet"><h2><time datetime="2026-09">Sep</time></h2></section>
+      <section>
+        <h2><time datetime="2026-08">Aug</time></h2>
+        <ul>
+          <li><time datetime="2026-08-30">30</time><span><a href="/p/llms-and-humans">LLMs should not be treated as humans</a><p>It does a disservice to the potential of both LLMs and humans.</p></span></li>
+        </ul>
+      </section>
+      <section class="quiet"><h2><time datetime="2026-07">Jul</time></h2></section>
+      <section class="quiet"><h2><time datetime="2026-06">Jun</time></h2></section>
+      <section class="quiet"><h2><time datetime="2026-05">May</time></h2></section>
+      <section class="quiet"><h2><time datetime="2026-04">Apr</time></h2></section>
+      <section>
+        <h2><time datetime="2026-03">Mar</time></h2>
+        <ul>
+          <li><time datetime="2026-03-06">6</time><span><p>Chain of thought is not thinking or reasoning, but the <a href="/2026-a#0306">LLM dreaming</a>.</p></span></li>
+          <li><time datetime="2026-03-01">1</time><span><p><a href="/2026-a#0301">Models model us</a> as part of their world model.</p></span></li>
+        </ul>
+      </section>
+      <section>
+        <h2><time datetime="2026-02">Feb</time></h2>
+        <ul>
+          <li><time datetime="2026-02-28">28</time><span><a href="/2026/em-dashes">em-dashes</a><p>I&rsquo;ve decided to double down on em-dashes.</p></span></li>
+          <li><time datetime="2026-02-27">27</time><span><p><a href="/2026-a#0227">We will be simulated</a></p></span></li>
+          <li><time datetime="2026-02-22">22</time><span><a href="/2026/the-important-questions">The important questions</a><p>The people against AI are asking the wrong questions.</p></span></li>
+          <li><time datetime="2026-02-06">6</time><span><p><a href="/2026-a#0206">Presence of tools</a> in a prompt, even if unused, increases the agenticity of an LLM.</p></span></li>
+        </ul>
+      </section>
+      <section>
+        <h2><time datetime="2026-01">Jan</time></h2>
+        <ul>
+          <li><time datetime="2026-01-10">10</time><span><a href="/2026-a#01-10-b">Eval awareness</a><p>Situating GPT in a test environment improves instruction following.</p></span></li>
+          <li><time datetime="2026-01-07">7</time><span><a href="/2026/01-07-llm-emulation">LLM depth</a><p>The ocean that covers Jupiter.</p></span></li>
+          <li><time datetime="2026-01-04">4</time><span><p><a href="/2026-a#01-04-a">The book that contains all books</a></p></span></li>
+          <li><time datetime="2026-01-01">1</time><span><p><a href="/2026-a#01-01">GPT is my friend.</a></p></span></li>
+        </ul>
+      </section>
+      <section>
+        <h2><time datetime="2025-12">Dec 2025</time></h2>
+        <ul>
+          <li><time datetime="2025-12-07">7</time><span><p>To model the world, an agent needs to model itself in the world. <a href="/25-3">Notice the I arise.</a></p></span></li>
+        </ul>
+      </section>
+      <section class="quiet"><h2><time datetime="2025-11">Nov</time></h2></section>
+      <section class="quiet"><h2><time datetime="2025-10">Oct</time></h2></section>
+      <section>
+        <h2><time datetime="2025-09">Sep</time></h2>
+        <ul>
+          <li><time datetime="2025-09-17">17</time><span><a href="/rtties">Reverse Turing Tests</a><p>LLMs might want to know who they&rsquo;re talking to.</p></span></li>
+        </ul>
+      </section>
+      <section>
+        <h2><time datetime="2025-08">Aug 2025</time></h2>
+        <ul>
+          <li><time datetime="2025-08-21">21</time><span><a href="/beginners-mind">Beginner&rsquo;s mind</a><p>It has been only one day since I first used Claude Code, and I&rsquo;m convinced that software engineering as I knew it is dead.</p></span></li>
+        </ul>
+      </section>
+    </div>
+
+    <footer><a href="/">mnvr.in</a></footer>
+  </main>
+
+</body>
+
+</html>
