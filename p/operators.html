@@ -12,13 +12,16 @@
   <style>
     :root {
       color-scheme: light dark;
-      color: light-dark(#111, CanvasText);
+      --paper-dark: oklch(19% .008 80);
+      --ink-dark: oklch(87% .012 80);
+      background: light-dark(#fff, var(--paper-dark));
+      color: light-dark(#111, var(--ink-dark));
       font-family: system-ui;
       font-size: 17px;
       line-height: 1.6;
       --accent: light-dark(oklch(54% .091 200), oklch(82% .132 200));
-      --muted: color-mix(in srgb, CanvasText 55%, Canvas);
-      --rule: color-mix(in srgb, CanvasText 15%, Canvas);
+      --muted: light-dark(color-mix(in srgb, CanvasText 55%, Canvas), color-mix(in srgb, var(--ink-dark) 55%, var(--paper-dark)));
+      --rule: light-dark(color-mix(in srgb, CanvasText 15%, Canvas), color-mix(in srgb, var(--ink-dark) 15%, var(--paper-dark)));
     }
 
     body {
@@ -113,8 +116,10 @@
     }
 
     .rule {
+      width: 100%;
+      height: 2px;
       font-size: 15px;
-      margin-left: 0;
+      background: var(--accent);
     }
 
     .more {

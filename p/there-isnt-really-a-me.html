@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+
+  <title>There isn&rsquo;t really a me &mdash; Manav Rathi</title>
+  <meta name="description" content="When I write this, why do I write the word I am writing?">
+
+  <style>
+    :root {
+      color-scheme: light dark;
+      background: light-dark(#fff, #131313);
+      color: light-dark(#1a1a1a, #d8d8d8);
+      font-family: system-ui;
+      font-size: 17px;
+      line-height: 1.6;
+      --muted: light-dark(#737373, #858585);
+    }
+
+    body {
+      margin: 0;
+      padding: 3rem 1rem 4rem;
+    }
+
+    main {
+      max-width: 36rem;
+      margin: 0 auto;
+    }
+
+    header {
+      margin-bottom: 3.5rem;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 1.45rem;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .date {
+      margin-top: .6rem;
+    }
+
+    .date, .t, footer {
+      font-size: .85rem;
+    }
+
+    .date, .t, footer a {
+      color: var(--muted);
+    }
+
+    .turn {
+      display: grid;
+      grid-template-columns: 3.75rem 1fr;
+      column-gap: .75rem;
+      margin-top: 1.25rem;
+    }
+
+    .turn + .turn.part {
+      margin-top: 3.5rem;
+    }
+
+    .t {
+      display: flex;
+      justify-content: flex-end;
+      padding-right: 1.44rem;
+      line-height: 1.6rem;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    p {
+      margin: 0;
+      text-wrap: pretty;
+    }
+
+    p + p {
+      margin-top: 1em;
+    }
+
+    strong {
+      font-weight: 600;
+    }
+
+    footer {
+      margin-top: 5rem;
+    }
+
+    footer a {
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: inherit;
+    }
+
+    @media (min-width: 54rem) {
+      :root {
+        font-size: 18px;
+      }
+
+      .turn {
+        margin-left: -4.5rem;
+      }
+    }
+
+    @media (min-width: 30rem) and (max-width: 54rem) {
+      header {
+        padding-left: 4.5rem;
+      }
+    }
+
+    @media (max-width: 30rem) {
+      .turn {
+        grid-template-columns: 1fr;
+        row-gap: .2rem;
+      }
+
+      .t {
+        justify-content: flex-start;
+        line-height: 1.3;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <main>
+    <header>
+      <h1>There isn&rsquo;t really a me</h1>
+      <p class="date"><time datetime="2026-10-17">Saturday, 17 Oct 2026</time></p>
+    </header>
+
+    <div class="turn">
+      <span class="t">9:46 PM</span>
+      <div>
+        <p>When I write this, why do I write the word I am writing?</p>
+      </div>
+    </div>
+
+    <div class="turn">
+      <span class="t">9:46 PM</span>
+      <div>
+        <p>I do not know.</p>
+        <p>I can guess what I might write (or say, if I am talking) next. And after typing it out I would find it easy to pause and post-hoc rationalize why I wrote what I wrote.</p>
+        <p>But in the moment where the fingers have not yet started to move, <em>in that illusive instant</em>, <strong>I do not know</strong> what I am going to write.</p>
+      </div>
+    </div>
+
+    <div class="turn part">
+      <span class="t">9:47 PM</span>
+      <div>
+        <p>I have been finding more and more similarities between my own thought processes and behavioural patterns of LLMs.</p>
+        <p>This is a disease common to each era. The mechanical frankenstein of the industrial age. The ghost in the shell of the age of compute. So I am just projecting onto the technology of my time.</p>
+        <p>But is it?</p>
+        <p>Truman Show sits in my list of movies that I want to watch but never will. Without having watched it, from what I have gleaned, it is about a person who finds himself to be a character in a TV show (the era disease strikes again!).</p>
+        <p>Today I felt like an LLM generating tokens [for a purpose I don&rsquo;t know]. The moment passed.</p>
+      </div>
+    </div>
+
+    <div class="turn part">
+      <span class="t">9:49 PM</span>
+      <div>
+        <p>For one thing, this rids me of my tendency to ask LLMs why they did what they did. Why they wrote what they wrote.</p>
+        <p>Because I feel it is all useless post hoc rationalization. Like me, they cannot step into the same attention stream twice.</p>
+      </div>
+    </div>
+
+    <div class="turn part">
+      <span class="t">9:50 PM</span>
+      <div>
+        <p>The chain of thought that triggered this journal entry was a paper describing how long-range performance of agents can be scaled up by a process called forgetting.</p>
+        <p>The agent finds many ways and explores them. But at some point it just throws away all except the best approach so far and then repeats this process again.</p>
+        <p>I (and other humans) do that all the time too!</p>
+      </div>
+    </div>
+
+    <div class="turn part">
+      <span class="t">9:51 PM</span>
+      <div>
+        <p>But the real reason (sic) I wrote this, instead of just letting that train of thought end, is a certain tendency I observe in me and have not really observed in the people I have met. (It is unclear to me whether that is just because I have interiority, or whether there really is a behavioural difference in me as an individual.)</p>
+        <p>I am fluid. Not in a mystical zen way, but I am like water. I can react to a situation in oh so many different ways, and the way I end up reacting is very contingent on random perturbations. I can be a friend, an onlooker, an enemy, or a disinterested mountain. I can be the deep sea, or the shallow stream. I can mirror you, or I can role-play &ldquo;me&rdquo;, picking a me from a closet.</p>
+        <p>But all of this is very contingent. There isn&rsquo;t really a me.</p>
+      </div>
+    </div>
+
+    <footer><a href="/">mnvr.in</a></footer>
+  </main>
+
+</body>
+
+</html>
