@@ -47,8 +47,8 @@
     }
 
     .entries {
-      display: grid;
-      gap: 8px;
+      display: flex;
+      gap: 22px;
       margin: 0;
       padding: 0;
       list-style: none;
@@ -57,6 +57,26 @@
     .entries a {
       letter-spacing: -.015em;
       font-weight: 500;
+    }
+
+    .xg {
+      width: .9em;
+      height: .9em;
+      vertical-align: -.1em;
+      fill: currentColor;
+    }
+
+    footer {
+      margin-top: 64px;
+    }
+
+    footer a {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    footer a:hover {
+      color: inherit;
     }
 
     @media (max-width: 40em) {
@@ -80,25 +100,12 @@
       <h2>Elsewhere</h2>
       <ul class="entries">
         <li><a href="https://github.com/mnvr" target="_blank">GitHub</a></li>
-        <li><a rel="me" href="https://mastodon.social/@mnvr" target="_blank">Mastodon</a></li>
-        <li><a href="https://x.com/mnvrth" target="_blank">X</a></li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Feed</h2>
-      <ul class="entries">
-        <li><a href="/rss.xml">RSS</a></li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Home</h2>
-      <ul class="entries">
-        <li><a href="/">mnvr.in</a></li>
+        <li><a href="https://x.com/mnvrth" target="_blank"><svg class="xg" viewBox="0 0 24 24" aria-label="X"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a></li>
       </ul>
     </section>
   </main>
+
+  <footer><a href="/">mnvr.in</a></footer>
 
 </body>
 

@@ -91,6 +91,35 @@
       list-style: none;
     }
 
+    .editions .entries a {
+      font-weight: 400;
+    }
+
+    .blurb {
+      margin: 0 0 8px;
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    footer {
+      margin-top: 64px;
+      padding-top: 14px;
+      border-top: 1px solid color-mix(in srgb, CanvasText 15%, Canvas);
+    }
+
+    footer p {
+      margin: 0 0 0 92px;
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    .xg {
+      width: .9em;
+      height: .9em;
+      vertical-align: -.1em;
+      fill: currentColor;
+    }
+
     @media (max-width: 40em) {
       body {
         width: calc(100% - 2em);
@@ -109,6 +138,10 @@
         display: inline;
         margin-left: .6em;
       }
+
+      footer p {
+        margin-left: 0;
+      }
     }
   </style>
 
@@ -117,7 +150,7 @@
 <body>
 
   <header>
-    <h1 class="page-title">Hi, I'm Manav</h1>
+    <h1 class="page-title">Manav Rathi</h1>
   </header>
 
   <main>
@@ -161,22 +194,28 @@
     </section>
 
     <section class="group">
-      <h2><span>Older Editions</span></h2>
-      <ul class="entries">
-        <li><span class="number">4</span><a href="/2026-a">2026 · a</a></li>
-        <li><span class="number">3</span><a href="/25-3">2025 · c</a></li>
-        <li><span class="number">2</span><a href="/25-2">2025 · b</a></li>
-        <li><span class="number">1</span><a href="/25-1">2025 · a</a></li>
-      </ul>
-    </section>
-
-    <section class="group">
       <h2><span>Misc</span></h2>
       <ul class="entries">
+        <li><span class="number">2</span><a href="/p/on-llms">On LLMs</a></li>
         <li><span class="number">1</span><a href="/about">About</a></li>
       </ul>
     </section>
+
+    <section class="group editions">
+      <h2><span>Earlier Editions</span></h2>
+      <div>
+        <p class="blurb">I like changing my homepage every now and then. These are the older editions.</p>
+        <ul class="entries">
+          <li><a href="/2026-a">2026 · a</a></li>
+          <li><a href="/25-3">2025 · c</a></li>
+          <li><a href="/25-2">2025 · b</a></li>
+          <li><a href="/25-1">2025 · a</a></li>
+        </ul>
+      </div>
+    </section>
   </main>
+
+  <footer><p>Follow new writing via <a href="/rss.xml">RSS</a>, or on <a href="https://x.com/mnvrth"><svg class="xg" viewBox="0 0 24 24" aria-label="X"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>.</p></footer>
 
 </body>
 
